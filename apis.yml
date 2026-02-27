@@ -1,0 +1,190 @@
+name: SAP Sales and Distribution (SD) API
+description: 'APIs for SAP Sales and Distribution module covering sales orders, pricing,  delivery, billing, and customer management processes
+
+  '
+image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+url: https://api.sap.com/sd
+created: '2024'
+modified: '2024'
+tags:
+- SAP
+- Sales
+- Distribution
+- ERP
+- S/4HANA
+- OData
+apis:
+- name: Sales Order API
+  description: Create, read, update, and delete sales orders
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/OP_API_SALES_ORDER_SRV
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV
+  tags:
+  - sales-order
+  - order-management
+  - OData
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/OP_API_SALES_ORDER_SRV/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/OP_API_SALES_ORDER_SRV/specification
+  - type: API Console
+    url: https://api.sap.com/api/OP_API_SALES_ORDER_SRV/tryout
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Customer Master Data API
+  description: Manage customer master data including addresses, contact information, and business partner details
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_BUSINESS_PARTNER
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER
+  tags:
+  - customer
+  - master-data
+  - business-partner
+  - OData
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_BUSINESS_PARTNER/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_BUSINESS_PARTNER/specification
+  - type: API Console
+    url: https://api.sap.com/api/API_BUSINESS_PARTNER/tryout
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Outbound Delivery API
+  description: Create and manage outbound deliveries, goods issue, and shipping documents
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV
+  tags:
+  - delivery
+  - shipping
+  - logistics
+  - OData
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV/specification
+  - type: API Console
+    url: https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV/tryout
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Billing Document API
+  description: Create and manage billing documents, invoices, credit memos, and debit memos
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/OP_API_BILLING_DOCUMENT_SRV
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  tags:
+  - billing
+  - invoice
+  - credit-memo
+  - OData
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/OP_API_BILLING_DOCUMENT_SRV/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/OP_API_BILLING_DOCUMENT_SRV/specification
+  - type: API Console
+    url: https://api.sap.com/api/OP_API_BILLING_DOCUMENT_SRV/tryout
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Pricing API
+  description: Calculate prices, discounts, and surcharges based on pricing conditions
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_SLSPRCGCONDITIONRECORD_SRV
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SLSPRCGCONDITIONRECORD_SRV
+  tags:
+  - pricing
+  - conditions
+  - discount
+  - OData
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_SLSPRCGCONDITIONRECORD_SRV/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_SLSPRCGCONDITIONRECORD_SRV/specification
+  - type: API Console
+    url: https://api.sap.com/api/API_SLSPRCGCONDITIONRECORD_SRV/tryout
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Sales Quotation API
+  description: Create and manage sales quotations and customer inquiries
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_SALES_QUOTATION_SRV
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_QUOTATION_SRV
+  tags:
+  - quotation
+  - sales-document
+  - OData
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_SALES_QUOTATION_SRV/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_SALES_QUOTATION_SRV/specification
+  - type: API Console
+    url: https://api.sap.com/api/API_SALES_QUOTATION_SRV/tryout
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Credit Management API
+  description: Manage customer credit limits, credit exposure, and credit checks
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_CREDIT_MANAGEMENT
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MANAGEMENT
+  tags:
+  - credit
+  - risk-management
+  - OData
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_CREDIT_MANAGEMENT/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_CREDIT_MANAGEMENT/specification
+  - type: API Console
+    url: https://api.sap.com/api/API_CREDIT_MANAGEMENT/tryout
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Material Master API
+  description: Access material master data including product information, availability, and pricing
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_PRODUCT_SRV
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_PRODUCT_SRV
+  tags:
+  - material
+  - product
+  - master-data
+  - OData
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_PRODUCT_SRV/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_PRODUCT_SRV/specification
+  - type: API Console
+    url: https://api.sap.com/api/API_PRODUCT_SRV/tryout
+  contact:
+  - type: Support
+    url: https://support.sap.com
+common:
+- type: Authentication
+  url: https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/
+- type: Developer Portal
+  url: https://api.sap.com
+- type: Terms of Service
+  url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+- type: Privacy Policy
+  url: https://www.sap.com/about/legal/privacy.html
+- type: Getting Started
+  url: https://developers.sap.com/tutorials.html
+- type: SDK
+  url: https://help.sap.com/doc/saphelp_nw75/7.5.5/en-US/3f/76e0f7d00f48fd96cfbb4f2a885c02/content.htm
+maintainers:
+- name: SAP SE
+  email: support@sap.com
+  url: https://www.sap.com
