@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.sap.com/schemas/sap-sd-sales-order-item",
+  "title": "SAP Sales Order Item",
+  "description": "Schema for SAP S/4HANA Sales Order Item entity (A_SalesOrderItem) from the API_SALES_ORDER_SRV OData service. Represents a line item within a sales order including material, quantity, pricing, and status data.",
+  "type": "object",
+  "properties": {
+    "SalesOrder": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sales order number"
+    },
+    "SalesOrderItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Sales order item number"
+    },
+    "SalesOrderItemCategory": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales document item category"
+    },
+    "SalesOrderItemText": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Short text for the sales order item"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "MaterialByCustomer": {
+      "type": "string",
+      "maxLength": 35,
+      "description": "Material number used by customer"
+    },
+    "RequestedQuantity": {
+      "type": "string",
+      "description": "Cumulative order quantity in sales units"
+    },
+    "RequestedQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Sales unit"
+    },
+    "NetAmount": {
+      "type": "string",
+      "description": "Net value of the item in document currency"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "SD document currency"
+    },
+    "MaterialGroup": {
+      "type": "string",
+      "maxLength": 9,
+      "description": "Material group"
+    },
+    "Batch": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Batch number"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant (delivering)"
+    },
+    "StorageLocation": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Storage location"
+    },
+    "ShippingPoint": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Shipping point / receiving point"
+    },
+    "SDProcessStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall processing status of the item"
+    },
+    "DeliveryStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Delivery status"
+    },
+    "OrderRelatedBillingStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Billing status"
+    }
+  },
+  "required": ["SalesOrder", "SalesOrderItem"]
+}

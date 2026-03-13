@@ -1,0 +1,509 @@
+openapi: 3.1.0
+info:
+  title: SAP Inbound Delivery API
+  description: >-
+    Create and manage inbound deliveries in SAP S/4HANA. This OData service
+    (API_INBOUND_DELIVERY_SRV_0002) supports creation of inbound deliveries
+    with reference to sales documents and manages batch-split items for
+    existing deliveries. Inbound deliveries track the receipt of goods
+    in warehouse operations.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+  - url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002
+    description: SAP S/4HANA Cloud Sandbox
+  - url: https://{host}:{port}/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002
+    description: SAP S/4HANA On-Premise
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '443'
+security:
+  - basicAuth: []
+  - oauth2: []
+tags:
+  - name: Inbound Delivery Header
+    description: Operations on inbound delivery header (A_InbDeliveryHeader)
+  - name: Inbound Delivery Item
+    description: Operations on inbound delivery items (A_InbDeliveryItem)
+paths:
+  /A_InbDeliveryHeader:
+    get:
+      operationId: listInboundDeliveries
+      summary: Retrieve a list of inbound deliveries
+      description: >-
+        Returns a collection of inbound delivery headers. Supports OData
+        query options for filtering by delivery date, vendor, delivery type,
+        and goods receipt status.
+      tags:
+        - Inbound Delivery Header
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved inbound deliveries
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/InbDeliveryHeader'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createInboundDelivery
+      summary: Create a new inbound delivery
+      description: >-
+        Creates a new inbound delivery with reference to a purchase order
+        or other procurement document. Supports deep insert with items.
+      tags:
+        - Inbound Delivery Header
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InbDeliveryHeaderCreate'
+      responses:
+        '201':
+          description: Inbound delivery successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/InbDeliveryHeader'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_InbDeliveryHeader('{DeliveryDocument}'):
+    get:
+      operationId: getInboundDelivery
+      summary: Retrieve a single inbound delivery
+      description: >-
+        Returns a single inbound delivery header by its document number.
+      tags:
+        - Inbound Delivery Header
+      parameters:
+        - name: DeliveryDocument
+          in: path
+          required: true
+          description: Delivery document number (10 characters)
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the inbound delivery
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/InbDeliveryHeader'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateInboundDelivery
+      summary: Update an inbound delivery
+      description: >-
+        Updates an existing inbound delivery header.
+      tags:
+        - Inbound Delivery Header
+      parameters:
+        - name: DeliveryDocument
+          in: path
+          required: true
+          description: Delivery document number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InbDeliveryHeaderUpdate'
+      responses:
+        '204':
+          description: Inbound delivery successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deleteInboundDelivery
+      summary: Delete an inbound delivery
+      description: >-
+        Deletes an existing inbound delivery.
+      tags:
+        - Inbound Delivery Header
+      parameters:
+        - name: DeliveryDocument
+          in: path
+          required: true
+          description: Delivery document number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      responses:
+        '204':
+          description: Inbound delivery successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_InbDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentItem:
+    get:
+      operationId: listInboundDeliveryItems
+      summary: Retrieve items for an inbound delivery
+      description: >-
+        Returns a collection of items for the specified inbound delivery.
+      tags:
+        - Inbound Delivery Item
+      parameters:
+        - name: DeliveryDocument
+          in: path
+          required: true
+          description: Delivery document number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved inbound delivery items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/InbDeliveryItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /PostGoodsReceipt:
+    post:
+      operationId: postGoodsReceipt
+      summary: Post goods receipt for an inbound delivery
+      description: >-
+        Posts goods receipt for the specified inbound delivery, updating
+        inventory and creating material documents.
+      tags:
+        - Inbound Delivery Header
+      parameters:
+        - name: DeliveryDocument
+          in: query
+          required: true
+          description: Delivery document number
+          schema:
+            type: string
+            maxLength: 10
+      responses:
+        '200':
+          description: Goods receipt successfully posted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/InbDeliveryHeader'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_INBOUND_DELIVERY_SRV: Access to Inbound Delivery API
+  parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+          - allpages
+          - none
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+  schemas:
+    InbDeliveryHeader:
+      type: object
+      description: Inbound delivery header entity (A_InbDeliveryHeader)
+      properties:
+        DeliveryDocument:
+          type: string
+          maxLength: 10
+          description: Delivery document number
+        DeliveryDocumentType:
+          type: string
+          maxLength: 4
+          description: Delivery type
+        ReceivingPlant:
+          type: string
+          maxLength: 4
+          description: Receiving plant
+        ShippingPoint:
+          type: string
+          maxLength: 4
+          description: Shipping/receiving point
+        Supplier:
+          type: string
+          maxLength: 10
+          description: Vendor number
+        DeliveryDate:
+          type: string
+          format: date
+          description: Delivery date
+        CreationDate:
+          type: string
+          format: date
+          description: Creation date
+        ActualGoodsMovementDate:
+          type: string
+          format: date
+          description: Actual goods receipt date
+        BillOfLading:
+          type: string
+          maxLength: 35
+          description: Bill of lading
+        OverallGoodsMovementStatus:
+          type: string
+          maxLength: 1
+          description: Goods receipt status
+    InbDeliveryHeaderCreate:
+      type: object
+      properties:
+        DeliveryDocumentType:
+          type: string
+          maxLength: 4
+        ReceivingPlant:
+          type: string
+          maxLength: 4
+        Supplier:
+          type: string
+          maxLength: 10
+        DeliveryDate:
+          type: string
+          format: date
+        to_DeliveryDocumentItem:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/InbDeliveryItemCreate'
+    InbDeliveryHeaderUpdate:
+      type: object
+      properties:
+        DeliveryDate:
+          type: string
+          format: date
+        BillOfLading:
+          type: string
+          maxLength: 35
+    InbDeliveryItem:
+      type: object
+      description: Inbound delivery item entity (A_InbDeliveryItem)
+      properties:
+        DeliveryDocument:
+          type: string
+          maxLength: 10
+          description: Delivery document number
+        DeliveryDocumentItem:
+          type: string
+          maxLength: 6
+          description: Delivery item number
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number
+        Plant:
+          type: string
+          maxLength: 4
+          description: Plant
+        StorageLocation:
+          type: string
+          maxLength: 4
+          description: Storage location
+        Batch:
+          type: string
+          maxLength: 10
+          description: Batch number
+        ActualDeliveryQuantity:
+          type: string
+          description: Actual delivery quantity
+        DeliveryQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Delivery unit
+        ReferenceSDDocument:
+          type: string
+          maxLength: 10
+          description: Reference purchase order
+        ReferenceSDDocumentItem:
+          type: string
+          maxLength: 6
+          description: Reference purchase order item
+        GoodsMovementStatus:
+          type: string
+          maxLength: 1
+          description: Goods receipt status
+    InbDeliveryItemCreate:
+      type: object
+      properties:
+        Material:
+          type: string
+          maxLength: 40
+        Plant:
+          type: string
+          maxLength: 4
+        ActualDeliveryQuantity:
+          type: string
+        DeliveryQuantityUnit:
+          type: string
+          maxLength: 3
+        ReferenceSDDocument:
+          type: string
+          maxLength: 10
+        ReferenceSDDocumentItem:
+          type: string
+          maxLength: 6
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

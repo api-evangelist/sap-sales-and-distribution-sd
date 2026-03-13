@@ -1,0 +1,295 @@
+{
+  "@context": {
+    "@vocab": "https://api.sap.com/vocabulary/sd/",
+    "schema": "https://schema.org/",
+    "gr": "http://purl.org/goodrelations/v1#",
+    "dct": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "sap": "https://api.sap.com/vocabulary/",
+    "sapsd": "https://api.sap.com/vocabulary/sd/",
+
+    "SalesOrder": {
+      "@id": "sapsd:SalesOrder",
+      "@type": "@id",
+      "comment": "Sales order document in SAP S/4HANA SD module"
+    },
+    "SalesOrderNumber": {
+      "@id": "schema:orderNumber",
+      "@type": "xsd:string"
+    },
+    "SalesOrderType": {
+      "@id": "sapsd:SalesOrderType",
+      "@type": "xsd:string"
+    },
+    "SalesOrganization": {
+      "@id": "sapsd:SalesOrganization",
+      "@type": "xsd:string"
+    },
+    "DistributionChannel": {
+      "@id": "sapsd:DistributionChannel",
+      "@type": "xsd:string"
+    },
+    "OrganizationDivision": {
+      "@id": "sapsd:OrganizationDivision",
+      "@type": "xsd:string"
+    },
+    "SoldToParty": {
+      "@id": "schema:customer",
+      "@type": "@id"
+    },
+    "ShipToParty": {
+      "@id": "sapsd:ShipToParty",
+      "@type": "@id"
+    },
+    "PayerParty": {
+      "@id": "sapsd:PayerParty",
+      "@type": "@id"
+    },
+    "TotalNetAmount": {
+      "@id": "schema:totalPrice",
+      "@type": "xsd:decimal"
+    },
+    "TransactionCurrency": {
+      "@id": "schema:priceCurrency",
+      "@type": "xsd:string"
+    },
+    "CreationDate": {
+      "@id": "dct:created",
+      "@type": "xsd:date"
+    },
+    "LastChangeDate": {
+      "@id": "dct:modified",
+      "@type": "xsd:date"
+    },
+    "PurchaseOrderByCustomer": {
+      "@id": "sapsd:PurchaseOrderByCustomer",
+      "@type": "xsd:string"
+    },
+    "RequestedDeliveryDate": {
+      "@id": "sapsd:RequestedDeliveryDate",
+      "@type": "xsd:date"
+    },
+
+    "SalesOrderItem": {
+      "@id": "sapsd:SalesOrderItem",
+      "@type": "@id",
+      "comment": "Line item within a sales order"
+    },
+    "Material": {
+      "@id": "schema:productID",
+      "@type": "xsd:string"
+    },
+    "RequestedQuantity": {
+      "@id": "schema:orderQuantity",
+      "@type": "xsd:decimal"
+    },
+    "RequestedQuantityUnit": {
+      "@id": "schema:unitCode",
+      "@type": "xsd:string"
+    },
+    "NetAmount": {
+      "@id": "schema:price",
+      "@type": "xsd:decimal"
+    },
+    "Plant": {
+      "@id": "sapsd:Plant",
+      "@type": "xsd:string"
+    },
+    "Batch": {
+      "@id": "sapsd:Batch",
+      "@type": "xsd:string"
+    },
+
+    "BusinessPartner": {
+      "@id": "sapsd:BusinessPartner",
+      "@type": "@id",
+      "comment": "Business partner record in SAP representing a customer, vendor, or person"
+    },
+    "BusinessPartnerCategory": {
+      "@id": "sapsd:BusinessPartnerCategory",
+      "@type": "xsd:string"
+    },
+    "BusinessPartnerName": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "FirstName": {
+      "@id": "schema:givenName",
+      "@type": "xsd:string"
+    },
+    "LastName": {
+      "@id": "schema:familyName",
+      "@type": "xsd:string"
+    },
+    "OrganizationBPName1": {
+      "@id": "schema:legalName",
+      "@type": "xsd:string"
+    },
+
+    "BusinessPartnerAddress": {
+      "@id": "schema:PostalAddress",
+      "@type": "@id"
+    },
+    "StreetName": {
+      "@id": "schema:streetAddress",
+      "@type": "xsd:string"
+    },
+    "CityName": {
+      "@id": "schema:addressLocality",
+      "@type": "xsd:string"
+    },
+    "Region": {
+      "@id": "schema:addressRegion",
+      "@type": "xsd:string"
+    },
+    "PostalCode": {
+      "@id": "schema:postalCode",
+      "@type": "xsd:string"
+    },
+    "Country": {
+      "@id": "schema:addressCountry",
+      "@type": "xsd:string"
+    },
+
+    "Product": {
+      "@id": "schema:Product",
+      "@type": "@id",
+      "comment": "Material master record (product) in SAP S/4HANA"
+    },
+    "ProductType": {
+      "@id": "sapsd:ProductType",
+      "@type": "xsd:string"
+    },
+    "ProductGroup": {
+      "@id": "schema:category",
+      "@type": "xsd:string"
+    },
+    "ProductDescription": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "GrossWeight": {
+      "@id": "schema:weight",
+      "@type": "xsd:decimal"
+    },
+    "WeightUnit": {
+      "@id": "sapsd:WeightUnit",
+      "@type": "xsd:string"
+    },
+    "ProductStandardID": {
+      "@id": "schema:gtin",
+      "@type": "xsd:string"
+    },
+
+    "OutboundDelivery": {
+      "@id": "sapsd:OutboundDelivery",
+      "@type": "@id",
+      "comment": "Outbound delivery document for shipping goods"
+    },
+    "DeliveryDocument": {
+      "@id": "sapsd:DeliveryDocument",
+      "@type": "xsd:string"
+    },
+    "DeliveryDate": {
+      "@id": "sapsd:DeliveryDate",
+      "@type": "xsd:date"
+    },
+    "ShippingPoint": {
+      "@id": "sapsd:ShippingPoint",
+      "@type": "xsd:string"
+    },
+
+    "BillingDocument": {
+      "@id": "sapsd:BillingDocument",
+      "@type": "@id",
+      "comment": "Billing document (invoice, credit memo, or debit memo)"
+    },
+    "BillingDocumentType": {
+      "@id": "sapsd:BillingDocumentType",
+      "@type": "xsd:string"
+    },
+    "BillingDocumentDate": {
+      "@id": "sapsd:BillingDocumentDate",
+      "@type": "xsd:date"
+    },
+    "TotalGrossAmount": {
+      "@id": "sapsd:TotalGrossAmount",
+      "@type": "xsd:decimal"
+    },
+    "TotalTaxAmount": {
+      "@id": "sapsd:TotalTaxAmount",
+      "@type": "xsd:decimal"
+    },
+
+    "PricingConditionRecord": {
+      "@id": "sapsd:PricingConditionRecord",
+      "@type": "@id",
+      "comment": "Sales pricing condition record for price determination"
+    },
+    "ConditionType": {
+      "@id": "sapsd:ConditionType",
+      "@type": "xsd:string"
+    },
+    "ConditionRateValue": {
+      "@id": "gr:hasCurrencyValue",
+      "@type": "xsd:decimal"
+    },
+
+    "SalesQuotation": {
+      "@id": "sapsd:SalesQuotation",
+      "@type": "@id",
+      "comment": "Sales quotation document for pre-sales process"
+    },
+    "SalesInquiry": {
+      "@id": "sapsd:SalesInquiry",
+      "@type": "@id",
+      "comment": "Sales inquiry document capturing customer interest"
+    },
+    "SalesContract": {
+      "@id": "sapsd:SalesContract",
+      "@type": "@id",
+      "comment": "Sales contract (quantity or value) for recurring business"
+    },
+    "SchedulingAgreement": {
+      "@id": "sapsd:SchedulingAgreement",
+      "@type": "@id",
+      "comment": "Scheduling agreement for recurring deliveries"
+    },
+    "CustomerReturn": {
+      "@id": "sapsd:CustomerReturn",
+      "@type": "@id",
+      "comment": "Customer return document for reverse logistics"
+    },
+    "CreditMemoRequest": {
+      "@id": "sapsd:CreditMemoRequest",
+      "@type": "@id",
+      "comment": "Credit memo request for issuing credit to customers"
+    },
+    "DebitMemoRequest": {
+      "@id": "sapsd:DebitMemoRequest",
+      "@type": "@id",
+      "comment": "Debit memo request for charging additional amounts"
+    },
+
+    "CustomerPaymentTerms": {
+      "@id": "schema:paymentDueDate",
+      "@type": "xsd:string"
+    },
+    "IncotermsClassification": {
+      "@id": "sapsd:IncotermsClassification",
+      "@type": "xsd:string"
+    },
+    "OverallSDProcessStatus": {
+      "@id": "schema:orderStatus",
+      "@type": "xsd:string"
+    },
+    "PartnerFunction": {
+      "@id": "sapsd:PartnerFunction",
+      "@type": "xsd:string"
+    },
+    "Language": {
+      "@id": "schema:inLanguage",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,498 @@
+openapi: 3.1.0
+info:
+  title: SAP Credit Management API
+  description: >-
+    Manage customer credit limits, credit exposure, and credit checks in SAP
+    S/4HANA. This OData service (API_CREDIT_MANAGEMENT) enables automated
+    credit risk assessment during sales order processing, including reading
+    credit accounts, credit exposure data, and managing credit limits for
+    business partners.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+  - url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MANAGEMENT
+    description: SAP S/4HANA Cloud Sandbox
+  - url: https://{host}:{port}/sap/opu/odata/sap/API_CREDIT_MANAGEMENT
+    description: SAP S/4HANA On-Premise
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '443'
+security:
+  - basicAuth: []
+  - oauth2: []
+tags:
+  - name: Credit Account
+    description: Operations on credit management accounts
+  - name: Credit Limit
+    description: Operations on customer credit limits
+  - name: Credit Exposure
+    description: Operations on credit exposure data
+paths:
+  /A_CrdtMgmtBusinessPartner:
+    get:
+      operationId: listCreditAccounts
+      summary: Retrieve a list of credit management accounts
+      description: >-
+        Returns a collection of credit management business partner accounts
+        with credit profile information.
+      tags:
+        - Credit Account
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved credit accounts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/CrdtMgmtBusinessPartner'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_CrdtMgmtBusinessPartner('{BusinessPartner}'):
+    get:
+      operationId: getCreditAccount
+      summary: Retrieve a single credit management account
+      description: >-
+        Returns credit management data for a single business partner, including
+        credit rating, risk class, and credit block status.
+      tags:
+        - Credit Account
+      parameters:
+        - name: BusinessPartner
+          in: path
+          required: true
+          description: Business partner number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the credit account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/CrdtMgmtBusinessPartner'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateCreditAccount
+      summary: Update a credit management account
+      description: >-
+        Updates credit management data for a business partner.
+      tags:
+        - Credit Account
+      parameters:
+        - name: BusinessPartner
+          in: path
+          required: true
+          description: Business partner number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrdtMgmtBusinessPartnerUpdate'
+      responses:
+        '204':
+          description: Credit account successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_CrdtMgmtCreditLimit:
+    get:
+      operationId: listCreditLimits
+      summary: Retrieve credit limits
+      description: >-
+        Returns a collection of credit limits for business partners across
+        credit control areas and credit segments.
+      tags:
+        - Credit Limit
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved credit limits
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/CrdtMgmtCreditLimit'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_CrdtMgmtCreditLimit(BusinessPartner='{BusinessPartner}',CreditSegment='{CreditSegment}'):
+    get:
+      operationId: getCreditLimit
+      summary: Retrieve a specific credit limit
+      description: >-
+        Returns credit limit data for a specific business partner and credit
+        segment combination.
+      tags:
+        - Credit Limit
+      parameters:
+        - name: BusinessPartner
+          in: path
+          required: true
+          description: Business partner number
+          schema:
+            type: string
+            maxLength: 10
+        - name: CreditSegment
+          in: path
+          required: true
+          description: Credit segment
+          schema:
+            type: string
+            maxLength: 4
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved the credit limit
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/CrdtMgmtCreditLimit'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateCreditLimit
+      summary: Update a credit limit
+      description: >-
+        Updates the credit limit for a specific business partner and credit
+        segment.
+      tags:
+        - Credit Limit
+      parameters:
+        - name: BusinessPartner
+          in: path
+          required: true
+          description: Business partner number
+          schema:
+            type: string
+            maxLength: 10
+        - name: CreditSegment
+          in: path
+          required: true
+          description: Credit segment
+          schema:
+            type: string
+            maxLength: 4
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrdtMgmtCreditLimitUpdate'
+      responses:
+        '204':
+          description: Credit limit successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_CrdtMgmtCreditExposure(BusinessPartner='{BusinessPartner}',CreditSegment='{CreditSegment}'):
+    get:
+      operationId: getCreditExposure
+      summary: Retrieve credit exposure for a business partner
+      description: >-
+        Returns credit exposure data showing the current credit utilization
+        for a specific business partner and credit segment.
+      tags:
+        - Credit Exposure
+      parameters:
+        - name: BusinessPartner
+          in: path
+          required: true
+          description: Business partner number
+          schema:
+            type: string
+            maxLength: 10
+        - name: CreditSegment
+          in: path
+          required: true
+          description: Credit segment
+          schema:
+            type: string
+            maxLength: 4
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved credit exposure
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/CrdtMgmtCreditExposure'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_CREDIT_MANAGEMENT: Access to Credit Management API
+  parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+          - allpages
+          - none
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+  schemas:
+    CrdtMgmtBusinessPartner:
+      type: object
+      description: Credit management business partner entity
+      properties:
+        BusinessPartner:
+          type: string
+          maxLength: 10
+          description: Business partner number
+        CreditRiskClass:
+          type: string
+          maxLength: 3
+          description: Risk class
+        CreditRating:
+          type: string
+          maxLength: 3
+          description: Credit rating
+        CreditIsBlockedForBP:
+          type: boolean
+          description: Credit block indicator
+        LastInternalReviewDate:
+          type: string
+          format: date
+          description: Date of last internal review
+        NextInternalReviewDate:
+          type: string
+          format: date
+          description: Date of next internal review
+    CrdtMgmtBusinessPartnerUpdate:
+      type: object
+      properties:
+        CreditRiskClass:
+          type: string
+          maxLength: 3
+        CreditRating:
+          type: string
+          maxLength: 3
+        CreditIsBlockedForBP:
+          type: boolean
+    CrdtMgmtCreditLimit:
+      type: object
+      description: Credit limit entity
+      properties:
+        BusinessPartner:
+          type: string
+          maxLength: 10
+          description: Business partner number
+        CreditSegment:
+          type: string
+          maxLength: 4
+          description: Credit segment
+        CreditLimitAmount:
+          type: string
+          description: Credit limit amount
+        CreditLimitAmountCurrency:
+          type: string
+          maxLength: 5
+          description: Credit limit currency
+        CreditLimitValidityEndDate:
+          type: string
+          format: date
+          description: Validity end date
+        CreditLimitIsExceeded:
+          type: boolean
+          description: Indicates if credit limit is exceeded
+    CrdtMgmtCreditLimitUpdate:
+      type: object
+      properties:
+        CreditLimitAmount:
+          type: string
+        CreditLimitAmountCurrency:
+          type: string
+          maxLength: 5
+        CreditLimitValidityEndDate:
+          type: string
+          format: date
+    CrdtMgmtCreditExposure:
+      type: object
+      description: Credit exposure entity
+      properties:
+        BusinessPartner:
+          type: string
+          maxLength: 10
+          description: Business partner number
+        CreditSegment:
+          type: string
+          maxLength: 4
+          description: Credit segment
+        CreditExposureAmount:
+          type: string
+          description: Total credit exposure amount
+        CreditExposureCurrency:
+          type: string
+          maxLength: 5
+          description: Currency of credit exposure
+        OpenOrderValue:
+          type: string
+          description: Value of open sales orders
+        OpenDeliveryValue:
+          type: string
+          description: Value of open deliveries
+        OpenBillingDocValue:
+          type: string
+          description: Value of open billing documents
+        OpenItemValue:
+          type: string
+          description: Value of open items in accounting
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

@@ -1,0 +1,502 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales Contract API
+  description: >-
+    Create and manage sales contracts including quantity contracts and value
+    contracts in SAP S/4HANA. This OData service (API_SALES_CONTRACT_SRV)
+    supports contract lifecycle management from creation through fulfillment
+    tracking, including header, item, partner, and pricing element entities.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+  - url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_CONTRACT_SRV
+    description: SAP S/4HANA Cloud Sandbox
+  - url: https://{host}:{port}/sap/opu/odata/sap/API_SALES_CONTRACT_SRV
+    description: SAP S/4HANA On-Premise
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '443'
+security:
+  - basicAuth: []
+  - oauth2: []
+tags:
+  - name: Sales Contract
+    description: Operations on sales contract header (A_SalesContract)
+  - name: Sales Contract Item
+    description: Operations on sales contract items (A_SalesContractItem)
+paths:
+  /A_SalesContract:
+    get:
+      operationId: listSalesContracts
+      summary: Retrieve a list of sales contracts
+      description: >-
+        Returns a collection of sales contract headers. Supports filtering by
+        contract type, validity dates, customer, and status.
+      tags:
+        - Sales Contract
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved sales contracts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SalesContract'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createSalesContract
+      summary: Create a new sales contract
+      description: >-
+        Creates a new sales contract using deep insert with items, partners,
+        and pricing elements.
+      tags:
+        - Sales Contract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalesContractCreate'
+      responses:
+        '201':
+          description: Sales contract successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SalesContract'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesContract('{SalesContract}'):
+    get:
+      operationId: getSalesContract
+      summary: Retrieve a single sales contract
+      description: >-
+        Returns a single sales contract by its document number.
+      tags:
+        - Sales Contract
+      parameters:
+        - name: SalesContract
+          in: path
+          required: true
+          description: Sales contract number (10 characters)
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the sales contract
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SalesContract'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateSalesContract
+      summary: Update a sales contract
+      description: >-
+        Updates an existing sales contract header.
+      tags:
+        - Sales Contract
+      parameters:
+        - name: SalesContract
+          in: path
+          required: true
+          description: Sales contract number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalesContractUpdate'
+      responses:
+        '204':
+          description: Sales contract successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deleteSalesContract
+      summary: Delete a sales contract
+      description: >-
+        Deletes an existing sales contract.
+      tags:
+        - Sales Contract
+      parameters:
+        - name: SalesContract
+          in: path
+          required: true
+          description: Sales contract number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      responses:
+        '204':
+          description: Sales contract successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesContract('{SalesContract}')/to_Item:
+    get:
+      operationId: listSalesContractItems
+      summary: Retrieve items for a sales contract
+      description: >-
+        Returns a collection of line items for the specified sales contract.
+      tags:
+        - Sales Contract Item
+      parameters:
+        - name: SalesContract
+          in: path
+          required: true
+          description: Sales contract number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved contract items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SalesContractItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_SALES_CONTRACT_SRV: Access to Sales Contract API
+  parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+          - allpages
+          - none
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+  schemas:
+    SalesContract:
+      type: object
+      description: Sales contract header entity (A_SalesContract)
+      properties:
+        SalesContract:
+          type: string
+          maxLength: 10
+          description: Sales contract number
+        SalesContractType:
+          type: string
+          maxLength: 4
+          description: Sales document type
+        SalesOrganization:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        DistributionChannel:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+          description: Division
+        SoldToParty:
+          type: string
+          maxLength: 10
+          description: Sold-to party
+        CreationDate:
+          type: string
+          format: date
+          description: Creation date
+        SalesContractDate:
+          type: string
+          format: date
+          description: Document date
+        SalesContractValidityStartDate:
+          type: string
+          format: date
+          description: Contract valid-from date
+        SalesContractValidityEndDate:
+          type: string
+          format: date
+          description: Contract valid-to date
+        TotalNetAmount:
+          type: string
+          description: Net value in document currency
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: Document currency
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+          description: Customer purchase order number
+        CustomerPaymentTerms:
+          type: string
+          maxLength: 4
+          description: Payment terms
+        OverallSDProcessStatus:
+          type: string
+          maxLength: 1
+          description: Overall processing status
+    SalesContractCreate:
+      type: object
+      required:
+        - SalesContractType
+        - SalesOrganization
+        - DistributionChannel
+        - OrganizationDivision
+      properties:
+        SalesContractType:
+          type: string
+          maxLength: 4
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+        SoldToParty:
+          type: string
+          maxLength: 10
+        SalesContractDate:
+          type: string
+          format: date
+        SalesContractValidityStartDate:
+          type: string
+          format: date
+        SalesContractValidityEndDate:
+          type: string
+          format: date
+        to_Item:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/SalesContractItemCreate'
+    SalesContractUpdate:
+      type: object
+      properties:
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+        SalesContractValidityEndDate:
+          type: string
+          format: date
+        CustomerPaymentTerms:
+          type: string
+          maxLength: 4
+    SalesContractItem:
+      type: object
+      description: Sales contract item entity (A_SalesContractItem)
+      properties:
+        SalesContract:
+          type: string
+          maxLength: 10
+          description: Sales contract number
+        SalesContractItem:
+          type: string
+          maxLength: 6
+          description: Item number
+        SalesContractItemCategory:
+          type: string
+          maxLength: 4
+          description: Item category
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number
+        TargetQuantity:
+          type: string
+          description: Target quantity
+        TargetQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Target quantity unit
+        NetAmount:
+          type: string
+          description: Net value
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: Document currency
+        Plant:
+          type: string
+          maxLength: 4
+          description: Plant
+        MaterialGroup:
+          type: string
+          maxLength: 9
+          description: Material group
+    SalesContractItemCreate:
+      type: object
+      properties:
+        Material:
+          type: string
+          maxLength: 40
+        TargetQuantity:
+          type: string
+        TargetQuantityUnit:
+          type: string
+          maxLength: 3
+        Plant:
+          type: string
+          maxLength: 4
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

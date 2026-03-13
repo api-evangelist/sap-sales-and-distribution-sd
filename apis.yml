@@ -1,11 +1,14 @@
+specificationVersion: '0.18'
 name: SAP Sales and Distribution (SD) API
-description: 'APIs for SAP Sales and Distribution module covering sales orders, pricing,  delivery, billing, and customer management processes
-
-  '
+description: >-
+  APIs for SAP Sales and Distribution module covering sales orders, pricing,
+  delivery, billing, and customer management processes within SAP S/4HANA.
+  These OData-based APIs enable integration with external applications for
+  end-to-end order-to-cash operations.
 image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
 url: https://api.sap.com/sd
 created: '2024'
-modified: '2024'
+modified: '2026-03-04'
 tags:
 - SAP
 - Sales
@@ -15,176 +18,551 @@ tags:
 - OData
 apis:
 - name: Sales Order API
-  description: Create, read, update, and delete sales orders
+  description: >-
+    Create, read, update, and delete sales orders in SAP S/4HANA. This OData
+    service supports full CRUD operations on sales order headers, items,
+    partners, pricing elements, and schedule lines.
   image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
-  humanUrl: https://api.sap.com/api/OP_API_SALES_ORDER_SRV
+  humanUrl: https://api.sap.com/api/API_SALES_ORDER_SRV/overview
   baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV
   tags:
-  - sales-order
-  - order-management
+  - Sales Orders
+  - Order Management
   - OData
+  - S/4HANA
   properties:
   - type: Documentation
-    url: https://api.sap.com/api/OP_API_SALES_ORDER_SRV/overview
+    url: https://api.sap.com/api/API_SALES_ORDER_SRV/overview
   - type: OpenAPI
-    url: https://api.sap.com/api/OP_API_SALES_ORDER_SRV/specification
+    url: https://api.sap.com/api/API_SALES_ORDER_SRV/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-sales-order-openapi.yml
   - type: API Console
-    url: https://api.sap.com/api/OP_API_SALES_ORDER_SRV/tryout
+    url: https://api.sap.com/api/API_SALES_ORDER_SRV/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_SALES_ORDER_SRV/resource
+  - type: JSONSchema
+    url: json-schema/sap-sd-sales-order-schema.json
+  - type: JSONSchema
+    url: json-schema/sap-sd-sales-order-item-schema.json
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
   contact:
   - type: Support
     url: https://support.sap.com
 - name: Customer Master Data API
-  description: Manage customer master data including addresses, contact information, and business partner details
+  description: >-
+    Manage customer master data including addresses, contact information, and
+    business partner details. This API provides access to business partner
+    records used across SAP S/4HANA modules.
   image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
-  humanUrl: https://api.sap.com/api/API_BUSINESS_PARTNER
+  humanUrl: https://api.sap.com/api/API_BUSINESS_PARTNER/overview
   baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER
   tags:
-  - customer
-  - master-data
-  - business-partner
+  - Customer Data
+  - Master Data
+  - Business Partner
   - OData
   properties:
   - type: Documentation
     url: https://api.sap.com/api/API_BUSINESS_PARTNER/overview
   - type: OpenAPI
     url: https://api.sap.com/api/API_BUSINESS_PARTNER/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-customer-master-data-openapi.yml
   - type: API Console
     url: https://api.sap.com/api/API_BUSINESS_PARTNER/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_BUSINESS_PARTNER/resource
+  - type: JSONSchema
+    url: json-schema/sap-sd-business-partner-schema.json
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
   contact:
   - type: Support
     url: https://support.sap.com
 - name: Outbound Delivery API
-  description: Create and manage outbound deliveries, goods issue, and shipping documents
+  description: >-
+    Create and manage outbound deliveries, goods issue, and shipping documents.
+    This OData service supports delivery creation with reference to sales
+    orders and subsequent logistics processing.
   image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
-  humanUrl: https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV
+  humanUrl: https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV_0002/overview
   baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV
   tags:
-  - delivery
-  - shipping
-  - logistics
+  - Delivery
+  - Shipping
+  - Logistics
   - OData
   properties:
   - type: Documentation
-    url: https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV/overview
+    url: https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV_0002/overview
   - type: OpenAPI
-    url: https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV/specification
+    url: https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV_0002/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-outbound-delivery-openapi.yml
   - type: API Console
-    url: https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV/tryout
+    url: https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV_0002/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV_0002/resource
+  - type: JSONSchema
+    url: json-schema/sap-sd-outbound-delivery-schema.json
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
   contact:
   - type: Support
     url: https://support.sap.com
 - name: Billing Document API
-  description: Create and manage billing documents, invoices, credit memos, and debit memos
+  description: >-
+    Create and manage billing documents, invoices, credit memos, and debit
+    memos. This API enables billing document processing as part of the
+    order-to-cash cycle in SAP S/4HANA.
   image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
-  humanUrl: https://api.sap.com/api/OP_API_BILLING_DOCUMENT_SRV
+  humanUrl: https://api.sap.com/api/OP_API_BILLING_DOCUMENT_SRV/overview
   baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
   tags:
-  - billing
-  - invoice
-  - credit-memo
+  - Billing
+  - Invoice
+  - Credit Memo
   - OData
   properties:
   - type: Documentation
     url: https://api.sap.com/api/OP_API_BILLING_DOCUMENT_SRV/overview
   - type: OpenAPI
     url: https://api.sap.com/api/OP_API_BILLING_DOCUMENT_SRV/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-billing-document-openapi.yml
   - type: API Console
     url: https://api.sap.com/api/OP_API_BILLING_DOCUMENT_SRV/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/OP_API_BILLING_DOCUMENT_SRV/resource
+  - type: JSONSchema
+    url: json-schema/sap-sd-billing-document-schema.json
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
   contact:
   - type: Support
     url: https://support.sap.com
 - name: Pricing API
-  description: Calculate prices, discounts, and surcharges based on pricing conditions
+  description: >-
+    Calculate prices, discounts, and surcharges based on pricing conditions.
+    This API manages sales pricing condition records used to determine prices
+    in sales documents.
   image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
-  humanUrl: https://api.sap.com/api/API_SLSPRCGCONDITIONRECORD_SRV
+  humanUrl: https://api.sap.com/api/API_SLSPRCGCONDITIONRECORD_SRV/overview
   baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SLSPRCGCONDITIONRECORD_SRV
   tags:
-  - pricing
-  - conditions
-  - discount
+  - Pricing
+  - Conditions
+  - Discount
   - OData
   properties:
   - type: Documentation
     url: https://api.sap.com/api/API_SLSPRCGCONDITIONRECORD_SRV/overview
   - type: OpenAPI
     url: https://api.sap.com/api/API_SLSPRCGCONDITIONRECORD_SRV/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-pricing-openapi.yml
   - type: API Console
     url: https://api.sap.com/api/API_SLSPRCGCONDITIONRECORD_SRV/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_SLSPRCGCONDITIONRECORD_SRV/resource
+  - type: JSONSchema
+    url: json-schema/sap-sd-pricing-condition-schema.json
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
   contact:
   - type: Support
     url: https://support.sap.com
 - name: Sales Quotation API
-  description: Create and manage sales quotations and customer inquiries
+  description: >-
+    Create and manage sales quotations and customer inquiries. This OData
+    service supports the complete quotation lifecycle from creation through
+    approval and conversion to sales orders.
   image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
-  humanUrl: https://api.sap.com/api/API_SALES_QUOTATION_SRV
+  humanUrl: https://api.sap.com/api/API_SALES_QUOTATION_SRV/overview
   baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_QUOTATION_SRV
   tags:
-  - quotation
-  - sales-document
+  - Quotation
+  - Sales Document
   - OData
+  - Pre-Sales
   properties:
   - type: Documentation
     url: https://api.sap.com/api/API_SALES_QUOTATION_SRV/overview
   - type: OpenAPI
     url: https://api.sap.com/api/API_SALES_QUOTATION_SRV/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-sales-quotation-openapi.yml
   - type: API Console
     url: https://api.sap.com/api/API_SALES_QUOTATION_SRV/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_SALES_QUOTATION_SRV/resource
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
   contact:
   - type: Support
     url: https://support.sap.com
 - name: Credit Management API
-  description: Manage customer credit limits, credit exposure, and credit checks
+  description: >-
+    Manage customer credit limits, credit exposure, and credit checks. This
+    API enables automated credit risk assessment during sales order processing
+    in SAP S/4HANA.
   image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
-  humanUrl: https://api.sap.com/api/API_CREDIT_MANAGEMENT
+  humanUrl: https://api.sap.com/api/API_CREDIT_MANAGEMENT/overview
   baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MANAGEMENT
   tags:
-  - credit
-  - risk-management
+  - Credit
+  - Risk Management
   - OData
+  - Finance
   properties:
   - type: Documentation
     url: https://api.sap.com/api/API_CREDIT_MANAGEMENT/overview
   - type: OpenAPI
     url: https://api.sap.com/api/API_CREDIT_MANAGEMENT/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-credit-management-openapi.yml
   - type: API Console
     url: https://api.sap.com/api/API_CREDIT_MANAGEMENT/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_CREDIT_MANAGEMENT/resource
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
   contact:
   - type: Support
     url: https://support.sap.com
 - name: Material Master API
-  description: Access material master data including product information, availability, and pricing
+  description: >-
+    Access material master data including product information, availability,
+    and pricing. This API provides read and write access to product records
+    used across procurement, manufacturing, and sales processes.
   image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
-  humanUrl: https://api.sap.com/api/API_PRODUCT_SRV
+  humanUrl: https://api.sap.com/api/API_PRODUCT_SRV/overview
   baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_PRODUCT_SRV
   tags:
-  - material
-  - product
-  - master-data
+  - Material
+  - Product
+  - Master Data
   - OData
   properties:
   - type: Documentation
     url: https://api.sap.com/api/API_PRODUCT_SRV/overview
   - type: OpenAPI
     url: https://api.sap.com/api/API_PRODUCT_SRV/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-material-master-openapi.yml
   - type: API Console
     url: https://api.sap.com/api/API_PRODUCT_SRV/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_PRODUCT_SRV/resource
+  - type: JSONSchema
+    url: json-schema/sap-sd-product-schema.json
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Credit Memo Request API
+  description: >-
+    Create, read, update, and delete credit memo requests. This OData service
+    also enables approval or denial of credit memo requests that require
+    authorization before processing.
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_CREDIT_MEMO_REQUEST_SRV/overview
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV
+  tags:
+  - Credit Memo
+  - Billing
+  - Sales Document
+  - OData
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_CREDIT_MEMO_REQUEST_SRV/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_CREDIT_MEMO_REQUEST_SRV/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-credit-memo-request-openapi.yml
+  - type: API Console
+    url: https://api.sap.com/api/API_CREDIT_MEMO_REQUEST_SRV/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_CREDIT_MEMO_REQUEST_SRV/resource
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Debit Memo Request API
+  description: >-
+    Create, read, update, and delete debit memo requests. This OData service
+    supports the full lifecycle of debit memo requests used to charge
+    customers for additional amounts.
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_DEBIT_MEMO_REQUEST_SRV/overview
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_DEBIT_MEMO_REQUEST_SRV
+  tags:
+  - Debit Memo
+  - Billing
+  - Sales Document
+  - OData
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_DEBIT_MEMO_REQUEST_SRV/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_DEBIT_MEMO_REQUEST_SRV/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-debit-memo-request-openapi.yml
+  - type: API Console
+    url: https://api.sap.com/api/API_DEBIT_MEMO_REQUEST_SRV/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_DEBIT_MEMO_REQUEST_SRV/resource
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Sales Contract API
+  description: >-
+    Create and manage sales contracts including quantity contracts and value
+    contracts. This API supports contract lifecycle management from creation
+    through fulfillment tracking.
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_SALES_CONTRACT_SRV/overview
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_CONTRACT_SRV
+  tags:
+  - Sales Contract
+  - Agreement
+  - OData
+  - S/4HANA
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_SALES_CONTRACT_SRV/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_SALES_CONTRACT_SRV/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-sales-contract-openapi.yml
+  - type: API Console
+    url: https://api.sap.com/api/API_SALES_CONTRACT_SRV/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_SALES_CONTRACT_SRV/resource
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Sales Inquiry API
+  description: >-
+    Read sales inquiries from SAP S/4HANA. This OData service provides access
+    to sales inquiry documents used in the pre-sales process to capture
+    customer interest in products or services.
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_SALES_INQUIRY_SRV/overview
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_INQUIRY_SRV
+  tags:
+  - Sales Inquiry
+  - Pre-Sales
+  - OData
+  - S/4HANA
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_SALES_INQUIRY_SRV/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_SALES_INQUIRY_SRV/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-sales-inquiry-openapi.yml
+  - type: API Console
+    url: https://api.sap.com/api/API_SALES_INQUIRY_SRV/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_SALES_INQUIRY_SRV/resource
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Sales Scheduling Agreement API
+  description: >-
+    Manage sales scheduling agreements in SAP S/4HANA. Scheduling agreements
+    define delivery schedules for recurring deliveries of materials to
+    customers over a specified period.
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_SALES_SCHEDULING_AGREEMENT/overview
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_SCHEDULING_AGREEMENT
+  tags:
+  - Scheduling Agreement
+  - Sales Contract
+  - OData
+  - Logistics
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_SALES_SCHEDULING_AGREEMENT/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_SALES_SCHEDULING_AGREEMENT/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-sales-scheduling-agreement-openapi.yml
+  - type: API Console
+    url: https://api.sap.com/api/API_SALES_SCHEDULING_AGREEMENT/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_SALES_SCHEDULING_AGREEMENT/resource
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Customer Return API
+  description: >-
+    Create, read, update, and delete customer returns in SAP S/4HANA. This
+    API supports integration with customer return processing including SAP
+    Advanced Returns Management using deep insert requests.
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_CUSTOMER_RETURN_SRV/overview
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV
+  tags:
+  - Customer Returns
+  - Reverse Logistics
+  - OData
+  - S/4HANA
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_CUSTOMER_RETURN_SRV/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_CUSTOMER_RETURN_SRV/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-customer-return-openapi.yml
+  - type: API Console
+    url: https://api.sap.com/api/API_CUSTOMER_RETURN_SRV/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_CUSTOMER_RETURN_SRV/resource
+  - type: JSONSchema
+    url: json-schema/sap-sd-customer-return-schema.json
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Customer Returns Delivery API
+  description: >-
+    Manage customer returns deliveries in SAP S/4HANA. This API enables
+    processing of inbound deliveries related to customer returns, including
+    goods receipt and inspection.
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/OP_API_CUSTOMER_RETURN_DELIVERY_SRV_0002/overview
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_DELIVERY_SRV_0002
+  tags:
+  - Returns Delivery
+  - Reverse Logistics
+  - OData
+  - Shipping
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/OP_API_CUSTOMER_RETURN_DELIVERY_SRV_0002/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/OP_API_CUSTOMER_RETURN_DELIVERY_SRV_0002/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-customer-returns-delivery-openapi.yml
+  - type: API Console
+    url: https://api.sap.com/api/OP_API_CUSTOMER_RETURN_DELIVERY_SRV_0002/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/OP_API_CUSTOMER_RETURN_DELIVERY_SRV_0002/resource
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Customer Material API
+  description: >-
+    Manage customer-material information records that link customer-specific
+    material numbers and descriptions to internal material numbers. This API
+    supports the sales process by mapping customer part numbers.
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_CUSTOMER_MATERIAL_SRV/overview
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_MATERIAL_SRV
+  tags:
+  - Customer Material
+  - Master Data
+  - OData
+  - Sales
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_CUSTOMER_MATERIAL_SRV/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_CUSTOMER_MATERIAL_SRV/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-customer-material-openapi.yml
+  - type: API Console
+    url: https://api.sap.com/api/API_CUSTOMER_MATERIAL_SRV/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_CUSTOMER_MATERIAL_SRV/resource
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
+  contact:
+  - type: Support
+    url: https://support.sap.com
+- name: Inbound Delivery API
+  description: >-
+    Create and manage inbound deliveries in SAP S/4HANA. This API supports
+    creation of inbound deliveries with reference to sales documents and
+    manages batch-split items for existing deliveries.
+  image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+  humanUrl: https://api.sap.com/api/API_INBOUND_DELIVERY_SRV_0002/overview
+  baseUrl: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002
+  tags:
+  - Inbound Delivery
+  - Logistics
+  - OData
+  - Warehouse
+  properties:
+  - type: Documentation
+    url: https://api.sap.com/api/API_INBOUND_DELIVERY_SRV_0002/overview
+  - type: OpenAPI
+    url: https://api.sap.com/api/API_INBOUND_DELIVERY_SRV_0002/specification
+  - type: OpenAPI
+    url: openapi/sap-sd-inbound-delivery-openapi.yml
+  - type: API Console
+    url: https://api.sap.com/api/API_INBOUND_DELIVERY_SRV_0002/tryout
+  - type: API Reference
+    url: https://api.sap.com/api/API_INBOUND_DELIVERY_SRV_0002/resource
+  - type: JSONLD
+    url: json-ld/sap-sd-context.jsonld
   contact:
   - type: Support
     url: https://support.sap.com
 common:
+- type: Portal
+  url: https://api.sap.com
+- type: Documentation
+  url: https://help.sap.com/docs/SAP_S4HANA_CLOUD
+- type: Getting Started
+  url: https://developers.sap.com/tutorials.html
 - type: Authentication
   url: https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/
-- type: Developer Portal
-  url: https://api.sap.com
+- type: Blog
+  url: https://community.sap.com/t5/c-khhcw49343/SD+%28Sales+and+Distribution%29/pd-p/209057551571413566377230676804921
+- type: Status
+  url: https://www.sap.com/about/trust-center/cloud-service-status.html
+- type: Support
+  url: https://support.sap.com
 - type: Terms of Service
   url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
 - type: Privacy Policy
   url: https://www.sap.com/about/legal/privacy.html
-- type: Getting Started
-  url: https://developers.sap.com/tutorials.html
-- type: SDK
-  url: https://help.sap.com/doc/saphelp_nw75/7.5.5/en-US/3f/76e0f7d00f48fd96cfbb4f2a885c02/content.htm
-maintainers:
-- name: SAP SE
-  email: support@sap.com
+- type: GitHub Organization
+  url: https://github.com/SAP
+- type: Community
+  url: https://community.sap.com
+- type: Website
   url: https://www.sap.com
+- type: Login
+  url: https://accounts.sap.com
+- type: Sign Up
+  url: https://developers.sap.com
+- type: SDKs
+  url: https://sap.github.io/cloud-sdk/
+- type: SDK - JavaScript
+  url: https://github.com/SAP/cloud-sdk-js
+- type: SDK - Java
+  url: https://github.com/SAP/cloud-sdk-java
+- type: Change Log
+  url: https://github.com/SAP/cloud-sdk-js/blob/main/CHANGELOG.md
+maintainer:
+  name: Kin Lane
+  email: kin@apievangelist.com

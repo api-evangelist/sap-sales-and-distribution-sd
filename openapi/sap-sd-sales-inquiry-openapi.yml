@@ -1,0 +1,487 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales Inquiry API
+  description: >-
+    Read sales inquiries from SAP S/4HANA. This OData service
+    (API_SALES_INQUIRY_SRV) provides access to sales inquiry documents used
+    in the pre-sales process to capture customer interest in products or
+    services. Inquiries can be converted to quotations or sales orders.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+  - url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_INQUIRY_SRV
+    description: SAP S/4HANA Cloud Sandbox
+  - url: https://{host}:{port}/sap/opu/odata/sap/API_SALES_INQUIRY_SRV
+    description: SAP S/4HANA On-Premise
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '443'
+security:
+  - basicAuth: []
+  - oauth2: []
+tags:
+  - name: Sales Inquiry
+    description: Operations on sales inquiry header (A_SalesInquiry)
+  - name: Sales Inquiry Item
+    description: Operations on sales inquiry items (A_SalesInquiryItem)
+  - name: Sales Inquiry Partner
+    description: Operations on sales inquiry partners
+paths:
+  /A_SalesInquiry:
+    get:
+      operationId: listSalesInquiries
+      summary: Retrieve a list of sales inquiries
+      description: >-
+        Returns a collection of sales inquiry headers. Supports filtering by
+        inquiry type, date, customer, and status.
+      tags:
+        - Sales Inquiry
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved sales inquiries
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SalesInquiry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createSalesInquiry
+      summary: Create a new sales inquiry
+      description: >-
+        Creates a new sales inquiry with deep insert support for items and partners.
+      tags:
+        - Sales Inquiry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalesInquiryCreate'
+      responses:
+        '201':
+          description: Sales inquiry successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SalesInquiry'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesInquiry('{SalesInquiry}'):
+    get:
+      operationId: getSalesInquiry
+      summary: Retrieve a single sales inquiry
+      description: >-
+        Returns a single sales inquiry by its document number.
+      tags:
+        - Sales Inquiry
+      parameters:
+        - name: SalesInquiry
+          in: path
+          required: true
+          description: Sales inquiry number (10 characters)
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the sales inquiry
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SalesInquiry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateSalesInquiry
+      summary: Update a sales inquiry
+      description: >-
+        Updates an existing sales inquiry header.
+      tags:
+        - Sales Inquiry
+      parameters:
+        - name: SalesInquiry
+          in: path
+          required: true
+          description: Sales inquiry number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalesInquiryUpdate'
+      responses:
+        '204':
+          description: Sales inquiry successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deleteSalesInquiry
+      summary: Delete a sales inquiry
+      description: >-
+        Deletes an existing sales inquiry.
+      tags:
+        - Sales Inquiry
+      parameters:
+        - name: SalesInquiry
+          in: path
+          required: true
+          description: Sales inquiry number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      responses:
+        '204':
+          description: Sales inquiry successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesInquiry('{SalesInquiry}')/to_Item:
+    get:
+      operationId: listSalesInquiryItems
+      summary: Retrieve items for a sales inquiry
+      description: >-
+        Returns a collection of line items for the specified sales inquiry.
+      tags:
+        - Sales Inquiry Item
+      parameters:
+        - name: SalesInquiry
+          in: path
+          required: true
+          description: Sales inquiry number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved inquiry items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SalesInquiryItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_SALES_INQUIRY_SRV: Access to Sales Inquiry API
+  parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+          - allpages
+          - none
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+  schemas:
+    SalesInquiry:
+      type: object
+      description: Sales inquiry header entity (A_SalesInquiry)
+      properties:
+        SalesInquiry:
+          type: string
+          maxLength: 10
+          description: Sales inquiry number
+        SalesInquiryType:
+          type: string
+          maxLength: 4
+          description: Sales document type
+        SalesOrganization:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        DistributionChannel:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+          description: Division
+        SoldToParty:
+          type: string
+          maxLength: 10
+          description: Sold-to party
+        CreationDate:
+          type: string
+          format: date
+          description: Creation date
+        SalesInquiryDate:
+          type: string
+          format: date
+          description: Document date
+        BindingPeriodValidityStartDate:
+          type: string
+          format: date
+          description: Valid-from date
+        BindingPeriodValidityEndDate:
+          type: string
+          format: date
+          description: Valid-to date
+        TotalNetAmount:
+          type: string
+          description: Net value in document currency
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: Document currency
+        SDDocumentReason:
+          type: string
+          maxLength: 3
+          description: Order reason
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+          description: Customer reference
+        OverallSDProcessStatus:
+          type: string
+          maxLength: 1
+          description: Overall processing status
+    SalesInquiryCreate:
+      type: object
+      required:
+        - SalesInquiryType
+        - SalesOrganization
+        - DistributionChannel
+        - OrganizationDivision
+      properties:
+        SalesInquiryType:
+          type: string
+          maxLength: 4
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+        SoldToParty:
+          type: string
+          maxLength: 10
+        SalesInquiryDate:
+          type: string
+          format: date
+        to_Item:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/SalesInquiryItemCreate'
+    SalesInquiryUpdate:
+      type: object
+      properties:
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+        BindingPeriodValidityEndDate:
+          type: string
+          format: date
+    SalesInquiryItem:
+      type: object
+      description: Sales inquiry item entity (A_SalesInquiryItem)
+      properties:
+        SalesInquiry:
+          type: string
+          maxLength: 10
+          description: Sales inquiry number
+        SalesInquiryItem:
+          type: string
+          maxLength: 6
+          description: Item number
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number
+        RequestedQuantity:
+          type: string
+          description: Order quantity
+        RequestedQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Sales unit
+        NetAmount:
+          type: string
+          description: Net value
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: Document currency
+        Plant:
+          type: string
+          maxLength: 4
+          description: Plant
+        MaterialGroup:
+          type: string
+          maxLength: 9
+          description: Material group
+    SalesInquiryItemCreate:
+      type: object
+      properties:
+        Material:
+          type: string
+          maxLength: 40
+        RequestedQuantity:
+          type: string
+        RequestedQuantityUnit:
+          type: string
+          maxLength: 3
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

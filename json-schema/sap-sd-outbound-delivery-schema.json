@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.sap.com/schemas/sap-sd-outbound-delivery",
+  "title": "SAP Outbound Delivery",
+  "description": "Schema for SAP S/4HANA Outbound Delivery Header entity (A_OutbDeliveryHeader) from the API_OUTBOUND_DELIVERY_SRV OData service. Represents a delivery document for shipping goods to customers.",
+  "type": "object",
+  "properties": {
+    "DeliveryDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Delivery document number"
+    },
+    "DeliveryDocumentType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Delivery type"
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sold-to party"
+    },
+    "ShipToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Ship-to party"
+    },
+    "ShippingPoint": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Shipping point / receiving point"
+    },
+    "DeliveryDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Planned delivery date"
+    },
+    "ActualDeliveryRoute": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Route"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the delivery was created"
+    },
+    "ActualGoodsMovementDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Actual goods movement date"
+    },
+    "CompleteDeliveryIsDefined": {
+      "type": "boolean",
+      "description": "Complete delivery flag"
+    },
+    "OverallGoodsMovementStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall goods movement status (A=Not yet started, B=Partially complete, C=Complete)"
+    },
+    "OverallPickingStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall picking status"
+    },
+    "OverallPackingStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall packing status"
+    }
+  },
+  "required": ["DeliveryDocument"]
+}

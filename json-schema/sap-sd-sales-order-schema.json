@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.sap.com/schemas/sap-sd-sales-order",
+  "title": "SAP Sales Order",
+  "description": "Schema for SAP S/4HANA Sales Order entity (A_SalesOrder) from the API_SALES_ORDER_SRV OData service. Represents a sales order header with organizational data, dates, pricing, and status information.",
+  "type": "object",
+  "properties": {
+    "SalesOrder": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sales order number"
+    },
+    "SalesOrderType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales document type (e.g., OR=Standard Order, RE=Return)"
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "OrganizationDivision": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Division"
+    },
+    "SalesGroup": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Sales group"
+    },
+    "SalesOffice": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales office"
+    },
+    "SalesDistrict": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Sales district"
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sold-to party customer number"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date on which the sales order was created"
+    },
+    "CreatedByUser": {
+      "type": "string",
+      "maxLength": 12,
+      "description": "User who created the sales order"
+    },
+    "LastChangeDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of last change"
+    },
+    "LastChangeDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC timestamp of last change"
+    },
+    "PurchaseOrderByCustomer": {
+      "type": "string",
+      "maxLength": 35,
+      "description": "Customer purchase order number"
+    },
+    "CustomerPurchaseOrderType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Customer purchase order type"
+    },
+    "CustomerPurchaseOrderDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Customer purchase order date"
+    },
+    "SalesOrderDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Document date of the sales order"
+    },
+    "TotalNetAmount": {
+      "type": "string",
+      "description": "Net value of the sales order in document currency"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "SD document currency (ISO 4217)"
+    },
+    "SDDocumentReason": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Order reason"
+    },
+    "PricingDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date for pricing and exchange rate determination"
+    },
+    "RequestedDeliveryDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Requested delivery date"
+    },
+    "ShippingCondition": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Shipping conditions"
+    },
+    "CompleteDeliveryIsDefined": {
+      "type": "boolean",
+      "description": "Complete delivery flag"
+    },
+    "HeaderBillingBlockReason": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Billing block for the header"
+    },
+    "DeliveryBlockReason": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Delivery block for the header"
+    },
+    "IncotermsClassification": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Incoterms (part 1)"
+    },
+    "IncotermsTransferLocation": {
+      "type": "string",
+      "maxLength": 28,
+      "description": "Incoterms (part 2)"
+    },
+    "PaymentMethod": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Payment method"
+    },
+    "CustomerPaymentTerms": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Terms of payment key"
+    },
+    "OverallSDProcessStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall processing status (A=Not yet processed, B=Partially processed, C=Completely processed)"
+    },
+    "TotalCreditCheckStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall status of credit checks"
+    },
+    "OverallDeliveryStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall delivery status"
+    },
+    "OverallBillingStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall billing status"
+    }
+  },
+  "required": ["SalesOrder"]
+}

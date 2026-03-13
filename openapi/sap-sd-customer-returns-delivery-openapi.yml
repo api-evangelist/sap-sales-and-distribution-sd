@@ -1,0 +1,410 @@
+openapi: 3.1.0
+info:
+  title: SAP Customer Returns Delivery API
+  description: >-
+    Manage customer returns deliveries in SAP S/4HANA. This OData service
+    (API_CUSTOMER_RETURN_DELIVERY_SRV_0002) enables processing of inbound
+    deliveries related to customer returns, including goods receipt, inspection,
+    and putaway operations for returned goods.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+  - url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_DELIVERY_SRV_0002
+    description: SAP S/4HANA Cloud Sandbox
+  - url: https://{host}:{port}/sap/opu/odata/sap/API_CUSTOMER_RETURN_DELIVERY_SRV_0002
+    description: SAP S/4HANA On-Premise
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '443'
+security:
+  - basicAuth: []
+  - oauth2: []
+tags:
+  - name: Returns Delivery Header
+    description: Operations on customer returns delivery header
+  - name: Returns Delivery Item
+    description: Operations on customer returns delivery items
+paths:
+  /A_ReturnsDeliveryHeader:
+    get:
+      operationId: listReturnsDeliveries
+      summary: Retrieve a list of customer returns deliveries
+      description: >-
+        Returns a collection of customer returns delivery headers. Supports
+        filtering by delivery type, date, and goods receipt status.
+      tags:
+        - Returns Delivery Header
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved returns deliveries
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ReturnsDeliveryHeader'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_ReturnsDeliveryHeader('{DeliveryDocument}'):
+    get:
+      operationId: getReturnsDelivery
+      summary: Retrieve a single returns delivery
+      description: >-
+        Returns a single customer returns delivery by its document number.
+      tags:
+        - Returns Delivery Header
+      parameters:
+        - name: DeliveryDocument
+          in: path
+          required: true
+          description: Delivery document number (10 characters)
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the returns delivery
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/ReturnsDeliveryHeader'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateReturnsDelivery
+      summary: Update a returns delivery
+      description: >-
+        Updates an existing customer returns delivery header.
+      tags:
+        - Returns Delivery Header
+      parameters:
+        - name: DeliveryDocument
+          in: path
+          required: true
+          description: Delivery document number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReturnsDeliveryHeaderUpdate'
+      responses:
+        '204':
+          description: Returns delivery successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_ReturnsDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentItem:
+    get:
+      operationId: listReturnsDeliveryItems
+      summary: Retrieve items for a returns delivery
+      description: >-
+        Returns a collection of items for the specified returns delivery.
+      tags:
+        - Returns Delivery Item
+      parameters:
+        - name: DeliveryDocument
+          in: path
+          required: true
+          description: Delivery document number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved returns delivery items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ReturnsDeliveryItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /PostGoodsReceipt:
+    post:
+      operationId: postGoodsReceipt
+      summary: Post goods receipt for a returns delivery
+      description: >-
+        Posts goods receipt for the specified returns delivery, recording the
+        physical receipt of returned goods in inventory.
+      tags:
+        - Returns Delivery Header
+      parameters:
+        - name: DeliveryDocument
+          in: query
+          required: true
+          description: Delivery document number
+          schema:
+            type: string
+            maxLength: 10
+      responses:
+        '200':
+          description: Goods receipt successfully posted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/ReturnsDeliveryHeader'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_CUSTOMER_RETURN_DELIVERY_SRV: Access to Returns Delivery API
+  parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+          - allpages
+          - none
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+  schemas:
+    ReturnsDeliveryHeader:
+      type: object
+      description: Customer returns delivery header entity
+      properties:
+        DeliveryDocument:
+          type: string
+          maxLength: 10
+          description: Delivery document number
+        DeliveryDocumentType:
+          type: string
+          maxLength: 4
+          description: Delivery type
+        SoldToParty:
+          type: string
+          maxLength: 10
+          description: Sold-to party
+        ShipToParty:
+          type: string
+          maxLength: 10
+          description: Ship-to party
+        ShippingPoint:
+          type: string
+          maxLength: 4
+          description: Receiving point
+        DeliveryDate:
+          type: string
+          format: date
+          description: Delivery date
+        CreationDate:
+          type: string
+          format: date
+          description: Creation date
+        ActualGoodsMovementDate:
+          type: string
+          format: date
+          description: Actual goods receipt date
+        OverallGoodsMovementStatus:
+          type: string
+          maxLength: 1
+          description: Goods receipt status
+        OverallPickingStatus:
+          type: string
+          maxLength: 1
+          description: Putaway status
+    ReturnsDeliveryHeaderUpdate:
+      type: object
+      properties:
+        DeliveryDate:
+          type: string
+          format: date
+        DeliveryBlockReason:
+          type: string
+          maxLength: 2
+    ReturnsDeliveryItem:
+      type: object
+      description: Customer returns delivery item entity
+      properties:
+        DeliveryDocument:
+          type: string
+          maxLength: 10
+          description: Delivery document number
+        DeliveryDocumentItem:
+          type: string
+          maxLength: 6
+          description: Delivery item number
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number
+        Plant:
+          type: string
+          maxLength: 4
+          description: Plant
+        StorageLocation:
+          type: string
+          maxLength: 4
+          description: Storage location
+        Batch:
+          type: string
+          maxLength: 10
+          description: Batch number
+        ActualDeliveryQuantity:
+          type: string
+          description: Actual delivery quantity
+        DeliveryQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Delivery unit
+        ReferenceSDDocument:
+          type: string
+          maxLength: 10
+          description: Reference customer return document
+        ReferenceSDDocumentItem:
+          type: string
+          maxLength: 6
+          description: Reference item
+        GoodsMovementStatus:
+          type: string
+          maxLength: 1
+          description: Goods receipt status
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

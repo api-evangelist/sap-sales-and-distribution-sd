@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.sap.com/schemas/sap-sd-pricing-condition",
+  "title": "SAP Pricing Condition Record",
+  "description": "Schema for SAP S/4HANA Sales Pricing Condition Record entity (A_SlsPrcgConditionRecord) from the API_SLSPRCGCONDITIONRECORD_SRV OData service. Represents a pricing condition record used to determine prices, discounts, and surcharges in sales documents.",
+  "type": "object",
+  "properties": {
+    "ConditionRecord": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Condition record number"
+    },
+    "ConditionSequentialNumber": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Sequential number of the condition"
+    },
+    "ConditionTable": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Condition table"
+    },
+    "ConditionType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Condition type (e.g., PR00=Price, K004=Material Discount, K005=Customer/Material Discount, K007=Customer Discount)"
+    },
+    "ConditionValidityStartDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Validity start date"
+    },
+    "ConditionValidityEndDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Validity end date"
+    },
+    "ConditionRateValue": {
+      "type": "string",
+      "description": "Rate (condition amount or percentage)"
+    },
+    "ConditionRateValueUnit": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Condition currency or percentage"
+    },
+    "ConditionQuantity": {
+      "type": "string",
+      "description": "Condition pricing unit"
+    },
+    "ConditionQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Condition unit"
+    },
+    "ConditionCalculationType": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Calculation type for the condition"
+    },
+    "ConditionIsDeleted": {
+      "type": "boolean",
+      "description": "Deletion indicator"
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "Customer": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Customer number"
+    }
+  },
+  "required": ["ConditionRecord"]
+}

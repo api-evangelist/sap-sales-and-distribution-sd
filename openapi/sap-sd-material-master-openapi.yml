@@ -1,0 +1,631 @@
+openapi: 3.1.0
+info:
+  title: SAP Material Master (Product) API
+  description: >-
+    Access material master data including product information, descriptions,
+    sales-relevant data, plant data, and storage location data. This OData
+    service (API_PRODUCT_SRV) provides read and write access to product
+    records used across procurement, manufacturing, and sales processes
+    in SAP S/4HANA.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+  - url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_PRODUCT_SRV
+    description: SAP S/4HANA Cloud Sandbox
+  - url: https://{host}:{port}/sap/opu/odata/sap/API_PRODUCT_SRV
+    description: SAP S/4HANA On-Premise
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '443'
+security:
+  - basicAuth: []
+  - oauth2: []
+tags:
+  - name: Product
+    description: Operations on product/material master header (A_Product)
+  - name: Product Description
+    description: Operations on product descriptions (A_ProductDescription)
+  - name: Product Plant
+    description: Operations on product plant data (A_ProductPlant)
+  - name: Product Sales Delivery
+    description: Operations on product sales and delivery data
+paths:
+  /A_Product:
+    get:
+      operationId: listProducts
+      summary: Retrieve a list of products
+      description: >-
+        Returns a collection of material master records. Use OData query options
+        to filter by material number, material type, material group, and other
+        attributes. Supports $expand for descriptions, plant data, and sales data.
+      tags:
+        - Product
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Product'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createProduct
+      summary: Create a new product
+      description: >-
+        Creates a new material master record with support for deep insert
+        including descriptions, plant data, and sales data.
+      tags:
+        - Product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        '201':
+          description: Product successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/Product'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_Product('{Product}'):
+    get:
+      operationId: getProduct
+      summary: Retrieve a single product
+      description: >-
+        Returns a single material master record by its material number.
+      tags:
+        - Product
+      parameters:
+        - name: Product
+          in: path
+          required: true
+          description: Material number (40 characters)
+          schema:
+            type: string
+            maxLength: 40
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the product
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/Product'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateProduct
+      summary: Update a product
+      description: >-
+        Updates an existing material master record.
+      tags:
+        - Product
+      parameters:
+        - name: Product
+          in: path
+          required: true
+          description: Material number
+          schema:
+            type: string
+            maxLength: 40
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductUpdate'
+      responses:
+        '204':
+          description: Product successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_Product('{Product}')/to_Description:
+    get:
+      operationId: listProductDescriptions
+      summary: Retrieve descriptions for a product
+      description: >-
+        Returns language-dependent descriptions for the specified product.
+      tags:
+        - Product Description
+      parameters:
+        - name: Product
+          in: path
+          required: true
+          description: Material number
+          schema:
+            type: string
+            maxLength: 40
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved product descriptions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ProductDescription'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_Product('{Product}')/to_Plant:
+    get:
+      operationId: listProductPlants
+      summary: Retrieve plant data for a product
+      description: >-
+        Returns plant-level data for the specified product including MRP,
+        purchasing, and production information.
+      tags:
+        - Product Plant
+      parameters:
+        - name: Product
+          in: path
+          required: true
+          description: Material number
+          schema:
+            type: string
+            maxLength: 40
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved product plant data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ProductPlant'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_ProductSalesDelivery(Product='{Product}',ProductSalesOrg='{ProductSalesOrg}',ProductDistributionChnl='{ProductDistributionChnl}'):
+    get:
+      operationId: getProductSalesDelivery
+      summary: Retrieve sales and delivery data for a product
+      description: >-
+        Returns sales organization-specific data for a product including
+        delivering plant, minimum order quantity, and delivery unit.
+      tags:
+        - Product Sales Delivery
+      parameters:
+        - name: Product
+          in: path
+          required: true
+          description: Material number
+          schema:
+            type: string
+            maxLength: 40
+        - name: ProductSalesOrg
+          in: path
+          required: true
+          description: Sales organization
+          schema:
+            type: string
+            maxLength: 4
+        - name: ProductDistributionChnl
+          in: path
+          required: true
+          description: Distribution channel
+          schema:
+            type: string
+            maxLength: 2
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved product sales data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/ProductSalesDelivery'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_PRODUCT_SRV: Access to Product API
+  parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+          - allpages
+          - none
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+  schemas:
+    Product:
+      type: object
+      description: Product/material master header entity (A_Product)
+      properties:
+        Product:
+          type: string
+          maxLength: 40
+          description: Material number
+        ProductType:
+          type: string
+          maxLength: 4
+          description: Material type
+        ProductGroup:
+          type: string
+          maxLength: 9
+          description: Material group
+        BaseUnit:
+          type: string
+          maxLength: 3
+          description: Base unit of measure
+        GrossWeight:
+          type: string
+          description: Gross weight
+        NetWeight:
+          type: string
+          description: Net weight
+        WeightUnit:
+          type: string
+          maxLength: 3
+          description: Weight unit
+        Volume:
+          type: string
+          description: Volume
+        VolumeUnit:
+          type: string
+          maxLength: 3
+          description: Volume unit
+        Division:
+          type: string
+          maxLength: 2
+          description: Division
+        ProductOldID:
+          type: string
+          maxLength: 40
+          description: Old material number
+        IndustryStandardName:
+          type: string
+          maxLength: 18
+          description: EAN/UPC code
+        CreationDate:
+          type: string
+          format: date
+          description: Creation date
+        LastChangeDate:
+          type: string
+          format: date
+          description: Date of last change
+        CreatedByUser:
+          type: string
+          maxLength: 12
+          description: Created by user
+        LastChangedByUser:
+          type: string
+          maxLength: 12
+          description: Last changed by user
+        IsMarkedForDeletion:
+          type: boolean
+          description: Deletion flag
+        ProductStandardID:
+          type: string
+          maxLength: 18
+          description: Global Trade Item Number (GTIN)
+        SizeOrDimensionText:
+          type: string
+          maxLength: 32
+          description: Size/dimensions text
+    ProductCreate:
+      type: object
+      description: Product creation payload
+      required:
+        - Product
+        - ProductType
+      properties:
+        Product:
+          type: string
+          maxLength: 40
+        ProductType:
+          type: string
+          maxLength: 4
+        ProductGroup:
+          type: string
+          maxLength: 9
+        BaseUnit:
+          type: string
+          maxLength: 3
+        GrossWeight:
+          type: string
+        NetWeight:
+          type: string
+        WeightUnit:
+          type: string
+          maxLength: 3
+        Division:
+          type: string
+          maxLength: 2
+        to_Description:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/ProductDescriptionCreate'
+    ProductUpdate:
+      type: object
+      description: Product update payload
+      properties:
+        ProductGroup:
+          type: string
+          maxLength: 9
+        GrossWeight:
+          type: string
+        NetWeight:
+          type: string
+        WeightUnit:
+          type: string
+          maxLength: 3
+        IsMarkedForDeletion:
+          type: boolean
+    ProductDescription:
+      type: object
+      description: Product description entity (A_ProductDescription)
+      properties:
+        Product:
+          type: string
+          maxLength: 40
+          description: Material number
+        Language:
+          type: string
+          maxLength: 2
+          description: Language key
+        ProductDescription:
+          type: string
+          maxLength: 40
+          description: Material description
+    ProductDescriptionCreate:
+      type: object
+      properties:
+        Language:
+          type: string
+          maxLength: 2
+        ProductDescription:
+          type: string
+          maxLength: 40
+    ProductPlant:
+      type: object
+      description: Product plant entity (A_ProductPlant)
+      properties:
+        Product:
+          type: string
+          maxLength: 40
+          description: Material number
+        Plant:
+          type: string
+          maxLength: 4
+          description: Plant
+        PurchasingGroup:
+          type: string
+          maxLength: 3
+          description: Purchasing group
+        AvailabilityCheckType:
+          type: string
+          maxLength: 2
+          description: Availability check type
+        GoodsIssueUnit:
+          type: string
+          maxLength: 3
+          description: Unit of issue
+        MRPType:
+          type: string
+          maxLength: 2
+          description: MRP type
+        MRPResponsible:
+          type: string
+          maxLength: 3
+          description: MRP controller
+    ProductSalesDelivery:
+      type: object
+      description: Product sales and delivery entity
+      properties:
+        Product:
+          type: string
+          maxLength: 40
+          description: Material number
+        ProductSalesOrg:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        ProductDistributionChnl:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        MinimumOrderQuantity:
+          type: string
+          description: Minimum order quantity
+        DeliveryQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Delivery unit
+        DeliveryQuantity:
+          type: string
+          description: Delivery quantity
+        SupplyingPlant:
+          type: string
+          maxLength: 4
+          description: Delivering plant
+        ItemCategoryGroup:
+          type: string
+          maxLength: 4
+          description: Item category group
+        AccountDetnProductGroup:
+          type: string
+          maxLength: 2
+          description: Account assignment group
+        ProductSalesStatus:
+          type: string
+          maxLength: 2
+          description: Distribution-chain-specific status
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

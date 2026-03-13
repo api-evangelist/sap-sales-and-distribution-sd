@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.sap.com/schemas/sap-sd-product",
+  "title": "SAP Product (Material Master)",
+  "description": "Schema for SAP S/4HANA Product entity (A_Product) from the API_PRODUCT_SRV OData service. Represents a material master record used across procurement, manufacturing, and sales processes.",
+  "type": "object",
+  "properties": {
+    "Product": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "ProductType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Material type (FERT=Finished Product, HALB=Semi-Finished, ROH=Raw Material, HAWA=Trading Goods)"
+    },
+    "ProductGroup": {
+      "type": "string",
+      "maxLength": 9,
+      "description": "Material group"
+    },
+    "BaseUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Base unit of measure"
+    },
+    "GrossWeight": {
+      "type": "string",
+      "description": "Gross weight"
+    },
+    "NetWeight": {
+      "type": "string",
+      "description": "Net weight"
+    },
+    "WeightUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Weight unit"
+    },
+    "Volume": {
+      "type": "string",
+      "description": "Volume"
+    },
+    "VolumeUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Volume unit"
+    },
+    "Division": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Division"
+    },
+    "IndustryStandardName": {
+      "type": "string",
+      "maxLength": 18,
+      "description": "EAN/UPC code"
+    },
+    "ProductStandardID": {
+      "type": "string",
+      "maxLength": 18,
+      "description": "Global Trade Item Number (GTIN)"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Creation date"
+    },
+    "LastChangeDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of last change"
+    },
+    "IsMarkedForDeletion": {
+      "type": "boolean",
+      "description": "Deletion flag"
+    },
+    "SizeOrDimensionText": {
+      "type": "string",
+      "maxLength": 32,
+      "description": "Size/dimensions text"
+    }
+  },
+  "required": ["Product"]
+}

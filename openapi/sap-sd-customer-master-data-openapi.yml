@@ -1,0 +1,779 @@
+openapi: 3.1.0
+info:
+  title: SAP Customer Master Data (Business Partner) API
+  description: >-
+    Manage customer master data including business partner records, addresses,
+    contact information, bank details, tax numbers, and customer-specific
+    sales area data. This OData service (API_BUSINESS_PARTNER) provides
+    access to business partner records used across SAP S/4HANA modules.
+    Business partners can be of category Person (1), Organization (2),
+    or Group (3).
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+  - url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER
+    description: SAP S/4HANA Cloud Sandbox
+  - url: https://{host}:{port}/sap/opu/odata/sap/API_BUSINESS_PARTNER
+    description: SAP S/4HANA On-Premise
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '443'
+security:
+  - basicAuth: []
+  - oauth2: []
+tags:
+  - name: Business Partner
+    description: Operations on business partner header entity (A_BusinessPartner)
+  - name: Business Partner Address
+    description: Operations on business partner addresses (A_BusinessPartnerAddress)
+  - name: Customer
+    description: Operations on customer-specific data (A_Customer)
+  - name: Customer Sales Area
+    description: Operations on customer sales area data (A_CustomerSalesArea)
+paths:
+  /A_BusinessPartner:
+    get:
+      operationId: listBusinessPartners
+      summary: Retrieve a list of business partners
+      description: >-
+        Returns a collection of business partner records. Use OData query options
+        to filter by category, name, or other attributes. Supports $expand for
+        including addresses, roles, tax numbers, and bank accounts.
+      tags:
+        - Business Partner
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved business partners
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/BusinessPartner'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createBusinessPartner
+      summary: Create a new business partner
+      description: >-
+        Creates a new business partner record. Supports deep insert with
+        addresses, roles, tax numbers, and bank accounts in a single request.
+      tags:
+        - Business Partner
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessPartnerCreate'
+      responses:
+        '201':
+          description: Business partner successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/BusinessPartner'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_BusinessPartner('{BusinessPartner}'):
+    get:
+      operationId: getBusinessPartner
+      summary: Retrieve a single business partner
+      description: >-
+        Returns a single business partner record by its key. Use $expand to
+        include related addresses, roles, tax numbers, and bank accounts.
+      tags:
+        - Business Partner
+      parameters:
+        - name: BusinessPartner
+          in: path
+          required: true
+          description: Business partner number (10 characters)
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the business partner
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/BusinessPartner'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateBusinessPartner
+      summary: Update a business partner
+      description: >-
+        Updates an existing business partner record. Only fields included in
+        the request body are modified.
+      tags:
+        - Business Partner
+      parameters:
+        - name: BusinessPartner
+          in: path
+          required: true
+          description: Business partner number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessPartnerUpdate'
+      responses:
+        '204':
+          description: Business partner successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_BusinessPartner('{BusinessPartner}')/to_BusinessPartnerAddress:
+    get:
+      operationId: listBusinessPartnerAddresses
+      summary: Retrieve addresses for a business partner
+      description: >-
+        Returns a collection of address records associated with the specified
+        business partner.
+      tags:
+        - Business Partner Address
+      parameters:
+        - name: BusinessPartner
+          in: path
+          required: true
+          description: Business partner number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved addresses
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/BusinessPartnerAddress'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createBusinessPartnerAddress
+      summary: Create an address for a business partner
+      description: >-
+        Creates a new address record for the specified business partner.
+      tags:
+        - Business Partner Address
+      parameters:
+        - name: BusinessPartner
+          in: path
+          required: true
+          description: Business partner number
+          schema:
+            type: string
+            maxLength: 10
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessPartnerAddressCreate'
+      responses:
+        '201':
+          description: Address successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/BusinessPartnerAddress'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_Customer('{Customer}'):
+    get:
+      operationId: getCustomer
+      summary: Retrieve customer-specific data
+      description: >-
+        Returns customer-specific data for the specified customer number,
+        including payment terms, delivery priority, and account group.
+      tags:
+        - Customer
+      parameters:
+        - name: Customer
+          in: path
+          required: true
+          description: Customer number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved customer data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_CustomerSalesArea(Customer='{Customer}',SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Division='{Division}'):
+    get:
+      operationId: getCustomerSalesArea
+      summary: Retrieve customer sales area data
+      description: >-
+        Returns sales area-specific data for a customer, including pricing,
+        shipping, and billing information specific to the sales organization,
+        distribution channel, and division.
+      tags:
+        - Customer Sales Area
+      parameters:
+        - name: Customer
+          in: path
+          required: true
+          description: Customer number
+          schema:
+            type: string
+            maxLength: 10
+        - name: SalesOrganization
+          in: path
+          required: true
+          description: Sales organization
+          schema:
+            type: string
+            maxLength: 4
+        - name: DistributionChannel
+          in: path
+          required: true
+          description: Distribution channel
+          schema:
+            type: string
+            maxLength: 2
+        - name: Division
+          in: path
+          required: true
+          description: Division
+          schema:
+            type: string
+            maxLength: 2
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved customer sales area data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/CustomerSalesArea'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BUSINESS_PARTNER: Access to Business Partner API
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      description: Number of records to skip
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Sort order for the result set
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of navigation properties to expand
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      description: Include total count of matching resources
+      schema:
+        type: string
+        enum:
+          - allpages
+          - none
+    ifMatch:
+      name: If-Match
+      in: header
+      description: ETag value for optimistic concurrency control
+      required: true
+      schema:
+        type: string
+  schemas:
+    BusinessPartner:
+      type: object
+      description: Business partner header entity (A_BusinessPartner)
+      properties:
+        BusinessPartner:
+          type: string
+          maxLength: 10
+          description: Business partner number
+        BusinessPartnerCategory:
+          type: string
+          maxLength: 1
+          description: 'Business partner category (1=Person, 2=Organization, 3=Group)'
+        BusinessPartnerFullName:
+          type: string
+          maxLength: 81
+          description: Full name of the business partner
+        BusinessPartnerGrouping:
+          type: string
+          maxLength: 4
+          description: Business partner grouping
+        BusinessPartnerName:
+          type: string
+          maxLength: 81
+          description: Business partner name
+        FirstName:
+          type: string
+          maxLength: 40
+          description: First name (for person category)
+        LastName:
+          type: string
+          maxLength: 40
+          description: Last name (for person category)
+        OrganizationBPName1:
+          type: string
+          maxLength: 40
+          description: Organization name line 1
+        OrganizationBPName2:
+          type: string
+          maxLength: 40
+          description: Organization name line 2
+        SearchTerm1:
+          type: string
+          maxLength: 20
+          description: Search term 1
+        SearchTerm2:
+          type: string
+          maxLength: 20
+          description: Search term 2
+        BusinessPartnerIsBlocked:
+          type: boolean
+          description: Central block flag
+        Language:
+          type: string
+          maxLength: 2
+          description: Language key
+        CreationDate:
+          type: string
+          format: date
+          description: Date when the business partner was created
+        LastChangeDate:
+          type: string
+          format: date
+          description: Date of last change
+        LastChangedByUser:
+          type: string
+          maxLength: 12
+          description: User who last changed the record
+        IsNaturalPerson:
+          type: string
+          maxLength: 1
+          description: Natural person flag
+        IsFemale:
+          type: boolean
+          description: Female indicator
+        IsMale:
+          type: boolean
+          description: Male indicator
+        TradingPartner:
+          type: string
+          maxLength: 6
+          description: Trading partner company ID
+    BusinessPartnerCreate:
+      type: object
+      description: Business partner creation payload
+      required:
+        - BusinessPartnerCategory
+      properties:
+        BusinessPartnerCategory:
+          type: string
+          maxLength: 1
+          description: 'Business partner category (1=Person, 2=Organization, 3=Group)'
+        BusinessPartnerGrouping:
+          type: string
+          maxLength: 4
+        FirstName:
+          type: string
+          maxLength: 40
+        LastName:
+          type: string
+          maxLength: 40
+        OrganizationBPName1:
+          type: string
+          maxLength: 40
+        OrganizationBPName2:
+          type: string
+          maxLength: 40
+        Language:
+          type: string
+          maxLength: 2
+        SearchTerm1:
+          type: string
+          maxLength: 20
+        to_BusinessPartnerAddress:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/BusinessPartnerAddressCreate'
+    BusinessPartnerUpdate:
+      type: object
+      description: Business partner update payload
+      properties:
+        FirstName:
+          type: string
+          maxLength: 40
+        LastName:
+          type: string
+          maxLength: 40
+        OrganizationBPName1:
+          type: string
+          maxLength: 40
+        OrganizationBPName2:
+          type: string
+          maxLength: 40
+        SearchTerm1:
+          type: string
+          maxLength: 20
+        Language:
+          type: string
+          maxLength: 2
+        BusinessPartnerIsBlocked:
+          type: boolean
+    BusinessPartnerAddress:
+      type: object
+      description: Business partner address entity (A_BusinessPartnerAddress)
+      properties:
+        BusinessPartner:
+          type: string
+          maxLength: 10
+          description: Business partner number
+        AddressID:
+          type: string
+          maxLength: 10
+          description: Address number
+        StreetName:
+          type: string
+          maxLength: 60
+          description: Street name
+        HouseNumber:
+          type: string
+          maxLength: 10
+          description: House number
+        PostalCode:
+          type: string
+          maxLength: 10
+          description: Postal code
+        CityName:
+          type: string
+          maxLength: 40
+          description: City name
+        Region:
+          type: string
+          maxLength: 3
+          description: Region (state, province)
+        Country:
+          type: string
+          maxLength: 3
+          description: Country key (ISO 3166)
+        Language:
+          type: string
+          maxLength: 2
+          description: Language key
+        POBox:
+          type: string
+          maxLength: 10
+          description: PO box number
+        POBoxPostalCode:
+          type: string
+          maxLength: 10
+          description: PO box postal code
+        CompanyPostalCode:
+          type: string
+          maxLength: 10
+          description: Company postal code
+    BusinessPartnerAddressCreate:
+      type: object
+      description: Business partner address creation payload
+      properties:
+        StreetName:
+          type: string
+          maxLength: 60
+        HouseNumber:
+          type: string
+          maxLength: 10
+        PostalCode:
+          type: string
+          maxLength: 10
+        CityName:
+          type: string
+          maxLength: 40
+        Region:
+          type: string
+          maxLength: 3
+        Country:
+          type: string
+          maxLength: 3
+        Language:
+          type: string
+          maxLength: 2
+    Customer:
+      type: object
+      description: Customer entity (A_Customer)
+      properties:
+        Customer:
+          type: string
+          maxLength: 10
+          description: Customer number
+        CustomerAccountGroup:
+          type: string
+          maxLength: 4
+          description: Customer account group
+        CustomerName:
+          type: string
+          maxLength: 80
+          description: Customer name
+        DeliveryIsBlocked:
+          type: string
+          maxLength: 2
+          description: Delivery block
+        OrderIsBlocked:
+          type: string
+          maxLength: 2
+          description: Order block
+        PostingIsBlocked:
+          type: boolean
+          description: Posting block
+        CreationDate:
+          type: string
+          format: date
+          description: Customer creation date
+        CustomerClassification:
+          type: string
+          maxLength: 2
+          description: Customer classification
+        IndustryCode1:
+          type: string
+          maxLength: 4
+          description: Industry key
+        NFPartnerIsNaturalPerson:
+          type: string
+          maxLength: 1
+          description: Natural person indicator
+    CustomerSalesArea:
+      type: object
+      description: Customer sales area entity (A_CustomerSalesArea)
+      properties:
+        Customer:
+          type: string
+          maxLength: 10
+          description: Customer number
+        SalesOrganization:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        DistributionChannel:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        Division:
+          type: string
+          maxLength: 2
+          description: Division
+        CustomerPaymentTerms:
+          type: string
+          maxLength: 4
+          description: Terms of payment key
+        DeliveryPriority:
+          type: string
+          maxLength: 2
+          description: Delivery priority
+        ShippingCondition:
+          type: string
+          maxLength: 2
+          description: Shipping conditions
+        IncotermsClassification:
+          type: string
+          maxLength: 3
+          description: Incoterms (part 1)
+        Currency:
+          type: string
+          maxLength: 5
+          description: Currency
+        CustomerPricingProcedure:
+          type: string
+          maxLength: 1
+          description: Pricing procedure assigned to the customer
+        CustomerAccountAssignmentGroup:
+          type: string
+          maxLength: 2
+          description: Account assignment group for the customer
+        CompleteDeliveryIsDefined:
+          type: boolean
+          description: Complete delivery flag
+        PartialDeliveryIsAllowed:
+          type: string
+          maxLength: 1
+          description: Partial delivery at item level
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Insufficient authorization
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

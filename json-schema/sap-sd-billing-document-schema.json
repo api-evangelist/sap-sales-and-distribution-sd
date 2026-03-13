@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.sap.com/schemas/sap-sd-billing-document",
+  "title": "SAP Billing Document",
+  "description": "Schema for SAP S/4HANA Billing Document entity (A_BillingDocument) from the API_BILLING_DOCUMENT_SRV OData service. Represents billing document headers including invoices, credit memos, and debit memos.",
+  "type": "object",
+  "properties": {
+    "BillingDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Billing document number"
+    },
+    "BillingDocumentType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Billing document type (F2=Invoice, G2=Credit Memo, L2=Debit Memo)"
+    },
+    "BillingDocumentCategory": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Billing document category"
+    },
+    "SDDocumentCategory": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "SD document category"
+    },
+    "BillingDocumentDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Billing date"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the document was created"
+    },
+    "LastChangeDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of last change"
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "Division": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Division"
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sold-to party"
+    },
+    "PayerParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Payer"
+    },
+    "TotalNetAmount": {
+      "type": "string",
+      "description": "Net value in document currency"
+    },
+    "TotalGrossAmount": {
+      "type": "string",
+      "description": "Gross value in document currency"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "SD document currency"
+    },
+    "TotalTaxAmount": {
+      "type": "string",
+      "description": "Tax amount in document currency"
+    },
+    "BillingDocumentIsCancelled": {
+      "type": "boolean",
+      "description": "Indicates if the billing document is cancelled"
+    },
+    "CancelledBillingDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Cancelled billing document number"
+    },
+    "AccountingDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Accounting document number"
+    },
+    "CompanyCode": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Company code"
+    }
+  },
+  "required": ["BillingDocument"]
+}

@@ -1,0 +1,524 @@
+openapi: 3.1.0
+info:
+  title: SAP Pricing Condition Record API
+  description: >-
+    Create, read, update, and delete condition records for pricing in sales.
+    This OData service (API_SLSPRCGCONDITIONRECORD_SRV) manages sales pricing
+    condition records including price lists, discounts, surcharges, and freight
+    conditions used to determine prices in sales documents within SAP S/4HANA.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+  - url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SLSPRCGCONDITIONRECORD_SRV
+    description: SAP S/4HANA Cloud Sandbox
+  - url: https://{host}:{port}/sap/opu/odata/sap/API_SLSPRCGCONDITIONRECORD_SRV
+    description: SAP S/4HANA On-Premise
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '443'
+security:
+  - basicAuth: []
+  - oauth2: []
+tags:
+  - name: Pricing Condition Record
+    description: Operations on pricing condition records (A_SlsPrcgConditionRecord)
+  - name: Condition Record Validity
+    description: Operations on condition record validity (A_SlsPrcgCndnRecdValidity)
+  - name: Condition Record Scale
+    description: Operations on pricing scales (A_SlsPrcgCndnRecordScale)
+  - name: Condition Record Supplement
+    description: Operations on condition supplements (A_SlsPrcgCndnRecdSuplmnt)
+paths:
+  /A_SlsPrcgConditionRecord:
+    get:
+      operationId: listPricingConditionRecords
+      summary: Retrieve a list of pricing condition records
+      description: >-
+        Returns a collection of sales pricing condition records. Use OData
+        query options to filter by condition type, material, customer, sales
+        organization, validity dates, and other attributes.
+      tags:
+        - Pricing Condition Record
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved pricing condition records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SlsPrcgConditionRecord'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createPricingConditionRecord
+      summary: Create a pricing condition record
+      description: >-
+        Creates a new sales pricing condition record. The request can include
+        the condition record along with its validity periods, pricing scales,
+        and supplements using deep insert.
+      tags:
+        - Pricing Condition Record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SlsPrcgConditionRecordCreate'
+      responses:
+        '201':
+          description: Condition record successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SlsPrcgConditionRecord'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SlsPrcgConditionRecord('{ConditionRecord}'):
+    get:
+      operationId: getPricingConditionRecord
+      summary: Retrieve a single pricing condition record
+      description: >-
+        Returns a single pricing condition record by its key. Use $expand to
+        include validity periods, scales, and supplements.
+      tags:
+        - Pricing Condition Record
+      parameters:
+        - name: ConditionRecord
+          in: path
+          required: true
+          description: Condition record number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the condition record
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SlsPrcgConditionRecord'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updatePricingConditionRecord
+      summary: Update a pricing condition record
+      description: >-
+        Updates an existing pricing condition record. Only the fields included
+        in the request body are modified.
+      tags:
+        - Pricing Condition Record
+      parameters:
+        - name: ConditionRecord
+          in: path
+          required: true
+          description: Condition record number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SlsPrcgConditionRecordUpdate'
+      responses:
+        '204':
+          description: Condition record successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deletePricingConditionRecord
+      summary: Delete a pricing condition record
+      description: >-
+        Deletes an existing pricing condition record.
+      tags:
+        - Pricing Condition Record
+      parameters:
+        - name: ConditionRecord
+          in: path
+          required: true
+          description: Condition record number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      responses:
+        '204':
+          description: Condition record successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SlsPrcgCndnRecdValidity:
+    get:
+      operationId: listConditionRecordValidities
+      summary: Retrieve condition record validity periods
+      description: >-
+        Returns a collection of validity records that define the time ranges
+        and key field combinations for condition records.
+      tags:
+        - Condition Record Validity
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved validity records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SlsPrcgCndnRecdValidity'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_SLSPRCGCONDITIONRECORD_SRV: Access to Pricing API
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      description: Number of records to skip
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Sort order
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated properties to include
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      description: Navigation properties to expand
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      description: Include total count
+      schema:
+        type: string
+        enum:
+          - allpages
+          - none
+    ifMatch:
+      name: If-Match
+      in: header
+      description: ETag value for concurrency control
+      required: true
+      schema:
+        type: string
+  schemas:
+    SlsPrcgConditionRecord:
+      type: object
+      description: Sales pricing condition record entity (A_SlsPrcgConditionRecord)
+      properties:
+        ConditionRecord:
+          type: string
+          maxLength: 10
+          description: Condition record number
+        ConditionSequentialNumber:
+          type: string
+          maxLength: 2
+          description: Sequential number of the condition
+        ConditionTable:
+          type: string
+          maxLength: 3
+          description: Condition table
+        ConditionApplication:
+          type: string
+          maxLength: 2
+          description: Application
+        ConditionType:
+          type: string
+          maxLength: 4
+          description: Condition type (e.g., PR00, K004, K005, K007)
+        ConditionValidityEndDate:
+          type: string
+          format: date
+          description: Validity end date
+        ConditionValidityStartDate:
+          type: string
+          format: date
+          description: Validity start date
+        CreatedByUser:
+          type: string
+          maxLength: 12
+          description: User who created the record
+        CreationDate:
+          type: string
+          format: date
+          description: Creation date
+        ConditionRateValue:
+          type: string
+          description: Rate (condition amount or percentage)
+        ConditionRateValueUnit:
+          type: string
+          maxLength: 5
+          description: Condition currency or percentage
+        ConditionQuantity:
+          type: string
+          description: Condition pricing unit
+        ConditionQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Condition unit
+        ConditionScaleQuantity:
+          type: string
+          description: Condition scale quantity
+        ConditionScaleQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Condition scale unit
+        ConditionCalculationType:
+          type: string
+          maxLength: 1
+          description: Calculation type for the condition
+        ConditionIsDeleted:
+          type: boolean
+          description: Deletion indicator
+        PricingScaleType:
+          type: string
+          maxLength: 1
+          description: Scale type
+        SalesOrganization:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        DistributionChannel:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number
+        Customer:
+          type: string
+          maxLength: 10
+          description: Customer number
+    SlsPrcgConditionRecordCreate:
+      type: object
+      description: Pricing condition record creation payload
+      required:
+        - ConditionType
+      properties:
+        ConditionType:
+          type: string
+          maxLength: 4
+        ConditionValidityEndDate:
+          type: string
+          format: date
+        ConditionValidityStartDate:
+          type: string
+          format: date
+        ConditionRateValue:
+          type: string
+        ConditionRateValueUnit:
+          type: string
+          maxLength: 5
+        ConditionQuantity:
+          type: string
+        ConditionQuantityUnit:
+          type: string
+          maxLength: 3
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        Material:
+          type: string
+          maxLength: 40
+        Customer:
+          type: string
+          maxLength: 10
+        to_SlsPrcgCndnRecdValidity:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/SlsPrcgCndnRecdValidity'
+    SlsPrcgConditionRecordUpdate:
+      type: object
+      description: Pricing condition record update payload
+      properties:
+        ConditionRateValue:
+          type: string
+        ConditionRateValueUnit:
+          type: string
+          maxLength: 5
+        ConditionQuantity:
+          type: string
+        ConditionIsDeleted:
+          type: boolean
+    SlsPrcgCndnRecdValidity:
+      type: object
+      description: Condition record validity entity (A_SlsPrcgCndnRecdValidity)
+      properties:
+        ConditionRecord:
+          type: string
+          maxLength: 10
+          description: Condition record number
+        ConditionValidityEndDate:
+          type: string
+          format: date
+          description: Validity end date
+        ConditionValidityStartDate:
+          type: string
+          format: date
+          description: Validity start date
+        ConditionType:
+          type: string
+          maxLength: 4
+          description: Condition type
+        SalesOrganization:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        DistributionChannel:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        Customer:
+          type: string
+          maxLength: 10
+          description: Customer number
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

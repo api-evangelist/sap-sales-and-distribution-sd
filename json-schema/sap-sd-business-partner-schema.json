@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.sap.com/schemas/sap-sd-business-partner",
+  "title": "SAP Business Partner",
+  "description": "Schema for SAP S/4HANA Business Partner entity (A_BusinessPartner) from the API_BUSINESS_PARTNER OData service. Represents a business partner record which can be a Person (1), Organization (2), or Group (3).",
+  "type": "object",
+  "properties": {
+    "BusinessPartner": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Business partner number"
+    },
+    "BusinessPartnerCategory": {
+      "type": "string",
+      "maxLength": 1,
+      "enum": ["1", "2", "3"],
+      "description": "Business partner category (1=Person, 2=Organization, 3=Group)"
+    },
+    "BusinessPartnerFullName": {
+      "type": "string",
+      "maxLength": 81,
+      "description": "Full name of the business partner"
+    },
+    "BusinessPartnerGrouping": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Business partner grouping"
+    },
+    "BusinessPartnerName": {
+      "type": "string",
+      "maxLength": 81,
+      "description": "Business partner name"
+    },
+    "FirstName": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "First name (for person category)"
+    },
+    "LastName": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Last name (for person category)"
+    },
+    "OrganizationBPName1": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Organization name line 1"
+    },
+    "OrganizationBPName2": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Organization name line 2"
+    },
+    "SearchTerm1": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Search term 1"
+    },
+    "Language": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Language key"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when the business partner was created"
+    },
+    "LastChangeDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of last change"
+    },
+    "BusinessPartnerIsBlocked": {
+      "type": "boolean",
+      "description": "Central block flag"
+    },
+    "IsNaturalPerson": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Natural person flag"
+    },
+    "TradingPartner": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Trading partner company ID"
+    }
+  },
+  "required": ["BusinessPartner", "BusinessPartnerCategory"]
+}

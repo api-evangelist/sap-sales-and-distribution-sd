@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.sap.com/schemas/sap-sd-customer-return",
+  "title": "SAP Customer Return",
+  "description": "Schema for SAP S/4HANA Customer Return entity (A_CustomerReturn) from the API_CREDIT_MEMO_REQUEST_SRV OData service. Represents a customer return document used to process returned goods in reverse logistics.",
+  "type": "object",
+  "properties": {
+    "CustomerReturn": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Customer return number"
+    },
+    "CustomerReturnType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales document type"
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "OrganizationDivision": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Division"
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sold-to party"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Creation date"
+    },
+    "CustomerReturnDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Document date"
+    },
+    "TotalNetAmount": {
+      "type": "string",
+      "description": "Net value in document currency"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Document currency"
+    },
+    "SDDocumentReason": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Return reason"
+    },
+    "OverallSDProcessStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall processing status"
+    },
+    "OverallDeliveryStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Delivery status"
+    },
+    "OverallBillingStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Billing status"
+    }
+  },
+  "required": ["CustomerReturn"]
+}

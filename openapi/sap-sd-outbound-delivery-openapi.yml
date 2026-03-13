@@ -1,0 +1,712 @@
+openapi: 3.1.0
+info:
+  title: SAP Outbound Delivery API
+  description: >-
+    Create and manage outbound deliveries, goods issue, and shipping documents
+    in SAP S/4HANA. This OData service (API_OUTBOUND_DELIVERY_SRV) supports
+    delivery creation with reference to sales orders, picking confirmation,
+    goods issue posting, and subsequent logistics processing. Part of the
+    Delivery Processing Integration (SAP_COM_0106) communication scenario.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+  - url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV
+    description: SAP S/4HANA Cloud Sandbox
+  - url: https://{host}:{port}/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV
+    description: SAP S/4HANA On-Premise
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '443'
+security:
+  - basicAuth: []
+  - oauth2: []
+tags:
+  - name: Outbound Delivery Header
+    description: Operations on outbound delivery header (A_OutbDeliveryHeader)
+  - name: Outbound Delivery Item
+    description: Operations on outbound delivery items (A_OutbDeliveryItem)
+  - name: Outbound Delivery Partner
+    description: Operations on outbound delivery partners (A_OutbDeliveryPartner)
+  - name: Outbound Delivery Address
+    description: Operations on outbound delivery addresses (A_OutbDeliveryAddress)
+paths:
+  /A_OutbDeliveryHeader:
+    get:
+      operationId: listOutboundDeliveries
+      summary: Retrieve a list of outbound deliveries
+      description: >-
+        Returns a collection of outbound delivery headers. Supports OData
+        query options for filtering by delivery date, shipping point, sold-to
+        party, delivery status, and other attributes.
+      tags:
+        - Outbound Delivery Header
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved outbound deliveries
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/OutbDeliveryHeader'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createOutboundDelivery
+      summary: Create a new outbound delivery
+      description: >-
+        Creates a new outbound delivery, typically with reference to a sales
+        order. The delivery can be created with header and item data in a
+        single deep insert request.
+      tags:
+        - Outbound Delivery Header
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OutbDeliveryHeaderCreate'
+      responses:
+        '201':
+          description: Outbound delivery successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/OutbDeliveryHeader'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_OutbDeliveryHeader('{DeliveryDocument}'):
+    get:
+      operationId: getOutboundDelivery
+      summary: Retrieve a single outbound delivery
+      description: >-
+        Returns a single outbound delivery header by its delivery document
+        number. Use $expand to include items, partners, and addresses.
+      tags:
+        - Outbound Delivery Header
+      parameters:
+        - name: DeliveryDocument
+          in: path
+          required: true
+          description: Delivery document number (10 characters)
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the outbound delivery
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/OutbDeliveryHeader'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateOutboundDelivery
+      summary: Update an outbound delivery
+      description: >-
+        Updates an existing outbound delivery header. Only the fields included
+        in the request body are modified.
+      tags:
+        - Outbound Delivery Header
+      parameters:
+        - name: DeliveryDocument
+          in: path
+          required: true
+          description: Delivery document number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OutbDeliveryHeaderUpdate'
+      responses:
+        '204':
+          description: Outbound delivery successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deleteOutboundDelivery
+      summary: Delete an outbound delivery
+      description: >-
+        Deletes an existing outbound delivery document.
+      tags:
+        - Outbound Delivery Header
+      parameters:
+        - name: DeliveryDocument
+          in: path
+          required: true
+          description: Delivery document number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      responses:
+        '204':
+          description: Outbound delivery successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_OutbDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentItem:
+    get:
+      operationId: listOutboundDeliveryItems
+      summary: Retrieve items for an outbound delivery
+      description: >-
+        Returns a collection of line items for the specified outbound delivery.
+      tags:
+        - Outbound Delivery Item
+      parameters:
+        - name: DeliveryDocument
+          in: path
+          required: true
+          description: Delivery document number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved delivery items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/OutbDeliveryItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_OutbDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentPartner:
+    get:
+      operationId: listOutboundDeliveryPartners
+      summary: Retrieve partners for an outbound delivery
+      description: >-
+        Returns a collection of business partners associated with the delivery.
+      tags:
+        - Outbound Delivery Partner
+      parameters:
+        - name: DeliveryDocument
+          in: path
+          required: true
+          description: Delivery document number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved delivery partners
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/OutbDeliveryPartner'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /PostGoodsIssue:
+    post:
+      operationId: postGoodsIssue
+      summary: Post goods issue for an outbound delivery
+      description: >-
+        Triggers the goods issue posting for the specified outbound delivery.
+        This operation updates inventory and creates material documents.
+      tags:
+        - Outbound Delivery Header
+      parameters:
+        - name: DeliveryDocument
+          in: query
+          required: true
+          description: Delivery document number for goods issue
+          schema:
+            type: string
+            maxLength: 10
+      responses:
+        '200':
+          description: Goods issue successfully posted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/OutbDeliveryHeader'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /ReverseGoodsIssue:
+    post:
+      operationId: reverseGoodsIssue
+      summary: Reverse goods issue for an outbound delivery
+      description: >-
+        Reverses a previously posted goods issue for the specified delivery.
+      tags:
+        - Outbound Delivery Header
+      parameters:
+        - name: DeliveryDocument
+          in: query
+          required: true
+          description: Delivery document number
+          schema:
+            type: string
+            maxLength: 10
+      responses:
+        '200':
+          description: Goods issue successfully reversed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/OutbDeliveryHeader'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_OUTBOUND_DELIVERY_SRV: Access to Outbound Delivery API
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      description: Number of records to skip
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Sort order
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated properties to include
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      description: Navigation properties to expand
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      description: Include total count
+      schema:
+        type: string
+        enum:
+          - allpages
+          - none
+    ifMatch:
+      name: If-Match
+      in: header
+      description: ETag value for concurrency control
+      required: true
+      schema:
+        type: string
+  schemas:
+    OutbDeliveryHeader:
+      type: object
+      description: Outbound delivery header entity (A_OutbDeliveryHeader)
+      properties:
+        DeliveryDocument:
+          type: string
+          maxLength: 10
+          description: Delivery document number
+        DeliveryDocumentBySupplier:
+          type: string
+          maxLength: 16
+          description: External delivery number from supplier
+        DeliveryDocumentType:
+          type: string
+          maxLength: 4
+          description: Delivery type
+        SoldToParty:
+          type: string
+          maxLength: 10
+          description: Sold-to party
+        ShipToParty:
+          type: string
+          maxLength: 10
+          description: Ship-to party
+        ShippingPoint:
+          type: string
+          maxLength: 4
+          description: Shipping point / receiving point
+        DeliveryDate:
+          type: string
+          format: date
+          description: Planned delivery date
+        ActualDeliveryRoute:
+          type: string
+          maxLength: 6
+          description: Route
+        DeliveryBlockReason:
+          type: string
+          maxLength: 2
+          description: Delivery block reason
+        DeliveryPriority:
+          type: string
+          maxLength: 2
+          description: Delivery priority
+        CreationDate:
+          type: string
+          format: date
+          description: Date the delivery was created
+        CreationTime:
+          type: string
+          description: Time the delivery was created (PT format)
+        CreatedByUser:
+          type: string
+          maxLength: 12
+          description: User who created the delivery
+        ActualGoodsMovementDate:
+          type: string
+          format: date
+          description: Actual goods movement date
+        ActualGoodsMovementTime:
+          type: string
+          description: Actual goods movement time
+        GoodsIssueOrReceiptSlipNumber:
+          type: string
+          maxLength: 10
+          description: Material document number for goods movement
+        BillingDocumentDate:
+          type: string
+          format: date
+          description: Billing date
+        CompleteDeliveryIsDefined:
+          type: boolean
+          description: Complete delivery flag
+        OverallDelivConfStatus:
+          type: string
+          maxLength: 1
+          description: Overall delivery confirmation status
+        OverallGoodsMovementStatus:
+          type: string
+          maxLength: 1
+          description: Overall goods movement status
+        OverallPackingStatus:
+          type: string
+          maxLength: 1
+          description: Overall packing status
+        OverallPickingConfStatus:
+          type: string
+          maxLength: 1
+          description: Overall picking/putaway confirmation status
+        OverallPickingStatus:
+          type: string
+          maxLength: 1
+          description: Overall picking status
+        TotalNumberOfPackage:
+          type: string
+          description: Total number of packages
+        TransportationPlanningDate:
+          type: string
+          format: date
+          description: Transportation planning date
+    OutbDeliveryHeaderCreate:
+      type: object
+      description: Outbound delivery creation payload
+      properties:
+        DeliveryDocumentType:
+          type: string
+          maxLength: 4
+        ShippingPoint:
+          type: string
+          maxLength: 4
+        SoldToParty:
+          type: string
+          maxLength: 10
+        DeliveryDate:
+          type: string
+          format: date
+        to_DeliveryDocumentItem:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/OutbDeliveryItemCreate'
+    OutbDeliveryHeaderUpdate:
+      type: object
+      description: Outbound delivery header update payload
+      properties:
+        DeliveryDate:
+          type: string
+          format: date
+        DeliveryBlockReason:
+          type: string
+          maxLength: 2
+        ActualDeliveryRoute:
+          type: string
+          maxLength: 6
+        DeliveryPriority:
+          type: string
+          maxLength: 2
+    OutbDeliveryItem:
+      type: object
+      description: Outbound delivery item entity (A_OutbDeliveryItem)
+      properties:
+        DeliveryDocument:
+          type: string
+          maxLength: 10
+          description: Delivery document number
+        DeliveryDocumentItem:
+          type: string
+          maxLength: 6
+          description: Delivery item number
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number
+        MaterialGroup:
+          type: string
+          maxLength: 9
+          description: Material group
+        Plant:
+          type: string
+          maxLength: 4
+          description: Plant
+        StorageLocation:
+          type: string
+          maxLength: 4
+          description: Storage location
+        Batch:
+          type: string
+          maxLength: 10
+          description: Batch number
+        ActualDeliveryQuantity:
+          type: string
+          description: Actual quantity delivered in sales units
+        DeliveryQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Sales unit
+        ItemNetWeight:
+          type: string
+          description: Net weight of the item
+        ItemGrossWeight:
+          type: string
+          description: Gross weight of the item
+        ItemWeightUnit:
+          type: string
+          maxLength: 3
+          description: Weight unit
+        ItemVolume:
+          type: string
+          description: Volume of the item
+        ItemVolumeUnit:
+          type: string
+          maxLength: 3
+          description: Volume unit
+        ReferenceSDDocument:
+          type: string
+          maxLength: 10
+          description: Reference sales document (sales order number)
+        ReferenceSDDocumentItem:
+          type: string
+          maxLength: 6
+          description: Reference sales document item
+        PickedQuantityInSalesUnit:
+          type: string
+          description: Picked quantity
+        PickingConfirmationStatus:
+          type: string
+          maxLength: 1
+          description: Picking confirmation status
+        GoodsMovementStatus:
+          type: string
+          maxLength: 1
+          description: Goods movement status
+    OutbDeliveryItemCreate:
+      type: object
+      description: Outbound delivery item creation payload
+      properties:
+        Material:
+          type: string
+          maxLength: 40
+        Plant:
+          type: string
+          maxLength: 4
+        ActualDeliveryQuantity:
+          type: string
+        DeliveryQuantityUnit:
+          type: string
+          maxLength: 3
+        ReferenceSDDocument:
+          type: string
+          maxLength: 10
+        ReferenceSDDocumentItem:
+          type: string
+          maxLength: 6
+    OutbDeliveryPartner:
+      type: object
+      description: Outbound delivery partner entity (A_OutbDeliveryPartner)
+      properties:
+        PartnerFunction:
+          type: string
+          maxLength: 2
+          description: Partner function
+        SDDocument:
+          type: string
+          maxLength: 10
+          description: Delivery document number
+        Customer:
+          type: string
+          maxLength: 10
+          description: Customer number
+        Supplier:
+          type: string
+          maxLength: 10
+          description: Vendor account number
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

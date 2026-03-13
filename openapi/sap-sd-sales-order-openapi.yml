@@ -1,0 +1,1168 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales Order API
+  description: >-
+    Create, read, update, and delete sales orders in SAP S/4HANA. This OData
+    service (API_SALES_ORDER_SRV) supports full CRUD operations on sales order
+    headers, items, partners, pricing elements, schedule lines, billing plans,
+    and text elements. Sales orders are created using deep insert requests that
+    include header and related entity data in a single call.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+  x-logo:
+    url: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+servers:
+  - url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV
+    description: SAP S/4HANA Cloud Sandbox
+  - url: https://{host}:{port}/sap/opu/odata/sap/API_SALES_ORDER_SRV
+    description: SAP S/4HANA On-Premise
+    variables:
+      host:
+        default: localhost
+        description: SAP S/4HANA server hostname
+      port:
+        default: '443'
+        description: SAP S/4HANA server port
+security:
+  - basicAuth: []
+  - oauth2: []
+tags:
+  - name: Sales Order Header
+    description: Operations on sales order header entity (A_SalesOrder)
+  - name: Sales Order Item
+    description: Operations on sales order item entity (A_SalesOrderItem)
+  - name: Sales Order Partner
+    description: Operations on sales order header partner entity (A_SalesOrderHeaderPartner)
+  - name: Sales Order Pricing Element
+    description: Operations on sales order pricing elements (A_SalesOrderHeaderPrElement)
+  - name: Sales Order Schedule Line
+    description: Operations on sales order schedule lines (A_SalesOrderScheduleLine)
+  - name: Sales Order Text
+    description: Operations on sales order text elements (A_SalesOrderText)
+paths:
+  /A_SalesOrder:
+    get:
+      operationId: listSalesOrders
+      summary: Retrieve a list of sales orders
+      description: >-
+        Returns a collection of sales order headers with support for OData query
+        options including $filter, $select, $expand, $top, $skip, $orderby,
+        and $inlinecount. Use $expand to include related items, partners,
+        pricing elements, and other sub-entities.
+      tags:
+        - Sales Order Header
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved sales orders
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SalesOrder'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createSalesOrder
+      summary: Create a new sales order
+      description: >-
+        Creates a new sales order using a deep insert request. The request body
+        can include header data along with related items, partners, pricing
+        elements, schedule lines, billing plans, and text elements in a single
+        POST operation.
+      tags:
+        - Sales Order Header
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalesOrderCreate'
+      responses:
+        '201':
+          description: Sales order successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SalesOrder'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesOrder('{SalesOrder}'):
+    get:
+      operationId: getSalesOrder
+      summary: Retrieve a single sales order
+      description: >-
+        Returns a single sales order header by its key. Use $expand to include
+        related entities such as items, partners, pricing elements, schedule
+        lines, billing plans, and text elements.
+      tags:
+        - Sales Order Header
+      parameters:
+        - name: SalesOrder
+          in: path
+          required: true
+          description: Sales order number (10 characters)
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the sales order
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SalesOrder'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateSalesOrder
+      summary: Update a sales order
+      description: >-
+        Updates an existing sales order header. Only the fields included in the
+        request body are updated. Requires an If-Match header with the ETag
+        value for optimistic concurrency control.
+      tags:
+        - Sales Order Header
+      parameters:
+        - name: SalesOrder
+          in: path
+          required: true
+          description: Sales order number (10 characters)
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalesOrderUpdate'
+      responses:
+        '204':
+          description: Sales order successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '412':
+          $ref: '#/components/responses/PreconditionFailed'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deleteSalesOrder
+      summary: Delete a sales order
+      description: >-
+        Deletes an existing sales order. Requires an If-Match header with the
+        ETag value for optimistic concurrency control.
+      tags:
+        - Sales Order Header
+      parameters:
+        - name: SalesOrder
+          in: path
+          required: true
+          description: Sales order number (10 characters)
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      responses:
+        '204':
+          description: Sales order successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '412':
+          $ref: '#/components/responses/PreconditionFailed'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesOrder('{SalesOrder}')/to_Item:
+    get:
+      operationId: listSalesOrderItems
+      summary: Retrieve items for a sales order
+      description: >-
+        Returns a collection of line items for the specified sales order.
+        Supports OData query options for filtering, sorting, and pagination.
+      tags:
+        - Sales Order Item
+      parameters:
+        - name: SalesOrder
+          in: path
+          required: true
+          description: Sales order number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved sales order items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SalesOrderItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesOrderItem(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}'):
+    get:
+      operationId: getSalesOrderItem
+      summary: Retrieve a single sales order item
+      description: >-
+        Returns a single sales order item by its composite key (SalesOrder and
+        SalesOrderItem number).
+      tags:
+        - Sales Order Item
+      parameters:
+        - name: SalesOrder
+          in: path
+          required: true
+          description: Sales order number
+          schema:
+            type: string
+            maxLength: 10
+        - name: SalesOrderItem
+          in: path
+          required: true
+          description: Sales order item number (6 characters)
+          schema:
+            type: string
+            maxLength: 6
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the sales order item
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SalesOrderItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateSalesOrderItem
+      summary: Update a sales order item
+      description: >-
+        Updates an existing sales order item. Only the fields included in the
+        request body are updated.
+      tags:
+        - Sales Order Item
+      parameters:
+        - name: SalesOrder
+          in: path
+          required: true
+          description: Sales order number
+          schema:
+            type: string
+            maxLength: 10
+        - name: SalesOrderItem
+          in: path
+          required: true
+          description: Sales order item number
+          schema:
+            type: string
+            maxLength: 6
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalesOrderItemUpdate'
+      responses:
+        '204':
+          description: Sales order item successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deleteSalesOrderItem
+      summary: Delete a sales order item
+      description: >-
+        Deletes an existing sales order item from the specified sales order.
+      tags:
+        - Sales Order Item
+      parameters:
+        - name: SalesOrder
+          in: path
+          required: true
+          description: Sales order number
+          schema:
+            type: string
+            maxLength: 10
+        - name: SalesOrderItem
+          in: path
+          required: true
+          description: Sales order item number
+          schema:
+            type: string
+            maxLength: 6
+        - $ref: '#/components/parameters/ifMatch'
+      responses:
+        '204':
+          description: Sales order item successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesOrder('{SalesOrder}')/to_Partner:
+    get:
+      operationId: listSalesOrderPartners
+      summary: Retrieve partners for a sales order
+      description: >-
+        Returns a collection of business partners associated with the specified
+        sales order header, including sold-to party, ship-to party, bill-to
+        party, and payer.
+      tags:
+        - Sales Order Partner
+      parameters:
+        - name: SalesOrder
+          in: path
+          required: true
+          description: Sales order number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved sales order partners
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SalesOrderHeaderPartner'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesOrder('{SalesOrder}')/to_PricingElement:
+    get:
+      operationId: listSalesOrderPricingElements
+      summary: Retrieve pricing elements for a sales order
+      description: >-
+        Returns a collection of header-level pricing elements (condition records)
+        for the specified sales order.
+      tags:
+        - Sales Order Pricing Element
+      parameters:
+        - name: SalesOrder
+          in: path
+          required: true
+          description: Sales order number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved pricing elements
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SalesOrderPricingElement'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesOrderScheduleLine(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}',ScheduleLine='{ScheduleLine}'):
+    get:
+      operationId: getSalesOrderScheduleLine
+      summary: Retrieve a schedule line
+      description: >-
+        Returns a single schedule line for a sales order item, identified by its
+        composite key of sales order, item, and schedule line number.
+      tags:
+        - Sales Order Schedule Line
+      parameters:
+        - name: SalesOrder
+          in: path
+          required: true
+          description: Sales order number
+          schema:
+            type: string
+            maxLength: 10
+        - name: SalesOrderItem
+          in: path
+          required: true
+          description: Sales order item number
+          schema:
+            type: string
+            maxLength: 6
+        - name: ScheduleLine
+          in: path
+          required: true
+          description: Schedule line number
+          schema:
+            type: string
+            maxLength: 4
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved the schedule line
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SalesOrderScheduleLine'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesOrder('{SalesOrder}')/to_Text:
+    get:
+      operationId: listSalesOrderTexts
+      summary: Retrieve texts for a sales order
+      description: >-
+        Returns a collection of text elements associated with the specified
+        sales order header.
+      tags:
+        - Sales Order Text
+      parameters:
+        - name: SalesOrder
+          in: path
+          required: true
+          description: Sales order number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved sales order texts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SalesOrderText'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Basic authentication with SAP user credentials
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP S/4HANA Cloud
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_SALES_ORDER_SRV: Access to Sales Order API
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      description: Number of records to skip
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Sort order for the result set
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of navigation properties to expand
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      description: Include total count of matching resources
+      schema:
+        type: string
+        enum:
+          - allpages
+          - none
+    ifMatch:
+      name: If-Match
+      in: header
+      description: ETag value for optimistic concurrency control
+      required: true
+      schema:
+        type: string
+  schemas:
+    SalesOrder:
+      type: object
+      description: Sales order header entity (A_SalesOrder)
+      properties:
+        SalesOrder:
+          type: string
+          maxLength: 10
+          description: Sales order number
+        SalesOrderType:
+          type: string
+          maxLength: 4
+          description: Sales document type
+        SalesOrganization:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        DistributionChannel:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+          description: Division
+        SalesGroup:
+          type: string
+          maxLength: 3
+          description: Sales group
+        SalesOffice:
+          type: string
+          maxLength: 4
+          description: Sales office
+        SalesDistrict:
+          type: string
+          maxLength: 6
+          description: Sales district
+        SoldToParty:
+          type: string
+          maxLength: 10
+          description: Sold-to party customer number
+        CreationDate:
+          type: string
+          format: date
+          description: Date on which the sales order was created
+        CreatedByUser:
+          type: string
+          maxLength: 12
+          description: User who created the sales order
+        LastChangeDate:
+          type: string
+          format: date
+          description: Date of last change
+        LastChangeDateTime:
+          type: string
+          format: date-time
+          description: Timestamp of last change (UTC)
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+          description: Customer purchase order number
+        CustomerPurchaseOrderType:
+          type: string
+          maxLength: 4
+          description: Customer purchase order type
+        CustomerPurchaseOrderDate:
+          type: string
+          format: date
+          description: Customer purchase order date
+        SalesOrderDate:
+          type: string
+          format: date
+          description: Document date of the sales order
+        TotalNetAmount:
+          type: string
+          description: Net value of the sales order in document currency
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: SD document currency
+        SDDocumentReason:
+          type: string
+          maxLength: 3
+          description: Order reason
+        PricingDate:
+          type: string
+          format: date
+          description: Date for pricing and exchange rate determination
+        RequestedDeliveryDate:
+          type: string
+          format: date
+          description: Requested delivery date
+        ShippingCondition:
+          type: string
+          maxLength: 2
+          description: Shipping conditions
+        CompleteDeliveryIsDefined:
+          type: boolean
+          description: Complete delivery flag
+        ShippingType:
+          type: string
+          maxLength: 2
+          description: Shipping type
+        HeaderBillingBlockReason:
+          type: string
+          maxLength: 2
+          description: Billing block for the header
+        DeliveryBlockReason:
+          type: string
+          maxLength: 2
+          description: Delivery block for the header
+        IncotermsClassification:
+          type: string
+          maxLength: 3
+          description: Incoterms (part 1)
+        IncotermsTransferLocation:
+          type: string
+          maxLength: 28
+          description: Incoterms (part 2)
+        IncotermsLocation1:
+          type: string
+          maxLength: 70
+          description: Incoterms location 1
+        IncotermsLocation2:
+          type: string
+          maxLength: 70
+          description: Incoterms location 2
+        PaymentMethod:
+          type: string
+          maxLength: 1
+          description: Payment method
+        CustomerPaymentTerms:
+          type: string
+          maxLength: 4
+          description: Terms of payment key
+        OverallSDProcessStatus:
+          type: string
+          maxLength: 1
+          description: Overall processing status of the sales order
+        TotalCreditCheckStatus:
+          type: string
+          maxLength: 1
+          description: Overall status of credit checks
+        OverallDeliveryStatus:
+          type: string
+          maxLength: 1
+          description: Overall delivery status
+        OverallBillingStatus:
+          type: string
+          maxLength: 1
+          description: Overall billing status
+    SalesOrderCreate:
+      type: object
+      description: Sales order creation payload with deep insert support
+      required:
+        - SalesOrderType
+        - SalesOrganization
+        - DistributionChannel
+        - OrganizationDivision
+      properties:
+        SalesOrderType:
+          type: string
+          maxLength: 4
+          description: Sales document type
+        SalesOrganization:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        DistributionChannel:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+          description: Division
+        SoldToParty:
+          type: string
+          maxLength: 10
+          description: Sold-to party customer number
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+          description: Customer purchase order number
+        SalesOrderDate:
+          type: string
+          format: date
+          description: Document date
+        RequestedDeliveryDate:
+          type: string
+          format: date
+          description: Requested delivery date
+        ShippingCondition:
+          type: string
+          maxLength: 2
+          description: Shipping conditions
+        CustomerPaymentTerms:
+          type: string
+          maxLength: 4
+          description: Terms of payment key
+        IncotermsClassification:
+          type: string
+          maxLength: 3
+          description: Incoterms (part 1)
+        to_Item:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/SalesOrderItemCreate'
+        to_Partner:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/SalesOrderHeaderPartner'
+    SalesOrderUpdate:
+      type: object
+      description: Sales order header update payload
+      properties:
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+        RequestedDeliveryDate:
+          type: string
+          format: date
+        ShippingCondition:
+          type: string
+          maxLength: 2
+        HeaderBillingBlockReason:
+          type: string
+          maxLength: 2
+        DeliveryBlockReason:
+          type: string
+          maxLength: 2
+        CustomerPaymentTerms:
+          type: string
+          maxLength: 4
+        IncotermsClassification:
+          type: string
+          maxLength: 3
+    SalesOrderItem:
+      type: object
+      description: Sales order item entity (A_SalesOrderItem)
+      properties:
+        SalesOrder:
+          type: string
+          maxLength: 10
+          description: Sales order number
+        SalesOrderItem:
+          type: string
+          maxLength: 6
+          description: Sales order item number
+        SalesOrderItemCategory:
+          type: string
+          maxLength: 4
+          description: Sales document item category
+        SalesOrderItemText:
+          type: string
+          maxLength: 40
+          description: Short text for the sales order item
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number
+        MaterialByCustomer:
+          type: string
+          maxLength: 35
+          description: Material number used by customer
+        PricingDate:
+          type: string
+          format: date
+          description: Pricing date
+        RequestedQuantity:
+          type: string
+          description: Cumulative order quantity in sales units
+        RequestedQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Sales unit
+        NetAmount:
+          type: string
+          description: Net value of the item in document currency
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: SD document currency
+        MaterialGroup:
+          type: string
+          maxLength: 9
+          description: Material group
+        Batch:
+          type: string
+          maxLength: 10
+          description: Batch number
+        Plant:
+          type: string
+          maxLength: 4
+          description: Plant (delivering)
+        StorageLocation:
+          type: string
+          maxLength: 4
+          description: Storage location
+        ShippingPoint:
+          type: string
+          maxLength: 4
+          description: Shipping point / receiving point
+        DeliveryGroup:
+          type: string
+          maxLength: 3
+          description: Delivery group
+        ItemBillingBlockReason:
+          type: string
+          maxLength: 2
+          description: Billing block for the item
+        SDProcessStatus:
+          type: string
+          maxLength: 1
+          description: Overall processing status of the item
+        DeliveryStatus:
+          type: string
+          maxLength: 1
+          description: Delivery status
+        OrderRelatedBillingStatus:
+          type: string
+          maxLength: 1
+          description: Billing status
+    SalesOrderItemCreate:
+      type: object
+      description: Sales order item creation payload
+      properties:
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number
+        RequestedQuantity:
+          type: string
+          description: Order quantity
+        RequestedQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Sales unit
+        Plant:
+          type: string
+          maxLength: 4
+          description: Plant
+        SalesOrderItemText:
+          type: string
+          maxLength: 40
+          description: Item text
+    SalesOrderItemUpdate:
+      type: object
+      description: Sales order item update payload
+      properties:
+        RequestedQuantity:
+          type: string
+          description: Order quantity
+        Plant:
+          type: string
+          maxLength: 4
+        StorageLocation:
+          type: string
+          maxLength: 4
+        ItemBillingBlockReason:
+          type: string
+          maxLength: 2
+        SalesOrderItemText:
+          type: string
+          maxLength: 40
+    SalesOrderHeaderPartner:
+      type: object
+      description: Sales order header partner entity (A_SalesOrderHeaderPartner)
+      properties:
+        SalesOrder:
+          type: string
+          maxLength: 10
+          description: Sales order number
+        PartnerFunction:
+          type: string
+          maxLength: 2
+          description: Partner function (AG=Sold-to, WE=Ship-to, RE=Bill-to, RG=Payer)
+        Customer:
+          type: string
+          maxLength: 10
+          description: Customer number
+        Supplier:
+          type: string
+          maxLength: 10
+          description: Vendor account number
+        Personnel:
+          type: string
+          maxLength: 8
+          description: Personnel number
+        ContactPerson:
+          type: string
+          maxLength: 10
+          description: Contact person number
+    SalesOrderPricingElement:
+      type: object
+      description: Sales order header pricing element (A_SalesOrderHeaderPrElement)
+      properties:
+        SalesOrder:
+          type: string
+          maxLength: 10
+          description: Sales order number
+        PricingProcedureStep:
+          type: string
+          maxLength: 3
+          description: Step number in pricing procedure
+        PricingProcedureCounter:
+          type: string
+          maxLength: 3
+          description: Condition counter
+        ConditionType:
+          type: string
+          maxLength: 4
+          description: Condition type (e.g., PR00 for price, K004 for discount)
+        ConditionRateValue:
+          type: string
+          description: Condition rate or amount
+        ConditionCurrency:
+          type: string
+          maxLength: 5
+          description: Condition currency
+        ConditionQuantity:
+          type: string
+          description: Condition pricing unit
+        ConditionQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Condition unit
+        ConditionValue:
+          type: string
+          description: Condition value
+    SalesOrderScheduleLine:
+      type: object
+      description: Sales order schedule line entity (A_SalesOrderScheduleLine)
+      properties:
+        SalesOrder:
+          type: string
+          maxLength: 10
+          description: Sales order number
+        SalesOrderItem:
+          type: string
+          maxLength: 6
+          description: Sales order item number
+        ScheduleLine:
+          type: string
+          maxLength: 4
+          description: Schedule line number
+        RequestedDeliveryDate:
+          type: string
+          format: date
+          description: Schedule line delivery date
+        ConfirmedDeliveryDate:
+          type: string
+          format: date
+          description: Confirmed delivery date
+        OrderQuantityInSalesUnit:
+          type: string
+          description: Order quantity in sales unit
+        ConfirmedOrderQuantity:
+          type: string
+          description: Confirmed quantity
+        ScheduleLineOrderQuantity:
+          type: string
+          description: Scheduled order quantity
+        DeliveredQuantityInOrderQtyUnit:
+          type: string
+          description: Quantity already delivered
+    SalesOrderText:
+      type: object
+      description: Sales order text entity (A_SalesOrderText)
+      properties:
+        SalesOrder:
+          type: string
+          maxLength: 10
+          description: Sales order number
+        Language:
+          type: string
+          maxLength: 2
+          description: Language key
+        LongTextID:
+          type: string
+          maxLength: 4
+          description: Text ID
+        LongText:
+          type: string
+          description: Long text content
+    Error:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+                  description: Error message text
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters or payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or credentials invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Insufficient authorization for the requested operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Requested resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    PreconditionFailed:
+      description: ETag mismatch - resource was modified by another process
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

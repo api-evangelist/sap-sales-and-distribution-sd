@@ -1,0 +1,642 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales Quotation API
+  description: >-
+    Create, read, update, and delete sales quotations in SAP S/4HANA. This
+    OData service (API_SALES_QUOTATION_SRV) supports the complete quotation
+    lifecycle from creation through approval and conversion to sales orders.
+    Quotations include header, item, partner, pricing element, and text entities.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+  - url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_QUOTATION_SRV
+    description: SAP S/4HANA Cloud Sandbox
+  - url: https://{host}:{port}/sap/opu/odata/sap/API_SALES_QUOTATION_SRV
+    description: SAP S/4HANA On-Premise
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '443'
+security:
+  - basicAuth: []
+  - oauth2: []
+tags:
+  - name: Sales Quotation
+    description: Operations on sales quotation header (A_SalesQuotation)
+  - name: Sales Quotation Item
+    description: Operations on sales quotation items (A_SalesQuotationItem)
+  - name: Sales Quotation Partner
+    description: Operations on sales quotation partners (A_SalesQuotationPartner)
+paths:
+  /A_SalesQuotation:
+    get:
+      operationId: listSalesQuotations
+      summary: Retrieve a list of sales quotations
+      description: >-
+        Returns a collection of sales quotation headers. Supports OData query
+        options for filtering by quotation type, sales organization, sold-to
+        party, validity dates, and status.
+      tags:
+        - Sales Quotation
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved sales quotations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SalesQuotation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createSalesQuotation
+      summary: Create a new sales quotation
+      description: >-
+        Creates a new sales quotation using a deep insert request with header,
+        items, partners, pricing elements, and texts.
+      tags:
+        - Sales Quotation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalesQuotationCreate'
+      responses:
+        '201':
+          description: Sales quotation successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SalesQuotation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesQuotation('{SalesQuotation}'):
+    get:
+      operationId: getSalesQuotation
+      summary: Retrieve a single sales quotation
+      description: >-
+        Returns a single sales quotation header by its key.
+      tags:
+        - Sales Quotation
+      parameters:
+        - name: SalesQuotation
+          in: path
+          required: true
+          description: Sales quotation number (10 characters)
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the sales quotation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SalesQuotation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateSalesQuotation
+      summary: Update a sales quotation
+      description: >-
+        Updates an existing sales quotation header.
+      tags:
+        - Sales Quotation
+      parameters:
+        - name: SalesQuotation
+          in: path
+          required: true
+          description: Sales quotation number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalesQuotationUpdate'
+      responses:
+        '204':
+          description: Sales quotation successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deleteSalesQuotation
+      summary: Delete a sales quotation
+      description: >-
+        Deletes an existing sales quotation.
+      tags:
+        - Sales Quotation
+      parameters:
+        - name: SalesQuotation
+          in: path
+          required: true
+          description: Sales quotation number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/ifMatch'
+      responses:
+        '204':
+          description: Sales quotation successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesQuotation('{SalesQuotation}')/to_Item:
+    get:
+      operationId: listSalesQuotationItems
+      summary: Retrieve items for a sales quotation
+      description: >-
+        Returns a collection of line items for the specified sales quotation.
+      tags:
+        - Sales Quotation Item
+      parameters:
+        - name: SalesQuotation
+          in: path
+          required: true
+          description: Sales quotation number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved quotation items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SalesQuotationItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesQuotation('{SalesQuotation}')/to_Partner:
+    get:
+      operationId: listSalesQuotationPartners
+      summary: Retrieve partners for a sales quotation
+      description: >-
+        Returns a collection of business partners associated with the quotation.
+      tags:
+        - Sales Quotation Partner
+      parameters:
+        - name: SalesQuotation
+          in: path
+          required: true
+          description: Sales quotation number
+          schema:
+            type: string
+            maxLength: 10
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved quotation partners
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SalesQuotationPartner'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_SALES_QUOTATION_SRV: Access to Sales Quotation API
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      description: Number of records to skip
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Sort order
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated properties to include
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      description: Navigation properties to expand
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      description: Include total count
+      schema:
+        type: string
+        enum:
+          - allpages
+          - none
+    ifMatch:
+      name: If-Match
+      in: header
+      description: ETag value for concurrency control
+      required: true
+      schema:
+        type: string
+  schemas:
+    SalesQuotation:
+      type: object
+      description: Sales quotation header entity (A_SalesQuotation)
+      properties:
+        SalesQuotation:
+          type: string
+          maxLength: 10
+          description: Sales quotation number
+        SalesQuotationType:
+          type: string
+          maxLength: 4
+          description: Sales document type
+        SalesOrganization:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        DistributionChannel:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+          description: Division
+        SalesGroup:
+          type: string
+          maxLength: 3
+          description: Sales group
+        SalesOffice:
+          type: string
+          maxLength: 4
+          description: Sales office
+        SoldToParty:
+          type: string
+          maxLength: 10
+          description: Sold-to party
+        CreationDate:
+          type: string
+          format: date
+          description: Document creation date
+        LastChangeDate:
+          type: string
+          format: date
+          description: Last change date
+        SalesQuotationDate:
+          type: string
+          format: date
+          description: Document date
+        BindingPeriodValidityStartDate:
+          type: string
+          format: date
+          description: Quotation valid-from date
+        BindingPeriodValidityEndDate:
+          type: string
+          format: date
+          description: Quotation valid-to date
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+          description: Customer purchase order number
+        TotalNetAmount:
+          type: string
+          description: Net value of the quotation in document currency
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: SD document currency
+        SDDocumentReason:
+          type: string
+          maxLength: 3
+          description: Order reason
+        PricingDate:
+          type: string
+          format: date
+          description: Pricing date
+        RequestedDeliveryDate:
+          type: string
+          format: date
+          description: Requested delivery date
+        ShippingCondition:
+          type: string
+          maxLength: 2
+          description: Shipping conditions
+        ShippingType:
+          type: string
+          maxLength: 2
+          description: Shipping type
+        HeaderBillingBlockReason:
+          type: string
+          maxLength: 2
+          description: Billing block
+        DeliveryBlockReason:
+          type: string
+          maxLength: 2
+          description: Delivery block
+        IncotermsClassification:
+          type: string
+          maxLength: 3
+          description: Incoterms (part 1)
+        CustomerPaymentTerms:
+          type: string
+          maxLength: 4
+          description: Terms of payment key
+        OverallSDProcessStatus:
+          type: string
+          maxLength: 1
+          description: Overall processing status
+        ApprovalRequestReason:
+          type: string
+          maxLength: 4
+          description: Approval request reason
+    SalesQuotationCreate:
+      type: object
+      description: Sales quotation creation payload
+      required:
+        - SalesQuotationType
+        - SalesOrganization
+        - DistributionChannel
+        - OrganizationDivision
+      properties:
+        SalesQuotationType:
+          type: string
+          maxLength: 4
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+        SoldToParty:
+          type: string
+          maxLength: 10
+        SalesQuotationDate:
+          type: string
+          format: date
+        BindingPeriodValidityStartDate:
+          type: string
+          format: date
+        BindingPeriodValidityEndDate:
+          type: string
+          format: date
+        RequestedDeliveryDate:
+          type: string
+          format: date
+        CustomerPaymentTerms:
+          type: string
+          maxLength: 4
+        to_Item:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/SalesQuotationItemCreate'
+    SalesQuotationUpdate:
+      type: object
+      description: Sales quotation update payload
+      properties:
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+        RequestedDeliveryDate:
+          type: string
+          format: date
+        BindingPeriodValidityEndDate:
+          type: string
+          format: date
+        HeaderBillingBlockReason:
+          type: string
+          maxLength: 2
+        DeliveryBlockReason:
+          type: string
+          maxLength: 2
+    SalesQuotationItem:
+      type: object
+      description: Sales quotation item entity (A_SalesQuotationItem)
+      properties:
+        SalesQuotation:
+          type: string
+          maxLength: 10
+          description: Sales quotation number
+        SalesQuotationItem:
+          type: string
+          maxLength: 6
+          description: Item number
+        SalesQuotationItemCategory:
+          type: string
+          maxLength: 4
+          description: Item category
+        SalesQuotationItemText:
+          type: string
+          maxLength: 40
+          description: Item description
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number
+        RequestedQuantity:
+          type: string
+          description: Order quantity
+        RequestedQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Sales unit
+        NetAmount:
+          type: string
+          description: Net value
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: Document currency
+        MaterialGroup:
+          type: string
+          maxLength: 9
+          description: Material group
+        Plant:
+          type: string
+          maxLength: 4
+          description: Plant
+    SalesQuotationItemCreate:
+      type: object
+      description: Sales quotation item creation payload
+      properties:
+        Material:
+          type: string
+          maxLength: 40
+        RequestedQuantity:
+          type: string
+        RequestedQuantityUnit:
+          type: string
+          maxLength: 3
+        Plant:
+          type: string
+          maxLength: 4
+    SalesQuotationPartner:
+      type: object
+      description: Sales quotation partner entity (A_SalesQuotationPartner)
+      properties:
+        SalesQuotation:
+          type: string
+          maxLength: 10
+          description: Sales quotation number
+        PartnerFunction:
+          type: string
+          maxLength: 2
+          description: Partner function
+        Customer:
+          type: string
+          maxLength: 10
+          description: Customer number
+        Supplier:
+          type: string
+          maxLength: 10
+          description: Vendor account number
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

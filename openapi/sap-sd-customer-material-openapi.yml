@@ -1,0 +1,432 @@
+openapi: 3.1.0
+info:
+  title: SAP Customer Material API
+  description: >-
+    Manage customer-material information records in SAP S/4HANA. This OData
+    service (API_CUSTOMER_MATERIAL_SRV) links customer-specific material
+    numbers and descriptions to internal material numbers. These records
+    support the sales process by mapping customer part numbers to SAP material
+    master records.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+  - url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_MATERIAL_SRV
+    description: SAP S/4HANA Cloud Sandbox
+  - url: https://{host}:{port}/sap/opu/odata/sap/API_CUSTOMER_MATERIAL_SRV
+    description: SAP S/4HANA On-Premise
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '443'
+security:
+  - basicAuth: []
+  - oauth2: []
+tags:
+  - name: Customer Material
+    description: Operations on customer material info records (A_CustomerMaterial)
+paths:
+  /A_CustomerMaterial:
+    get:
+      operationId: listCustomerMaterials
+      summary: Retrieve a list of customer material records
+      description: >-
+        Returns a collection of customer-material information records. Supports
+        filtering by customer number, material, sales organization, and
+        distribution channel.
+      tags:
+        - Customer Material
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved customer material records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/CustomerMaterial'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createCustomerMaterial
+      summary: Create a customer material record
+      description: >-
+        Creates a new customer-material information record linking a customer
+        part number to an internal SAP material number.
+      tags:
+        - Customer Material
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerMaterialCreate'
+      responses:
+        '201':
+          description: Customer material record successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/CustomerMaterial'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_CustomerMaterial(SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Customer='{Customer}',Material='{Material}'):
+    get:
+      operationId: getCustomerMaterial
+      summary: Retrieve a single customer material record
+      description: >-
+        Returns a single customer-material information record by its composite
+        key.
+      tags:
+        - Customer Material
+      parameters:
+        - name: SalesOrganization
+          in: path
+          required: true
+          description: Sales organization
+          schema:
+            type: string
+            maxLength: 4
+        - name: DistributionChannel
+          in: path
+          required: true
+          description: Distribution channel
+          schema:
+            type: string
+            maxLength: 2
+        - name: Customer
+          in: path
+          required: true
+          description: Customer number
+          schema:
+            type: string
+            maxLength: 10
+        - name: Material
+          in: path
+          required: true
+          description: Material number
+          schema:
+            type: string
+            maxLength: 40
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved the customer material record
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/CustomerMaterial'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateCustomerMaterial
+      summary: Update a customer material record
+      description: >-
+        Updates an existing customer-material information record.
+      tags:
+        - Customer Material
+      parameters:
+        - name: SalesOrganization
+          in: path
+          required: true
+          schema:
+            type: string
+            maxLength: 4
+        - name: DistributionChannel
+          in: path
+          required: true
+          schema:
+            type: string
+            maxLength: 2
+        - name: Customer
+          in: path
+          required: true
+          schema:
+            type: string
+            maxLength: 10
+        - name: Material
+          in: path
+          required: true
+          schema:
+            type: string
+            maxLength: 40
+        - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerMaterialUpdate'
+      responses:
+        '204':
+          description: Customer material record successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deleteCustomerMaterial
+      summary: Delete a customer material record
+      description: >-
+        Deletes an existing customer-material information record.
+      tags:
+        - Customer Material
+      parameters:
+        - name: SalesOrganization
+          in: path
+          required: true
+          schema:
+            type: string
+            maxLength: 4
+        - name: DistributionChannel
+          in: path
+          required: true
+          schema:
+            type: string
+            maxLength: 2
+        - name: Customer
+          in: path
+          required: true
+          schema:
+            type: string
+            maxLength: 10
+        - name: Material
+          in: path
+          required: true
+          schema:
+            type: string
+            maxLength: 40
+        - $ref: '#/components/parameters/ifMatch'
+      responses:
+        '204':
+          description: Customer material record successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_CUSTOMER_MATERIAL_SRV: Access to Customer Material API
+  parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+          - allpages
+          - none
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+  schemas:
+    CustomerMaterial:
+      type: object
+      description: Customer material info record entity (A_CustomerMaterial)
+      properties:
+        SalesOrganization:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        DistributionChannel:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        Customer:
+          type: string
+          maxLength: 10
+          description: Customer number
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number (internal)
+        MaterialByCustomer:
+          type: string
+          maxLength: 35
+          description: Customer material number
+        MaterialDescriptionByCustomer:
+          type: string
+          maxLength: 40
+          description: Customer description of the material
+        Plant:
+          type: string
+          maxLength: 4
+          description: Plant
+        DeliveryPriority:
+          type: string
+          maxLength: 2
+          description: Delivery priority
+        MinDeliveryQtyInBaseUnit:
+          type: string
+          description: Minimum delivery quantity
+        BaseUnit:
+          type: string
+          maxLength: 3
+          description: Base unit of measure
+        PartialDeliveryIsAllowed:
+          type: string
+          maxLength: 1
+          description: Partial delivery allowed flag
+    CustomerMaterialCreate:
+      type: object
+      required:
+        - SalesOrganization
+        - DistributionChannel
+        - Customer
+        - Material
+      properties:
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        Customer:
+          type: string
+          maxLength: 10
+        Material:
+          type: string
+          maxLength: 40
+        MaterialByCustomer:
+          type: string
+          maxLength: 35
+        MaterialDescriptionByCustomer:
+          type: string
+          maxLength: 40
+        Plant:
+          type: string
+          maxLength: 4
+    CustomerMaterialUpdate:
+      type: object
+      properties:
+        MaterialByCustomer:
+          type: string
+          maxLength: 35
+        MaterialDescriptionByCustomer:
+          type: string
+          maxLength: 40
+        DeliveryPriority:
+          type: string
+          maxLength: 2
+        Plant:
+          type: string
+          maxLength: 4
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
