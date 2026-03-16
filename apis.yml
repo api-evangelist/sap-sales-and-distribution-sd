@@ -1,5 +1,5 @@
 specificationVersion: '0.18'
-name: SAP Sales and Distribution (SD) API
+name: SAP Sales and Distribution (SD)
 description: >-
   APIs for SAP Sales and Distribution module covering sales orders, pricing,
   delivery, billing, and customer management processes within SAP S/4HANA.
