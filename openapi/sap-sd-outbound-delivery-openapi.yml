@@ -34,8 +34,6 @@ tags:
     description: Operations on outbound delivery items (A_OutbDeliveryItem)
   - name: Outbound Delivery Partner
     description: Operations on outbound delivery partners (A_OutbDeliveryPartner)
-  - name: Outbound Delivery Address
-    description: Operations on outbound delivery addresses (A_OutbDeliveryAddress)
 paths:
   /A_OutbDeliveryHeader:
     get:

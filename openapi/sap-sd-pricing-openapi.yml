@@ -27,14 +27,10 @@ security:
   - basicAuth: []
   - oauth2: []
 tags:
-  - name: Pricing Condition Record
-    description: Operations on pricing condition records (A_SlsPrcgConditionRecord)
   - name: Condition Record Validity
     description: Operations on condition record validity (A_SlsPrcgCndnRecdValidity)
-  - name: Condition Record Scale
-    description: Operations on pricing scales (A_SlsPrcgCndnRecordScale)
-  - name: Condition Record Supplement
-    description: Operations on condition supplements (A_SlsPrcgCndnRecdSuplmnt)
+  - name: Pricing Condition Record
+    description: Operations on pricing condition records (A_SlsPrcgConditionRecord)
 paths:
   /A_SlsPrcgConditionRecord:
     get:

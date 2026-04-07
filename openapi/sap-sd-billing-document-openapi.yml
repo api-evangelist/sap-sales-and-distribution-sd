@@ -34,8 +34,6 @@ tags:
     description: Operations on billing document items (A_BillingDocumentItem)
   - name: Billing Document Partner
     description: Operations on billing document partners (A_BillingDocumentPartner)
-  - name: Billing Document Pricing Element
-    description: Operations on billing document pricing elements
 paths:
   /A_BillingDocument:
     get:

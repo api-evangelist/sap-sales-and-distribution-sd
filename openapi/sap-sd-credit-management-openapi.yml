@@ -30,10 +30,10 @@ security:
 tags:
   - name: Credit Account
     description: Operations on credit management accounts
-  - name: Credit Limit
-    description: Operations on customer credit limits
   - name: Credit Exposure
     description: Operations on credit exposure data
+  - name: Credit Limit
+    description: Operations on customer credit limits
 paths:
   /A_CrdtMgmtBusinessPartner:
     get:

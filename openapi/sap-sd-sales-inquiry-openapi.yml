@@ -31,8 +31,6 @@ tags:
     description: Operations on sales inquiry header (A_SalesInquiry)
   - name: Sales Inquiry Item
     description: Operations on sales inquiry items (A_SalesInquiryItem)
-  - name: Sales Inquiry Partner
-    description: Operations on sales inquiry partners
 paths:
   /A_SalesInquiry:
     get:

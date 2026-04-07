@@ -27,12 +27,12 @@ security:
   - basicAuth: []
   - oauth2: []
 tags:
+  - name: Schedule Line
+    description: Operations on delivery schedule lines
   - name: Scheduling Agreement
     description: Operations on scheduling agreement header
   - name: Scheduling Agreement Item
     description: Operations on scheduling agreement items
-  - name: Schedule Line
-    description: Operations on delivery schedule lines
 paths:
   /A_SchAgrmtHeader:
     get:

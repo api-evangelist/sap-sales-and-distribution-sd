@@ -32,8 +32,6 @@ tags:
     description: Operations on credit memo request header (A_CreditMemoRequest)
   - name: Credit Memo Request Item
     description: Operations on credit memo request items (A_CreditMemoReqItem)
-  - name: Credit Memo Request Partner
-    description: Operations on credit memo request partners
 paths:
   /A_CreditMemoRequest:
     get:
