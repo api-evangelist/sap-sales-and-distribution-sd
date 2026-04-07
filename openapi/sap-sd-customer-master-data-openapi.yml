@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: SAP Customer Master Data (Business Partner) API
+  title: SAP Sales and Distribution (SD) SAP Customer Master Data (Business Partner) API
   description: >-
     Manage customer master data including business partner records, addresses,
     contact information, bank details, tax numbers, and customer-specific
@@ -41,7 +41,7 @@ paths:
   /A_BusinessPartner:
     get:
       operationId: listBusinessPartners
-      summary: Retrieve a list of business partners
+      summary: SAP Sales and Distribution (SD) Retrieve a list of business partners
       description: >-
         Returns a collection of business partner records. Use OData query options
         to filter by category, name, or other attributes. Supports $expand for
@@ -79,7 +79,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createBusinessPartner
-      summary: Create a new business partner
+      summary: SAP Sales and Distribution (SD) Create a new business partner
       description: >-
         Creates a new business partner record. Supports deep insert with
         addresses, roles, tax numbers, and bank accounts in a single request.
@@ -110,7 +110,7 @@ paths:
   /A_BusinessPartner('{BusinessPartner}'):
     get:
       operationId: getBusinessPartner
-      summary: Retrieve a single business partner
+      summary: SAP Sales and Distribution (SD) Retrieve a single business partner
       description: >-
         Returns a single business partner record by its key. Use $expand to
         include related addresses, roles, tax numbers, and bank accounts.
@@ -144,7 +144,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateBusinessPartner
-      summary: Update a business partner
+      summary: SAP Sales and Distribution (SD) Update a business partner
       description: >-
         Updates an existing business partner record. Only fields included in
         the request body are modified.
@@ -179,7 +179,7 @@ paths:
   /A_BusinessPartner('{BusinessPartner}')/to_BusinessPartnerAddress:
     get:
       operationId: listBusinessPartnerAddresses
-      summary: Retrieve addresses for a business partner
+      summary: SAP Sales and Distribution (SD) Retrieve addresses for a business partner
       description: >-
         Returns a collection of address records associated with the specified
         business partner.
@@ -219,7 +219,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createBusinessPartnerAddress
-      summary: Create an address for a business partner
+      summary: SAP Sales and Distribution (SD) Create an address for a business partner
       description: >-
         Creates a new address record for the specified business partner.
       tags:
@@ -257,7 +257,7 @@ paths:
   /A_Customer('{Customer}'):
     get:
       operationId: getCustomer
-      summary: Retrieve customer-specific data
+      summary: SAP Sales and Distribution (SD) Retrieve customer-specific data
       description: >-
         Returns customer-specific data for the specified customer number,
         including payment terms, delivery priority, and account group.
@@ -289,10 +289,10 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /A_CustomerSalesArea(Customer='{Customer}',SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Division='{Division}'):
-    get:
+  ? /A_CustomerSalesArea(Customer='{Customer}',SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Division='{Division}')
+  : get:
       operationId: getCustomerSalesArea
-      summary: Retrieve customer sales area data
+      summary: SAP Sales and Distribution (SD) Retrieve customer sales area data
       description: >-
         Returns sales area-specific data for a customer, including pricing,
         shipping, and billing information specific to the sales organization,

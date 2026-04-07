@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: SAP Inbound Delivery API
+  title: SAP Sales and Distribution (SD) SAP Inbound Delivery API
   description: >-
     Create and manage inbound deliveries in SAP S/4HANA. This OData service
     (API_INBOUND_DELIVERY_SRV_0002) supports creation of inbound deliveries
@@ -36,7 +36,7 @@ paths:
   /A_InbDeliveryHeader:
     get:
       operationId: listInboundDeliveries
-      summary: Retrieve a list of inbound deliveries
+      summary: SAP Sales and Distribution (SD) Retrieve a list of inbound deliveries
       description: >-
         Returns a collection of inbound delivery headers. Supports OData
         query options for filtering by delivery date, vendor, delivery type,
@@ -72,7 +72,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createInboundDelivery
-      summary: Create a new inbound delivery
+      summary: SAP Sales and Distribution (SD) Create a new inbound delivery
       description: >-
         Creates a new inbound delivery with reference to a purchase order
         or other procurement document. Supports deep insert with items.
@@ -103,7 +103,7 @@ paths:
   /A_InbDeliveryHeader('{DeliveryDocument}'):
     get:
       operationId: getInboundDelivery
-      summary: Retrieve a single inbound delivery
+      summary: SAP Sales and Distribution (SD) Retrieve a single inbound delivery
       description: >-
         Returns a single inbound delivery header by its document number.
       tags:
@@ -136,7 +136,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateInboundDelivery
-      summary: Update an inbound delivery
+      summary: SAP Sales and Distribution (SD) Update an inbound delivery
       description: >-
         Updates an existing inbound delivery header.
       tags:
@@ -169,7 +169,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteInboundDelivery
-      summary: Delete an inbound delivery
+      summary: SAP Sales and Distribution (SD) Delete an inbound delivery
       description: >-
         Deletes an existing inbound delivery.
       tags:
@@ -195,7 +195,7 @@ paths:
   /A_InbDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentItem:
     get:
       operationId: listInboundDeliveryItems
-      summary: Retrieve items for an inbound delivery
+      summary: SAP Sales and Distribution (SD) Retrieve items for an inbound delivery
       description: >-
         Returns a collection of items for the specified inbound delivery.
       tags:
@@ -235,7 +235,7 @@ paths:
   /PostGoodsReceipt:
     post:
       operationId: postGoodsReceipt
-      summary: Post goods receipt for an inbound delivery
+      summary: SAP Sales and Distribution (SD) Post goods receipt for an inbound delivery
       description: >-
         Posts goods receipt for the specified inbound delivery, updating
         inventory and creating material documents.

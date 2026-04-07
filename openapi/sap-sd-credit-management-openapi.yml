@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: SAP Credit Management API
+  title: SAP Sales and Distribution (SD) SAP Credit Management API
   description: >-
     Manage customer credit limits, credit exposure, and credit checks in SAP
     S/4HANA. This OData service (API_CREDIT_MANAGEMENT) enables automated
@@ -38,7 +38,7 @@ paths:
   /A_CrdtMgmtBusinessPartner:
     get:
       operationId: listCreditAccounts
-      summary: Retrieve a list of credit management accounts
+      summary: SAP Sales and Distribution (SD) Retrieve a list of credit management accounts
       description: >-
         Returns a collection of credit management business partner accounts
         with credit profile information.
@@ -73,7 +73,7 @@ paths:
   /A_CrdtMgmtBusinessPartner('{BusinessPartner}'):
     get:
       operationId: getCreditAccount
-      summary: Retrieve a single credit management account
+      summary: SAP Sales and Distribution (SD) Retrieve a single credit management account
       description: >-
         Returns credit management data for a single business partner, including
         credit rating, risk class, and credit block status.
@@ -107,7 +107,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateCreditAccount
-      summary: Update a credit management account
+      summary: SAP Sales and Distribution (SD) Update a credit management account
       description: >-
         Updates credit management data for a business partner.
       tags:
@@ -141,7 +141,7 @@ paths:
   /A_CrdtMgmtCreditLimit:
     get:
       operationId: listCreditLimits
-      summary: Retrieve credit limits
+      summary: SAP Sales and Distribution (SD) Retrieve credit limits
       description: >-
         Returns a collection of credit limits for business partners across
         credit control areas and credit segments.
@@ -175,7 +175,7 @@ paths:
   /A_CrdtMgmtCreditLimit(BusinessPartner='{BusinessPartner}',CreditSegment='{CreditSegment}'):
     get:
       operationId: getCreditLimit
-      summary: Retrieve a specific credit limit
+      summary: SAP Sales and Distribution (SD) Retrieve a specific credit limit
       description: >-
         Returns credit limit data for a specific business partner and credit
         segment combination.
@@ -215,7 +215,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateCreditLimit
-      summary: Update a credit limit
+      summary: SAP Sales and Distribution (SD) Update a credit limit
       description: >-
         Updates the credit limit for a specific business partner and credit
         segment.
@@ -257,7 +257,7 @@ paths:
   /A_CrdtMgmtCreditExposure(BusinessPartner='{BusinessPartner}',CreditSegment='{CreditSegment}'):
     get:
       operationId: getCreditExposure
-      summary: Retrieve credit exposure for a business partner
+      summary: SAP Sales and Distribution (SD) Retrieve credit exposure for a business partner
       description: >-
         Returns credit exposure data showing the current credit utilization
         for a specific business partner and credit segment.

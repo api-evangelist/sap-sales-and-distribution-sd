@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: SAP Debit Memo Request API
+  title: SAP Sales and Distribution (SD) SAP Debit Memo Request API
   description: >-
     Create, read, update, and delete debit memo requests in SAP S/4HANA.
     This OData service (API_DEBIT_MEMO_REQUEST_SRV) supports the full lifecycle
@@ -35,7 +35,7 @@ paths:
   /A_DebitMemoRequest:
     get:
       operationId: listDebitMemoRequests
-      summary: Retrieve a list of debit memo requests
+      summary: SAP Sales and Distribution (SD) Retrieve a list of debit memo requests
       description: >-
         Returns a collection of debit memo request headers with support for
         OData query options.
@@ -70,7 +70,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createDebitMemoRequest
-      summary: Create a new debit memo request
+      summary: SAP Sales and Distribution (SD) Create a new debit memo request
       description: >-
         Creates a new debit memo request with deep insert support for items,
         partners, and pricing elements.
@@ -101,7 +101,7 @@ paths:
   /A_DebitMemoRequest('{DebitMemoRequest}'):
     get:
       operationId: getDebitMemoRequest
-      summary: Retrieve a single debit memo request
+      summary: SAP Sales and Distribution (SD) Retrieve a single debit memo request
       description: >-
         Returns a single debit memo request by its document number.
       tags:
@@ -134,7 +134,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateDebitMemoRequest
-      summary: Update a debit memo request
+      summary: SAP Sales and Distribution (SD) Update a debit memo request
       description: >-
         Updates an existing debit memo request header.
       tags:
@@ -167,7 +167,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteDebitMemoRequest
-      summary: Delete a debit memo request
+      summary: SAP Sales and Distribution (SD) Delete a debit memo request
       description: >-
         Deletes an existing debit memo request.
       tags:
@@ -193,7 +193,7 @@ paths:
   /A_DebitMemoRequest('{DebitMemoRequest}')/to_Item:
     get:
       operationId: listDebitMemoRequestItems
-      summary: Retrieve items for a debit memo request
+      summary: SAP Sales and Distribution (SD) Retrieve items for a debit memo request
       description: >-
         Returns a collection of line items for the specified debit memo request.
       tags:

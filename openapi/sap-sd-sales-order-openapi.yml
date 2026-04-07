@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: SAP Sales Order API
+  title: SAP Sales and Distribution (SD) SAP Sales Order API
   description: >-
     Create, read, update, and delete sales orders in SAP S/4HANA. This OData
     service (API_SALES_ORDER_SRV) supports full CRUD operations on sales order
@@ -48,7 +48,7 @@ paths:
   /A_SalesOrder:
     get:
       operationId: listSalesOrders
-      summary: Retrieve a list of sales orders
+      summary: SAP Sales and Distribution (SD) Retrieve a list of sales orders
       description: >-
         Returns a collection of sales order headers with support for OData query
         options including $filter, $select, $expand, $top, $skip, $orderby,
@@ -89,7 +89,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createSalesOrder
-      summary: Create a new sales order
+      summary: SAP Sales and Distribution (SD) Create a new sales order
       description: >-
         Creates a new sales order using a deep insert request. The request body
         can include header data along with related items, partners, pricing
@@ -124,7 +124,7 @@ paths:
   /A_SalesOrder('{SalesOrder}'):
     get:
       operationId: getSalesOrder
-      summary: Retrieve a single sales order
+      summary: SAP Sales and Distribution (SD) Retrieve a single sales order
       description: >-
         Returns a single sales order header by its key. Use $expand to include
         related entities such as items, partners, pricing elements, schedule
@@ -159,7 +159,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateSalesOrder
-      summary: Update a sales order
+      summary: SAP Sales and Distribution (SD) Update a sales order
       description: >-
         Updates an existing sales order header. Only the fields included in the
         request body are updated. Requires an If-Match header with the ETag
@@ -196,7 +196,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteSalesOrder
-      summary: Delete a sales order
+      summary: SAP Sales and Distribution (SD) Delete a sales order
       description: >-
         Deletes an existing sales order. Requires an If-Match header with the
         ETag value for optimistic concurrency control.
@@ -225,7 +225,7 @@ paths:
   /A_SalesOrder('{SalesOrder}')/to_Item:
     get:
       operationId: listSalesOrderItems
-      summary: Retrieve items for a sales order
+      summary: SAP Sales and Distribution (SD) Retrieve items for a sales order
       description: >-
         Returns a collection of line items for the specified sales order.
         Supports OData query options for filtering, sorting, and pagination.
@@ -267,7 +267,7 @@ paths:
   /A_SalesOrderItem(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}'):
     get:
       operationId: getSalesOrderItem
-      summary: Retrieve a single sales order item
+      summary: SAP Sales and Distribution (SD) Retrieve a single sales order item
       description: >-
         Returns a single sales order item by its composite key (SalesOrder and
         SalesOrderItem number).
@@ -308,7 +308,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateSalesOrderItem
-      summary: Update a sales order item
+      summary: SAP Sales and Distribution (SD) Update a sales order item
       description: >-
         Updates an existing sales order item. Only the fields included in the
         request body are updated.
@@ -349,7 +349,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteSalesOrderItem
-      summary: Delete a sales order item
+      summary: SAP Sales and Distribution (SD) Delete a sales order item
       description: >-
         Deletes an existing sales order item from the specified sales order.
       tags:
@@ -382,7 +382,7 @@ paths:
   /A_SalesOrder('{SalesOrder}')/to_Partner:
     get:
       operationId: listSalesOrderPartners
-      summary: Retrieve partners for a sales order
+      summary: SAP Sales and Distribution (SD) Retrieve partners for a sales order
       description: >-
         Returns a collection of business partners associated with the specified
         sales order header, including sold-to party, ship-to party, bill-to
@@ -424,7 +424,7 @@ paths:
   /A_SalesOrder('{SalesOrder}')/to_PricingElement:
     get:
       operationId: listSalesOrderPricingElements
-      summary: Retrieve pricing elements for a sales order
+      summary: SAP Sales and Distribution (SD) Retrieve pricing elements for a sales order
       description: >-
         Returns a collection of header-level pricing elements (condition records)
         for the specified sales order.
@@ -465,7 +465,7 @@ paths:
   /A_SalesOrderScheduleLine(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}',ScheduleLine='{ScheduleLine}'):
     get:
       operationId: getSalesOrderScheduleLine
-      summary: Retrieve a schedule line
+      summary: SAP Sales and Distribution (SD) Retrieve a schedule line
       description: >-
         Returns a single schedule line for a sales order item, identified by its
         composite key of sales order, item, and schedule line number.
@@ -513,7 +513,7 @@ paths:
   /A_SalesOrder('{SalesOrder}')/to_Text:
     get:
       operationId: listSalesOrderTexts
-      summary: Retrieve texts for a sales order
+      summary: SAP Sales and Distribution (SD) Retrieve texts for a sales order
       description: >-
         Returns a collection of text elements associated with the specified
         sales order header.

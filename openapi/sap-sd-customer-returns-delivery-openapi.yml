@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: SAP Customer Returns Delivery API
+  title: SAP Sales and Distribution (SD) SAP Customer Returns Delivery API
   description: >-
     Manage customer returns deliveries in SAP S/4HANA. This OData service
     (API_CUSTOMER_RETURN_DELIVERY_SRV_0002) enables processing of inbound
@@ -35,7 +35,7 @@ paths:
   /A_ReturnsDeliveryHeader:
     get:
       operationId: listReturnsDeliveries
-      summary: Retrieve a list of customer returns deliveries
+      summary: SAP Sales and Distribution (SD) Retrieve a list of customer returns deliveries
       description: >-
         Returns a collection of customer returns delivery headers. Supports
         filtering by delivery type, date, and goods receipt status.
@@ -71,7 +71,7 @@ paths:
   /A_ReturnsDeliveryHeader('{DeliveryDocument}'):
     get:
       operationId: getReturnsDelivery
-      summary: Retrieve a single returns delivery
+      summary: SAP Sales and Distribution (SD) Retrieve a single returns delivery
       description: >-
         Returns a single customer returns delivery by its document number.
       tags:
@@ -104,7 +104,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateReturnsDelivery
-      summary: Update a returns delivery
+      summary: SAP Sales and Distribution (SD) Update a returns delivery
       description: >-
         Updates an existing customer returns delivery header.
       tags:
@@ -138,7 +138,7 @@ paths:
   /A_ReturnsDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentItem:
     get:
       operationId: listReturnsDeliveryItems
-      summary: Retrieve items for a returns delivery
+      summary: SAP Sales and Distribution (SD) Retrieve items for a returns delivery
       description: >-
         Returns a collection of items for the specified returns delivery.
       tags:
@@ -178,7 +178,7 @@ paths:
   /PostGoodsReceipt:
     post:
       operationId: postGoodsReceipt
-      summary: Post goods receipt for a returns delivery
+      summary: SAP Sales and Distribution (SD) Post goods receipt for a returns delivery
       description: >-
         Posts goods receipt for the specified returns delivery, recording the
         physical receipt of returned goods in inventory.

@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: SAP Credit Memo Request API
+  title: SAP Sales and Distribution (SD) SAP Credit Memo Request API
   description: >-
     Create, read, update, and delete credit memo requests in SAP S/4HANA.
     This OData service (API_CREDIT_MEMO_REQUEST_SRV) also enables approval
@@ -38,7 +38,7 @@ paths:
   /A_CreditMemoRequest:
     get:
       operationId: listCreditMemoRequests
-      summary: Retrieve a list of credit memo requests
+      summary: SAP Sales and Distribution (SD) Retrieve a list of credit memo requests
       description: >-
         Returns a collection of credit memo request headers. Supports OData
         query options for filtering by document type, date, customer, and status.
@@ -73,7 +73,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createCreditMemoRequest
-      summary: Create a new credit memo request
+      summary: SAP Sales and Distribution (SD) Create a new credit memo request
       description: >-
         Creates a new credit memo request with deep insert support for items,
         partners, and pricing elements.
@@ -104,7 +104,7 @@ paths:
   /A_CreditMemoRequest('{CreditMemoRequest}'):
     get:
       operationId: getCreditMemoRequest
-      summary: Retrieve a single credit memo request
+      summary: SAP Sales and Distribution (SD) Retrieve a single credit memo request
       description: >-
         Returns a single credit memo request by its document number.
       tags:
@@ -137,7 +137,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateCreditMemoRequest
-      summary: Update a credit memo request
+      summary: SAP Sales and Distribution (SD) Update a credit memo request
       description: >-
         Updates an existing credit memo request header.
       tags:
@@ -170,7 +170,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteCreditMemoRequest
-      summary: Delete a credit memo request
+      summary: SAP Sales and Distribution (SD) Delete a credit memo request
       description: >-
         Deletes an existing credit memo request.
       tags:
@@ -196,7 +196,7 @@ paths:
   /A_CreditMemoRequest('{CreditMemoRequest}')/to_Item:
     get:
       operationId: listCreditMemoRequestItems
-      summary: Retrieve items for a credit memo request
+      summary: SAP Sales and Distribution (SD) Retrieve items for a credit memo request
       description: >-
         Returns a collection of line items for the specified credit memo request.
       tags:
@@ -236,7 +236,7 @@ paths:
   /AcceptApprovalRequest:
     post:
       operationId: acceptCreditMemoApprovalRequest
-      summary: Accept a credit memo approval request
+      summary: SAP Sales and Distribution (SD) Accept a credit memo approval request
       description: >-
         Accepts an approval request for a credit memo request that requires
         authorization.
@@ -269,7 +269,7 @@ paths:
   /RejectApprovalRequest:
     post:
       operationId: rejectCreditMemoApprovalRequest
-      summary: Reject a credit memo approval request
+      summary: SAP Sales and Distribution (SD) Reject a credit memo approval request
       description: >-
         Rejects an approval request for a credit memo request.
       tags:

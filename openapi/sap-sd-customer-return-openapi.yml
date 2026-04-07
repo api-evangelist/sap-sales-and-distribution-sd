@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: SAP Customer Return API
+  title: SAP Sales and Distribution (SD) SAP Customer Return API
   description: >-
     Create, read, update, and delete customer returns in SAP S/4HANA. This
     OData service (API_CUSTOMER_RETURN_SRV) supports integration with customer
@@ -36,7 +36,7 @@ paths:
   /A_CustomerReturn:
     get:
       operationId: listCustomerReturns
-      summary: Retrieve a list of customer returns
+      summary: SAP Sales and Distribution (SD) Retrieve a list of customer returns
       description: >-
         Returns a collection of customer return headers. Supports filtering
         by return type, date, customer, and processing status.
@@ -71,7 +71,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createCustomerReturn
-      summary: Create a new customer return
+      summary: SAP Sales and Distribution (SD) Create a new customer return
       description: >-
         Creates a new customer return using deep insert with items, partners,
         and pricing elements. Can reference an original sales order.
@@ -102,7 +102,7 @@ paths:
   /A_CustomerReturn('{CustomerReturn}'):
     get:
       operationId: getCustomerReturn
-      summary: Retrieve a single customer return
+      summary: SAP Sales and Distribution (SD) Retrieve a single customer return
       description: >-
         Returns a single customer return by its document number.
       tags:
@@ -135,7 +135,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateCustomerReturn
-      summary: Update a customer return
+      summary: SAP Sales and Distribution (SD) Update a customer return
       description: >-
         Updates an existing customer return header.
       tags:
@@ -168,7 +168,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteCustomerReturn
-      summary: Delete a customer return
+      summary: SAP Sales and Distribution (SD) Delete a customer return
       description: >-
         Deletes an existing customer return.
       tags:
@@ -194,7 +194,7 @@ paths:
   /A_CustomerReturn('{CustomerReturn}')/to_Item:
     get:
       operationId: listCustomerReturnItems
-      summary: Retrieve items for a customer return
+      summary: SAP Sales and Distribution (SD) Retrieve items for a customer return
       description: >-
         Returns a collection of line items for the specified customer return.
       tags:

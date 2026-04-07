@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: SAP Customer Material API
+  title: SAP Sales and Distribution (SD) SAP Customer Material API
   description: >-
     Manage customer-material information records in SAP S/4HANA. This OData
     service (API_CUSTOMER_MATERIAL_SRV) links customer-specific material
@@ -34,7 +34,7 @@ paths:
   /A_CustomerMaterial:
     get:
       operationId: listCustomerMaterials
-      summary: Retrieve a list of customer material records
+      summary: SAP Sales and Distribution (SD) Retrieve a list of customer material records
       description: >-
         Returns a collection of customer-material information records. Supports
         filtering by customer number, material, sales organization, and
@@ -69,7 +69,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createCustomerMaterial
-      summary: Create a customer material record
+      summary: SAP Sales and Distribution (SD) Create a customer material record
       description: >-
         Creates a new customer-material information record linking a customer
         part number to an internal SAP material number.
@@ -97,10 +97,10 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /A_CustomerMaterial(SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Customer='{Customer}',Material='{Material}'):
-    get:
+  ? /A_CustomerMaterial(SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Customer='{Customer}',Material='{Material}')
+  : get:
       operationId: getCustomerMaterial
-      summary: Retrieve a single customer material record
+      summary: SAP Sales and Distribution (SD) Retrieve a single customer material record
       description: >-
         Returns a single customer-material information record by its composite
         key.
@@ -154,7 +154,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateCustomerMaterial
-      summary: Update a customer material record
+      summary: SAP Sales and Distribution (SD) Update a customer material record
       description: >-
         Updates an existing customer-material information record.
       tags:
@@ -204,7 +204,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteCustomerMaterial
-      summary: Delete a customer material record
+      summary: SAP Sales and Distribution (SD) Delete a customer material record
       description: >-
         Deletes an existing customer-material information record.
       tags:

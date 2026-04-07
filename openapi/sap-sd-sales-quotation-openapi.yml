@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: SAP Sales Quotation API
+  title: SAP Sales and Distribution (SD) SAP Sales Quotation API
   description: >-
     Create, read, update, and delete sales quotations in SAP S/4HANA. This
     OData service (API_SALES_QUOTATION_SRV) supports the complete quotation
@@ -37,7 +37,7 @@ paths:
   /A_SalesQuotation:
     get:
       operationId: listSalesQuotations
-      summary: Retrieve a list of sales quotations
+      summary: SAP Sales and Distribution (SD) Retrieve a list of sales quotations
       description: >-
         Returns a collection of sales quotation headers. Supports OData query
         options for filtering by quotation type, sales organization, sold-to
@@ -75,7 +75,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createSalesQuotation
-      summary: Create a new sales quotation
+      summary: SAP Sales and Distribution (SD) Create a new sales quotation
       description: >-
         Creates a new sales quotation using a deep insert request with header,
         items, partners, pricing elements, and texts.
@@ -106,7 +106,7 @@ paths:
   /A_SalesQuotation('{SalesQuotation}'):
     get:
       operationId: getSalesQuotation
-      summary: Retrieve a single sales quotation
+      summary: SAP Sales and Distribution (SD) Retrieve a single sales quotation
       description: >-
         Returns a single sales quotation header by its key.
       tags:
@@ -139,7 +139,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateSalesQuotation
-      summary: Update a sales quotation
+      summary: SAP Sales and Distribution (SD) Update a sales quotation
       description: >-
         Updates an existing sales quotation header.
       tags:
@@ -172,7 +172,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteSalesQuotation
-      summary: Delete a sales quotation
+      summary: SAP Sales and Distribution (SD) Delete a sales quotation
       description: >-
         Deletes an existing sales quotation.
       tags:
@@ -198,7 +198,7 @@ paths:
   /A_SalesQuotation('{SalesQuotation}')/to_Item:
     get:
       operationId: listSalesQuotationItems
-      summary: Retrieve items for a sales quotation
+      summary: SAP Sales and Distribution (SD) Retrieve items for a sales quotation
       description: >-
         Returns a collection of line items for the specified sales quotation.
       tags:
@@ -238,7 +238,7 @@ paths:
   /A_SalesQuotation('{SalesQuotation}')/to_Partner:
     get:
       operationId: listSalesQuotationPartners
-      summary: Retrieve partners for a sales quotation
+      summary: SAP Sales and Distribution (SD) Retrieve partners for a sales quotation
       description: >-
         Returns a collection of business partners associated with the quotation.
       tags:

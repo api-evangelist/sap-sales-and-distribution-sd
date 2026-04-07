@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: SAP Sales Scheduling Agreement API
+  title: SAP Sales and Distribution (SD) SAP Sales Scheduling Agreement API
   description: >-
     Manage sales scheduling agreements in SAP S/4HANA. This OData service
     (API_SALES_SCHEDULING_AGREEMENT) supports scheduling agreements that define
@@ -37,7 +37,7 @@ paths:
   /A_SchAgrmtHeader:
     get:
       operationId: listSchedulingAgreements
-      summary: Retrieve a list of scheduling agreements
+      summary: SAP Sales and Distribution (SD) Retrieve a list of scheduling agreements
       description: >-
         Returns a collection of scheduling agreement headers. Supports
         filtering by agreement type, validity dates, customer, and status.
@@ -72,7 +72,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createSchedulingAgreement
-      summary: Create a new scheduling agreement
+      summary: SAP Sales and Distribution (SD) Create a new scheduling agreement
       description: >-
         Creates a new scheduling agreement with deep insert support for items
         and schedule lines.
@@ -103,7 +103,7 @@ paths:
   /A_SchAgrmtHeader('{SchedulingAgreement}'):
     get:
       operationId: getSchedulingAgreement
-      summary: Retrieve a single scheduling agreement
+      summary: SAP Sales and Distribution (SD) Retrieve a single scheduling agreement
       description: >-
         Returns a single scheduling agreement by its document number.
       tags:
@@ -136,7 +136,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateSchedulingAgreement
-      summary: Update a scheduling agreement
+      summary: SAP Sales and Distribution (SD) Update a scheduling agreement
       description: >-
         Updates an existing scheduling agreement header.
       tags:
@@ -170,7 +170,7 @@ paths:
   /A_SchAgrmtHeader('{SchedulingAgreement}')/to_Item:
     get:
       operationId: listSchedulingAgreementItems
-      summary: Retrieve items for a scheduling agreement
+      summary: SAP Sales and Distribution (SD) Retrieve items for a scheduling agreement
       description: >-
         Returns a collection of items for the specified scheduling agreement.
       tags:
@@ -210,7 +210,7 @@ paths:
   /A_SchAgrmtScheduleLine:
     get:
       operationId: listScheduleLines
-      summary: Retrieve delivery schedule lines
+      summary: SAP Sales and Distribution (SD) Retrieve delivery schedule lines
       description: >-
         Returns a collection of delivery schedule lines across scheduling
         agreements.

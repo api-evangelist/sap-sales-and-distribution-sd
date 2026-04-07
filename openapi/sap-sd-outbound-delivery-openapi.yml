@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: SAP Outbound Delivery API
+  title: SAP Sales and Distribution (SD) SAP Outbound Delivery API
   description: >-
     Create and manage outbound deliveries, goods issue, and shipping documents
     in SAP S/4HANA. This OData service (API_OUTBOUND_DELIVERY_SRV) supports
@@ -40,7 +40,7 @@ paths:
   /A_OutbDeliveryHeader:
     get:
       operationId: listOutboundDeliveries
-      summary: Retrieve a list of outbound deliveries
+      summary: SAP Sales and Distribution (SD) Retrieve a list of outbound deliveries
       description: >-
         Returns a collection of outbound delivery headers. Supports OData
         query options for filtering by delivery date, shipping point, sold-to
@@ -78,7 +78,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createOutboundDelivery
-      summary: Create a new outbound delivery
+      summary: SAP Sales and Distribution (SD) Create a new outbound delivery
       description: >-
         Creates a new outbound delivery, typically with reference to a sales
         order. The delivery can be created with header and item data in a
@@ -110,7 +110,7 @@ paths:
   /A_OutbDeliveryHeader('{DeliveryDocument}'):
     get:
       operationId: getOutboundDelivery
-      summary: Retrieve a single outbound delivery
+      summary: SAP Sales and Distribution (SD) Retrieve a single outbound delivery
       description: >-
         Returns a single outbound delivery header by its delivery document
         number. Use $expand to include items, partners, and addresses.
@@ -144,7 +144,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateOutboundDelivery
-      summary: Update an outbound delivery
+      summary: SAP Sales and Distribution (SD) Update an outbound delivery
       description: >-
         Updates an existing outbound delivery header. Only the fields included
         in the request body are modified.
@@ -178,7 +178,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteOutboundDelivery
-      summary: Delete an outbound delivery
+      summary: SAP Sales and Distribution (SD) Delete an outbound delivery
       description: >-
         Deletes an existing outbound delivery document.
       tags:
@@ -204,7 +204,7 @@ paths:
   /A_OutbDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentItem:
     get:
       operationId: listOutboundDeliveryItems
-      summary: Retrieve items for an outbound delivery
+      summary: SAP Sales and Distribution (SD) Retrieve items for an outbound delivery
       description: >-
         Returns a collection of line items for the specified outbound delivery.
       tags:
@@ -245,7 +245,7 @@ paths:
   /A_OutbDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentPartner:
     get:
       operationId: listOutboundDeliveryPartners
-      summary: Retrieve partners for an outbound delivery
+      summary: SAP Sales and Distribution (SD) Retrieve partners for an outbound delivery
       description: >-
         Returns a collection of business partners associated with the delivery.
       tags:
@@ -285,7 +285,7 @@ paths:
   /PostGoodsIssue:
     post:
       operationId: postGoodsIssue
-      summary: Post goods issue for an outbound delivery
+      summary: SAP Sales and Distribution (SD) Post goods issue for an outbound delivery
       description: >-
         Triggers the goods issue posting for the specified outbound delivery.
         This operation updates inventory and creates material documents.
@@ -318,7 +318,7 @@ paths:
   /ReverseGoodsIssue:
     post:
       operationId: reverseGoodsIssue
-      summary: Reverse goods issue for an outbound delivery
+      summary: SAP Sales and Distribution (SD) Reverse goods issue for an outbound delivery
       description: >-
         Reverses a previously posted goods issue for the specified delivery.
       tags:
