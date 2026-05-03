@@ -1,0 +1,120 @@
+{
+  "name": "SalesOrder",
+  "description": "SAP S/4HANA Sales Order (A_SalesOrder) structure for the API_SALES_ORDER_SRV OData service",
+  "type": "object",
+  "fields": [
+    {
+      "name": "SalesOrder",
+      "type": "string",
+      "description": "Sales order number (10-digit, system-generated)",
+      "required": true,
+      "example": "0000000010"
+    },
+    {
+      "name": "SalesOrderType",
+      "type": "string",
+      "description": "Sales order type (e.g., OR=Standard Order, ZOR=Customer-specific)",
+      "required": true,
+      "example": "OR"
+    },
+    {
+      "name": "SalesOrganization",
+      "type": "string",
+      "description": "Sales organization code",
+      "required": true,
+      "example": "1710"
+    },
+    {
+      "name": "DistributionChannel",
+      "type": "string",
+      "description": "Distribution channel code",
+      "required": true,
+      "example": "10"
+    },
+    {
+      "name": "OrganizationDivision",
+      "type": "string",
+      "description": "Division code",
+      "required": true,
+      "example": "00"
+    },
+    {
+      "name": "SoldToParty",
+      "type": "string",
+      "description": "Customer number of the sold-to party",
+      "required": false,
+      "example": "0000001000"
+    },
+    {
+      "name": "PurchaseOrderByCustomer",
+      "type": "string",
+      "description": "Customer purchase order reference number",
+      "required": false,
+      "example": "PO-2024-001"
+    },
+    {
+      "name": "RequestedDeliveryDate",
+      "type": "string",
+      "description": "Requested delivery date in /Date(milliseconds)/ format",
+      "required": false,
+      "example": "/Date(1730000000000)/"
+    },
+    {
+      "name": "TotalNetAmount",
+      "type": "string",
+      "description": "Total net amount of the sales order",
+      "required": false,
+      "example": "1250.00"
+    },
+    {
+      "name": "TransactionCurrency",
+      "type": "string",
+      "description": "Transaction currency code (ISO 4217)",
+      "required": false,
+      "example": "USD"
+    },
+    {
+      "name": "SalesOrderDate",
+      "type": "string",
+      "description": "Date the sales order was created",
+      "required": false,
+      "example": "/Date(1730000000000)/"
+    },
+    {
+      "name": "OverallSDProcessStatus",
+      "type": "string",
+      "description": "Overall processing status of the order",
+      "required": false,
+      "example": "A",
+      "values": [
+        {"value": "A", "description": "Not yet processed"},
+        {"value": "B", "description": "Partially processed"},
+        {"value": "C", "description": "Completely processed"},
+        {"value": "D", "description": "Not relevant"}
+      ]
+    }
+  ],
+  "navigationProperties": [
+    {
+      "name": "to_Item",
+      "description": "Sales order items (A_SalesOrderItem)",
+      "type": "collection",
+      "entity": "SalesOrderItem"
+    },
+    {
+      "name": "to_Partner",
+      "description": "Partner functions (A_SalesOrderHeaderPartner)",
+      "type": "collection",
+      "entity": "SalesOrderPartner"
+    },
+    {
+      "name": "to_PricingElement",
+      "description": "Pricing elements (A_SalesOrderHeaderPrElement)",
+      "type": "collection",
+      "entity": "SalesOrderPricingElement"
+    }
+  ],
+  "source": "openapi/sap-sd-sales-order-openapi.yml",
+  "odataEntitySet": "A_SalesOrder",
+  "service": "API_SALES_ORDER_SRV"
+}

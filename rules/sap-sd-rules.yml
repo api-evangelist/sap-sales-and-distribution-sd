@@ -1,0 +1,185 @@
+extends: [[spectral:oas, recommended]]
+
+rules:
+
+  # SAP OData Naming Conventions
+  sap-sd-path-odata-entity-set:
+    description: SAP OData entity set paths should use PascalCase entity names (A_EntityName pattern)
+    message: "{{description}} - {{path}} should follow SAP OData entity set naming (e.g. A_SalesOrder)"
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/[A-Z][A-Za-z_]+(\\/|\\{|$)"
+
+  sap-sd-operation-id-camel-case:
+    description: OperationIds should use camelCase
+    message: "{{description}} - '{{value}}' should be camelCase"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  sap-sd-has-tags:
+    description: All operations must have at least one tag
+    message: "{{description}} - operation at {{path}} must include tags"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  sap-sd-has-operation-id:
+    description: All operations must have an operationId
+    message: "{{description}} - operation at {{path}} must have operationId"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  sap-sd-has-summary:
+    description: All operations must have a summary
+    message: "{{description}} - operation at {{path}} must have summary"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  sap-sd-summary-title-case:
+    description: Operation summaries must use Title Case
+    message: "{{description}} - '{{value}}' should start with an uppercase letter"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  sap-sd-has-description:
+    description: All operations should have a description
+    message: "{{description}} - operation at {{path}} should have a description"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: description
+      function: truthy
+
+  sap-sd-get-response-200:
+    description: GET operations must have a 200 response
+    message: "{{description}} - GET operation at {{path}} must define a 200 response"
+    severity: error
+    given: "$.paths[*].get"
+    then:
+      field: responses.200
+      function: truthy
+
+  sap-sd-post-response-201:
+    description: POST create operations should have a 201 or 200 response
+    message: "{{description}} - POST operation at {{path}} should define a 200 or 201 response"
+    severity: warn
+    given: "$.paths[*].post"
+    then:
+      field: responses
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+
+  sap-sd-delete-response-204:
+    description: DELETE operations should return 204 No Content
+    message: "{{description}} - DELETE operation at {{path}} should return 204"
+    severity: warn
+    given: "$.paths[*].delete"
+    then:
+      field: responses.204
+      function: truthy
+
+  sap-sd-odata-top-skip-params:
+    description: SAP OData collection endpoints should support $top and $skip for pagination
+    message: "{{description}} - Collection GET at {{path}} should support OData $top and $skip parameters"
+    severity: warn
+    given: "$.paths[?(!@property.match(/\\{/))].get.parameters[*].name"
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - "$top"
+          - "$skip"
+          - "$filter"
+          - "$select"
+          - "$expand"
+          - "$orderby"
+          - "$inlinecount"
+          - "$count"
+          - "$format"
+
+  sap-sd-info-contact:
+    description: API info must include contact information
+    message: "{{description}} - info.contact is required"
+    severity: warn
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  sap-sd-info-license:
+    description: API info must include license information
+    message: "{{description}} - info.license is required"
+    severity: warn
+    given: "$.info"
+    then:
+      field: license
+      function: truthy
+
+  sap-sd-servers-defined:
+    description: API must define at least one server
+    message: "{{description}} - servers array is required and must not be empty"
+    severity: error
+    given: "$"
+    then:
+      field: servers
+      function: truthy
+
+  sap-sd-security-defined:
+    description: API must define security requirements
+    message: "{{description}} - global security must be defined"
+    severity: error
+    given: "$"
+    then:
+      field: security
+      function: truthy
+
+  sap-sd-components-schemas-named:
+    description: Schema component names should use PascalCase
+    message: "{{description}} - schema '{{property}}' should use PascalCase"
+    severity: warn
+    given: "$.components.schemas[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z0-9]*$"
+
+  sap-sd-no-empty-paths:
+    description: Path items must define at least one operation
+    message: "{{description}} - path {{path}} must define at least one HTTP operation"
+    severity: error
+    given: "$.paths[*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          anyOf:
+            - required: ["get"]
+            - required: ["post"]
+            - required: ["put"]
+            - required: ["patch"]
+            - required: ["delete"]

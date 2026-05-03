@@ -1,0 +1,58 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder",
+    "headers": {
+      "APIKey": "{{SAP_SD_API_KEY}}",
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "x-csrf-token": "{{csrf_token}}"
+    },
+    "body": {
+      "SalesOrderType": "OR",
+      "SalesOrganization": "1710",
+      "DistributionChannel": "10",
+      "OrganizationDivision": "00",
+      "SoldToParty": "0000001000",
+      "PurchaseOrderByCustomer": "PO-2024-003",
+      "RequestedDeliveryDate": "/Date(1730500000000)/",
+      "to_Item": {
+        "results": [
+          {
+            "SalesOrderItem": "000010",
+            "Material": "TG11",
+            "RequestedQuantity": "5",
+            "RequestedQuantityUnit": "EA",
+            "NetAmount": "500.00"
+          }
+        ]
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "d": {
+        "SalesOrder": "0000000012",
+        "SalesOrderType": "OR",
+        "SoldToParty": "0000001000",
+        "SalesOrganization": "1710",
+        "DistributionChannel": "10",
+        "OrganizationDivision": "00",
+        "PurchaseOrderByCustomer": "PO-2024-003",
+        "RequestedDeliveryDate": "/Date(1730500000000)/",
+        "TotalNetAmount": "500.00",
+        "TransactionCurrency": "USD",
+        "SalesOrderDate": "/Date(1730000000000)/",
+        "OverallSDProcessStatus": "A",
+        "__metadata": {
+          "type": "API_SALES_ORDER_SRV.A_SalesOrderType",
+          "uri": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder('0000000012')"
+        }
+      }
+    }
+  }
+}

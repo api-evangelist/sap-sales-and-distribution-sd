@@ -1,0 +1,87 @@
+{
+  "name": "BillingDocument",
+  "description": "SAP S/4HANA Billing Document (A_BillingDocument) structure for the API_BILLING_DOCUMENT_SRV OData service",
+  "type": "object",
+  "fields": [
+    {
+      "name": "BillingDocument",
+      "type": "string",
+      "description": "Billing document number",
+      "required": true,
+      "example": "0090000001"
+    },
+    {
+      "name": "BillingDocumentType",
+      "type": "string",
+      "description": "Billing document type (e.g., F2=Invoice, G2=Credit Memo, L2=Debit Memo)",
+      "required": false,
+      "example": "F2"
+    },
+    {
+      "name": "SalesOrganization",
+      "type": "string",
+      "description": "Sales organization code",
+      "required": false,
+      "example": "1710"
+    },
+    {
+      "name": "BillingDocumentDate",
+      "type": "string",
+      "description": "Date of the billing document",
+      "required": false,
+      "example": "/Date(1730000000000)/"
+    },
+    {
+      "name": "PayerParty",
+      "type": "string",
+      "description": "Customer number of the payer",
+      "required": false,
+      "example": "0000001000"
+    },
+    {
+      "name": "TotalNetAmount",
+      "type": "string",
+      "description": "Total net amount of the billing document",
+      "required": false,
+      "example": "1250.00"
+    },
+    {
+      "name": "TransactionCurrency",
+      "type": "string",
+      "description": "Transaction currency code (ISO 4217)",
+      "required": false,
+      "example": "USD"
+    },
+    {
+      "name": "BillingDocumentIsCancelled",
+      "type": "boolean",
+      "description": "Indicates whether the billing document has been cancelled",
+      "required": false,
+      "example": false
+    },
+    {
+      "name": "OverallBillingStatus",
+      "type": "string",
+      "description": "Overall status of the billing document",
+      "required": false,
+      "example": "C"
+    }
+  ],
+  "navigationProperties": [
+    {
+      "name": "to_Item",
+      "description": "Billing document items",
+      "type": "collection",
+      "entity": "BillingDocumentItem"
+    },
+    {
+      "name": "to_Partner",
+      "description": "Partner functions on the billing document",
+      "type": "collection",
+      "entity": "BillingDocumentPartner"
+    }
+  ],
+  "source": "openapi/sap-sd-billing-document-openapi.yml",
+  "odataEntitySet": "A_BillingDocument",
+  "service": "API_BILLING_DOCUMENT_SRV"
+}

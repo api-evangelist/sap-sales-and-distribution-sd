@@ -40,7 +40,7 @@ paths:
   /A_Product:
     get:
       operationId: listProducts
-      summary: SAP Sales and Distribution (SD) Retrieve a list of products
+      summary: Retrieve a list of products
       description: >-
         Returns a collection of material master records. Use OData query options
         to filter by material number, material type, material group, and other
@@ -78,7 +78,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createProduct
-      summary: SAP Sales and Distribution (SD) Create a new product
+      summary: Create a new product
       description: >-
         Creates a new material master record with support for deep insert
         including descriptions, plant data, and sales data.
@@ -109,7 +109,7 @@ paths:
   /A_Product('{Product}'):
     get:
       operationId: getProduct
-      summary: SAP Sales and Distribution (SD) Retrieve a single product
+      summary: Retrieve a single product
       description: >-
         Returns a single material master record by its material number.
       tags:
@@ -142,7 +142,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateProduct
-      summary: SAP Sales and Distribution (SD) Update a product
+      summary: Update a product
       description: >-
         Updates an existing material master record.
       tags:
@@ -176,7 +176,7 @@ paths:
   /A_Product('{Product}')/to_Description:
     get:
       operationId: listProductDescriptions
-      summary: SAP Sales and Distribution (SD) Retrieve descriptions for a product
+      summary: Retrieve descriptions for a product
       description: >-
         Returns language-dependent descriptions for the specified product.
       tags:
@@ -216,7 +216,7 @@ paths:
   /A_Product('{Product}')/to_Plant:
     get:
       operationId: listProductPlants
-      summary: SAP Sales and Distribution (SD) Retrieve plant data for a product
+      summary: Retrieve plant data for a product
       description: >-
         Returns plant-level data for the specified product including MRP,
         purchasing, and production information.
@@ -257,7 +257,7 @@ paths:
   ? /A_ProductSalesDelivery(Product='{Product}',ProductSalesOrg='{ProductSalesOrg}',ProductDistributionChnl='{ProductDistributionChnl}')
   : get:
       operationId: getProductSalesDelivery
-      summary: SAP Sales and Distribution (SD) Retrieve sales and delivery data for a product
+      summary: Retrieve sales and delivery data for a product
       description: >-
         Returns sales organization-specific data for a product including
         delivering plant, minimum order quantity, and delivery unit.

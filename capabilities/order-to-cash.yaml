@@ -1,0 +1,280 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SAP SD Order-to-Cash"
+  description: >-
+    Unified capability for end-to-end order-to-cash operations in SAP S/4HANA
+    Sales and Distribution. Combines Sales Order, Outbound Delivery, Billing
+    Document, and Pricing APIs into a single workflow for sales representatives,
+    order management teams, and finance operations. Covers quote-to-order,
+    pick-pack-ship, and invoice generation workflows.
+  tags:
+    - SAP
+    - Sales and Distribution
+    - Order-to-Cash
+    - OData
+    - S/4HANA
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SAP_SD_API_KEY: SAP_SD_API_KEY
+
+capability:
+  consumes:
+    - import: sales-order
+      location: ./shared/sales-order.yaml
+    - import: outbound-delivery
+      location: ./shared/outbound-delivery.yaml
+    - import: billing-document
+      location: ./shared/billing-document.yaml
+    - import: pricing
+      location: ./shared/pricing.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: order-to-cash-api
+      description: "Unified REST API for SAP SD order-to-cash workflow management."
+      resources:
+        - path: /v1/sales-orders
+          name: sales-orders
+          description: Sales order management
+          operations:
+            - method: GET
+              name: list-sales-orders
+              description: List all sales orders
+              call: "sales-order.list-sales-orders"
+              with:
+                $top: "rest.$top"
+                $filter: "rest.$filter"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-sales-order
+              description: Create a new sales order
+              call: "sales-order.create-sales-order"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/sales-orders/{id}
+          name: sales-order-by-id
+          description: Single sales order operations
+          operations:
+            - method: GET
+              name: get-sales-order
+              description: Get a specific sales order
+              call: "sales-order.get-sales-order"
+              with:
+                SalesOrder: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PATCH
+              name: update-sales-order
+              description: Update a sales order
+              call: "sales-order.update-sales-order"
+              with:
+                SalesOrder: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/outbound-deliveries
+          name: outbound-deliveries
+          description: Outbound delivery management
+          operations:
+            - method: GET
+              name: list-outbound-deliveries
+              description: List outbound deliveries
+              call: "outbound-delivery.list-outbound-deliveries"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-outbound-delivery
+              description: Create a new outbound delivery
+              call: "outbound-delivery.create-outbound-delivery"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/outbound-deliveries/{id}/goods-issue
+          name: goods-issue
+          description: Post goods issue for delivery
+          operations:
+            - method: POST
+              name: post-goods-issue
+              description: Post goods issue for an outbound delivery
+              call: "outbound-delivery.post-goods-issue"
+              with:
+                DeliveryDocument: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/billing-documents
+          name: billing-documents
+          description: Billing document management
+          operations:
+            - method: GET
+              name: list-billing-documents
+              description: List billing documents
+              call: "billing-document.list-billing-documents"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/billing-documents/{id}
+          name: billing-document-by-id
+          description: Single billing document operations
+          operations:
+            - method: GET
+              name: get-billing-document
+              description: Get a specific billing document
+              call: "billing-document.get-billing-document"
+              with:
+                BillingDocument: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/pricing-conditions
+          name: pricing-conditions
+          description: Pricing condition management
+          operations:
+            - method: GET
+              name: list-pricing-conditions
+              description: List pricing condition records
+              call: "pricing.list-pricing-condition-records"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-pricing-condition
+              description: Create a new pricing condition record
+              call: "pricing.create-pricing-condition-record"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: order-to-cash-mcp
+      transport: http
+      description: "MCP server for AI-assisted SAP SD order-to-cash workflow management."
+      tools:
+        - name: list-sales-orders
+          description: List sales orders from SAP S/4HANA SD
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sales-order.list-sales-orders"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-sales-order
+          description: Get a specific sales order by number
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "sales-order.get-sales-order"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-sales-order
+          description: Create a new sales order in SAP S/4HANA
+          hints:
+            readOnly: false
+            destructive: false
+          call: "sales-order.create-sales-order"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-outbound-deliveries
+          description: List outbound deliveries from SAP S/4HANA
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "outbound-delivery.list-outbound-deliveries"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-outbound-delivery
+          description: Create a new outbound delivery
+          hints:
+            readOnly: false
+            destructive: false
+          call: "outbound-delivery.create-outbound-delivery"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: post-goods-issue
+          description: Post goods issue to confirm shipment of outbound delivery
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "outbound-delivery.post-goods-issue"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-billing-documents
+          description: List billing documents and invoices from SAP S/4HANA
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "billing-document.list-billing-documents"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-billing-document
+          description: Get a specific billing document or invoice
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "billing-document.get-billing-document"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: cancel-billing-document
+          description: Cancel a billing document
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "billing-document.cancel-billing-document"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-pricing-conditions
+          description: List pricing condition records
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "pricing.list-pricing-condition-records"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-pricing-condition
+          description: Get a specific pricing condition record
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "pricing.get-pricing-condition-record"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-pricing-condition
+          description: Create a new pricing condition record
+          hints:
+            readOnly: false
+            destructive: false
+          call: "pricing.create-pricing-condition-record"
+          outputParameters:
+            - type: object
+              mapping: "$."

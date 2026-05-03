@@ -1,0 +1,66 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder",
+    "headers": {
+      "APIKey": "{{SAP_SD_API_KEY}}",
+      "Accept": "application/json"
+    },
+    "queryParameters": {
+      "$top": "10",
+      "$filter": "SalesOrderType eq 'OR'",
+      "$select": "SalesOrder,SalesOrderType,SoldToParty,TotalNetAmount,TransactionCurrency,SalesOrderDate",
+      "$orderby": "SalesOrderDate desc"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "d": {
+        "results": [
+          {
+            "SalesOrder": "0000000010",
+            "SalesOrderType": "OR",
+            "SoldToParty": "0000001000",
+            "ShipToParty": "0000001000",
+            "SalesOrganization": "1710",
+            "DistributionChannel": "10",
+            "OrganizationDivision": "00",
+            "PurchaseOrderByCustomer": "PO-2024-001",
+            "RequestedDeliveryDate": "/Date(1730000000000)/",
+            "TotalNetAmount": "1250.00",
+            "TransactionCurrency": "USD",
+            "SalesOrderDate": "/Date(1729900000000)/",
+            "OverallSDProcessStatus": "A",
+            "__metadata": {
+              "type": "API_SALES_ORDER_SRV.A_SalesOrderType",
+              "uri": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder('0000000010')"
+            }
+          },
+          {
+            "SalesOrder": "0000000011",
+            "SalesOrderType": "OR",
+            "SoldToParty": "0000001001",
+            "ShipToParty": "0000001001",
+            "SalesOrganization": "1710",
+            "DistributionChannel": "10",
+            "OrganizationDivision": "00",
+            "PurchaseOrderByCustomer": "PO-2024-002",
+            "RequestedDeliveryDate": "/Date(1730100000000)/",
+            "TotalNetAmount": "3750.00",
+            "TransactionCurrency": "USD",
+            "SalesOrderDate": "/Date(1729950000000)/",
+            "OverallSDProcessStatus": "B",
+            "__metadata": {
+              "type": "API_SALES_ORDER_SRV.A_SalesOrderType",
+              "uri": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder('0000000011')"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

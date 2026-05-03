@@ -1,0 +1,165 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SAP SD Customer Management"
+  description: >-
+    Unified capability for customer and credit management operations in SAP
+    S/4HANA Sales and Distribution. Combines Customer Master Data, Credit
+    Management, and Customer Material APIs for sales administrators and
+    credit controllers. Covers business partner maintenance, credit limit
+    management, and customer-specific product mapping workflows.
+  tags:
+    - SAP
+    - Sales and Distribution
+    - Customer Management
+    - Credit Management
+    - OData
+    - S/4HANA
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SAP_SD_API_KEY: SAP_SD_API_KEY
+
+capability:
+  consumes:
+    - import: customer-master-data
+      location: ./shared/customer-master-data.yaml
+    - import: credit-management
+      location: ./shared/credit-management.yaml
+
+  exposes:
+    - type: rest
+      port: 8081
+      namespace: customer-management-api
+      description: "Unified REST API for SAP SD customer and credit management."
+      resources:
+        - path: /v1/customers
+          name: customers
+          description: Customer / business partner management
+          operations:
+            - method: GET
+              name: list-customers
+              description: List all customers / business partners
+              call: "customer-master-data.list-business-partners"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-customer
+              description: Create a new customer / business partner
+              call: "customer-master-data.create-business-partner"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/customers/{id}
+          name: customer-by-id
+          description: Single customer / business partner
+          operations:
+            - method: GET
+              name: get-customer
+              description: Get a specific customer / business partner
+              call: "customer-master-data.get-business-partner"
+              with:
+                BusinessPartner: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/credit-accounts
+          name: credit-accounts
+          description: Credit management account operations
+          operations:
+            - method: GET
+              name: list-credit-accounts
+              description: List credit management accounts
+              call: "credit-management.list-credit-accounts"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/credit-limits
+          name: credit-limits
+          description: Customer credit limits
+          operations:
+            - method: GET
+              name: list-credit-limits
+              description: List credit limits
+              call: "credit-management.list-credit-limits"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9091
+      namespace: customer-management-mcp
+      transport: http
+      description: "MCP server for AI-assisted customer and credit management in SAP SD."
+      tools:
+        - name: list-customers
+          description: List all business partners and customers from SAP S/4HANA
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "customer-master-data.list-business-partners"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-customer
+          description: Get a specific business partner / customer by number
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "customer-master-data.get-business-partner"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-customer
+          description: Create a new business partner / customer record
+          hints:
+            readOnly: false
+            destructive: false
+          call: "customer-master-data.create-business-partner"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-customer
+          description: Update an existing business partner / customer
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: "customer-master-data.update-business-partner"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-credit-accounts
+          description: List credit management accounts from SAP S/4HANA
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "credit-management.list-credit-accounts"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-credit-account
+          description: Get credit account details for a specific business partner
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "credit-management.get-credit-account"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-credit-limits
+          description: List credit limits for customers
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "credit-management.list-credit-limits"
+          outputParameters:
+            - type: object
+              mapping: "$."

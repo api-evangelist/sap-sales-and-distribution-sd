@@ -35,7 +35,7 @@ paths:
   /A_SalesContract:
     get:
       operationId: listSalesContracts
-      summary: SAP Sales and Distribution (SD) Retrieve a list of sales contracts
+      summary: Retrieve a list of sales contracts
       description: >-
         Returns a collection of sales contract headers. Supports filtering by
         contract type, validity dates, customer, and status.
@@ -70,7 +70,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createSalesContract
-      summary: SAP Sales and Distribution (SD) Create a new sales contract
+      summary: Create a new sales contract
       description: >-
         Creates a new sales contract using deep insert with items, partners,
         and pricing elements.
@@ -101,7 +101,7 @@ paths:
   /A_SalesContract('{SalesContract}'):
     get:
       operationId: getSalesContract
-      summary: SAP Sales and Distribution (SD) Retrieve a single sales contract
+      summary: Retrieve a single sales contract
       description: >-
         Returns a single sales contract by its document number.
       tags:
@@ -134,7 +134,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateSalesContract
-      summary: SAP Sales and Distribution (SD) Update a sales contract
+      summary: Update a sales contract
       description: >-
         Updates an existing sales contract header.
       tags:
@@ -167,7 +167,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteSalesContract
-      summary: SAP Sales and Distribution (SD) Delete a sales contract
+      summary: Delete a sales contract
       description: >-
         Deletes an existing sales contract.
       tags:
@@ -193,7 +193,7 @@ paths:
   /A_SalesContract('{SalesContract}')/to_Item:
     get:
       operationId: listSalesContractItems
-      summary: SAP Sales and Distribution (SD) Retrieve items for a sales contract
+      summary: Retrieve items for a sales contract
       description: >-
         Returns a collection of line items for the specified sales contract.
       tags:

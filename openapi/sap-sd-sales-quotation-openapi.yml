@@ -37,7 +37,7 @@ paths:
   /A_SalesQuotation:
     get:
       operationId: listSalesQuotations
-      summary: SAP Sales and Distribution (SD) Retrieve a list of sales quotations
+      summary: Retrieve a list of sales quotations
       description: >-
         Returns a collection of sales quotation headers. Supports OData query
         options for filtering by quotation type, sales organization, sold-to
@@ -75,7 +75,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createSalesQuotation
-      summary: SAP Sales and Distribution (SD) Create a new sales quotation
+      summary: Create a new sales quotation
       description: >-
         Creates a new sales quotation using a deep insert request with header,
         items, partners, pricing elements, and texts.
@@ -106,7 +106,7 @@ paths:
   /A_SalesQuotation('{SalesQuotation}'):
     get:
       operationId: getSalesQuotation
-      summary: SAP Sales and Distribution (SD) Retrieve a single sales quotation
+      summary: Retrieve a single sales quotation
       description: >-
         Returns a single sales quotation header by its key.
       tags:
@@ -139,7 +139,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateSalesQuotation
-      summary: SAP Sales and Distribution (SD) Update a sales quotation
+      summary: Update a sales quotation
       description: >-
         Updates an existing sales quotation header.
       tags:
@@ -172,7 +172,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteSalesQuotation
-      summary: SAP Sales and Distribution (SD) Delete a sales quotation
+      summary: Delete a sales quotation
       description: >-
         Deletes an existing sales quotation.
       tags:
@@ -198,7 +198,7 @@ paths:
   /A_SalesQuotation('{SalesQuotation}')/to_Item:
     get:
       operationId: listSalesQuotationItems
-      summary: SAP Sales and Distribution (SD) Retrieve items for a sales quotation
+      summary: Retrieve items for a sales quotation
       description: >-
         Returns a collection of line items for the specified sales quotation.
       tags:
@@ -238,7 +238,7 @@ paths:
   /A_SalesQuotation('{SalesQuotation}')/to_Partner:
     get:
       operationId: listSalesQuotationPartners
-      summary: SAP Sales and Distribution (SD) Retrieve partners for a sales quotation
+      summary: Retrieve partners for a sales quotation
       description: >-
         Returns a collection of business partners associated with the quotation.
       tags:

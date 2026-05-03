@@ -35,7 +35,7 @@ paths:
   /A_SalesInquiry:
     get:
       operationId: listSalesInquiries
-      summary: SAP Sales and Distribution (SD) Retrieve a list of sales inquiries
+      summary: Retrieve a list of sales inquiries
       description: >-
         Returns a collection of sales inquiry headers. Supports filtering by
         inquiry type, date, customer, and status.
@@ -70,7 +70,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createSalesInquiry
-      summary: SAP Sales and Distribution (SD) Create a new sales inquiry
+      summary: Create a new sales inquiry
       description: >-
         Creates a new sales inquiry with deep insert support for items and partners.
       tags:
@@ -100,7 +100,7 @@ paths:
   /A_SalesInquiry('{SalesInquiry}'):
     get:
       operationId: getSalesInquiry
-      summary: SAP Sales and Distribution (SD) Retrieve a single sales inquiry
+      summary: Retrieve a single sales inquiry
       description: >-
         Returns a single sales inquiry by its document number.
       tags:
@@ -133,7 +133,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateSalesInquiry
-      summary: SAP Sales and Distribution (SD) Update a sales inquiry
+      summary: Update a sales inquiry
       description: >-
         Updates an existing sales inquiry header.
       tags:
@@ -166,7 +166,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteSalesInquiry
-      summary: SAP Sales and Distribution (SD) Delete a sales inquiry
+      summary: Delete a sales inquiry
       description: >-
         Deletes an existing sales inquiry.
       tags:
@@ -192,7 +192,7 @@ paths:
   /A_SalesInquiry('{SalesInquiry}')/to_Item:
     get:
       operationId: listSalesInquiryItems
-      summary: SAP Sales and Distribution (SD) Retrieve items for a sales inquiry
+      summary: Retrieve items for a sales inquiry
       description: >-
         Returns a collection of line items for the specified sales inquiry.
       tags:

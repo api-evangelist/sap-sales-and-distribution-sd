@@ -36,7 +36,7 @@ paths:
   /A_CreditMemoRequest:
     get:
       operationId: listCreditMemoRequests
-      summary: SAP Sales and Distribution (SD) Retrieve a list of credit memo requests
+      summary: Retrieve a list of credit memo requests
       description: >-
         Returns a collection of credit memo request headers. Supports OData
         query options for filtering by document type, date, customer, and status.
@@ -71,7 +71,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createCreditMemoRequest
-      summary: SAP Sales and Distribution (SD) Create a new credit memo request
+      summary: Create a new credit memo request
       description: >-
         Creates a new credit memo request with deep insert support for items,
         partners, and pricing elements.
@@ -102,7 +102,7 @@ paths:
   /A_CreditMemoRequest('{CreditMemoRequest}'):
     get:
       operationId: getCreditMemoRequest
-      summary: SAP Sales and Distribution (SD) Retrieve a single credit memo request
+      summary: Retrieve a single credit memo request
       description: >-
         Returns a single credit memo request by its document number.
       tags:
@@ -135,7 +135,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateCreditMemoRequest
-      summary: SAP Sales and Distribution (SD) Update a credit memo request
+      summary: Update a credit memo request
       description: >-
         Updates an existing credit memo request header.
       tags:
@@ -168,7 +168,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteCreditMemoRequest
-      summary: SAP Sales and Distribution (SD) Delete a credit memo request
+      summary: Delete a credit memo request
       description: >-
         Deletes an existing credit memo request.
       tags:
@@ -194,7 +194,7 @@ paths:
   /A_CreditMemoRequest('{CreditMemoRequest}')/to_Item:
     get:
       operationId: listCreditMemoRequestItems
-      summary: SAP Sales and Distribution (SD) Retrieve items for a credit memo request
+      summary: Retrieve items for a credit memo request
       description: >-
         Returns a collection of line items for the specified credit memo request.
       tags:
@@ -234,7 +234,7 @@ paths:
   /AcceptApprovalRequest:
     post:
       operationId: acceptCreditMemoApprovalRequest
-      summary: SAP Sales and Distribution (SD) Accept a credit memo approval request
+      summary: Accept a credit memo approval request
       description: >-
         Accepts an approval request for a credit memo request that requires
         authorization.
@@ -267,7 +267,7 @@ paths:
   /RejectApprovalRequest:
     post:
       operationId: rejectCreditMemoApprovalRequest
-      summary: SAP Sales and Distribution (SD) Reject a credit memo approval request
+      summary: Reject a credit memo approval request
       description: >-
         Rejects an approval request for a credit memo request.
       tags:

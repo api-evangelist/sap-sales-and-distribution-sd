@@ -38,7 +38,7 @@ paths:
   /A_BillingDocument:
     get:
       operationId: listBillingDocuments
-      summary: SAP Sales and Distribution (SD) Retrieve a list of billing documents
+      summary: Retrieve a list of billing documents
       description: >-
         Returns a collection of billing document headers. Use OData query
         options to filter by billing date, billing type, sales organization,
@@ -77,7 +77,7 @@ paths:
   /A_BillingDocument('{BillingDocument}'):
     get:
       operationId: getBillingDocument
-      summary: SAP Sales and Distribution (SD) Retrieve a single billing document
+      summary: Retrieve a single billing document
       description: >-
         Returns a single billing document header by its key. Use $expand to
         include related items, partners, and pricing elements.
@@ -112,7 +112,7 @@ paths:
   /A_BillingDocument('{BillingDocument}')/to_Item:
     get:
       operationId: listBillingDocumentItems
-      summary: SAP Sales and Distribution (SD) Retrieve items for a billing document
+      summary: Retrieve items for a billing document
       description: >-
         Returns a collection of line items for the specified billing document.
       tags:
@@ -153,7 +153,7 @@ paths:
   /A_BillingDocument('{BillingDocument}')/to_Partner:
     get:
       operationId: listBillingDocumentPartners
-      summary: SAP Sales and Distribution (SD) Retrieve partners for a billing document
+      summary: Retrieve partners for a billing document
       description: >-
         Returns a collection of business partners associated with the billing
         document.
@@ -194,7 +194,7 @@ paths:
   /CancelBillingDocument:
     post:
       operationId: cancelBillingDocument
-      summary: SAP Sales and Distribution (SD) Cancel a billing document
+      summary: Cancel a billing document
       description: >-
         Cancels a billing document by creating a cancellation document. The
         original document is flagged as cancelled and a new reversal document
@@ -228,7 +228,7 @@ paths:
   /GetPDF:
     get:
       operationId: getBillingDocumentPDF
-      summary: SAP Sales and Distribution (SD) Retrieve a billing document as PDF
+      summary: Retrieve a billing document as PDF
       description: >-
         Returns the billing document output as a PDF binary stream. The PDF
         is generated based on the configured output type and form.

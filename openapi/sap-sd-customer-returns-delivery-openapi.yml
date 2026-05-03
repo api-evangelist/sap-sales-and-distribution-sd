@@ -35,7 +35,7 @@ paths:
   /A_ReturnsDeliveryHeader:
     get:
       operationId: listReturnsDeliveries
-      summary: SAP Sales and Distribution (SD) Retrieve a list of customer returns deliveries
+      summary: Retrieve a list of customer returns deliveries
       description: >-
         Returns a collection of customer returns delivery headers. Supports
         filtering by delivery type, date, and goods receipt status.
@@ -71,7 +71,7 @@ paths:
   /A_ReturnsDeliveryHeader('{DeliveryDocument}'):
     get:
       operationId: getReturnsDelivery
-      summary: SAP Sales and Distribution (SD) Retrieve a single returns delivery
+      summary: Retrieve a single returns delivery
       description: >-
         Returns a single customer returns delivery by its document number.
       tags:
@@ -104,7 +104,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateReturnsDelivery
-      summary: SAP Sales and Distribution (SD) Update a returns delivery
+      summary: Update a returns delivery
       description: >-
         Updates an existing customer returns delivery header.
       tags:
@@ -138,7 +138,7 @@ paths:
   /A_ReturnsDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentItem:
     get:
       operationId: listReturnsDeliveryItems
-      summary: SAP Sales and Distribution (SD) Retrieve items for a returns delivery
+      summary: Retrieve items for a returns delivery
       description: >-
         Returns a collection of items for the specified returns delivery.
       tags:
@@ -178,7 +178,7 @@ paths:
   /PostGoodsReceipt:
     post:
       operationId: postGoodsReceipt
-      summary: SAP Sales and Distribution (SD) Post goods receipt for a returns delivery
+      summary: Post goods receipt for a returns delivery
       description: >-
         Posts goods receipt for the specified returns delivery, recording the
         physical receipt of returned goods in inventory.

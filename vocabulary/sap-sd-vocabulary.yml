@@ -1,0 +1,239 @@
+vocabulary:
+  name: SAP Sales and Distribution (SD) Vocabulary
+  description: >-
+    Domain vocabulary for SAP Sales and Distribution module covering
+    order-to-cash processes, logistics, billing, and customer management
+    concepts in SAP S/4HANA. Terms align with SAP OData service naming
+    conventions and the SD module's functional scope.
+  version: "1.0.0"
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+domains:
+  - name: Order Management
+    description: Concepts related to sales document creation and lifecycle management
+    terms:
+      - term: Sales Order
+        abbreviation: SO
+        definition: >-
+          A document that records a customer's request to purchase goods or
+          services. In SAP SD, represented by the A_SalesOrder entity with
+          document types such as OR (standard order).
+        related: [Sales Quotation, Sales Contract, Sales Inquiry]
+        sap-field: SalesOrder
+        sap-entity: A_SalesOrder
+
+      - term: Sales Order Type
+        definition: >-
+          Categorizes the type of sales transaction (e.g., OR=Standard Order,
+          CS=Cash Sale, RO=Rush Order). Determines document flow and processing rules.
+        sap-field: SalesOrderType
+
+      - term: Sales Organization
+        definition: >-
+          An organizational unit responsible for the sale of certain products or
+          services. Determines pricing, output, and legal entity for a sale.
+        sap-field: SalesOrganization
+
+      - term: Distribution Channel
+        definition: >-
+          The means through which products or services are delivered to customers
+          (e.g., 10=Direct Sales, 20=Retail). Combined with Sales Organization
+          determines pricing and master data.
+        sap-field: DistributionChannel
+
+      - term: Sold-to Party
+        definition: >-
+          The customer who places the order and is contractually responsible
+          for payment. One of four standard partner functions in SAP SD.
+        related: [Ship-to Party, Bill-to Party, Payer]
+        sap-field: SoldToParty
+
+      - term: Sales Quotation
+        definition: >-
+          A non-binding offer provided to a customer specifying products,
+          prices, and terms. Can be converted to a sales order upon acceptance.
+        sap-entity: A_SalesQuotation
+
+      - term: Sales Contract
+        definition: >-
+          A long-term agreement with a customer defining terms for future
+          deliveries. Types include quantity contracts and value contracts.
+        sap-entity: A_SalesContract
+
+      - term: Sales Inquiry
+        definition: >-
+          A pre-sales document recording a customer's interest in products
+          or services before a formal quotation is issued.
+        sap-entity: A_SalesInquiry
+
+      - term: Sales Scheduling Agreement
+        definition: >-
+          A long-term purchasing arrangement with schedule lines defining
+          delivery dates and quantities for recurring customer deliveries.
+        sap-entity: A_SalesSchedulingAgreement
+
+  - name: Logistics and Delivery
+    description: Concepts related to physical goods movement and delivery processing
+    terms:
+      - term: Outbound Delivery
+        definition: >-
+          A document created to initiate the shipping process for goods to
+          a customer. Triggers picking, packing, and goods issue operations.
+        sap-entity: A_OutbDeliveryHeader
+
+      - term: Inbound Delivery
+        definition: >-
+          A document used to manage the receipt of goods at a warehouse,
+          typically in connection with customer returns processing.
+        sap-entity: A_InbDeliveryHeader
+
+      - term: Goods Issue
+        definition: >-
+          The posting that confirms goods have left the warehouse/company
+          and initiates billing. Reduces inventory and triggers FI posting.
+        sap-operation: PostGoodsIssue
+
+      - term: Goods Receipt
+        definition: >-
+          The posting confirming goods have been received at a warehouse,
+          used in returns and inbound delivery scenarios.
+        sap-operation: PostGoodsReceipt
+
+      - term: Ship-to Party
+        definition: >-
+          The customer location where goods are physically delivered. May
+          differ from the sold-to party.
+        sap-field: ShipToParty
+
+      - term: Customer Returns Delivery
+        definition: >-
+          An inbound delivery created to process goods returned by customers.
+          Linked to a customer return order.
+        sap-entity: A_CustomerReturnDeliveryHeader
+
+  - name: Billing and Finance
+    description: Concepts related to invoicing, credit/debit notes, and financial settlement
+    terms:
+      - term: Billing Document
+        definition: >-
+          A document generated after goods issue or service confirmation to
+          invoice the customer. Types include F2 (Invoice), G2 (Credit Memo),
+          L2 (Debit Memo). Creates an FI accounting document.
+        sap-entity: A_BillingDocument
+
+      - term: Credit Memo Request
+        definition: >-
+          A sales document requesting a credit memo to reduce the amount
+          owed by a customer. Requires approval workflow in some configurations.
+        sap-entity: A_CreditMemoRequest
+
+      - term: Debit Memo Request
+        definition: >-
+          A sales document requesting a debit memo to increase the amount
+          owed by a customer for additional charges.
+        sap-entity: A_DebitMemoRequest
+
+      - term: Payer
+        definition: >-
+          The business partner responsible for paying the invoice. Receives
+          billing documents and remittance communications.
+        sap-field: PayerParty
+
+      - term: Bill-to Party
+        definition: >-
+          The business partner who receives the invoice. May differ from the
+          payer in cases where a consolidating entity handles payments.
+        sap-field: BillToParty
+
+  - name: Pricing
+    description: Concepts related to price determination and condition management
+    terms:
+      - term: Condition Record
+        definition: >-
+          A master data record that stores a specific price, discount,
+          surcharge, or tax rate for a defined set of conditions. Forms
+          the basis of SAP's condition technique for pricing.
+        sap-entity: A_SlsPricingConditionRecord
+
+      - term: Condition Type
+        definition: >-
+          Classifies the nature of a pricing condition (e.g., PR00=Base Price,
+          K007=Customer Discount, MWST=Tax). Determines calculation logic.
+        sap-field: ConditionType
+
+      - term: Pricing Procedure
+        definition: >-
+          A sequence of condition types applied during price determination
+          to calculate the final price for a sales document.
+
+      - term: Net Amount
+        definition: >-
+          The total price after all discounts and surcharges but before tax.
+          Stored as a string in SAP OData APIs.
+        sap-field: TotalNetAmount
+
+  - name: Customer and Credit Management
+    description: Concepts related to business partner and credit risk management
+    terms:
+      - term: Business Partner
+        definition: >-
+          The central master data object in SAP S/4HANA representing customers,
+          vendors, or contact persons. Replaces the older Customer (KNA1) model.
+        sap-entity: A_BusinessPartner
+
+      - term: Credit Control Area
+        definition: >-
+          An organizational unit defining the area within which credit limits
+          are monitored and credit exposure is calculated.
+        sap-field: CreditControlArea
+
+      - term: Credit Limit
+        definition: >-
+          The maximum credit exposure allowed for a customer within a credit
+          control area. Orders exceeding this limit trigger credit checks.
+        sap-entity: A_CreditMgmtAccountMemo
+
+      - term: Credit Exposure
+        definition: >-
+          The total outstanding open orders, deliveries, and receivables
+          for a customer used to assess credit risk.
+
+      - term: Customer Material Info Record
+        definition: >-
+          A record linking a customer's own part number and description to
+          the internal material number. Used to automatically populate
+          material fields when customers order using their own references.
+        sap-entity: A_CustomerMaterial
+
+  - name: OData Technical Concepts
+    description: Technical conventions used in SAP OData API implementation
+    terms:
+      - term: Deep Insert
+        definition: >-
+          An OData operation that creates a parent entity along with its
+          associated child entities in a single POST request. Used extensively
+          in SAP SD for creating sales orders with items in one call.
+
+      - term: Navigation Property
+        definition: >-
+          An OData concept linking related entities. In SAP SD, used to
+          expand related data (e.g., to_Item, to_Partner) on sales documents.
+
+      - term: Entity Set
+        definition: >-
+          A named collection of OData entities. SAP uses the prefix convention
+          A_ for application entities (e.g., A_SalesOrder, A_BillingDocument).
+
+      - term: CSRF Token
+        definition: >-
+          Cross-Site Request Forgery token required for write operations
+          (POST, PUT, PATCH, DELETE) in SAP OData APIs. Obtained via
+          a GET/HEAD request with x-csrf-token=fetch header.
+        technical: true
+
+      - term: OData Filter
+        definition: >-
+          Query parameter ($filter) enabling server-side filtering of entity
+          sets. Supports operators: eq, ne, lt, le, gt, ge, and, or, not.
+        technical: true

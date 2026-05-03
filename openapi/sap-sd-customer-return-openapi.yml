@@ -36,7 +36,7 @@ paths:
   /A_CustomerReturn:
     get:
       operationId: listCustomerReturns
-      summary: SAP Sales and Distribution (SD) Retrieve a list of customer returns
+      summary: Retrieve a list of customer returns
       description: >-
         Returns a collection of customer return headers. Supports filtering
         by return type, date, customer, and processing status.
@@ -71,7 +71,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createCustomerReturn
-      summary: SAP Sales and Distribution (SD) Create a new customer return
+      summary: Create a new customer return
       description: >-
         Creates a new customer return using deep insert with items, partners,
         and pricing elements. Can reference an original sales order.
@@ -102,7 +102,7 @@ paths:
   /A_CustomerReturn('{CustomerReturn}'):
     get:
       operationId: getCustomerReturn
-      summary: SAP Sales and Distribution (SD) Retrieve a single customer return
+      summary: Retrieve a single customer return
       description: >-
         Returns a single customer return by its document number.
       tags:
@@ -135,7 +135,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateCustomerReturn
-      summary: SAP Sales and Distribution (SD) Update a customer return
+      summary: Update a customer return
       description: >-
         Updates an existing customer return header.
       tags:
@@ -168,7 +168,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     delete:
       operationId: deleteCustomerReturn
-      summary: SAP Sales and Distribution (SD) Delete a customer return
+      summary: Delete a customer return
       description: >-
         Deletes an existing customer return.
       tags:
@@ -194,7 +194,7 @@ paths:
   /A_CustomerReturn('{CustomerReturn}')/to_Item:
     get:
       operationId: listCustomerReturnItems
-      summary: SAP Sales and Distribution (SD) Retrieve items for a customer return
+      summary: Retrieve items for a customer return
       description: >-
         Returns a collection of line items for the specified customer return.
       tags:
