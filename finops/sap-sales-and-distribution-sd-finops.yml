@@ -1,279 +1,67 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: SAP Sales and Distribution (SD)
+providerId: sap-sales-and-distribution-sd
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
+tags:
+- FinOps
+- FOCUS
+- ERP
+- Sales
+- SAP
+description: 'FOCUS-aligned FinOps shape for SAP Sales and Distribution (SD): module of SAP S/4HANA, licensed
+  under the customer''s S/4HANA / RISE-with-SAP agreement. Costs are absorbed into the parent S/4HANA
+  contract; no per-API pricing.'
+notes: SAP Sales and Distribution (SD) is a module of SAP S/4HANA / ECC and is licensed as part of the
+  customer's broader S/4HANA agreement; it is not sold or priced as a standalone API product. No public
+  pricing exists.
+sources:
+- https://www.sap.com/products/scm/sales-distribution.html
+- https://api.sap.com/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: SAP Sales and Distribution (SD)
-providerId: sap-sales-and-distribution-sd
-publisherName: SAP Sales and Distribution (SD)
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - Distribution
-  - ERP
-  - OData
-  - S/4HANA
-  - Sales
-  - SAP
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the SAP Sales and Distribution (SD) API surface. Provides
-  a FOCUS-aligned mapping for cost allocation, usage measurement, and unit-economics reporting across
-  the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+publisherName: SAP SE
+serviceCategory: ERP Module
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
-  billingCurrency: USD
+  pricingCategory: Contract / Negotiated
+  billingFrequency: Per-Contract
+  billingCurrency: USD (varies by contract)
   chargeCategories:
-    - Usage
-    - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
+  - Purchase
+  - Usage
+  - Adjustment
 focusColumns:
   ServiceName: SAP Sales and Distribution (SD)
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: ERP Module
   ProviderName: SAP Sales and Distribution (SD)
-  PublisherName: SAP Sales and Distribution (SD)
-  InvoiceIssuerName: SAP Sales and Distribution (SD)
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: SAP SE
+  InvoiceIssuerName: SAP SE
   BillingCurrency: USD
-  ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Sales Order API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV
-    tags:
-      - OData
-      - Order Management
-      - S/4HANA
-      - Sales Orders
-    serviceName: Sales Order API
-    serviceCategory: API
-  - name: Customer Master Data API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER
-    tags:
-      - Business Partner
-      - Customer Data
-      - Master Data
-      - OData
-    serviceName: Customer Master Data API
-    serviceCategory: API
-  - name: Outbound Delivery API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV
-    tags:
-      - Delivery
-      - Logistics
-      - OData
-      - Shipping
-    serviceName: Outbound Delivery API
-    serviceCategory: API
-  - name: Billing Document API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
-    tags:
-      - Billing
-      - Credit Memo
-      - Invoice
-      - OData
-    serviceName: Billing Document API
-    serviceCategory: API
-  - name: Pricing API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SLSPRCGCONDITIONRECORD_SRV
-    tags:
-      - Conditions
-      - Discount
-      - OData
-      - Pricing
-    serviceName: Pricing API
-    serviceCategory: API
-  - name: Sales Quotation API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_QUOTATION_SRV
-    tags:
-      - OData
-      - Pre-Sales
-      - Quotation
-      - Sales Document
-    serviceName: Sales Quotation API
-    serviceCategory: API
-  - name: Credit Management API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MANAGEMENT
-    tags:
-      - Credit
-      - Finance
-      - OData
-      - Risk Management
-    serviceName: Credit Management API
-    serviceCategory: API
-  - name: Material Master API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_PRODUCT_SRV
-    tags:
-      - Master Data
-      - Material
-      - OData
-      - Product
-    serviceName: Material Master API
-    serviceCategory: API
-  - name: Credit Memo Request API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV
-    tags:
-      - Billing
-      - Credit Memo
-      - OData
-      - Sales Document
-    serviceName: Credit Memo Request API
-    serviceCategory: API
-  - name: Debit Memo Request API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_DEBIT_MEMO_REQUEST_SRV
-    tags:
-      - Billing
-      - Debit Memo
-      - OData
-      - Sales Document
-    serviceName: Debit Memo Request API
-    serviceCategory: API
-  - name: Sales Contract API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_CONTRACT_SRV
-    tags:
-      - Agreement
-      - OData
-      - S/4HANA
-      - Sales Contract
-    serviceName: Sales Contract API
-    serviceCategory: API
-  - name: Sales Inquiry API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_INQUIRY_SRV
-    tags:
-      - OData
-      - Pre-Sales
-      - S/4HANA
-      - Sales Inquiry
-    serviceName: Sales Inquiry API
-    serviceCategory: API
-  - name: Sales Scheduling Agreement API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_SCHEDULING_AGREEMENT
-    tags:
-      - Logistics
-      - OData
-      - Sales Contract
-      - Scheduling Agreement
-    serviceName: Sales Scheduling Agreement API
-    serviceCategory: API
-  - name: Customer Return API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV
-    tags:
-      - Customer Returns
-      - OData
-      - Reverse Logistics
-      - S/4HANA
-    serviceName: Customer Return API
-    serviceCategory: API
-  - name: Customer Returns Delivery API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_DELIVERY_SRV_0002
-    tags:
-      - OData
-      - Returns Delivery
-      - Reverse Logistics
-      - Shipping
-    serviceName: Customer Returns Delivery API
-    serviceCategory: API
-  - name: Customer Material API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_MATERIAL_SRV
-    tags:
-      - Customer Material
-      - Master Data
-      - OData
-      - Sales
-    serviceName: Customer Material API
-    serviceCategory: API
-  - name: Inbound Delivery API
-    baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002
-    tags:
-      - Inbound Delivery
-      - Logistics
-      - OData
-      - Warehouse
-    serviceName: Inbound Delivery API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+- name: contracted_consumption
+  unit: varies
+  aggregation: sum
+principles:
+- name: Visibility
+  description: Consumption visibility comes from the SAP Sales and Distribution (SD) account / partner
+    reporting surface (invoices, account dashboards) rather than a public usage API.
+- name: Allocation
+  description: Allocate cost through the SAP Sales and Distribution (SD) contract structure (entitlement,
+    project, business unit) and reconcile against internal cost centers.
+- name: Optimization
+  description: 'Optimization levers are commercial: renegotiation cadence, commitment sizing, and consolidation
+    of SAP Sales and Distribution (SD) entitlements.'
+- name: Accountability
+  description: Assign a contract owner who reconciles SAP Sales and Distribution (SD) invoices against
+    contracted entitlements each billing cycle.
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
