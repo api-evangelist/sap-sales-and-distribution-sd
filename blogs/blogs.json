@@ -3,11 +3,12 @@
   "feeds": [
     {
       "source": "https://community.sap.com/t5/c-khhcw49343/SD+%28Sales+and+Distribution%29/pd-p/209057551571413566377230676804921",
-      "feed_url": "https://community.sap.com:443/khhcw49343/rss/Community?interaction.style=forum",
-      "saved": 10,
-      "title": "New board topics in SAP Community"
+      "feed_url": "",
+      "title": "",
+      "saved": 0,
+      "error": "no_feed"
     }
   ],
   "post_count": 10,
-  "fetched": "2026-05-03T23:35:33Z"
+  "fetched": "2026-05-09T20:17:51Z"
 }
