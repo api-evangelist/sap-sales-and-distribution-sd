@@ -410,27 +410,27 @@ common:
     url: https://help.sap.com/docs/SAP_S4HANA_CLOUD
   - type: Website
     url: https://www.sap.com
-  - type: Getting Started
+  - type: GettingStarted
     url: https://developers.sap.com/tutorials.html
   - type: Authentication
     url: https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/
   - type: Blog
     url: https://community.sap.com/t5/c-khhcw49343/SD+%28Sales+and+Distribution%29/pd-p/209057551571413566377230676804921
-  - type: Status
+  - type: StatusPage
     url: https://www.sap.com/about/trust-center/cloud-service-status.html
   - type: Support
     url: https://support.sap.com
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.sap.com/about/legal/privacy.html
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/SAP
   - type: Community
     url: https://community.sap.com
   - type: Login
     url: https://accounts.sap.com
-  - type: Sign Up
+  - type: SignUp
     url: https://developers.sap.com
   - type: SDK
     url: https://sap.github.io/cloud-sdk/
