@@ -1,0 +1,226 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Pricing Condition Record API — Pricing Condition Record
+  description: 'SAP Sales and Distribution (SD) SAP Pricing Condition Record API — Pricing Condition Record. 5 operations.
+    Lead operation: Retrieve a list of pricing condition records. Self-contained Naftiko capability covering one Sap Sales
+    And Distribution Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Pricing Condition Record
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-pricing-pricing-condition-record
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SLSPRCGCONDITIONRECORD_SRV
+    description: SAP Sales and Distribution (SD) SAP Pricing Condition Record API — Pricing Condition Record business capability.
+      Self-contained, no shared references.
+    resources:
+    - name: A_SlsPrcgConditionRecord
+      path: /A_SlsPrcgConditionRecord
+      operations:
+      - name: listpricingconditionrecords
+        method: GET
+        description: Retrieve a list of pricing condition records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createpricingconditionrecord
+        method: POST
+        description: Create a pricing condition record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: A_SlsPrcgConditionRecord('{ConditionRecord}')
+      path: /A_SlsPrcgConditionRecord('{ConditionRecord}')
+      operations:
+      - name: getpricingconditionrecord
+        method: GET
+        description: Retrieve a single pricing condition record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ConditionRecord
+          in: path
+          type: string
+          description: Condition record number
+          required: true
+      - name: updatepricingconditionrecord
+        method: PATCH
+        description: Update a pricing condition record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ConditionRecord
+          in: path
+          type: string
+          description: Condition record number
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletepricingconditionrecord
+        method: DELETE
+        description: Delete a pricing condition record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ConditionRecord
+          in: path
+          type: string
+          description: Condition record number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-pricing-pricing-condition-record-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Pricing Condition Record API — Pricing Condition Record.
+      One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-slsprcgconditionrecord
+      name: a-slsprcgconditionrecord
+      description: REST surface for A_SlsPrcgConditionRecord.
+      operations:
+      - method: GET
+        name: listpricingconditionrecords
+        description: Retrieve a list of pricing condition records
+        call: sap-sd-pricing-pricing-condition-record.listpricingconditionrecords
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createpricingconditionrecord
+        description: Create a pricing condition record
+        call: sap-sd-pricing-pricing-condition-record.createpricingconditionrecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/a-slsprcgconditionrecord-conditionrecord
+      name: a-slsprcgconditionrecord-conditionrecord
+      description: REST surface for A_SlsPrcgConditionRecord('{ConditionRecord}').
+      operations:
+      - method: GET
+        name: getpricingconditionrecord
+        description: Retrieve a single pricing condition record
+        call: sap-sd-pricing-pricing-condition-record.getpricingconditionrecord
+        with:
+          ConditionRecord: rest.ConditionRecord
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatepricingconditionrecord
+        description: Update a pricing condition record
+        call: sap-sd-pricing-pricing-condition-record.updatepricingconditionrecord
+        with:
+          ConditionRecord: rest.ConditionRecord
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletepricingconditionrecord
+        description: Delete a pricing condition record
+        call: sap-sd-pricing-pricing-condition-record.deletepricingconditionrecord
+        with:
+          ConditionRecord: rest.ConditionRecord
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-pricing-pricing-condition-record-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Pricing Condition Record API — Pricing Condition Record.
+      One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-list-pricing-condition-records
+      description: Retrieve a list of pricing condition records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-pricing-pricing-condition-record.listpricingconditionrecords
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-pricing-condition-record
+      description: Create a pricing condition record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-pricing-pricing-condition-record.createpricingconditionrecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-single-pricing-condition-record
+      description: Retrieve a single pricing condition record
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-pricing-pricing-condition-record.getpricingconditionrecord
+      with:
+        ConditionRecord: tools.ConditionRecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-pricing-condition-record
+      description: Update a pricing condition record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: sap-sd-pricing-pricing-condition-record.updatepricingconditionrecord
+      with:
+        ConditionRecord: tools.ConditionRecord
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-pricing-condition-record
+      description: Delete a pricing condition record
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: sap-sd-pricing-pricing-condition-record.deletepricingconditionrecord
+      with:
+        ConditionRecord: tools.ConditionRecord
+      outputParameters:
+      - type: object
+        mapping: $.

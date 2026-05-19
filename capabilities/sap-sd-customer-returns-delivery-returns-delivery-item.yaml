@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Customer Returns Delivery API — Returns Delivery Item
+  description: 'SAP Sales and Distribution (SD) SAP Customer Returns Delivery API — Returns Delivery Item. 1 operations. Lead
+    operation: Retrieve items for a returns delivery. Self-contained Naftiko capability covering one Sap Sales And Distribution
+    Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Returns Delivery Item
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-customer-returns-delivery-returns-delivery-item
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_DELIVERY_SRV_0002
+    description: SAP Sales and Distribution (SD) SAP Customer Returns Delivery API — Returns Delivery Item business capability.
+      Self-contained, no shared references.
+    resources:
+    - name: A_ReturnsDeliveryHeader('{DeliveryDocument}')-to_DeliveryDocumentItem
+      path: /A_ReturnsDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentItem
+      operations:
+      - name: listreturnsdeliveryitems
+        method: GET
+        description: Retrieve items for a returns delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DeliveryDocument
+          in: path
+          type: string
+          description: Delivery document number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-customer-returns-delivery-returns-delivery-item-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Customer Returns Delivery API — Returns Delivery Item.
+      One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-returnsdeliveryheader-deliverydocument/to-deliverydocumentitem
+      name: a-returnsdeliveryheader-deliverydocument-to-deliverydocumentitem
+      description: REST surface for A_ReturnsDeliveryHeader('{DeliveryDocument}')-to_DeliveryDocumentItem.
+      operations:
+      - method: GET
+        name: listreturnsdeliveryitems
+        description: Retrieve items for a returns delivery
+        call: sap-sd-customer-returns-delivery-returns-delivery-item.listreturnsdeliveryitems
+        with:
+          DeliveryDocument: rest.DeliveryDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-customer-returns-delivery-returns-delivery-item-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Customer Returns Delivery API — Returns Delivery Item.
+      One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-items-returns-delivery
+      description: Retrieve items for a returns delivery
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-customer-returns-delivery-returns-delivery-item.listreturnsdeliveryitems
+      with:
+        DeliveryDocument: tools.DeliveryDocument
+      outputParameters:
+      - type: object
+        mapping: $.

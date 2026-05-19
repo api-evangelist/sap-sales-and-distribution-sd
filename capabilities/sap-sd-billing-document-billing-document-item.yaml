@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Billing Document API — Billing Document Item
+  description: 'SAP Sales and Distribution (SD) SAP Billing Document API — Billing Document Item. 1 operations. Lead operation:
+    Retrieve items for a billing document. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd business
+    surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Billing Document Item
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-billing-document-billing-document-item
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+    description: SAP Sales and Distribution (SD) SAP Billing Document API — Billing Document Item business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_BillingDocument('{BillingDocument}')-to_Item
+      path: /A_BillingDocument('{BillingDocument}')/to_Item
+      operations:
+      - name: listbillingdocumentitems
+        method: GET
+        description: Retrieve items for a billing document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: BillingDocument
+          in: path
+          type: string
+          description: Billing document number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-billing-document-billing-document-item-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Billing Document API — Billing Document Item. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-billingdocument-billingdocument/to-item
+      name: a-billingdocument-billingdocument-to-item
+      description: REST surface for A_BillingDocument('{BillingDocument}')-to_Item.
+      operations:
+      - method: GET
+        name: listbillingdocumentitems
+        description: Retrieve items for a billing document
+        call: sap-sd-billing-document-billing-document-item.listbillingdocumentitems
+        with:
+          BillingDocument: rest.BillingDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-billing-document-billing-document-item-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Billing Document API — Billing Document Item. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-items-billing-document
+      description: Retrieve items for a billing document
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-billing-document-billing-document-item.listbillingdocumentitems
+      with:
+        BillingDocument: tools.BillingDocument
+      outputParameters:
+      - type: object
+        mapping: $.

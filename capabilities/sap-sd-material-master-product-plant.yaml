@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Material Master (Product) API — Product Plant
+  description: 'SAP Sales and Distribution (SD) SAP Material Master (Product) API — Product Plant. 1 operations. Lead operation:
+    Retrieve plant data for a product. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd business
+    surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Product Plant
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-material-master-product-plant
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_PRODUCT_SRV
+    description: SAP Sales and Distribution (SD) SAP Material Master (Product) API — Product Plant business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_Product('{Product}')-to_Plant
+      path: /A_Product('{Product}')/to_Plant
+      operations:
+      - name: listproductplants
+        method: GET
+        description: Retrieve plant data for a product
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Product
+          in: path
+          type: string
+          description: Material number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-material-master-product-plant-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Material Master (Product) API — Product Plant. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-product-product/to-plant
+      name: a-product-product-to-plant
+      description: REST surface for A_Product('{Product}')-to_Plant.
+      operations:
+      - method: GET
+        name: listproductplants
+        description: Retrieve plant data for a product
+        call: sap-sd-material-master-product-plant.listproductplants
+        with:
+          Product: rest.Product
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-material-master-product-plant-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Material Master (Product) API — Product Plant. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-plant-data-product
+      description: Retrieve plant data for a product
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-material-master-product-plant.listproductplants
+      with:
+        Product: tools.Product
+      outputParameters:
+      - type: object
+        mapping: $.

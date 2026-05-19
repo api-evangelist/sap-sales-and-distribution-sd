@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Customer Return API — Customer Return Item
+  description: 'SAP Sales and Distribution (SD) SAP Customer Return API — Customer Return Item. 1 operations. Lead operation:
+    Retrieve items for a customer return. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd business
+    surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Customer Return Item
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-customer-return-customer-return-item
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV
+    description: SAP Sales and Distribution (SD) SAP Customer Return API — Customer Return Item business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_CustomerReturn('{CustomerReturn}')-to_Item
+      path: /A_CustomerReturn('{CustomerReturn}')/to_Item
+      operations:
+      - name: listcustomerreturnitems
+        method: GET
+        description: Retrieve items for a customer return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: CustomerReturn
+          in: path
+          type: string
+          description: Customer return number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-customer-return-customer-return-item-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Customer Return API — Customer Return Item. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-customerreturn-customerreturn/to-item
+      name: a-customerreturn-customerreturn-to-item
+      description: REST surface for A_CustomerReturn('{CustomerReturn}')-to_Item.
+      operations:
+      - method: GET
+        name: listcustomerreturnitems
+        description: Retrieve items for a customer return
+        call: sap-sd-customer-return-customer-return-item.listcustomerreturnitems
+        with:
+          CustomerReturn: rest.CustomerReturn
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-customer-return-customer-return-item-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Customer Return API — Customer Return Item. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-items-customer-return
+      description: Retrieve items for a customer return
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-customer-return-customer-return-item.listcustomerreturnitems
+      with:
+        CustomerReturn: tools.CustomerReturn
+      outputParameters:
+      - type: object
+        mapping: $.

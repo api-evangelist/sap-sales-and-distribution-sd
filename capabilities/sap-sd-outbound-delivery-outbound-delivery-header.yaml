@@ -1,0 +1,310 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Outbound Delivery API — Outbound Delivery Header
+  description: 'SAP Sales and Distribution (SD) SAP Outbound Delivery API — Outbound Delivery Header. 7 operations. Lead operation:
+    Retrieve a list of outbound deliveries. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd business
+    surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Outbound Delivery Header
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-outbound-delivery-outbound-delivery-header
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV
+    description: SAP Sales and Distribution (SD) SAP Outbound Delivery API — Outbound Delivery Header business capability.
+      Self-contained, no shared references.
+    resources:
+    - name: A_OutbDeliveryHeader
+      path: /A_OutbDeliveryHeader
+      operations:
+      - name: listoutbounddeliveries
+        method: GET
+        description: Retrieve a list of outbound deliveries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createoutbounddelivery
+        method: POST
+        description: Create a new outbound delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: A_OutbDeliveryHeader('{DeliveryDocument}')
+      path: /A_OutbDeliveryHeader('{DeliveryDocument}')
+      operations:
+      - name: getoutbounddelivery
+        method: GET
+        description: Retrieve a single outbound delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DeliveryDocument
+          in: path
+          type: string
+          description: Delivery document number (10 characters)
+          required: true
+      - name: updateoutbounddelivery
+        method: PATCH
+        description: Update an outbound delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DeliveryDocument
+          in: path
+          type: string
+          description: Delivery document number
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteoutbounddelivery
+        method: DELETE
+        description: Delete an outbound delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DeliveryDocument
+          in: path
+          type: string
+          description: Delivery document number
+          required: true
+    - name: PostGoodsIssue
+      path: /PostGoodsIssue
+      operations:
+      - name: postgoodsissue
+        method: POST
+        description: Post goods issue for an outbound delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DeliveryDocument
+          in: query
+          type: string
+          description: Delivery document number for goods issue
+          required: true
+    - name: ReverseGoodsIssue
+      path: /ReverseGoodsIssue
+      operations:
+      - name: reversegoodsissue
+        method: POST
+        description: Reverse goods issue for an outbound delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DeliveryDocument
+          in: query
+          type: string
+          description: Delivery document number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-outbound-delivery-outbound-delivery-header-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Outbound Delivery API — Outbound Delivery Header. One
+      Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-outbdeliveryheader
+      name: a-outbdeliveryheader
+      description: REST surface for A_OutbDeliveryHeader.
+      operations:
+      - method: GET
+        name: listoutbounddeliveries
+        description: Retrieve a list of outbound deliveries
+        call: sap-sd-outbound-delivery-outbound-delivery-header.listoutbounddeliveries
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createoutbounddelivery
+        description: Create a new outbound delivery
+        call: sap-sd-outbound-delivery-outbound-delivery-header.createoutbounddelivery
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/a-outbdeliveryheader-deliverydocument
+      name: a-outbdeliveryheader-deliverydocument
+      description: REST surface for A_OutbDeliveryHeader('{DeliveryDocument}').
+      operations:
+      - method: GET
+        name: getoutbounddelivery
+        description: Retrieve a single outbound delivery
+        call: sap-sd-outbound-delivery-outbound-delivery-header.getoutbounddelivery
+        with:
+          DeliveryDocument: rest.DeliveryDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateoutbounddelivery
+        description: Update an outbound delivery
+        call: sap-sd-outbound-delivery-outbound-delivery-header.updateoutbounddelivery
+        with:
+          DeliveryDocument: rest.DeliveryDocument
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteoutbounddelivery
+        description: Delete an outbound delivery
+        call: sap-sd-outbound-delivery-outbound-delivery-header.deleteoutbounddelivery
+        with:
+          DeliveryDocument: rest.DeliveryDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/postgoodsissue
+      name: postgoodsissue
+      description: REST surface for PostGoodsIssue.
+      operations:
+      - method: POST
+        name: postgoodsissue
+        description: Post goods issue for an outbound delivery
+        call: sap-sd-outbound-delivery-outbound-delivery-header.postgoodsissue
+        with:
+          DeliveryDocument: rest.DeliveryDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reversegoodsissue
+      name: reversegoodsissue
+      description: REST surface for ReverseGoodsIssue.
+      operations:
+      - method: POST
+        name: reversegoodsissue
+        description: Reverse goods issue for an outbound delivery
+        call: sap-sd-outbound-delivery-outbound-delivery-header.reversegoodsissue
+        with:
+          DeliveryDocument: rest.DeliveryDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-outbound-delivery-outbound-delivery-header-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Outbound Delivery API — Outbound Delivery Header. One
+      tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-list-outbound-deliveries
+      description: Retrieve a list of outbound deliveries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-outbound-delivery-outbound-delivery-header.listoutbounddeliveries
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-outbound-delivery
+      description: Create a new outbound delivery
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-outbound-delivery-outbound-delivery-header.createoutbounddelivery
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-single-outbound-delivery
+      description: Retrieve a single outbound delivery
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-outbound-delivery-outbound-delivery-header.getoutbounddelivery
+      with:
+        DeliveryDocument: tools.DeliveryDocument
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-outbound-delivery
+      description: Update an outbound delivery
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: sap-sd-outbound-delivery-outbound-delivery-header.updateoutbounddelivery
+      with:
+        DeliveryDocument: tools.DeliveryDocument
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-outbound-delivery
+      description: Delete an outbound delivery
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: sap-sd-outbound-delivery-outbound-delivery-header.deleteoutbounddelivery
+      with:
+        DeliveryDocument: tools.DeliveryDocument
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-goods-issue-outbound-delivery
+      description: Post goods issue for an outbound delivery
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-outbound-delivery-outbound-delivery-header.postgoodsissue
+      with:
+        DeliveryDocument: tools.DeliveryDocument
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reverse-goods-issue-outbound-delivery
+      description: Reverse goods issue for an outbound delivery
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-outbound-delivery-outbound-delivery-header.reversegoodsissue
+      with:
+        DeliveryDocument: tools.DeliveryDocument
+      outputParameters:
+      - type: object
+        mapping: $.

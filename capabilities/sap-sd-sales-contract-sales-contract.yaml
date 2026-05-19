@@ -1,0 +1,225 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Sales Contract API — Sales Contract
+  description: 'SAP Sales and Distribution (SD) SAP Sales Contract API — Sales Contract. 5 operations. Lead operation: Retrieve
+    a list of sales contracts. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Sales Contract
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-sales-contract-sales-contract
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_CONTRACT_SRV
+    description: SAP Sales and Distribution (SD) SAP Sales Contract API — Sales Contract business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_SalesContract
+      path: /A_SalesContract
+      operations:
+      - name: listsalescontracts
+        method: GET
+        description: Retrieve a list of sales contracts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createsalescontract
+        method: POST
+        description: Create a new sales contract
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: A_SalesContract('{SalesContract}')
+      path: /A_SalesContract('{SalesContract}')
+      operations:
+      - name: getsalescontract
+        method: GET
+        description: Retrieve a single sales contract
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: SalesContract
+          in: path
+          type: string
+          description: Sales contract number (10 characters)
+          required: true
+      - name: updatesalescontract
+        method: PATCH
+        description: Update a sales contract
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: SalesContract
+          in: path
+          type: string
+          description: Sales contract number
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletesalescontract
+        method: DELETE
+        description: Delete a sales contract
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: SalesContract
+          in: path
+          type: string
+          description: Sales contract number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-sales-contract-sales-contract-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Sales Contract API — Sales Contract. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-salescontract
+      name: a-salescontract
+      description: REST surface for A_SalesContract.
+      operations:
+      - method: GET
+        name: listsalescontracts
+        description: Retrieve a list of sales contracts
+        call: sap-sd-sales-contract-sales-contract.listsalescontracts
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createsalescontract
+        description: Create a new sales contract
+        call: sap-sd-sales-contract-sales-contract.createsalescontract
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/a-salescontract-salescontract
+      name: a-salescontract-salescontract
+      description: REST surface for A_SalesContract('{SalesContract}').
+      operations:
+      - method: GET
+        name: getsalescontract
+        description: Retrieve a single sales contract
+        call: sap-sd-sales-contract-sales-contract.getsalescontract
+        with:
+          SalesContract: rest.SalesContract
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatesalescontract
+        description: Update a sales contract
+        call: sap-sd-sales-contract-sales-contract.updatesalescontract
+        with:
+          SalesContract: rest.SalesContract
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletesalescontract
+        description: Delete a sales contract
+        call: sap-sd-sales-contract-sales-contract.deletesalescontract
+        with:
+          SalesContract: rest.SalesContract
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-sales-contract-sales-contract-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Sales Contract API — Sales Contract. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-list-sales-contracts
+      description: Retrieve a list of sales contracts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-sales-contract-sales-contract.listsalescontracts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-sales-contract
+      description: Create a new sales contract
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-sales-contract-sales-contract.createsalescontract
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-single-sales-contract
+      description: Retrieve a single sales contract
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-sales-contract-sales-contract.getsalescontract
+      with:
+        SalesContract: tools.SalesContract
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-sales-contract
+      description: Update a sales contract
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: sap-sd-sales-contract-sales-contract.updatesalescontract
+      with:
+        SalesContract: tools.SalesContract
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-sales-contract
+      description: Delete a sales contract
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: sap-sd-sales-contract-sales-contract.deletesalescontract
+      with:
+        SalesContract: tools.SalesContract
+      outputParameters:
+      - type: object
+        mapping: $.

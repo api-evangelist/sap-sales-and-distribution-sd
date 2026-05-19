@@ -1,0 +1,169 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Credit Management API — Credit Limit
+  description: 'SAP Sales and Distribution (SD) SAP Credit Management API — Credit Limit. 3 operations. Lead operation: Retrieve
+    credit limits. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Credit Limit
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-credit-management-credit-limit
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MANAGEMENT
+    description: SAP Sales and Distribution (SD) SAP Credit Management API — Credit Limit business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_CrdtMgmtCreditLimit
+      path: /A_CrdtMgmtCreditLimit
+      operations:
+      - name: listcreditlimits
+        method: GET
+        description: Retrieve credit limits
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: A_CrdtMgmtCreditLimit(BusinessPartner='{BusinessPartner}',CreditSegment='{Credit
+      path: /A_CrdtMgmtCreditLimit(BusinessPartner='{BusinessPartner}',CreditSegment='{CreditSegment}')
+      operations:
+      - name: getcreditlimit
+        method: GET
+        description: Retrieve a specific credit limit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: BusinessPartner
+          in: path
+          type: string
+          description: Business partner number
+          required: true
+        - name: CreditSegment
+          in: path
+          type: string
+          description: Credit segment
+          required: true
+      - name: updatecreditlimit
+        method: PATCH
+        description: Update a credit limit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: BusinessPartner
+          in: path
+          type: string
+          description: Business partner number
+          required: true
+        - name: CreditSegment
+          in: path
+          type: string
+          description: Credit segment
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-credit-management-credit-limit-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Credit Management API — Credit Limit. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-crdtmgmtcreditlimit
+      name: a-crdtmgmtcreditlimit
+      description: REST surface for A_CrdtMgmtCreditLimit.
+      operations:
+      - method: GET
+        name: listcreditlimits
+        description: Retrieve credit limits
+        call: sap-sd-credit-management-credit-limit.listcreditlimits
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/a-crdtmgmtcreditlimit-businesspartner-businesspartner-creditsegment-creditsegment
+      name: a-crdtmgmtcreditlimit-businesspartner-businesspartner-creditsegment-credit
+      description: REST surface for A_CrdtMgmtCreditLimit(BusinessPartner='{BusinessPartner}',CreditSegment='{Credit.
+      operations:
+      - method: GET
+        name: getcreditlimit
+        description: Retrieve a specific credit limit
+        call: sap-sd-credit-management-credit-limit.getcreditlimit
+        with:
+          BusinessPartner: rest.BusinessPartner
+          CreditSegment: rest.CreditSegment
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecreditlimit
+        description: Update a credit limit
+        call: sap-sd-credit-management-credit-limit.updatecreditlimit
+        with:
+          BusinessPartner: rest.BusinessPartner
+          CreditSegment: rest.CreditSegment
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-credit-management-credit-limit-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Credit Management API — Credit Limit. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-credit-limits
+      description: Retrieve credit limits
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-credit-management-credit-limit.listcreditlimits
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-specific-credit-limit
+      description: Retrieve a specific credit limit
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-credit-management-credit-limit.getcreditlimit
+      with:
+        BusinessPartner: tools.BusinessPartner
+        CreditSegment: tools.CreditSegment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-credit-limit
+      description: Update a credit limit
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: sap-sd-credit-management-credit-limit.updatecreditlimit
+      with:
+        BusinessPartner: tools.BusinessPartner
+        CreditSegment: tools.CreditSegment
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,310 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Credit Memo Request API — Credit Memo Request
+  description: 'SAP Sales and Distribution (SD) SAP Credit Memo Request API — Credit Memo Request. 7 operations. Lead operation:
+    Retrieve a list of credit memo requests. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd
+    business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Credit Memo Request
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-credit-memo-request-credit-memo-request
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV
+    description: SAP Sales and Distribution (SD) SAP Credit Memo Request API — Credit Memo Request business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_CreditMemoRequest
+      path: /A_CreditMemoRequest
+      operations:
+      - name: listcreditmemorequests
+        method: GET
+        description: Retrieve a list of credit memo requests
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcreditmemorequest
+        method: POST
+        description: Create a new credit memo request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: A_CreditMemoRequest('{CreditMemoRequest}')
+      path: /A_CreditMemoRequest('{CreditMemoRequest}')
+      operations:
+      - name: getcreditmemorequest
+        method: GET
+        description: Retrieve a single credit memo request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: CreditMemoRequest
+          in: path
+          type: string
+          description: Credit memo request number (10 characters)
+          required: true
+      - name: updatecreditmemorequest
+        method: PATCH
+        description: Update a credit memo request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: CreditMemoRequest
+          in: path
+          type: string
+          description: Credit memo request number
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecreditmemorequest
+        method: DELETE
+        description: Delete a credit memo request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: CreditMemoRequest
+          in: path
+          type: string
+          description: Credit memo request number
+          required: true
+    - name: AcceptApprovalRequest
+      path: /AcceptApprovalRequest
+      operations:
+      - name: acceptcreditmemoapprovalrequest
+        method: POST
+        description: Accept a credit memo approval request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: CreditMemoRequest
+          in: query
+          type: string
+          description: Credit memo request number
+          required: true
+    - name: RejectApprovalRequest
+      path: /RejectApprovalRequest
+      operations:
+      - name: rejectcreditmemoapprovalrequest
+        method: POST
+        description: Reject a credit memo approval request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: CreditMemoRequest
+          in: query
+          type: string
+          description: Credit memo request number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-credit-memo-request-credit-memo-request-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Credit Memo Request API — Credit Memo Request. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-creditmemorequest
+      name: a-creditmemorequest
+      description: REST surface for A_CreditMemoRequest.
+      operations:
+      - method: GET
+        name: listcreditmemorequests
+        description: Retrieve a list of credit memo requests
+        call: sap-sd-credit-memo-request-credit-memo-request.listcreditmemorequests
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcreditmemorequest
+        description: Create a new credit memo request
+        call: sap-sd-credit-memo-request-credit-memo-request.createcreditmemorequest
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/a-creditmemorequest-creditmemorequest
+      name: a-creditmemorequest-creditmemorequest
+      description: REST surface for A_CreditMemoRequest('{CreditMemoRequest}').
+      operations:
+      - method: GET
+        name: getcreditmemorequest
+        description: Retrieve a single credit memo request
+        call: sap-sd-credit-memo-request-credit-memo-request.getcreditmemorequest
+        with:
+          CreditMemoRequest: rest.CreditMemoRequest
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecreditmemorequest
+        description: Update a credit memo request
+        call: sap-sd-credit-memo-request-credit-memo-request.updatecreditmemorequest
+        with:
+          CreditMemoRequest: rest.CreditMemoRequest
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecreditmemorequest
+        description: Delete a credit memo request
+        call: sap-sd-credit-memo-request-credit-memo-request.deletecreditmemorequest
+        with:
+          CreditMemoRequest: rest.CreditMemoRequest
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/acceptapprovalrequest
+      name: acceptapprovalrequest
+      description: REST surface for AcceptApprovalRequest.
+      operations:
+      - method: POST
+        name: acceptcreditmemoapprovalrequest
+        description: Accept a credit memo approval request
+        call: sap-sd-credit-memo-request-credit-memo-request.acceptcreditmemoapprovalrequest
+        with:
+          CreditMemoRequest: rest.CreditMemoRequest
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/rejectapprovalrequest
+      name: rejectapprovalrequest
+      description: REST surface for RejectApprovalRequest.
+      operations:
+      - method: POST
+        name: rejectcreditmemoapprovalrequest
+        description: Reject a credit memo approval request
+        call: sap-sd-credit-memo-request-credit-memo-request.rejectcreditmemoapprovalrequest
+        with:
+          CreditMemoRequest: rest.CreditMemoRequest
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-credit-memo-request-credit-memo-request-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Credit Memo Request API — Credit Memo Request. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-list-credit-memo-requests
+      description: Retrieve a list of credit memo requests
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-credit-memo-request-credit-memo-request.listcreditmemorequests
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-credit-memo-request
+      description: Create a new credit memo request
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-credit-memo-request-credit-memo-request.createcreditmemorequest
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-single-credit-memo-request
+      description: Retrieve a single credit memo request
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-credit-memo-request-credit-memo-request.getcreditmemorequest
+      with:
+        CreditMemoRequest: tools.CreditMemoRequest
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-credit-memo-request
+      description: Update a credit memo request
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: sap-sd-credit-memo-request-credit-memo-request.updatecreditmemorequest
+      with:
+        CreditMemoRequest: tools.CreditMemoRequest
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-credit-memo-request
+      description: Delete a credit memo request
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: sap-sd-credit-memo-request-credit-memo-request.deletecreditmemorequest
+      with:
+        CreditMemoRequest: tools.CreditMemoRequest
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: accept-credit-memo-approval-request
+      description: Accept a credit memo approval request
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-credit-memo-request-credit-memo-request.acceptcreditmemoapprovalrequest
+      with:
+        CreditMemoRequest: tools.CreditMemoRequest
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reject-credit-memo-approval-request
+      description: Reject a credit memo approval request
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-credit-memo-request-credit-memo-request.rejectcreditmemoapprovalrequest
+      with:
+        CreditMemoRequest: tools.CreditMemoRequest
+      outputParameters:
+      - type: object
+        mapping: $.

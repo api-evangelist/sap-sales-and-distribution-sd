@@ -1,0 +1,225 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Sales Quotation API — Sales Quotation
+  description: 'SAP Sales and Distribution (SD) SAP Sales Quotation API — Sales Quotation. 5 operations. Lead operation: Retrieve
+    a list of sales quotations. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Sales Quotation
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-sales-quotation-sales-quotation
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_QUOTATION_SRV
+    description: SAP Sales and Distribution (SD) SAP Sales Quotation API — Sales Quotation business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_SalesQuotation
+      path: /A_SalesQuotation
+      operations:
+      - name: listsalesquotations
+        method: GET
+        description: Retrieve a list of sales quotations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createsalesquotation
+        method: POST
+        description: Create a new sales quotation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: A_SalesQuotation('{SalesQuotation}')
+      path: /A_SalesQuotation('{SalesQuotation}')
+      operations:
+      - name: getsalesquotation
+        method: GET
+        description: Retrieve a single sales quotation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: SalesQuotation
+          in: path
+          type: string
+          description: Sales quotation number (10 characters)
+          required: true
+      - name: updatesalesquotation
+        method: PATCH
+        description: Update a sales quotation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: SalesQuotation
+          in: path
+          type: string
+          description: Sales quotation number
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletesalesquotation
+        method: DELETE
+        description: Delete a sales quotation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: SalesQuotation
+          in: path
+          type: string
+          description: Sales quotation number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-sales-quotation-sales-quotation-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Sales Quotation API — Sales Quotation. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-salesquotation
+      name: a-salesquotation
+      description: REST surface for A_SalesQuotation.
+      operations:
+      - method: GET
+        name: listsalesquotations
+        description: Retrieve a list of sales quotations
+        call: sap-sd-sales-quotation-sales-quotation.listsalesquotations
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createsalesquotation
+        description: Create a new sales quotation
+        call: sap-sd-sales-quotation-sales-quotation.createsalesquotation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/a-salesquotation-salesquotation
+      name: a-salesquotation-salesquotation
+      description: REST surface for A_SalesQuotation('{SalesQuotation}').
+      operations:
+      - method: GET
+        name: getsalesquotation
+        description: Retrieve a single sales quotation
+        call: sap-sd-sales-quotation-sales-quotation.getsalesquotation
+        with:
+          SalesQuotation: rest.SalesQuotation
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatesalesquotation
+        description: Update a sales quotation
+        call: sap-sd-sales-quotation-sales-quotation.updatesalesquotation
+        with:
+          SalesQuotation: rest.SalesQuotation
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletesalesquotation
+        description: Delete a sales quotation
+        call: sap-sd-sales-quotation-sales-quotation.deletesalesquotation
+        with:
+          SalesQuotation: rest.SalesQuotation
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-sales-quotation-sales-quotation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Sales Quotation API — Sales Quotation. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-list-sales-quotations
+      description: Retrieve a list of sales quotations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-sales-quotation-sales-quotation.listsalesquotations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-sales-quotation
+      description: Create a new sales quotation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-sales-quotation-sales-quotation.createsalesquotation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-single-sales-quotation
+      description: Retrieve a single sales quotation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-sales-quotation-sales-quotation.getsalesquotation
+      with:
+        SalesQuotation: tools.SalesQuotation
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-sales-quotation
+      description: Update a sales quotation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: sap-sd-sales-quotation-sales-quotation.updatesalesquotation
+      with:
+        SalesQuotation: tools.SalesQuotation
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-sales-quotation
+      description: Delete a sales quotation
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: sap-sd-sales-quotation-sales-quotation.deletesalesquotation
+      with:
+        SalesQuotation: tools.SalesQuotation
+      outputParameters:
+      - type: object
+        mapping: $.

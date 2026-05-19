@@ -1,0 +1,156 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Credit Management API — Credit Account
+  description: 'SAP Sales and Distribution (SD) SAP Credit Management API — Credit Account. 3 operations. Lead operation:
+    Retrieve a list of credit management accounts. Self-contained Naftiko capability covering one Sap Sales And Distribution
+    Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Credit Account
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-credit-management-credit-account
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MANAGEMENT
+    description: SAP Sales and Distribution (SD) SAP Credit Management API — Credit Account business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_CrdtMgmtBusinessPartner
+      path: /A_CrdtMgmtBusinessPartner
+      operations:
+      - name: listcreditaccounts
+        method: GET
+        description: Retrieve a list of credit management accounts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: A_CrdtMgmtBusinessPartner('{BusinessPartner}')
+      path: /A_CrdtMgmtBusinessPartner('{BusinessPartner}')
+      operations:
+      - name: getcreditaccount
+        method: GET
+        description: Retrieve a single credit management account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: BusinessPartner
+          in: path
+          type: string
+          description: Business partner number
+          required: true
+      - name: updatecreditaccount
+        method: PATCH
+        description: Update a credit management account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: BusinessPartner
+          in: path
+          type: string
+          description: Business partner number
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-credit-management-credit-account-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Credit Management API — Credit Account. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-crdtmgmtbusinesspartner
+      name: a-crdtmgmtbusinesspartner
+      description: REST surface for A_CrdtMgmtBusinessPartner.
+      operations:
+      - method: GET
+        name: listcreditaccounts
+        description: Retrieve a list of credit management accounts
+        call: sap-sd-credit-management-credit-account.listcreditaccounts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/a-crdtmgmtbusinesspartner-businesspartner
+      name: a-crdtmgmtbusinesspartner-businesspartner
+      description: REST surface for A_CrdtMgmtBusinessPartner('{BusinessPartner}').
+      operations:
+      - method: GET
+        name: getcreditaccount
+        description: Retrieve a single credit management account
+        call: sap-sd-credit-management-credit-account.getcreditaccount
+        with:
+          BusinessPartner: rest.BusinessPartner
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecreditaccount
+        description: Update a credit management account
+        call: sap-sd-credit-management-credit-account.updatecreditaccount
+        with:
+          BusinessPartner: rest.BusinessPartner
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-credit-management-credit-account-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Credit Management API — Credit Account. One tool per
+      consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-list-credit-management-accounts
+      description: Retrieve a list of credit management accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-credit-management-credit-account.listcreditaccounts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-single-credit-management-account
+      description: Retrieve a single credit management account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-credit-management-credit-account.getcreditaccount
+      with:
+        BusinessPartner: tools.BusinessPartner
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-credit-management-account
+      description: Update a credit management account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: sap-sd-credit-management-credit-account.updatecreditaccount
+      with:
+        BusinessPartner: tools.BusinessPartner
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,103 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Customer Master Data (Business Partner) API — Customer Sales Area
+  description: 'SAP Sales and Distribution (SD) SAP Customer Master Data (Business Partner) API — Customer Sales Area. 1 operations.
+    Lead operation: Retrieve customer sales area data. Self-contained Naftiko capability covering one Sap Sales And Distribution
+    Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Customer Sales Area
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-customer-master-data-customer-sales-area
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER
+    description: SAP Sales and Distribution (SD) SAP Customer Master Data (Business Partner) API — Customer Sales Area business
+      capability. Self-contained, no shared references.
+    resources:
+    - name: A_CustomerSalesArea(Customer='{Customer}',SalesOrganization='{SalesOrganization}
+      path: /A_CustomerSalesArea(Customer='{Customer}',SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Division='{Division}')
+      operations:
+      - name: getcustomersalesarea
+        method: GET
+        description: Retrieve customer sales area data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Customer
+          in: path
+          type: string
+          description: Customer number
+          required: true
+        - name: SalesOrganization
+          in: path
+          type: string
+          description: Sales organization
+          required: true
+        - name: DistributionChannel
+          in: path
+          type: string
+          description: Distribution channel
+          required: true
+        - name: Division
+          in: path
+          type: string
+          description: Division
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-customer-master-data-customer-sales-area-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Customer Master Data (Business Partner) API — Customer
+      Sales Area. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-customersalesarea-customer-customer-salesorganization-salesorganization-distributionchannel-distributionchannel-division-division
+      name: a-customersalesarea-customer-customer-salesorganization-salesorganization
+      description: REST surface for A_CustomerSalesArea(Customer='{Customer}',SalesOrganization='{SalesOrganization}.
+      operations:
+      - method: GET
+        name: getcustomersalesarea
+        description: Retrieve customer sales area data
+        call: sap-sd-customer-master-data-customer-sales-area.getcustomersalesarea
+        with:
+          Customer: rest.Customer
+          SalesOrganization: rest.SalesOrganization
+          DistributionChannel: rest.DistributionChannel
+          Division: rest.Division
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-customer-master-data-customer-sales-area-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Customer Master Data (Business Partner) API — Customer
+      Sales Area. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-customer-sales-area-data
+      description: Retrieve customer sales area data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-customer-master-data-customer-sales-area.getcustomersalesarea
+      with:
+        Customer: tools.Customer
+        SalesOrganization: tools.SalesOrganization
+        DistributionChannel: tools.DistributionChannel
+        Division: tools.Division
+      outputParameters:
+      - type: object
+        mapping: $.

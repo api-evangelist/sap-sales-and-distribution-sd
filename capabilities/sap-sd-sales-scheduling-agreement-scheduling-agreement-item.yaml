@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Sales Scheduling Agreement API — Scheduling Agreement Item
+  description: 'SAP Sales and Distribution (SD) SAP Sales Scheduling Agreement API — Scheduling Agreement Item. 1 operations.
+    Lead operation: Retrieve items for a scheduling agreement. Self-contained Naftiko capability covering one Sap Sales And
+    Distribution Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Scheduling Agreement Item
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-sales-scheduling-agreement-scheduling-agreement-item
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_SCHEDULING_AGREEMENT
+    description: SAP Sales and Distribution (SD) SAP Sales Scheduling Agreement API — Scheduling Agreement Item business capability.
+      Self-contained, no shared references.
+    resources:
+    - name: A_SchAgrmtHeader('{SchedulingAgreement}')-to_Item
+      path: /A_SchAgrmtHeader('{SchedulingAgreement}')/to_Item
+      operations:
+      - name: listschedulingagreementitems
+        method: GET
+        description: Retrieve items for a scheduling agreement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: SchedulingAgreement
+          in: path
+          type: string
+          description: Scheduling agreement number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-sales-scheduling-agreement-scheduling-agreement-item-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Sales Scheduling Agreement API — Scheduling Agreement
+      Item. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-schagrmtheader-schedulingagreement/to-item
+      name: a-schagrmtheader-schedulingagreement-to-item
+      description: REST surface for A_SchAgrmtHeader('{SchedulingAgreement}')-to_Item.
+      operations:
+      - method: GET
+        name: listschedulingagreementitems
+        description: Retrieve items for a scheduling agreement
+        call: sap-sd-sales-scheduling-agreement-scheduling-agreement-item.listschedulingagreementitems
+        with:
+          SchedulingAgreement: rest.SchedulingAgreement
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-sales-scheduling-agreement-scheduling-agreement-item-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Sales Scheduling Agreement API — Scheduling Agreement
+      Item. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-items-scheduling-agreement
+      description: Retrieve items for a scheduling agreement
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-sales-scheduling-agreement-scheduling-agreement-item.listschedulingagreementitems
+      with:
+        SchedulingAgreement: tools.SchedulingAgreement
+      outputParameters:
+      - type: object
+        mapping: $.

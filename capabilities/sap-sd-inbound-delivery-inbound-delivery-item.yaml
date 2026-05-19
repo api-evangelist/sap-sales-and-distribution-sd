@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Inbound Delivery API — Inbound Delivery Item
+  description: 'SAP Sales and Distribution (SD) SAP Inbound Delivery API — Inbound Delivery Item. 1 operations. Lead operation:
+    Retrieve items for an inbound delivery. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd business
+    surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Inbound Delivery Item
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-inbound-delivery-inbound-delivery-item
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002
+    description: SAP Sales and Distribution (SD) SAP Inbound Delivery API — Inbound Delivery Item business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_InbDeliveryHeader('{DeliveryDocument}')-to_DeliveryDocumentItem
+      path: /A_InbDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentItem
+      operations:
+      - name: listinbounddeliveryitems
+        method: GET
+        description: Retrieve items for an inbound delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DeliveryDocument
+          in: path
+          type: string
+          description: Delivery document number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-inbound-delivery-inbound-delivery-item-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Inbound Delivery API — Inbound Delivery Item. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-inbdeliveryheader-deliverydocument/to-deliverydocumentitem
+      name: a-inbdeliveryheader-deliverydocument-to-deliverydocumentitem
+      description: REST surface for A_InbDeliveryHeader('{DeliveryDocument}')-to_DeliveryDocumentItem.
+      operations:
+      - method: GET
+        name: listinbounddeliveryitems
+        description: Retrieve items for an inbound delivery
+        call: sap-sd-inbound-delivery-inbound-delivery-item.listinbounddeliveryitems
+        with:
+          DeliveryDocument: rest.DeliveryDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-inbound-delivery-inbound-delivery-item-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Inbound Delivery API — Inbound Delivery Item. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-items-inbound-delivery
+      description: Retrieve items for an inbound delivery
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-inbound-delivery-inbound-delivery-item.listinbounddeliveryitems
+      with:
+        DeliveryDocument: tools.DeliveryDocument
+      outputParameters:
+      - type: object
+        mapping: $.

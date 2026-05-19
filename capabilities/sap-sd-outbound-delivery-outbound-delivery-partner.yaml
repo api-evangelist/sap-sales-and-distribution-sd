@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Outbound Delivery API — Outbound Delivery Partner
+  description: 'SAP Sales and Distribution (SD) SAP Outbound Delivery API — Outbound Delivery Partner. 1 operations. Lead
+    operation: Retrieve partners for an outbound delivery. Self-contained Naftiko capability covering one Sap Sales And Distribution
+    Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Outbound Delivery Partner
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-outbound-delivery-outbound-delivery-partner
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV
+    description: SAP Sales and Distribution (SD) SAP Outbound Delivery API — Outbound Delivery Partner business capability.
+      Self-contained, no shared references.
+    resources:
+    - name: A_OutbDeliveryHeader('{DeliveryDocument}')-to_DeliveryDocumentPartner
+      path: /A_OutbDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentPartner
+      operations:
+      - name: listoutbounddeliverypartners
+        method: GET
+        description: Retrieve partners for an outbound delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DeliveryDocument
+          in: path
+          type: string
+          description: Delivery document number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-outbound-delivery-outbound-delivery-partner-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Outbound Delivery API — Outbound Delivery Partner. One
+      Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-outbdeliveryheader-deliverydocument/to-deliverydocumentpartner
+      name: a-outbdeliveryheader-deliverydocument-to-deliverydocumentpartner
+      description: REST surface for A_OutbDeliveryHeader('{DeliveryDocument}')-to_DeliveryDocumentPartner.
+      operations:
+      - method: GET
+        name: listoutbounddeliverypartners
+        description: Retrieve partners for an outbound delivery
+        call: sap-sd-outbound-delivery-outbound-delivery-partner.listoutbounddeliverypartners
+        with:
+          DeliveryDocument: rest.DeliveryDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-outbound-delivery-outbound-delivery-partner-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Outbound Delivery API — Outbound Delivery Partner. One
+      tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-partners-outbound-delivery
+      description: Retrieve partners for an outbound delivery
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-outbound-delivery-outbound-delivery-partner.listoutbounddeliverypartners
+      with:
+        DeliveryDocument: tools.DeliveryDocument
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Sales Order API — Sales Order Text
+  description: 'SAP Sales and Distribution (SD) SAP Sales Order API — Sales Order Text. 1 operations. Lead operation: Retrieve
+    texts for a sales order. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Sales Order Text
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-sales-order-sales-order-text
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV
+    description: SAP Sales and Distribution (SD) SAP Sales Order API — Sales Order Text business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_SalesOrder('{SalesOrder}')-to_Text
+      path: /A_SalesOrder('{SalesOrder}')/to_Text
+      operations:
+      - name: listsalesordertexts
+        method: GET
+        description: Retrieve texts for a sales order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: SalesOrder
+          in: path
+          type: string
+          description: Sales order number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-sales-order-sales-order-text-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Sales Order API — Sales Order Text. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-salesorder-salesorder/to-text
+      name: a-salesorder-salesorder-to-text
+      description: REST surface for A_SalesOrder('{SalesOrder}')-to_Text.
+      operations:
+      - method: GET
+        name: listsalesordertexts
+        description: Retrieve texts for a sales order
+        call: sap-sd-sales-order-sales-order-text.listsalesordertexts
+        with:
+          SalesOrder: rest.SalesOrder
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-sales-order-sales-order-text-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Sales Order API — Sales Order Text. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-texts-sales-order
+      description: Retrieve texts for a sales order
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-sales-order-sales-order-text.listsalesordertexts
+      with:
+        SalesOrder: tools.SalesOrder
+      outputParameters:
+      - type: object
+        mapping: $.

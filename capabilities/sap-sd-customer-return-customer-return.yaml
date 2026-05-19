@@ -1,0 +1,225 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Customer Return API — Customer Return
+  description: 'SAP Sales and Distribution (SD) SAP Customer Return API — Customer Return. 5 operations. Lead operation: Retrieve
+    a list of customer returns. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Customer Return
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-customer-return-customer-return
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV
+    description: SAP Sales and Distribution (SD) SAP Customer Return API — Customer Return business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_CustomerReturn
+      path: /A_CustomerReturn
+      operations:
+      - name: listcustomerreturns
+        method: GET
+        description: Retrieve a list of customer returns
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcustomerreturn
+        method: POST
+        description: Create a new customer return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: A_CustomerReturn('{CustomerReturn}')
+      path: /A_CustomerReturn('{CustomerReturn}')
+      operations:
+      - name: getcustomerreturn
+        method: GET
+        description: Retrieve a single customer return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: CustomerReturn
+          in: path
+          type: string
+          description: Customer return number (10 characters)
+          required: true
+      - name: updatecustomerreturn
+        method: PATCH
+        description: Update a customer return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: CustomerReturn
+          in: path
+          type: string
+          description: Customer return number
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecustomerreturn
+        method: DELETE
+        description: Delete a customer return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: CustomerReturn
+          in: path
+          type: string
+          description: Customer return number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-customer-return-customer-return-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Customer Return API — Customer Return. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-customerreturn
+      name: a-customerreturn
+      description: REST surface for A_CustomerReturn.
+      operations:
+      - method: GET
+        name: listcustomerreturns
+        description: Retrieve a list of customer returns
+        call: sap-sd-customer-return-customer-return.listcustomerreturns
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcustomerreturn
+        description: Create a new customer return
+        call: sap-sd-customer-return-customer-return.createcustomerreturn
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/a-customerreturn-customerreturn
+      name: a-customerreturn-customerreturn
+      description: REST surface for A_CustomerReturn('{CustomerReturn}').
+      operations:
+      - method: GET
+        name: getcustomerreturn
+        description: Retrieve a single customer return
+        call: sap-sd-customer-return-customer-return.getcustomerreturn
+        with:
+          CustomerReturn: rest.CustomerReturn
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecustomerreturn
+        description: Update a customer return
+        call: sap-sd-customer-return-customer-return.updatecustomerreturn
+        with:
+          CustomerReturn: rest.CustomerReturn
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecustomerreturn
+        description: Delete a customer return
+        call: sap-sd-customer-return-customer-return.deletecustomerreturn
+        with:
+          CustomerReturn: rest.CustomerReturn
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-customer-return-customer-return-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Customer Return API — Customer Return. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-list-customer-returns
+      description: Retrieve a list of customer returns
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-customer-return-customer-return.listcustomerreturns
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-customer-return
+      description: Create a new customer return
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-customer-return-customer-return.createcustomerreturn
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-single-customer-return
+      description: Retrieve a single customer return
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-customer-return-customer-return.getcustomerreturn
+      with:
+        CustomerReturn: tools.CustomerReturn
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-customer-return
+      description: Update a customer return
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: sap-sd-customer-return-customer-return.updatecustomerreturn
+      with:
+        CustomerReturn: tools.CustomerReturn
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-customer-return
+      description: Delete a customer return
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: sap-sd-customer-return-customer-return.deletecustomerreturn
+      with:
+        CustomerReturn: tools.CustomerReturn
+      outputParameters:
+      - type: object
+        mapping: $.

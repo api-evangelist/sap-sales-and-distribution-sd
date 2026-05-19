@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Sales Order API — Sales Order Partner
+  description: 'SAP Sales and Distribution (SD) SAP Sales Order API — Sales Order Partner. 1 operations. Lead operation: Retrieve
+    partners for a sales order. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Sales Order Partner
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-sales-order-sales-order-partner
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV
+    description: SAP Sales and Distribution (SD) SAP Sales Order API — Sales Order Partner business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_SalesOrder('{SalesOrder}')-to_Partner
+      path: /A_SalesOrder('{SalesOrder}')/to_Partner
+      operations:
+      - name: listsalesorderpartners
+        method: GET
+        description: Retrieve partners for a sales order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: SalesOrder
+          in: path
+          type: string
+          description: Sales order number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-sales-order-sales-order-partner-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Sales Order API — Sales Order Partner. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-salesorder-salesorder/to-partner
+      name: a-salesorder-salesorder-to-partner
+      description: REST surface for A_SalesOrder('{SalesOrder}')-to_Partner.
+      operations:
+      - method: GET
+        name: listsalesorderpartners
+        description: Retrieve partners for a sales order
+        call: sap-sd-sales-order-sales-order-partner.listsalesorderpartners
+        with:
+          SalesOrder: rest.SalesOrder
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-sales-order-sales-order-partner-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Sales Order API — Sales Order Partner. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-partners-sales-order
+      description: Retrieve partners for a sales order
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-sales-order-sales-order-partner.listsalesorderpartners
+      with:
+        SalesOrder: tools.SalesOrder
+      outputParameters:
+      - type: object
+        mapping: $.

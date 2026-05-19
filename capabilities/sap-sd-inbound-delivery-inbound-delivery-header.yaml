@@ -1,0 +1,268 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Inbound Delivery API — Inbound Delivery Header
+  description: 'SAP Sales and Distribution (SD) SAP Inbound Delivery API — Inbound Delivery Header. 6 operations. Lead operation:
+    Retrieve a list of inbound deliveries. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd business
+    surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Inbound Delivery Header
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-inbound-delivery-inbound-delivery-header
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002
+    description: SAP Sales and Distribution (SD) SAP Inbound Delivery API — Inbound Delivery Header business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_InbDeliveryHeader
+      path: /A_InbDeliveryHeader
+      operations:
+      - name: listinbounddeliveries
+        method: GET
+        description: Retrieve a list of inbound deliveries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createinbounddelivery
+        method: POST
+        description: Create a new inbound delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: A_InbDeliveryHeader('{DeliveryDocument}')
+      path: /A_InbDeliveryHeader('{DeliveryDocument}')
+      operations:
+      - name: getinbounddelivery
+        method: GET
+        description: Retrieve a single inbound delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DeliveryDocument
+          in: path
+          type: string
+          description: Delivery document number (10 characters)
+          required: true
+      - name: updateinbounddelivery
+        method: PATCH
+        description: Update an inbound delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DeliveryDocument
+          in: path
+          type: string
+          description: Delivery document number
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteinbounddelivery
+        method: DELETE
+        description: Delete an inbound delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DeliveryDocument
+          in: path
+          type: string
+          description: Delivery document number
+          required: true
+    - name: PostGoodsReceipt
+      path: /PostGoodsReceipt
+      operations:
+      - name: postgoodsreceipt
+        method: POST
+        description: Post goods receipt for an inbound delivery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DeliveryDocument
+          in: query
+          type: string
+          description: Delivery document number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-inbound-delivery-inbound-delivery-header-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Inbound Delivery API — Inbound Delivery Header. One
+      Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-inbdeliveryheader
+      name: a-inbdeliveryheader
+      description: REST surface for A_InbDeliveryHeader.
+      operations:
+      - method: GET
+        name: listinbounddeliveries
+        description: Retrieve a list of inbound deliveries
+        call: sap-sd-inbound-delivery-inbound-delivery-header.listinbounddeliveries
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createinbounddelivery
+        description: Create a new inbound delivery
+        call: sap-sd-inbound-delivery-inbound-delivery-header.createinbounddelivery
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/a-inbdeliveryheader-deliverydocument
+      name: a-inbdeliveryheader-deliverydocument
+      description: REST surface for A_InbDeliveryHeader('{DeliveryDocument}').
+      operations:
+      - method: GET
+        name: getinbounddelivery
+        description: Retrieve a single inbound delivery
+        call: sap-sd-inbound-delivery-inbound-delivery-header.getinbounddelivery
+        with:
+          DeliveryDocument: rest.DeliveryDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateinbounddelivery
+        description: Update an inbound delivery
+        call: sap-sd-inbound-delivery-inbound-delivery-header.updateinbounddelivery
+        with:
+          DeliveryDocument: rest.DeliveryDocument
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteinbounddelivery
+        description: Delete an inbound delivery
+        call: sap-sd-inbound-delivery-inbound-delivery-header.deleteinbounddelivery
+        with:
+          DeliveryDocument: rest.DeliveryDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/postgoodsreceipt
+      name: postgoodsreceipt
+      description: REST surface for PostGoodsReceipt.
+      operations:
+      - method: POST
+        name: postgoodsreceipt
+        description: Post goods receipt for an inbound delivery
+        call: sap-sd-inbound-delivery-inbound-delivery-header.postgoodsreceipt
+        with:
+          DeliveryDocument: rest.DeliveryDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-inbound-delivery-inbound-delivery-header-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Inbound Delivery API — Inbound Delivery Header. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-list-inbound-deliveries
+      description: Retrieve a list of inbound deliveries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-inbound-delivery-inbound-delivery-header.listinbounddeliveries
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-inbound-delivery
+      description: Create a new inbound delivery
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-inbound-delivery-inbound-delivery-header.createinbounddelivery
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-single-inbound-delivery
+      description: Retrieve a single inbound delivery
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-inbound-delivery-inbound-delivery-header.getinbounddelivery
+      with:
+        DeliveryDocument: tools.DeliveryDocument
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-inbound-delivery
+      description: Update an inbound delivery
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: sap-sd-inbound-delivery-inbound-delivery-header.updateinbounddelivery
+      with:
+        DeliveryDocument: tools.DeliveryDocument
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-inbound-delivery
+      description: Delete an inbound delivery
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: sap-sd-inbound-delivery-inbound-delivery-header.deleteinbounddelivery
+      with:
+        DeliveryDocument: tools.DeliveryDocument
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-goods-receipt-inbound-delivery
+      description: Post goods receipt for an inbound delivery
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-inbound-delivery-inbound-delivery-header.postgoodsreceipt
+      with:
+        DeliveryDocument: tools.DeliveryDocument
+      outputParameters:
+      - type: object
+        mapping: $.

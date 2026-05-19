@@ -1,0 +1,198 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Billing Document API — Billing Document
+  description: 'SAP Sales and Distribution (SD) SAP Billing Document API — Billing Document. 4 operations. Lead operation:
+    Retrieve a list of billing documents. Self-contained Naftiko capability covering one Sap Sales And Distribution Sd business
+    surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Billing Document
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-billing-document-billing-document
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+    description: SAP Sales and Distribution (SD) SAP Billing Document API — Billing Document business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: A_BillingDocument
+      path: /A_BillingDocument
+      operations:
+      - name: listbillingdocuments
+        method: GET
+        description: Retrieve a list of billing documents
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: A_BillingDocument('{BillingDocument}')
+      path: /A_BillingDocument('{BillingDocument}')
+      operations:
+      - name: getbillingdocument
+        method: GET
+        description: Retrieve a single billing document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: BillingDocument
+          in: path
+          type: string
+          description: Billing document number (10 characters)
+          required: true
+    - name: CancelBillingDocument
+      path: /CancelBillingDocument
+      operations:
+      - name: cancelbillingdocument
+        method: POST
+        description: Cancel a billing document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: BillingDocument
+          in: query
+          type: string
+          description: Billing document number to cancel
+          required: true
+    - name: GetPDF
+      path: /GetPDF
+      operations:
+      - name: getbillingdocumentpdf
+        method: GET
+        description: Retrieve a billing document as PDF
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: BillingDocument
+          in: query
+          type: string
+          description: Billing document number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-billing-document-billing-document-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Billing Document API — Billing Document. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-billingdocument
+      name: a-billingdocument
+      description: REST surface for A_BillingDocument.
+      operations:
+      - method: GET
+        name: listbillingdocuments
+        description: Retrieve a list of billing documents
+        call: sap-sd-billing-document-billing-document.listbillingdocuments
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/a-billingdocument-billingdocument
+      name: a-billingdocument-billingdocument
+      description: REST surface for A_BillingDocument('{BillingDocument}').
+      operations:
+      - method: GET
+        name: getbillingdocument
+        description: Retrieve a single billing document
+        call: sap-sd-billing-document-billing-document.getbillingdocument
+        with:
+          BillingDocument: rest.BillingDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cancelbillingdocument
+      name: cancelbillingdocument
+      description: REST surface for CancelBillingDocument.
+      operations:
+      - method: POST
+        name: cancelbillingdocument
+        description: Cancel a billing document
+        call: sap-sd-billing-document-billing-document.cancelbillingdocument
+        with:
+          BillingDocument: rest.BillingDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/getpdf
+      name: getpdf
+      description: REST surface for GetPDF.
+      operations:
+      - method: GET
+        name: getbillingdocumentpdf
+        description: Retrieve a billing document as PDF
+        call: sap-sd-billing-document-billing-document.getbillingdocumentpdf
+        with:
+          BillingDocument: rest.BillingDocument
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-billing-document-billing-document-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Billing Document API — Billing Document. One tool per
+      consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-list-billing-documents
+      description: Retrieve a list of billing documents
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-billing-document-billing-document.listbillingdocuments
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-single-billing-document
+      description: Retrieve a single billing document
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-billing-document-billing-document.getbillingdocument
+      with:
+        BillingDocument: tools.BillingDocument
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cancel-billing-document
+      description: Cancel a billing document
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-billing-document-billing-document.cancelbillingdocument
+      with:
+        BillingDocument: tools.BillingDocument
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-billing-document-pdf
+      description: Retrieve a billing document as PDF
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-billing-document-billing-document.getbillingdocumentpdf
+      with:
+        BillingDocument: tools.BillingDocument
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Material Master (Product) API — Product Description
+  description: 'SAP Sales and Distribution (SD) SAP Material Master (Product) API — Product Description. 1 operations. Lead
+    operation: Retrieve descriptions for a product. Self-contained Naftiko capability covering one Sap Sales And Distribution
+    Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Product Description
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-material-master-product-description
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_PRODUCT_SRV
+    description: SAP Sales and Distribution (SD) SAP Material Master (Product) API — Product Description business capability.
+      Self-contained, no shared references.
+    resources:
+    - name: A_Product('{Product}')-to_Description
+      path: /A_Product('{Product}')/to_Description
+      operations:
+      - name: listproductdescriptions
+        method: GET
+        description: Retrieve descriptions for a product
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Product
+          in: path
+          type: string
+          description: Material number
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-material-master-product-description-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Material Master (Product) API — Product Description.
+      One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-product-product/to-description
+      name: a-product-product-to-description
+      description: REST surface for A_Product('{Product}')-to_Description.
+      operations:
+      - method: GET
+        name: listproductdescriptions
+        description: Retrieve descriptions for a product
+        call: sap-sd-material-master-product-description.listproductdescriptions
+        with:
+          Product: rest.Product
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-material-master-product-description-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Material Master (Product) API — Product Description.
+      One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-descriptions-product
+      description: Retrieve descriptions for a product
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-material-master-product-description.listproductdescriptions
+      with:
+        Product: tools.Product
+      outputParameters:
+      - type: object
+        mapping: $.

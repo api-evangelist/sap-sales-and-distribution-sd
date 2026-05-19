@@ -1,0 +1,191 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Sales and Distribution (SD) SAP Sales Scheduling Agreement API — Scheduling Agreement
+  description: 'SAP Sales and Distribution (SD) SAP Sales Scheduling Agreement API — Scheduling Agreement. 4 operations. Lead
+    operation: Retrieve a list of scheduling agreements. Self-contained Naftiko capability covering one Sap Sales And Distribution
+    Sd business surface.'
+  tags:
+  - Sap Sales And Distribution Sd
+  - Scheduling Agreement
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_SALES_AND_DISTRIBUTION_SD_API_KEY: SAP_SALES_AND_DISTRIBUTION_SD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sap-sd-sales-scheduling-agreement-scheduling-agreement
+    baseUri: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_SCHEDULING_AGREEMENT
+    description: SAP Sales and Distribution (SD) SAP Sales Scheduling Agreement API — Scheduling Agreement business capability.
+      Self-contained, no shared references.
+    resources:
+    - name: A_SchAgrmtHeader
+      path: /A_SchAgrmtHeader
+      operations:
+      - name: listschedulingagreements
+        method: GET
+        description: Retrieve a list of scheduling agreements
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createschedulingagreement
+        method: POST
+        description: Create a new scheduling agreement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: A_SchAgrmtHeader('{SchedulingAgreement}')
+      path: /A_SchAgrmtHeader('{SchedulingAgreement}')
+      operations:
+      - name: getschedulingagreement
+        method: GET
+        description: Retrieve a single scheduling agreement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: SchedulingAgreement
+          in: path
+          type: string
+          description: Scheduling agreement number (10 characters)
+          required: true
+      - name: updateschedulingagreement
+        method: PATCH
+        description: Update a scheduling agreement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: SchedulingAgreement
+          in: path
+          type: string
+          description: Scheduling agreement number
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_SALES_AND_DISTRIBUTION_SD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: sap-sd-sales-scheduling-agreement-scheduling-agreement-rest
+    port: 8080
+    description: REST adapter for SAP Sales and Distribution (SD) SAP Sales Scheduling Agreement API — Scheduling Agreement.
+      One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/a-schagrmtheader
+      name: a-schagrmtheader
+      description: REST surface for A_SchAgrmtHeader.
+      operations:
+      - method: GET
+        name: listschedulingagreements
+        description: Retrieve a list of scheduling agreements
+        call: sap-sd-sales-scheduling-agreement-scheduling-agreement.listschedulingagreements
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createschedulingagreement
+        description: Create a new scheduling agreement
+        call: sap-sd-sales-scheduling-agreement-scheduling-agreement.createschedulingagreement
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/a-schagrmtheader-schedulingagreement
+      name: a-schagrmtheader-schedulingagreement
+      description: REST surface for A_SchAgrmtHeader('{SchedulingAgreement}').
+      operations:
+      - method: GET
+        name: getschedulingagreement
+        description: Retrieve a single scheduling agreement
+        call: sap-sd-sales-scheduling-agreement-scheduling-agreement.getschedulingagreement
+        with:
+          SchedulingAgreement: rest.SchedulingAgreement
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateschedulingagreement
+        description: Update a scheduling agreement
+        call: sap-sd-sales-scheduling-agreement-scheduling-agreement.updateschedulingagreement
+        with:
+          SchedulingAgreement: rest.SchedulingAgreement
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sap-sd-sales-scheduling-agreement-scheduling-agreement-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Sales and Distribution (SD) SAP Sales Scheduling Agreement API — Scheduling Agreement.
+      One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-list-scheduling-agreements
+      description: Retrieve a list of scheduling agreements
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-sales-scheduling-agreement-scheduling-agreement.listschedulingagreements
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-scheduling-agreement
+      description: Create a new scheduling agreement
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: sap-sd-sales-scheduling-agreement-scheduling-agreement.createschedulingagreement
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-single-scheduling-agreement
+      description: Retrieve a single scheduling agreement
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sap-sd-sales-scheduling-agreement-scheduling-agreement.getschedulingagreement
+      with:
+        SchedulingAgreement: tools.SchedulingAgreement
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-scheduling-agreement
+      description: Update a scheduling agreement
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: sap-sd-sales-scheduling-agreement-scheduling-agreement.updateschedulingagreement
+      with:
+        SchedulingAgreement: tools.SchedulingAgreement
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
