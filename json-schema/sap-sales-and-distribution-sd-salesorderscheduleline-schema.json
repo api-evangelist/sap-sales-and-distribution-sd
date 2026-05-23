@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesOrderScheduleLine",
+  "title": "SalesOrderScheduleLine",
+  "type": "object",
+  "description": "Sales order schedule line entity (A_SalesOrderScheduleLine)",
+  "properties": {
+    "SalesOrder": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sales order number"
+    },
+    "SalesOrderItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Sales order item number"
+    },
+    "ScheduleLine": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Schedule line number"
+    },
+    "RequestedDeliveryDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Schedule line delivery date"
+    },
+    "ConfirmedDeliveryDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Confirmed delivery date"
+    },
+    "OrderQuantityInSalesUnit": {
+      "type": "string",
+      "description": "Order quantity in sales unit"
+    },
+    "ConfirmedOrderQuantity": {
+      "type": "string",
+      "description": "Confirmed quantity"
+    },
+    "ScheduleLineOrderQuantity": {
+      "type": "string",
+      "description": "Scheduled order quantity"
+    },
+    "DeliveredQuantityInOrderQtyUnit": {
+      "type": "string",
+      "description": "Quantity already delivered"
+    }
+  }
+}

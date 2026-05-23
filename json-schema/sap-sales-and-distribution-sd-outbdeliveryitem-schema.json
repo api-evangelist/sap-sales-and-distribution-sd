@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OutbDeliveryItem",
+  "title": "OutbDeliveryItem",
+  "type": "object",
+  "description": "Outbound delivery item entity (A_OutbDeliveryItem)",
+  "properties": {
+    "DeliveryDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Delivery document number"
+    },
+    "DeliveryDocumentItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Delivery item number"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "MaterialGroup": {
+      "type": "string",
+      "maxLength": 9,
+      "description": "Material group"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant"
+    },
+    "StorageLocation": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Storage location"
+    },
+    "Batch": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Batch number"
+    },
+    "ActualDeliveryQuantity": {
+      "type": "string",
+      "description": "Actual quantity delivered in sales units"
+    },
+    "DeliveryQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Sales unit"
+    },
+    "ItemNetWeight": {
+      "type": "string",
+      "description": "Net weight of the item"
+    },
+    "ItemGrossWeight": {
+      "type": "string",
+      "description": "Gross weight of the item"
+    },
+    "ItemWeightUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Weight unit"
+    },
+    "ItemVolume": {
+      "type": "string",
+      "description": "Volume of the item"
+    },
+    "ItemVolumeUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Volume unit"
+    },
+    "ReferenceSDDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Reference sales document (sales order number)"
+    },
+    "ReferenceSDDocumentItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Reference sales document item"
+    },
+    "PickedQuantityInSalesUnit": {
+      "type": "string",
+      "description": "Picked quantity"
+    },
+    "PickingConfirmationStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Picking confirmation status"
+    },
+    "GoodsMovementStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Goods movement status"
+    }
+  }
+}

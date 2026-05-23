@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BillingDocument",
+  "title": "BillingDocument",
+  "type": "object",
+  "description": "Billing document header entity (A_BillingDocument)",
+  "properties": {
+    "BillingDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Billing document number"
+    },
+    "BillingDocumentType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Billing document type (F2=Invoice, G2=Credit Memo, L2=Debit Memo)"
+    },
+    "BillingDocumentCategory": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Billing document category"
+    },
+    "SDDocumentCategory": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "SD document category"
+    },
+    "BillingDocumentDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Billing date"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the document was created"
+    },
+    "CreationTime": {
+      "type": "string",
+      "description": "Time the document was created"
+    },
+    "LastChangeDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of last change"
+    },
+    "LastChangeDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of last change"
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "Division": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Division"
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sold-to party"
+    },
+    "PayerParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Payer"
+    },
+    "TotalNetAmount": {
+      "type": "string",
+      "description": "Net value in document currency"
+    },
+    "TotalGrossAmount": {
+      "type": "string",
+      "description": "Gross value in document currency"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "SD document currency"
+    },
+    "TotalTaxAmount": {
+      "type": "string",
+      "description": "Tax amount in document currency"
+    },
+    "CustomerPaymentTerms": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Terms of payment key"
+    },
+    "PaymentMethod": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Payment method"
+    },
+    "BillingDocumentIsCancelled": {
+      "type": "boolean",
+      "description": "Indicates if the billing document is cancelled"
+    },
+    "CancelledBillingDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Cancelled billing document number"
+    },
+    "AccountingDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Accounting document number"
+    },
+    "AccountingPostingStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Accounting posting status"
+    },
+    "IncotermsClassification": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Incoterms (part 1)"
+    },
+    "CompanyCode": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Company code"
+    }
+  }
+}

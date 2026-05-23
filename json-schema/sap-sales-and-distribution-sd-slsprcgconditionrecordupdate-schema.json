@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SlsPrcgConditionRecordUpdate",
+  "title": "SlsPrcgConditionRecordUpdate",
+  "type": "object",
+  "description": "Pricing condition record update payload",
+  "properties": {
+    "ConditionRateValue": {
+      "type": "string"
+    },
+    "ConditionRateValueUnit": {
+      "type": "string",
+      "maxLength": 5
+    },
+    "ConditionQuantity": {
+      "type": "string"
+    },
+    "ConditionIsDeleted": {
+      "type": "boolean"
+    }
+  }
+}

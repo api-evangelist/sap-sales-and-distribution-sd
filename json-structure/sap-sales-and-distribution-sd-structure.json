@@ -1,0 +1,200 @@
+{
+  "provider": "SAP Sales and Distribution (SD)",
+  "providerId": "sap-sales-and-distribution-sd",
+  "kind": "json-structure",
+  "description": "Structural overview of the SAP Sales and Distribution (SD) API surface; extracted from openapi/.",
+  "schemaCount": 11,
+  "operationCount": 13,
+  "schemas": [
+    {
+      "name": "SalesOrder",
+      "type": "object",
+      "propertyCount": 37,
+      "required": []
+    },
+    {
+      "name": "SalesOrderCreate",
+      "type": "object",
+      "propertyCount": 13,
+      "required": [
+        "SalesOrderType",
+        "SalesOrganization",
+        "DistributionChannel",
+        "OrganizationDivision"
+      ]
+    },
+    {
+      "name": "SalesOrderUpdate",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "SalesOrderItem",
+      "type": "object",
+      "propertyCount": 21,
+      "required": []
+    },
+    {
+      "name": "SalesOrderItemCreate",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "SalesOrderItemUpdate",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "SalesOrderHeaderPartner",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "SalesOrderPricingElement",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "SalesOrderScheduleLine",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "SalesOrderText",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Error",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/A_SalesOrder",
+      "operationId": "listSalesOrders",
+      "summary": "Retrieve a list of sales orders",
+      "tags": [
+        "Sales Order Header"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/A_SalesOrder",
+      "operationId": "createSalesOrder",
+      "summary": "Create a new sales order",
+      "tags": [
+        "Sales Order Header"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/A_SalesOrder('{SalesOrder}')",
+      "operationId": "getSalesOrder",
+      "summary": "Retrieve a single sales order",
+      "tags": [
+        "Sales Order Header"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/A_SalesOrder('{SalesOrder}')",
+      "operationId": "deleteSalesOrder",
+      "summary": "Delete a sales order",
+      "tags": [
+        "Sales Order Header"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/A_SalesOrder('{SalesOrder}')",
+      "operationId": "updateSalesOrder",
+      "summary": "Update a sales order",
+      "tags": [
+        "Sales Order Header"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/A_SalesOrder('{SalesOrder}')/to_Item",
+      "operationId": "listSalesOrderItems",
+      "summary": "Retrieve items for a sales order",
+      "tags": [
+        "Sales Order Item"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/A_SalesOrderItem(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}')",
+      "operationId": "getSalesOrderItem",
+      "summary": "Retrieve a single sales order item",
+      "tags": [
+        "Sales Order Item"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/A_SalesOrderItem(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}')",
+      "operationId": "deleteSalesOrderItem",
+      "summary": "Delete a sales order item",
+      "tags": [
+        "Sales Order Item"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/A_SalesOrderItem(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}')",
+      "operationId": "updateSalesOrderItem",
+      "summary": "Update a sales order item",
+      "tags": [
+        "Sales Order Item"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/A_SalesOrder('{SalesOrder}')/to_Partner",
+      "operationId": "listSalesOrderPartners",
+      "summary": "Retrieve partners for a sales order",
+      "tags": [
+        "Sales Order Partner"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/A_SalesOrder('{SalesOrder}')/to_PricingElement",
+      "operationId": "listSalesOrderPricingElements",
+      "summary": "Retrieve pricing elements for a sales order",
+      "tags": [
+        "Sales Order Pricing Element"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/A_SalesOrderScheduleLine(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}',ScheduleLine='{ScheduleLine}')",
+      "operationId": "getSalesOrderScheduleLine",
+      "summary": "Retrieve a schedule line",
+      "tags": [
+        "Sales Order Schedule Line"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/A_SalesOrder('{SalesOrder}')/to_Text",
+      "operationId": "listSalesOrderTexts",
+      "summary": "Retrieve texts for a sales order",
+      "tags": [
+        "Sales Order Text"
+      ]
+    }
+  ]
+}

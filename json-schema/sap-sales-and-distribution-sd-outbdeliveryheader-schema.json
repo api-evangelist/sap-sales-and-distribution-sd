@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OutbDeliveryHeader",
+  "title": "OutbDeliveryHeader",
+  "type": "object",
+  "description": "Outbound delivery header entity (A_OutbDeliveryHeader)",
+  "properties": {
+    "DeliveryDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Delivery document number"
+    },
+    "DeliveryDocumentBySupplier": {
+      "type": "string",
+      "maxLength": 16,
+      "description": "External delivery number from supplier"
+    },
+    "DeliveryDocumentType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Delivery type"
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sold-to party"
+    },
+    "ShipToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Ship-to party"
+    },
+    "ShippingPoint": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Shipping point / receiving point"
+    },
+    "DeliveryDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Planned delivery date"
+    },
+    "ActualDeliveryRoute": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Route"
+    },
+    "DeliveryBlockReason": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Delivery block reason"
+    },
+    "DeliveryPriority": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Delivery priority"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the delivery was created"
+    },
+    "CreationTime": {
+      "type": "string",
+      "description": "Time the delivery was created (PT format)"
+    },
+    "CreatedByUser": {
+      "type": "string",
+      "maxLength": 12,
+      "description": "User who created the delivery"
+    },
+    "ActualGoodsMovementDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Actual goods movement date"
+    },
+    "ActualGoodsMovementTime": {
+      "type": "string",
+      "description": "Actual goods movement time"
+    },
+    "GoodsIssueOrReceiptSlipNumber": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Material document number for goods movement"
+    },
+    "BillingDocumentDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Billing date"
+    },
+    "CompleteDeliveryIsDefined": {
+      "type": "boolean",
+      "description": "Complete delivery flag"
+    },
+    "OverallDelivConfStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall delivery confirmation status"
+    },
+    "OverallGoodsMovementStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall goods movement status"
+    },
+    "OverallPackingStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall packing status"
+    },
+    "OverallPickingConfStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall picking/putaway confirmation status"
+    },
+    "OverallPickingStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall picking status"
+    },
+    "TotalNumberOfPackage": {
+      "type": "string",
+      "description": "Total number of packages"
+    },
+    "TransportationPlanningDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Transportation planning date"
+    }
+  }
+}

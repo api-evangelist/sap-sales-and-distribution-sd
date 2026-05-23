@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProductCreate",
+  "title": "ProductCreate",
+  "type": "object",
+  "description": "Product creation payload",
+  "required": [
+    "Product",
+    "ProductType"
+  ],
+  "properties": {
+    "Product": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "ProductType": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "ProductGroup": {
+      "type": "string",
+      "maxLength": 9
+    },
+    "BaseUnit": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "GrossWeight": {
+      "type": "string"
+    },
+    "NetWeight": {
+      "type": "string"
+    },
+    "WeightUnit": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "Division": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "to_Description": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ProductDescriptionCreate"
+          }
+        }
+      }
+    }
+  }
+}

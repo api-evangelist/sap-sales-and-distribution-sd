@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DebitMemoRequestItemCreate",
+  "title": "DebitMemoRequestItemCreate",
+  "type": "object",
+  "properties": {
+    "Material": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "RequestedQuantity": {
+      "type": "string"
+    },
+    "RequestedQuantityUnit": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "SalesDocument": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "SalesDocumentItem": {
+      "type": "string",
+      "maxLength": 6
+    }
+  }
+}

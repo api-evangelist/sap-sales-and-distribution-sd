@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomerMaterialCreate",
+  "title": "CustomerMaterialCreate",
+  "type": "object",
+  "required": [
+    "SalesOrganization",
+    "DistributionChannel",
+    "Customer",
+    "Material"
+  ],
+  "properties": {
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "Customer": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "MaterialByCustomer": {
+      "type": "string",
+      "maxLength": 35
+    },
+    "MaterialDescriptionByCustomer": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4
+    }
+  }
+}

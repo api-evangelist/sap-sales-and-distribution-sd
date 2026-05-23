@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OutbDeliveryPartner",
+  "title": "OutbDeliveryPartner",
+  "type": "object",
+  "description": "Outbound delivery partner entity (A_OutbDeliveryPartner)",
+  "properties": {
+    "PartnerFunction": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Partner function"
+    },
+    "SDDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Delivery document number"
+    },
+    "Customer": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Customer number"
+    },
+    "Supplier": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Vendor account number"
+    }
+  }
+}

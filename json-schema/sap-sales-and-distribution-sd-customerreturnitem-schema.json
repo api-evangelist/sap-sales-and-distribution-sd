@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomerReturnItem",
+  "title": "CustomerReturnItem",
+  "type": "object",
+  "description": "Customer return item entity (A_CustomerReturnItem)",
+  "properties": {
+    "CustomerReturn": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Customer return number"
+    },
+    "CustomerReturnItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Item number"
+    },
+    "CustomerReturnItemCategory": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Item category"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "RequestedQuantity": {
+      "type": "string",
+      "description": "Return quantity"
+    },
+    "RequestedQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Sales unit"
+    },
+    "NetAmount": {
+      "type": "string",
+      "description": "Net value"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Document currency"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant"
+    },
+    "ReferenceSDDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Reference sales order"
+    },
+    "ReferenceSDDocumentItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Reference sales order item"
+    },
+    "ReturnReason": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Return reason at item level"
+    }
+  }
+}

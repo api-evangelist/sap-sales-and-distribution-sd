@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BusinessPartner",
+  "title": "BusinessPartner",
+  "type": "object",
+  "description": "Business partner header entity (A_BusinessPartner)",
+  "properties": {
+    "BusinessPartner": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Business partner number"
+    },
+    "BusinessPartnerCategory": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Business partner category (1=Person, 2=Organization, 3=Group)"
+    },
+    "BusinessPartnerFullName": {
+      "type": "string",
+      "maxLength": 81,
+      "description": "Full name of the business partner"
+    },
+    "BusinessPartnerGrouping": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Business partner grouping"
+    },
+    "BusinessPartnerName": {
+      "type": "string",
+      "maxLength": 81,
+      "description": "Business partner name"
+    },
+    "FirstName": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "First name (for person category)"
+    },
+    "LastName": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Last name (for person category)"
+    },
+    "OrganizationBPName1": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Organization name line 1"
+    },
+    "OrganizationBPName2": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Organization name line 2"
+    },
+    "SearchTerm1": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Search term 1"
+    },
+    "SearchTerm2": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Search term 2"
+    },
+    "BusinessPartnerIsBlocked": {
+      "type": "boolean",
+      "description": "Central block flag"
+    },
+    "Language": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Language key"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when the business partner was created"
+    },
+    "LastChangeDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of last change"
+    },
+    "LastChangedByUser": {
+      "type": "string",
+      "maxLength": 12,
+      "description": "User who last changed the record"
+    },
+    "IsNaturalPerson": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Natural person flag"
+    },
+    "IsFemale": {
+      "type": "boolean",
+      "description": "Female indicator"
+    },
+    "IsMale": {
+      "type": "boolean",
+      "description": "Male indicator"
+    },
+    "TradingPartner": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Trading partner company ID"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesQuotationItem",
+  "title": "SalesQuotationItem",
+  "type": "object",
+  "description": "Sales quotation item entity (A_SalesQuotationItem)",
+  "properties": {
+    "SalesQuotation": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sales quotation number"
+    },
+    "SalesQuotationItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Item number"
+    },
+    "SalesQuotationItemCategory": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Item category"
+    },
+    "SalesQuotationItemText": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Item description"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "RequestedQuantity": {
+      "type": "string",
+      "description": "Order quantity"
+    },
+    "RequestedQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Sales unit"
+    },
+    "NetAmount": {
+      "type": "string",
+      "description": "Net value"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Document currency"
+    },
+    "MaterialGroup": {
+      "type": "string",
+      "maxLength": 9,
+      "description": "Material group"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant"
+    }
+  }
+}

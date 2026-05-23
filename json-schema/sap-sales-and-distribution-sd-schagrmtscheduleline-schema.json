@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SchAgrmtScheduleLine",
+  "title": "SchAgrmtScheduleLine",
+  "type": "object",
+  "description": "Scheduling agreement schedule line entity",
+  "properties": {
+    "SchedulingAgreement": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Scheduling agreement number"
+    },
+    "SchedulingAgreementItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Item number"
+    },
+    "ScheduleLine": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Schedule line number"
+    },
+    "DeliveryDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Delivery date"
+    },
+    "OrderQuantity": {
+      "type": "string",
+      "description": "Scheduled quantity"
+    },
+    "OrderQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Order unit"
+    },
+    "DeliveredQuantity": {
+      "type": "string",
+      "description": "Delivered quantity"
+    }
+  }
+}

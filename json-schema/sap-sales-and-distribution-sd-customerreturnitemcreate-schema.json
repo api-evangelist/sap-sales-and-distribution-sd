@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomerReturnItemCreate",
+  "title": "CustomerReturnItemCreate",
+  "type": "object",
+  "properties": {
+    "Material": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "RequestedQuantity": {
+      "type": "string"
+    },
+    "RequestedQuantityUnit": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "ReferenceSDDocument": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "ReferenceSDDocumentItem": {
+      "type": "string",
+      "maxLength": 6
+    }
+  }
+}

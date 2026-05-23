@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InbDeliveryHeaderCreate",
+  "title": "InbDeliveryHeaderCreate",
+  "type": "object",
+  "properties": {
+    "DeliveryDocumentType": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "ReceivingPlant": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "Supplier": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "DeliveryDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "to_DeliveryDocumentItem": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/InbDeliveryItemCreate"
+          }
+        }
+      }
+    }
+  }
+}

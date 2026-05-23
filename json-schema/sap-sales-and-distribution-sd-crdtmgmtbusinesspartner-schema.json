@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CrdtMgmtBusinessPartner",
+  "title": "CrdtMgmtBusinessPartner",
+  "type": "object",
+  "description": "Credit management business partner entity",
+  "properties": {
+    "BusinessPartner": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Business partner number"
+    },
+    "CreditRiskClass": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Risk class"
+    },
+    "CreditRating": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Credit rating"
+    },
+    "CreditIsBlockedForBP": {
+      "type": "boolean",
+      "description": "Credit block indicator"
+    },
+    "LastInternalReviewDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of last internal review"
+    },
+    "NextInternalReviewDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of next internal review"
+    }
+  }
+}

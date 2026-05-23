@@ -1,0 +1,17 @@
+name: SAP Sales and Distribution (SD) Domain Vocabulary
+provider: SAP Sales and Distribution (SD)
+providerId: sap-sales-and-distribution-sd
+description: Tag-derived vocabulary for the SAP Sales and Distribution (SD) API surface; sourced from openapi/ tags.
+terms:
+- term: Sales Order Header
+  description: Operations on sales order header entity (A_SalesOrder)
+- term: Sales Order Item
+  description: Operations on sales order item entity (A_SalesOrderItem)
+- term: Sales Order Partner
+  description: Operations on sales order header partner entity (A_SalesOrderHeaderPartner)
+- term: Sales Order Pricing Element
+  description: Operations on sales order pricing elements (A_SalesOrderHeaderPrElement)
+- term: Sales Order Schedule Line
+  description: Operations on sales order schedule lines (A_SalesOrderScheduleLine)
+- term: Sales Order Text
+  description: Operations on sales order text elements (A_SalesOrderText)

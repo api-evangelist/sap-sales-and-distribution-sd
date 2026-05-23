@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProductSalesDelivery",
+  "title": "ProductSalesDelivery",
+  "type": "object",
+  "description": "Product sales and delivery entity",
+  "properties": {
+    "Product": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "ProductSalesOrg": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "ProductDistributionChnl": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "MinimumOrderQuantity": {
+      "type": "string",
+      "description": "Minimum order quantity"
+    },
+    "DeliveryQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Delivery unit"
+    },
+    "DeliveryQuantity": {
+      "type": "string",
+      "description": "Delivery quantity"
+    },
+    "SupplyingPlant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Delivering plant"
+    },
+    "ItemCategoryGroup": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Item category group"
+    },
+    "AccountDetnProductGroup": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Account assignment group"
+    },
+    "ProductSalesStatus": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution-chain-specific status"
+    }
+  }
+}

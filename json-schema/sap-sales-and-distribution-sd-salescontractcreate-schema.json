@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesContractCreate",
+  "title": "SalesContractCreate",
+  "type": "object",
+  "required": [
+    "SalesContractType",
+    "SalesOrganization",
+    "DistributionChannel",
+    "OrganizationDivision"
+  ],
+  "properties": {
+    "SalesContractType": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "OrganizationDivision": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "SalesContractDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "SalesContractValidityStartDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "SalesContractValidityEndDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "to_Item": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/SalesContractItemCreate"
+          }
+        }
+      }
+    }
+  }
+}

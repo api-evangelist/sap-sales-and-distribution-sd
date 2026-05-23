@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SchAgrmtHeaderCreate",
+  "title": "SchAgrmtHeaderCreate",
+  "type": "object",
+  "required": [
+    "SchedulingAgreementType",
+    "SalesOrganization",
+    "DistributionChannel",
+    "OrganizationDivision"
+  ],
+  "properties": {
+    "SchedulingAgreementType": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "OrganizationDivision": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "SchedulingAgreementDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "SchAgrmtValidityStartDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "SchAgrmtValidityEndDate": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

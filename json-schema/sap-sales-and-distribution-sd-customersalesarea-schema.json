@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomerSalesArea",
+  "title": "CustomerSalesArea",
+  "type": "object",
+  "description": "Customer sales area entity (A_CustomerSalesArea)",
+  "properties": {
+    "Customer": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Customer number"
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "Division": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Division"
+    },
+    "CustomerPaymentTerms": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Terms of payment key"
+    },
+    "DeliveryPriority": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Delivery priority"
+    },
+    "ShippingCondition": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Shipping conditions"
+    },
+    "IncotermsClassification": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Incoterms (part 1)"
+    },
+    "Currency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Currency"
+    },
+    "CustomerPricingProcedure": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Pricing procedure assigned to the customer"
+    },
+    "CustomerAccountAssignmentGroup": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Account assignment group for the customer"
+    },
+    "CompleteDeliveryIsDefined": {
+      "type": "boolean",
+      "description": "Complete delivery flag"
+    },
+    "PartialDeliveryIsAllowed": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Partial delivery at item level"
+    }
+  }
+}

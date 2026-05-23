@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OutbDeliveryItemCreate",
+  "title": "OutbDeliveryItemCreate",
+  "type": "object",
+  "description": "Outbound delivery item creation payload",
+  "properties": {
+    "Material": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "ActualDeliveryQuantity": {
+      "type": "string"
+    },
+    "DeliveryQuantityUnit": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "ReferenceSDDocument": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "ReferenceSDDocumentItem": {
+      "type": "string",
+      "maxLength": 6
+    }
+  }
+}

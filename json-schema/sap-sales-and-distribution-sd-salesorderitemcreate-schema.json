@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesOrderItemCreate",
+  "title": "SalesOrderItemCreate",
+  "type": "object",
+  "description": "Sales order item creation payload",
+  "properties": {
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "RequestedQuantity": {
+      "type": "string",
+      "description": "Order quantity"
+    },
+    "RequestedQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Sales unit"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant"
+    },
+    "SalesOrderItemText": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Item text"
+    }
+  }
+}

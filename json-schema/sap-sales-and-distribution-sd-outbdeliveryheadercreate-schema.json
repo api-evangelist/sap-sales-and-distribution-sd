@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OutbDeliveryHeaderCreate",
+  "title": "OutbDeliveryHeaderCreate",
+  "type": "object",
+  "description": "Outbound delivery creation payload",
+  "properties": {
+    "DeliveryDocumentType": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "ShippingPoint": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "DeliveryDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "to_DeliveryDocumentItem": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/OutbDeliveryItemCreate"
+          }
+        }
+      }
+    }
+  }
+}

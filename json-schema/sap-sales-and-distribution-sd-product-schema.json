@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Product",
+  "title": "Product",
+  "type": "object",
+  "description": "Product/material master header entity (A_Product)",
+  "properties": {
+    "Product": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "ProductType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Material type"
+    },
+    "ProductGroup": {
+      "type": "string",
+      "maxLength": 9,
+      "description": "Material group"
+    },
+    "BaseUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Base unit of measure"
+    },
+    "GrossWeight": {
+      "type": "string",
+      "description": "Gross weight"
+    },
+    "NetWeight": {
+      "type": "string",
+      "description": "Net weight"
+    },
+    "WeightUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Weight unit"
+    },
+    "Volume": {
+      "type": "string",
+      "description": "Volume"
+    },
+    "VolumeUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Volume unit"
+    },
+    "Division": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Division"
+    },
+    "ProductOldID": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Old material number"
+    },
+    "IndustryStandardName": {
+      "type": "string",
+      "maxLength": 18,
+      "description": "EAN/UPC code"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Creation date"
+    },
+    "LastChangeDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of last change"
+    },
+    "CreatedByUser": {
+      "type": "string",
+      "maxLength": 12,
+      "description": "Created by user"
+    },
+    "LastChangedByUser": {
+      "type": "string",
+      "maxLength": 12,
+      "description": "Last changed by user"
+    },
+    "IsMarkedForDeletion": {
+      "type": "boolean",
+      "description": "Deletion flag"
+    },
+    "ProductStandardID": {
+      "type": "string",
+      "maxLength": 18,
+      "description": "Global Trade Item Number (GTIN)"
+    },
+    "SizeOrDimensionText": {
+      "type": "string",
+      "maxLength": 32,
+      "description": "Size/dimensions text"
+    }
+  }
+}

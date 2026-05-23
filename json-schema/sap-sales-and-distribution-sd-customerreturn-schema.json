@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomerReturn",
+  "title": "CustomerReturn",
+  "type": "object",
+  "description": "Customer return header entity (A_CustomerReturn)",
+  "properties": {
+    "CustomerReturn": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Customer return number"
+    },
+    "CustomerReturnType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales document type"
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "OrganizationDivision": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Division"
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sold-to party"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Creation date"
+    },
+    "CustomerReturnDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Document date"
+    },
+    "TotalNetAmount": {
+      "type": "string",
+      "description": "Net value in document currency"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Document currency"
+    },
+    "SDDocumentReason": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Return reason"
+    },
+    "PurchaseOrderByCustomer": {
+      "type": "string",
+      "maxLength": 35,
+      "description": "Customer reference"
+    },
+    "OverallSDProcessStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall processing status"
+    },
+    "OverallDeliveryStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Delivery status"
+    },
+    "OverallBillingStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Billing status"
+    }
+  }
+}

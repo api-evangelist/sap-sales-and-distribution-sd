@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CrdtMgmtCreditExposure",
+  "title": "CrdtMgmtCreditExposure",
+  "type": "object",
+  "description": "Credit exposure entity",
+  "properties": {
+    "BusinessPartner": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Business partner number"
+    },
+    "CreditSegment": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Credit segment"
+    },
+    "CreditExposureAmount": {
+      "type": "string",
+      "description": "Total credit exposure amount"
+    },
+    "CreditExposureCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Currency of credit exposure"
+    },
+    "OpenOrderValue": {
+      "type": "string",
+      "description": "Value of open sales orders"
+    },
+    "OpenDeliveryValue": {
+      "type": "string",
+      "description": "Value of open deliveries"
+    },
+    "OpenBillingDocValue": {
+      "type": "string",
+      "description": "Value of open billing documents"
+    },
+    "OpenItemValue": {
+      "type": "string",
+      "description": "Value of open items in accounting"
+    }
+  }
+}

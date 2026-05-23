@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Customer",
+  "title": "Customer",
+  "type": "object",
+  "description": "Customer entity (A_Customer)",
+  "properties": {
+    "Customer": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Customer number"
+    },
+    "CustomerAccountGroup": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Customer account group"
+    },
+    "CustomerName": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "Customer name"
+    },
+    "DeliveryIsBlocked": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Delivery block"
+    },
+    "OrderIsBlocked": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Order block"
+    },
+    "PostingIsBlocked": {
+      "type": "boolean",
+      "description": "Posting block"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Customer creation date"
+    },
+    "CustomerClassification": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Customer classification"
+    },
+    "IndustryCode1": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Industry key"
+    },
+    "NFPartnerIsNaturalPerson": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Natural person indicator"
+    }
+  }
+}

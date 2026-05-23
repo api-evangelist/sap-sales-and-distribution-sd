@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesQuotationCreate",
+  "title": "SalesQuotationCreate",
+  "type": "object",
+  "description": "Sales quotation creation payload",
+  "required": [
+    "SalesQuotationType",
+    "SalesOrganization",
+    "DistributionChannel",
+    "OrganizationDivision"
+  ],
+  "properties": {
+    "SalesQuotationType": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "OrganizationDivision": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "SalesQuotationDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "BindingPeriodValidityStartDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "BindingPeriodValidityEndDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "RequestedDeliveryDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "CustomerPaymentTerms": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "to_Item": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/SalesQuotationItemCreate"
+          }
+        }
+      }
+    }
+  }
+}

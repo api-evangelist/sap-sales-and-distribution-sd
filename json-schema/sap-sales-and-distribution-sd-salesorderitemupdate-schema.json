@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesOrderItemUpdate",
+  "title": "SalesOrderItemUpdate",
+  "type": "object",
+  "description": "Sales order item update payload",
+  "properties": {
+    "RequestedQuantity": {
+      "type": "string",
+      "description": "Order quantity"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "StorageLocation": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "ItemBillingBlockReason": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "SalesOrderItemText": {
+      "type": "string",
+      "maxLength": 40
+    }
+  }
+}

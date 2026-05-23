@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InbDeliveryHeader",
+  "title": "InbDeliveryHeader",
+  "type": "object",
+  "description": "Inbound delivery header entity (A_InbDeliveryHeader)",
+  "properties": {
+    "DeliveryDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Delivery document number"
+    },
+    "DeliveryDocumentType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Delivery type"
+    },
+    "ReceivingPlant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Receiving plant"
+    },
+    "ShippingPoint": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Shipping/receiving point"
+    },
+    "Supplier": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Vendor number"
+    },
+    "DeliveryDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Delivery date"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Creation date"
+    },
+    "ActualGoodsMovementDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Actual goods receipt date"
+    },
+    "BillOfLading": {
+      "type": "string",
+      "maxLength": 35,
+      "description": "Bill of lading"
+    },
+    "OverallGoodsMovementStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Goods receipt status"
+    }
+  }
+}

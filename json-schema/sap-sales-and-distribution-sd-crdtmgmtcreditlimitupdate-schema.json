@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CrdtMgmtCreditLimitUpdate",
+  "title": "CrdtMgmtCreditLimitUpdate",
+  "type": "object",
+  "properties": {
+    "CreditLimitAmount": {
+      "type": "string"
+    },
+    "CreditLimitAmountCurrency": {
+      "type": "string",
+      "maxLength": 5
+    },
+    "CreditLimitValidityEndDate": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesInquiryCreate",
+  "title": "SalesInquiryCreate",
+  "type": "object",
+  "required": [
+    "SalesInquiryType",
+    "SalesOrganization",
+    "DistributionChannel",
+    "OrganizationDivision"
+  ],
+  "properties": {
+    "SalesInquiryType": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "OrganizationDivision": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "SalesInquiryDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "to_Item": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/SalesInquiryItemCreate"
+          }
+        }
+      }
+    }
+  }
+}

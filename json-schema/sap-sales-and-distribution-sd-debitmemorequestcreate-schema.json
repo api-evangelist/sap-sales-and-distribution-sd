@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DebitMemoRequestCreate",
+  "title": "DebitMemoRequestCreate",
+  "type": "object",
+  "required": [
+    "DebitMemoRequestType",
+    "SalesOrganization",
+    "DistributionChannel",
+    "OrganizationDivision"
+  ],
+  "properties": {
+    "DebitMemoRequestType": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "OrganizationDivision": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "DebitMemoRequestDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "SDDocumentReason": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "to_Item": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/DebitMemoRequestItemCreate"
+          }
+        }
+      }
+    }
+  }
+}

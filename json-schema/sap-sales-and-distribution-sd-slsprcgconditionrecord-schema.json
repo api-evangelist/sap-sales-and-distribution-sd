@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SlsPrcgConditionRecord",
+  "title": "SlsPrcgConditionRecord",
+  "type": "object",
+  "description": "Sales pricing condition record entity (A_SlsPrcgConditionRecord)",
+  "properties": {
+    "ConditionRecord": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Condition record number"
+    },
+    "ConditionSequentialNumber": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Sequential number of the condition"
+    },
+    "ConditionTable": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Condition table"
+    },
+    "ConditionApplication": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Application"
+    },
+    "ConditionType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Condition type (e.g., PR00, K004, K005, K007)"
+    },
+    "ConditionValidityEndDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Validity end date"
+    },
+    "ConditionValidityStartDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Validity start date"
+    },
+    "CreatedByUser": {
+      "type": "string",
+      "maxLength": 12,
+      "description": "User who created the record"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Creation date"
+    },
+    "ConditionRateValue": {
+      "type": "string",
+      "description": "Rate (condition amount or percentage)"
+    },
+    "ConditionRateValueUnit": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Condition currency or percentage"
+    },
+    "ConditionQuantity": {
+      "type": "string",
+      "description": "Condition pricing unit"
+    },
+    "ConditionQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Condition unit"
+    },
+    "ConditionScaleQuantity": {
+      "type": "string",
+      "description": "Condition scale quantity"
+    },
+    "ConditionScaleQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Condition scale unit"
+    },
+    "ConditionCalculationType": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Calculation type for the condition"
+    },
+    "ConditionIsDeleted": {
+      "type": "boolean",
+      "description": "Deletion indicator"
+    },
+    "PricingScaleType": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Scale type"
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "Customer": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Customer number"
+    }
+  }
+}

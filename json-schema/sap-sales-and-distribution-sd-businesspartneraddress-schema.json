@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BusinessPartnerAddress",
+  "title": "BusinessPartnerAddress",
+  "type": "object",
+  "description": "Business partner address entity (A_BusinessPartnerAddress)",
+  "properties": {
+    "BusinessPartner": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Business partner number"
+    },
+    "AddressID": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Address number"
+    },
+    "StreetName": {
+      "type": "string",
+      "maxLength": 60,
+      "description": "Street name"
+    },
+    "HouseNumber": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "House number"
+    },
+    "PostalCode": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Postal code"
+    },
+    "CityName": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "City name"
+    },
+    "Region": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Region (state, province)"
+    },
+    "Country": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Country key (ISO 3166)"
+    },
+    "Language": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Language key"
+    },
+    "POBox": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "PO box number"
+    },
+    "POBoxPostalCode": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "PO box postal code"
+    },
+    "CompanyPostalCode": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Company postal code"
+    }
+  }
+}

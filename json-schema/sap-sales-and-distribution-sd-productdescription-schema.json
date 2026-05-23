@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProductDescription",
+  "title": "ProductDescription",
+  "type": "object",
+  "description": "Product description entity (A_ProductDescription)",
+  "properties": {
+    "Product": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "Language": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Language key"
+    },
+    "ProductDescription": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material description"
+    }
+  }
+}

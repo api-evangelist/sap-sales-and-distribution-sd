@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomerMaterial",
+  "title": "CustomerMaterial",
+  "type": "object",
+  "description": "Customer material info record entity (A_CustomerMaterial)",
+  "properties": {
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "Customer": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Customer number"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number (internal)"
+    },
+    "MaterialByCustomer": {
+      "type": "string",
+      "maxLength": 35,
+      "description": "Customer material number"
+    },
+    "MaterialDescriptionByCustomer": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Customer description of the material"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant"
+    },
+    "DeliveryPriority": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Delivery priority"
+    },
+    "MinDeliveryQtyInBaseUnit": {
+      "type": "string",
+      "description": "Minimum delivery quantity"
+    },
+    "BaseUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Base unit of measure"
+    },
+    "PartialDeliveryIsAllowed": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Partial delivery allowed flag"
+    }
+  }
+}

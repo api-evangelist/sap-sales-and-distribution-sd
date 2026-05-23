@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OutbDeliveryHeaderUpdate",
+  "title": "OutbDeliveryHeaderUpdate",
+  "type": "object",
+  "description": "Outbound delivery header update payload",
+  "properties": {
+    "DeliveryDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "DeliveryBlockReason": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "ActualDeliveryRoute": {
+      "type": "string",
+      "maxLength": 6
+    },
+    "DeliveryPriority": {
+      "type": "string",
+      "maxLength": 2
+    }
+  }
+}

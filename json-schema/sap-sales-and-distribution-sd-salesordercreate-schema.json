@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesOrderCreate",
+  "title": "SalesOrderCreate",
+  "type": "object",
+  "description": "Sales order creation payload with deep insert support",
+  "required": [
+    "SalesOrderType",
+    "SalesOrganization",
+    "DistributionChannel",
+    "OrganizationDivision"
+  ],
+  "properties": {
+    "SalesOrderType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales document type"
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "OrganizationDivision": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Division"
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sold-to party customer number"
+    },
+    "PurchaseOrderByCustomer": {
+      "type": "string",
+      "maxLength": 35,
+      "description": "Customer purchase order number"
+    },
+    "SalesOrderDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Document date"
+    },
+    "RequestedDeliveryDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Requested delivery date"
+    },
+    "ShippingCondition": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Shipping conditions"
+    },
+    "CustomerPaymentTerms": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Terms of payment key"
+    },
+    "IncotermsClassification": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Incoterms (part 1)"
+    },
+    "to_Item": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/SalesOrderItemCreate"
+          }
+        }
+      }
+    },
+    "to_Partner": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/SalesOrderHeaderPartner"
+          }
+        }
+      }
+    }
+  }
+}

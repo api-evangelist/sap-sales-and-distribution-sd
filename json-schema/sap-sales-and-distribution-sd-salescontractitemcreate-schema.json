@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesContractItemCreate",
+  "title": "SalesContractItemCreate",
+  "type": "object",
+  "properties": {
+    "Material": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "TargetQuantity": {
+      "type": "string"
+    },
+    "TargetQuantityUnit": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4
+    }
+  }
+}

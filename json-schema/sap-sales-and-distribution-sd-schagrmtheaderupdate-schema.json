@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SchAgrmtHeaderUpdate",
+  "title": "SchAgrmtHeaderUpdate",
+  "type": "object",
+  "properties": {
+    "PurchaseOrderByCustomer": {
+      "type": "string",
+      "maxLength": 35
+    },
+    "SchAgrmtValidityEndDate": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

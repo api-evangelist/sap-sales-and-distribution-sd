@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BusinessPartnerUpdate",
+  "title": "BusinessPartnerUpdate",
+  "type": "object",
+  "description": "Business partner update payload",
+  "properties": {
+    "FirstName": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "LastName": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "OrganizationBPName1": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "OrganizationBPName2": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "SearchTerm1": {
+      "type": "string",
+      "maxLength": 20
+    },
+    "Language": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "BusinessPartnerIsBlocked": {
+      "type": "boolean"
+    }
+  }
+}

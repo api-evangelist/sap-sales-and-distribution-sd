@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SchAgrmtItem",
+  "title": "SchAgrmtItem",
+  "type": "object",
+  "description": "Scheduling agreement item entity",
+  "properties": {
+    "SchedulingAgreement": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Scheduling agreement number"
+    },
+    "SchedulingAgreementItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Item number"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "TargetQuantity": {
+      "type": "string",
+      "description": "Target quantity"
+    },
+    "TargetQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Target quantity unit"
+    },
+    "NetAmount": {
+      "type": "string",
+      "description": "Net value"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant"
+    }
+  }
+}

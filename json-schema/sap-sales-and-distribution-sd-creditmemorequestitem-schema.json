@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditMemoRequestItem",
+  "title": "CreditMemoRequestItem",
+  "type": "object",
+  "description": "Credit memo request item entity (A_CreditMemoReqItem)",
+  "properties": {
+    "CreditMemoRequest": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Credit memo request number"
+    },
+    "CreditMemoRequestItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Item number"
+    },
+    "CreditMemoRequestItemCategory": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Item category"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "RequestedQuantity": {
+      "type": "string",
+      "description": "Order quantity"
+    },
+    "RequestedQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Sales unit"
+    },
+    "NetAmount": {
+      "type": "string",
+      "description": "Net value of the item"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Document currency"
+    },
+    "SalesDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Reference sales document"
+    },
+    "SalesDocumentItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Reference sales document item"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant"
+    }
+  }
+}

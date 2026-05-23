@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesQuotationItemCreate",
+  "title": "SalesQuotationItemCreate",
+  "type": "object",
+  "description": "Sales quotation item creation payload",
+  "properties": {
+    "Material": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "RequestedQuantity": {
+      "type": "string"
+    },
+    "RequestedQuantityUnit": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4
+    }
+  }
+}

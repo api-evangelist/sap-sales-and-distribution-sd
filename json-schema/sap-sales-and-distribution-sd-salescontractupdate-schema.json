@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesContractUpdate",
+  "title": "SalesContractUpdate",
+  "type": "object",
+  "properties": {
+    "PurchaseOrderByCustomer": {
+      "type": "string",
+      "maxLength": 35
+    },
+    "SalesContractValidityEndDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "CustomerPaymentTerms": {
+      "type": "string",
+      "maxLength": 4
+    }
+  }
+}

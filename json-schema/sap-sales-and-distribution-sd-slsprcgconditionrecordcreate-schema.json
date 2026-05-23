@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SlsPrcgConditionRecordCreate",
+  "title": "SlsPrcgConditionRecordCreate",
+  "type": "object",
+  "description": "Pricing condition record creation payload",
+  "required": [
+    "ConditionType"
+  ],
+  "properties": {
+    "ConditionType": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "ConditionValidityEndDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "ConditionValidityStartDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "ConditionRateValue": {
+      "type": "string"
+    },
+    "ConditionRateValueUnit": {
+      "type": "string",
+      "maxLength": 5
+    },
+    "ConditionQuantity": {
+      "type": "string"
+    },
+    "ConditionQuantityUnit": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "Customer": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "to_SlsPrcgCndnRecdValidity": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/SlsPrcgCndnRecdValidity"
+          }
+        }
+      }
+    }
+  }
+}

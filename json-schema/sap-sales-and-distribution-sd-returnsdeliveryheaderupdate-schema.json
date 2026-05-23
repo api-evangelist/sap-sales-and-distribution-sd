@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReturnsDeliveryHeaderUpdate",
+  "title": "ReturnsDeliveryHeaderUpdate",
+  "type": "object",
+  "properties": {
+    "DeliveryDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "DeliveryBlockReason": {
+      "type": "string",
+      "maxLength": 2
+    }
+  }
+}

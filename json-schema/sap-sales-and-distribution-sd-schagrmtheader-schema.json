@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SchAgrmtHeader",
+  "title": "SchAgrmtHeader",
+  "type": "object",
+  "description": "Scheduling agreement header entity",
+  "properties": {
+    "SchedulingAgreement": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Scheduling agreement number"
+    },
+    "SchedulingAgreementType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Document type"
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "OrganizationDivision": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Division"
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sold-to party"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Creation date"
+    },
+    "SchedulingAgreementDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Document date"
+    },
+    "SchAgrmtValidityStartDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Valid-from date"
+    },
+    "SchAgrmtValidityEndDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Valid-to date"
+    },
+    "TotalNetAmount": {
+      "type": "string",
+      "description": "Net value"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Document currency"
+    },
+    "PurchaseOrderByCustomer": {
+      "type": "string",
+      "maxLength": 35,
+      "description": "Customer PO number"
+    },
+    "OverallSDProcessStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall processing status"
+    }
+  }
+}

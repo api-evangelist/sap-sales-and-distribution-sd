@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BillingDocumentItem",
+  "title": "BillingDocumentItem",
+  "type": "object",
+  "description": "Billing document item entity (A_BillingDocumentItem)",
+  "properties": {
+    "BillingDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Billing document number"
+    },
+    "BillingDocumentItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Billing item number"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant"
+    },
+    "BillingQuantity": {
+      "type": "string",
+      "description": "Billing quantity in sales unit"
+    },
+    "BillingQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Sales unit"
+    },
+    "NetAmount": {
+      "type": "string",
+      "description": "Net value of the item"
+    },
+    "GrossAmount": {
+      "type": "string",
+      "description": "Gross value of the item"
+    },
+    "TaxAmount": {
+      "type": "string",
+      "description": "Tax amount"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "SD document currency"
+    },
+    "SalesDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Reference sales document"
+    },
+    "SalesDocumentItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Reference sales document item"
+    },
+    "ReferenceSDDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Reference delivery document"
+    },
+    "ReferenceSDDocumentItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Reference delivery item"
+    },
+    "MaterialGroup": {
+      "type": "string",
+      "maxLength": 9,
+      "description": "Material group"
+    },
+    "Batch": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Batch number"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SlsPrcgCndnRecdValidity",
+  "title": "SlsPrcgCndnRecdValidity",
+  "type": "object",
+  "description": "Condition record validity entity (A_SlsPrcgCndnRecdValidity)",
+  "properties": {
+    "ConditionRecord": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Condition record number"
+    },
+    "ConditionValidityEndDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Validity end date"
+    },
+    "ConditionValidityStartDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Validity start date"
+    },
+    "ConditionType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Condition type"
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "Customer": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Customer number"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    }
+  }
+}

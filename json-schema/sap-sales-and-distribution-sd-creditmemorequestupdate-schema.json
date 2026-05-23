@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditMemoRequestUpdate",
+  "title": "CreditMemoRequestUpdate",
+  "type": "object",
+  "properties": {
+    "PurchaseOrderByCustomer": {
+      "type": "string",
+      "maxLength": 35
+    },
+    "HeaderBillingBlockReason": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "BillingDocumentDate": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

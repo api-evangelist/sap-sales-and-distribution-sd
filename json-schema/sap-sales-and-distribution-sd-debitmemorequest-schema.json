@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DebitMemoRequest",
+  "title": "DebitMemoRequest",
+  "type": "object",
+  "description": "Debit memo request header entity (A_DebitMemoRequest)",
+  "properties": {
+    "DebitMemoRequest": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Debit memo request number"
+    },
+    "DebitMemoRequestType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales document type"
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "OrganizationDivision": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Division"
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sold-to party"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Creation date"
+    },
+    "DebitMemoRequestDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Document date"
+    },
+    "BillingDocumentDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Billing date"
+    },
+    "TotalNetAmount": {
+      "type": "string",
+      "description": "Net value in document currency"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Document currency"
+    },
+    "SDDocumentReason": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Order reason"
+    },
+    "PurchaseOrderByCustomer": {
+      "type": "string",
+      "maxLength": 35,
+      "description": "Customer purchase order number"
+    },
+    "CustomerPaymentTerms": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Payment terms"
+    },
+    "HeaderBillingBlockReason": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Billing block"
+    },
+    "OverallSDProcessStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall processing status"
+    },
+    "OverallBillingStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Billing status"
+    }
+  }
+}

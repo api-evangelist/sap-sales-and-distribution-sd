@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomerReturnCreate",
+  "title": "CustomerReturnCreate",
+  "type": "object",
+  "required": [
+    "CustomerReturnType",
+    "SalesOrganization",
+    "DistributionChannel",
+    "OrganizationDivision"
+  ],
+  "properties": {
+    "CustomerReturnType": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "OrganizationDivision": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "CustomerReturnDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "SDDocumentReason": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "to_Item": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/CustomerReturnItemCreate"
+          }
+        }
+      }
+    }
+  }
+}

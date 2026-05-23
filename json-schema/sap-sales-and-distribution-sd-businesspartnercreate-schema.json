@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BusinessPartnerCreate",
+  "title": "BusinessPartnerCreate",
+  "type": "object",
+  "description": "Business partner creation payload",
+  "required": [
+    "BusinessPartnerCategory"
+  ],
+  "properties": {
+    "BusinessPartnerCategory": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Business partner category (1=Person, 2=Organization, 3=Group)"
+    },
+    "BusinessPartnerGrouping": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "FirstName": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "LastName": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "OrganizationBPName1": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "OrganizationBPName2": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "Language": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "SearchTerm1": {
+      "type": "string",
+      "maxLength": 20
+    },
+    "to_BusinessPartnerAddress": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/BusinessPartnerAddressCreate"
+          }
+        }
+      }
+    }
+  }
+}

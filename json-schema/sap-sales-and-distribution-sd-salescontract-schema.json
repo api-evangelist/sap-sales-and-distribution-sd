@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesContract",
+  "title": "SalesContract",
+  "type": "object",
+  "description": "Sales contract header entity (A_SalesContract)",
+  "properties": {
+    "SalesContract": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sales contract number"
+    },
+    "SalesContractType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales document type"
+    },
+    "SalesOrganization": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales organization"
+    },
+    "DistributionChannel": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Distribution channel"
+    },
+    "OrganizationDivision": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Division"
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sold-to party"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Creation date"
+    },
+    "SalesContractDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Document date"
+    },
+    "SalesContractValidityStartDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Contract valid-from date"
+    },
+    "SalesContractValidityEndDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Contract valid-to date"
+    },
+    "TotalNetAmount": {
+      "type": "string",
+      "description": "Net value in document currency"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Document currency"
+    },
+    "PurchaseOrderByCustomer": {
+      "type": "string",
+      "maxLength": 35,
+      "description": "Customer purchase order number"
+    },
+    "CustomerPaymentTerms": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Payment terms"
+    },
+    "OverallSDProcessStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall processing status"
+    }
+  }
+}

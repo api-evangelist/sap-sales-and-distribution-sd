@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BillingDocumentPartner",
+  "title": "BillingDocumentPartner",
+  "type": "object",
+  "description": "Billing document partner entity (A_BillingDocumentPartner)",
+  "properties": {
+    "BillingDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Billing document number"
+    },
+    "PartnerFunction": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Partner function"
+    },
+    "Customer": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Customer number"
+    },
+    "Supplier": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Vendor account number"
+    }
+  }
+}

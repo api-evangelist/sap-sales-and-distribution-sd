@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomerMaterialUpdate",
+  "title": "CustomerMaterialUpdate",
+  "type": "object",
+  "properties": {
+    "MaterialByCustomer": {
+      "type": "string",
+      "maxLength": 35
+    },
+    "MaterialDescriptionByCustomer": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "DeliveryPriority": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4
+    }
+  }
+}

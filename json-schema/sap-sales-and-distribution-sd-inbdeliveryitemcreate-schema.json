@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InbDeliveryItemCreate",
+  "title": "InbDeliveryItemCreate",
+  "type": "object",
+  "properties": {
+    "Material": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "ActualDeliveryQuantity": {
+      "type": "string"
+    },
+    "DeliveryQuantityUnit": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "ReferenceSDDocument": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "ReferenceSDDocumentItem": {
+      "type": "string",
+      "maxLength": 6
+    }
+  }
+}

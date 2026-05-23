@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProductUpdate",
+  "title": "ProductUpdate",
+  "type": "object",
+  "description": "Product update payload",
+  "properties": {
+    "ProductGroup": {
+      "type": "string",
+      "maxLength": 9
+    },
+    "GrossWeight": {
+      "type": "string"
+    },
+    "NetWeight": {
+      "type": "string"
+    },
+    "WeightUnit": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "IsMarkedForDeletion": {
+      "type": "boolean"
+    }
+  }
+}

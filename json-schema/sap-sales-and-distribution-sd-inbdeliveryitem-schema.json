@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InbDeliveryItem",
+  "title": "InbDeliveryItem",
+  "type": "object",
+  "description": "Inbound delivery item entity (A_InbDeliveryItem)",
+  "properties": {
+    "DeliveryDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Delivery document number"
+    },
+    "DeliveryDocumentItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Delivery item number"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant"
+    },
+    "StorageLocation": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Storage location"
+    },
+    "Batch": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Batch number"
+    },
+    "ActualDeliveryQuantity": {
+      "type": "string",
+      "description": "Actual delivery quantity"
+    },
+    "DeliveryQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Delivery unit"
+    },
+    "ReferenceSDDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Reference purchase order"
+    },
+    "ReferenceSDDocumentItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Reference purchase order item"
+    },
+    "GoodsMovementStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Goods receipt status"
+    }
+  }
+}

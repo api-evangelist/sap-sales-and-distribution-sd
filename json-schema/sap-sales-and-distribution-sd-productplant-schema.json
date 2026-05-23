@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProductPlant",
+  "title": "ProductPlant",
+  "type": "object",
+  "description": "Product plant entity (A_ProductPlant)",
+  "properties": {
+    "Product": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant"
+    },
+    "PurchasingGroup": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Purchasing group"
+    },
+    "AvailabilityCheckType": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Availability check type"
+    },
+    "GoodsIssueUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Unit of issue"
+    },
+    "MRPType": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "MRP type"
+    },
+    "MRPResponsible": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "MRP controller"
+    }
+  }
+}

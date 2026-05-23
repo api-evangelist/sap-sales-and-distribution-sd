@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesQuotationUpdate",
+  "title": "SalesQuotationUpdate",
+  "type": "object",
+  "description": "Sales quotation update payload",
+  "properties": {
+    "PurchaseOrderByCustomer": {
+      "type": "string",
+      "maxLength": 35
+    },
+    "RequestedDeliveryDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "BindingPeriodValidityEndDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "HeaderBillingBlockReason": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "DeliveryBlockReason": {
+      "type": "string",
+      "maxLength": 2
+    }
+  }
+}

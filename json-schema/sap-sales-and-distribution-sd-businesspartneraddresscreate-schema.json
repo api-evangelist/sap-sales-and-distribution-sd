@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BusinessPartnerAddressCreate",
+  "title": "BusinessPartnerAddressCreate",
+  "type": "object",
+  "description": "Business partner address creation payload",
+  "properties": {
+    "StreetName": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "HouseNumber": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "PostalCode": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "CityName": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "Region": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "Country": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "Language": {
+      "type": "string",
+      "maxLength": 2
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesContractItem",
+  "title": "SalesContractItem",
+  "type": "object",
+  "description": "Sales contract item entity (A_SalesContractItem)",
+  "properties": {
+    "SalesContract": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sales contract number"
+    },
+    "SalesContractItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Item number"
+    },
+    "SalesContractItemCategory": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Item category"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "TargetQuantity": {
+      "type": "string",
+      "description": "Target quantity"
+    },
+    "TargetQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Target quantity unit"
+    },
+    "NetAmount": {
+      "type": "string",
+      "description": "Net value"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Document currency"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant"
+    },
+    "MaterialGroup": {
+      "type": "string",
+      "maxLength": 9,
+      "description": "Material group"
+    }
+  }
+}

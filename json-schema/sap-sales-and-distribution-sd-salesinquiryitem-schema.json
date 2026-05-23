@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesInquiryItem",
+  "title": "SalesInquiryItem",
+  "type": "object",
+  "description": "Sales inquiry item entity (A_SalesInquiryItem)",
+  "properties": {
+    "SalesInquiry": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sales inquiry number"
+    },
+    "SalesInquiryItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Item number"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "RequestedQuantity": {
+      "type": "string",
+      "description": "Order quantity"
+    },
+    "RequestedQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Sales unit"
+    },
+    "NetAmount": {
+      "type": "string",
+      "description": "Net value"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Document currency"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant"
+    },
+    "MaterialGroup": {
+      "type": "string",
+      "maxLength": 9,
+      "description": "Material group"
+    }
+  }
+}

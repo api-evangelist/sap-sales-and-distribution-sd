@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CrdtMgmtBusinessPartnerUpdate",
+  "title": "CrdtMgmtBusinessPartnerUpdate",
+  "type": "object",
+  "properties": {
+    "CreditRiskClass": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "CreditRating": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "CreditIsBlockedForBP": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesOrderPricingElement",
+  "title": "SalesOrderPricingElement",
+  "type": "object",
+  "description": "Sales order header pricing element (A_SalesOrderHeaderPrElement)",
+  "properties": {
+    "SalesOrder": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sales order number"
+    },
+    "PricingProcedureStep": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Step number in pricing procedure"
+    },
+    "PricingProcedureCounter": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Condition counter"
+    },
+    "ConditionType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Condition type (e.g., PR00 for price, K004 for discount)"
+    },
+    "ConditionRateValue": {
+      "type": "string",
+      "description": "Condition rate or amount"
+    },
+    "ConditionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Condition currency"
+    },
+    "ConditionQuantity": {
+      "type": "string",
+      "description": "Condition pricing unit"
+    },
+    "ConditionQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Condition unit"
+    },
+    "ConditionValue": {
+      "type": "string",
+      "description": "Condition value"
+    }
+  }
+}

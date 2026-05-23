@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProductDescriptionCreate",
+  "title": "ProductDescriptionCreate",
+  "type": "object",
+  "properties": {
+    "Language": {
+      "type": "string",
+      "maxLength": 2
+    },
+    "ProductDescription": {
+      "type": "string",
+      "maxLength": 40
+    }
+  }
+}

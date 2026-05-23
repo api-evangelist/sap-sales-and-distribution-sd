@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesOrderItem",
+  "title": "SalesOrderItem",
+  "type": "object",
+  "description": "Sales order item entity (A_SalesOrderItem)",
+  "properties": {
+    "SalesOrder": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sales order number"
+    },
+    "SalesOrderItem": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "Sales order item number"
+    },
+    "SalesOrderItemCategory": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Sales document item category"
+    },
+    "SalesOrderItemText": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Short text for the sales order item"
+    },
+    "Material": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Material number"
+    },
+    "MaterialByCustomer": {
+      "type": "string",
+      "maxLength": 35,
+      "description": "Material number used by customer"
+    },
+    "PricingDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Pricing date"
+    },
+    "RequestedQuantity": {
+      "type": "string",
+      "description": "Cumulative order quantity in sales units"
+    },
+    "RequestedQuantityUnit": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Sales unit"
+    },
+    "NetAmount": {
+      "type": "string",
+      "description": "Net value of the item in document currency"
+    },
+    "TransactionCurrency": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "SD document currency"
+    },
+    "MaterialGroup": {
+      "type": "string",
+      "maxLength": 9,
+      "description": "Material group"
+    },
+    "Batch": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Batch number"
+    },
+    "Plant": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Plant (delivering)"
+    },
+    "StorageLocation": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Storage location"
+    },
+    "ShippingPoint": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Shipping point / receiving point"
+    },
+    "DeliveryGroup": {
+      "type": "string",
+      "maxLength": 3,
+      "description": "Delivery group"
+    },
+    "ItemBillingBlockReason": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Billing block for the item"
+    },
+    "SDProcessStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Overall processing status of the item"
+    },
+    "DeliveryStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Delivery status"
+    },
+    "OrderRelatedBillingStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Billing status"
+    }
+  }
+}

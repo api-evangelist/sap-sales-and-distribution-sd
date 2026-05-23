@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReturnsDeliveryHeader",
+  "title": "ReturnsDeliveryHeader",
+  "type": "object",
+  "description": "Customer returns delivery header entity",
+  "properties": {
+    "DeliveryDocument": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Delivery document number"
+    },
+    "DeliveryDocumentType": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Delivery type"
+    },
+    "SoldToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Sold-to party"
+    },
+    "ShipToParty": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Ship-to party"
+    },
+    "ShippingPoint": {
+      "type": "string",
+      "maxLength": 4,
+      "description": "Receiving point"
+    },
+    "DeliveryDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Delivery date"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Creation date"
+    },
+    "ActualGoodsMovementDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Actual goods receipt date"
+    },
+    "OverallGoodsMovementStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Goods receipt status"
+    },
+    "OverallPickingStatus": {
+      "type": "string",
+      "maxLength": 1,
+      "description": "Putaway status"
+    }
+  }
+}
