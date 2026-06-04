@@ -1,0 +1,122 @@
+arazzo: 1.0.1
+info:
+  title: SAP SD Customer Onboarding
+  summary: Create a business partner, read it, add an address, then list its addresses.
+  description: >-
+    Onboards a new customer business partner into SAP Sales and Distribution.
+    The workflow creates a business partner, reads it back, creates a postal
+    address for it, and lists the partner's addresses to confirm the new one is
+    attached. Each step inlines its OData request so the flow reads and runs
+    without opening the underlying OpenAPI descriptions. Both modifying POSTs
+    require an X-CSRF-Token header supplied as a workflow input.
+  version: 1.0.0
+sourceDescriptions:
+- name: customerMasterDataApi
+  url: ../openapi/sap-sd-customer-master-data-openapi.yml
+  type: openapi
+workflows:
+- workflowId: customer-onboarding
+  summary: Create a business partner and attach an address.
+  description: >-
+    Creates a business partner, retrieves it, adds a postal address, and lists
+    its addresses.
+  inputs:
+    type: object
+    required:
+    - csrfToken
+    - businessPartnerCategory
+    - country
+    properties:
+      csrfToken:
+        type: string
+        description: X-CSRF-Token fetched from the OData service for write operations.
+      businessPartnerCategory:
+        type: string
+        description: Business partner category (1 person, 2 organization, 3 group).
+      businessPartnerGrouping:
+        type: string
+        description: Business partner grouping that drives number assignment.
+      organizationName:
+        type: string
+        description: Organization name (for organization business partners).
+      streetName:
+        type: string
+        description: Street name for the address.
+      houseNumber:
+        type: string
+        description: House number for the address.
+      postalCode:
+        type: string
+        description: Postal code for the address.
+      cityName:
+        type: string
+        description: City name for the address.
+      country:
+        type: string
+        description: Country key for the address.
+  steps:
+  - stepId: createPartner
+    description: Create a new business partner master record.
+    operationId: createBusinessPartner
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    requestBody:
+      contentType: application/json
+      payload:
+        BusinessPartnerCategory: $inputs.businessPartnerCategory
+        BusinessPartnerGrouping: $inputs.businessPartnerGrouping
+        OrganizationBPName1: $inputs.organizationName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      businessPartner: $response.body#/d/BusinessPartner
+  - stepId: getPartner
+    description: Read the created business partner back to confirm it persisted.
+    operationId: getBusinessPartner
+    parameters:
+    - name: BusinessPartner
+      in: path
+      value: $steps.createPartner.outputs.businessPartner
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      businessPartner: $response.body#/d/BusinessPartner
+  - stepId: createAddress
+    description: Create a postal address for the new business partner.
+    operationId: createBusinessPartnerAddress
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    - name: BusinessPartner
+      in: path
+      value: $steps.getPartner.outputs.businessPartner
+    requestBody:
+      contentType: application/json
+      payload:
+        StreetName: $inputs.streetName
+        HouseNumber: $inputs.houseNumber
+        PostalCode: $inputs.postalCode
+        CityName: $inputs.cityName
+        Country: $inputs.country
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      addressId: $response.body#/d/AddressID
+  - stepId: listAddresses
+    description: List the partner's addresses to confirm the new address is attached.
+    operationId: listBusinessPartnerAddresses
+    parameters:
+    - name: BusinessPartner
+      in: path
+      value: $steps.getPartner.outputs.businessPartner
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      addresses: $response.body#/d/results
+  outputs:
+    businessPartner: $steps.getPartner.outputs.businessPartner
+    addressId: $steps.createAddress.outputs.addressId
+    addresses: $steps.listAddresses.outputs.addresses

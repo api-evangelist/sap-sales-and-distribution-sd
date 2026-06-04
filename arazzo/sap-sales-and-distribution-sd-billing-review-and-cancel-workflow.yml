@@ -1,0 +1,104 @@
+arazzo: 1.0.1
+info:
+  title: SAP SD Billing Review and Cancel
+  summary: Read a billing document, list its items and partners, then optionally cancel it.
+  description: >-
+    A billing-document audit and reversal flow in SAP Sales and Distribution.
+    The workflow reads a billing document, lists its items and its partner
+    functions, and branches: when the document carries a cancellation status
+    that allows reversal it issues a cancellation, otherwise it ends without
+    modifying anything. Each step inlines its OData request so the flow reads
+    and runs without opening the underlying OpenAPI descriptions. The
+    cancellation POST requires an X-CSRF-Token header supplied as a workflow
+    input.
+  version: 1.0.0
+sourceDescriptions:
+- name: billingDocumentApi
+  url: ../openapi/sap-sd-billing-document-openapi.yml
+  type: openapi
+workflows:
+- workflowId: billing-review-and-cancel
+  summary: Review a billing document and cancel it when reversal is allowed.
+  description: >-
+    Reads a billing document, lists its items and partners, and conditionally
+    cancels it based on its cancellation status.
+  inputs:
+    type: object
+    required:
+    - csrfToken
+    - billingDocument
+    properties:
+      csrfToken:
+        type: string
+        description: X-CSRF-Token fetched from the OData service for write operations.
+      billingDocument:
+        type: string
+        description: Billing document number to review and possibly cancel.
+  steps:
+  - stepId: getBilling
+    description: Read the billing document header to inspect its status.
+    operationId: getBillingDocument
+    parameters:
+    - name: BillingDocument
+      in: path
+      value: $inputs.billingDocument
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      billingDocument: $response.body#/d/BillingDocument
+    onSuccess:
+    - name: notCancelled
+      type: goto
+      stepId: listItems
+      criteria:
+      - context: $response.body
+        condition: $.d.BillingDocumentIsCancelled == false
+        type: jsonpath
+    - name: alreadyCancelled
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.d.BillingDocumentIsCancelled == true
+        type: jsonpath
+  - stepId: listItems
+    description: List the billing document items to review the billed lines.
+    operationId: listBillingDocumentItems
+    parameters:
+    - name: BillingDocument
+      in: path
+      value: $steps.getBilling.outputs.billingDocument
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      items: $response.body#/d/results
+  - stepId: listPartners
+    description: List the billing document partner functions (payer, bill-to, etc.).
+    operationId: listBillingDocumentPartners
+    parameters:
+    - name: BillingDocument
+      in: path
+      value: $steps.getBilling.outputs.billingDocument
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      partners: $response.body#/d/results
+  - stepId: cancelBilling
+    description: >-
+      Cancel the billing document, generating a reversal document and flagging
+      the original as cancelled.
+    operationId: cancelBillingDocument
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    - name: BillingDocument
+      in: query
+      value: $steps.getBilling.outputs.billingDocument
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      cancelledBillingDocument: $response.body#/d/BillingDocument
+  outputs:
+    billingDocument: $steps.getBilling.outputs.billingDocument
+    items: $steps.listItems.outputs.items
+    cancelledBillingDocument: $steps.cancelBilling.outputs.cancelledBillingDocument

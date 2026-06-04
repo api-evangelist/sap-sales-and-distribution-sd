@@ -1,0 +1,81 @@
+arazzo: 1.0.1
+info:
+  title: SAP SD Credit Check
+  summary: Read a customer's credit account, then its credit limit and credit exposure.
+  description: >-
+    Performs a customer credit assessment in SAP Sales and Distribution credit
+    management. The workflow reads the customer's credit-management business
+    partner account, reads the credit limit for a credit segment, and reads the
+    current credit exposure for the same segment so an order-release decision
+    can be made. Each step inlines its OData request so the flow reads and runs
+    without opening the underlying OpenAPI descriptions. All three calls are
+    read-only and require no CSRF token.
+  version: 1.0.0
+sourceDescriptions:
+- name: creditManagementApi
+  url: ../openapi/sap-sd-credit-management-openapi.yml
+  type: openapi
+workflows:
+- workflowId: credit-check
+  summary: Read a customer's credit account, limit, and exposure for a credit segment.
+  description: >-
+    Reads the credit-management business partner, the credit limit for the
+    credit segment, and the credit exposure for the same segment.
+  inputs:
+    type: object
+    required:
+    - businessPartner
+    - creditSegment
+    properties:
+      businessPartner:
+        type: string
+        description: Business partner number of the customer to credit-check.
+      creditSegment:
+        type: string
+        description: Credit segment to evaluate the limit and exposure against.
+  steps:
+  - stepId: getAccount
+    description: Read the customer's credit-management business partner account.
+    operationId: getCreditAccount
+    parameters:
+    - name: BusinessPartner
+      in: path
+      value: $inputs.businessPartner
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      businessPartner: $response.body#/d/BusinessPartner
+  - stepId: getLimit
+    description: Read the credit limit for the business partner and credit segment.
+    operationId: getCreditLimit
+    parameters:
+    - name: BusinessPartner
+      in: path
+      value: $steps.getAccount.outputs.businessPartner
+    - name: CreditSegment
+      in: path
+      value: $inputs.creditSegment
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      creditLimitAmount: $response.body#/d/CreditLimitAmount
+  - stepId: getExposure
+    description: >-
+      Read the current credit exposure for the same business partner and credit
+      segment to compare against the limit.
+    operationId: getCreditExposure
+    parameters:
+    - name: BusinessPartner
+      in: path
+      value: $steps.getAccount.outputs.businessPartner
+    - name: CreditSegment
+      in: path
+      value: $inputs.creditSegment
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      creditExposureAmount: $response.body#/d/CreditExposureAmount
+  outputs:
+    businessPartner: $steps.getAccount.outputs.businessPartner
+    creditLimitAmount: $steps.getLimit.outputs.creditLimitAmount
+    creditExposureAmount: $steps.getExposure.outputs.creditExposureAmount

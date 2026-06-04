@@ -1,0 +1,122 @@
+arazzo: 1.0.1
+info:
+  title: SAP SD Customer Lookup to Order
+  summary: Verify a customer and its sales area, then create a sales order for it.
+  description: >-
+    Validates the customer master before booking a sales order in SAP Sales
+    and Distribution. The workflow reads the customer, reads the customer's
+    sales-area assignment for the target sales organization, and then creates a
+    sales order for that verified customer. Each step inlines its OData request
+    so the flow reads and runs without opening the underlying OpenAPI
+    descriptions. The order creation POST requires an X-CSRF-Token header
+    supplied as a workflow input.
+  version: 1.0.0
+sourceDescriptions:
+- name: customerMasterDataApi
+  url: ../openapi/sap-sd-customer-master-data-openapi.yml
+  type: openapi
+- name: salesOrderApi
+  url: ../openapi/sap-sd-sales-order-openapi.yml
+  type: openapi
+workflows:
+- workflowId: customer-lookup-to-order
+  summary: Validate a customer and its sales area, then create a sales order.
+  description: >-
+    Reads the customer, confirms the customer sales area for the sales
+    organization, distribution channel and division, and creates a sales order.
+  inputs:
+    type: object
+    required:
+    - csrfToken
+    - customer
+    - salesOrganization
+    - distributionChannel
+    - division
+    - salesOrderType
+    - material
+    - requestedQuantity
+    properties:
+      csrfToken:
+        type: string
+        description: X-CSRF-Token fetched from the OData service for write operations.
+      customer:
+        type: string
+        description: Customer number to validate and order for.
+      salesOrganization:
+        type: string
+        description: Sales organization.
+      distributionChannel:
+        type: string
+        description: Distribution channel.
+      division:
+        type: string
+        description: Division.
+      salesOrderType:
+        type: string
+        description: Sales order document type (e.g. OR).
+      material:
+        type: string
+        description: Material number for the order item.
+      requestedQuantity:
+        type: string
+        description: Requested quantity for the order item.
+  steps:
+  - stepId: getCustomer
+    description: Read the customer master record to confirm the customer exists.
+    operationId: getCustomer
+    parameters:
+    - name: Customer
+      in: path
+      value: $inputs.customer
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      customer: $response.body#/d/Customer
+  - stepId: getSalesArea
+    description: >-
+      Read the customer's sales-area assignment to confirm the customer is set
+      up for the target sales organization, distribution channel and division.
+    operationId: getCustomerSalesArea
+    parameters:
+    - name: Customer
+      in: path
+      value: $steps.getCustomer.outputs.customer
+    - name: SalesOrganization
+      in: path
+      value: $inputs.salesOrganization
+    - name: DistributionChannel
+      in: path
+      value: $inputs.distributionChannel
+    - name: Division
+      in: path
+      value: $inputs.division
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      salesOrganization: $response.body#/d/SalesOrganization
+  - stepId: createOrder
+    description: Create a sales order for the validated customer as the sold-to party.
+    operationId: createSalesOrder
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    requestBody:
+      contentType: application/json
+      payload:
+        SalesOrderType: $inputs.salesOrderType
+        SalesOrganization: $steps.getSalesArea.outputs.salesOrganization
+        DistributionChannel: $inputs.distributionChannel
+        OrganizationDivision: $inputs.division
+        SoldToParty: $steps.getCustomer.outputs.customer
+        to_Item:
+          results:
+          - Material: $inputs.material
+            RequestedQuantity: $inputs.requestedQuantity
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      salesOrder: $response.body#/d/SalesOrder
+  outputs:
+    customer: $steps.getCustomer.outputs.customer
+    salesOrder: $steps.createOrder.outputs.salesOrder

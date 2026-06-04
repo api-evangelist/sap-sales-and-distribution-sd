@@ -1,0 +1,146 @@
+arazzo: 1.0.1
+info:
+  title: SAP SD Inquiry to Quotation
+  summary: Create a sales inquiry, read it, list its items, then create a quotation from it.
+  description: >-
+    Models the earliest presales handoff in SAP Sales and Distribution. The
+    workflow creates a sales inquiry with a deep-inserted item, reads the
+    inquiry back, lists its items, and then creates a sales quotation carrying
+    the inquiry's sold-to party and material forward. Each step inlines its
+    OData request so the flow reads and runs without opening the underlying
+    OpenAPI descriptions. Both modifying POSTs require an X-CSRF-Token header
+    supplied as a workflow input. Adaptation note: the quotation item create
+    schema exposes no inquiry-reference field, so the handoff is modeled by
+    carrying the inquiry's sold-to party and material forward rather than by an
+    OData document reference.
+  version: 1.0.0
+sourceDescriptions:
+- name: salesInquiryApi
+  url: ../openapi/sap-sd-sales-inquiry-openapi.yml
+  type: openapi
+- name: salesQuotationApi
+  url: ../openapi/sap-sd-sales-quotation-openapi.yml
+  type: openapi
+workflows:
+- workflowId: inquiry-to-quotation
+  summary: Convert a sales inquiry into a sales quotation.
+  description: >-
+    Creates a sales inquiry, retrieves it, lists its items, and creates a
+    quotation carrying the inquiry's sold-to party and material forward.
+  inputs:
+    type: object
+    required:
+    - csrfToken
+    - salesInquiryType
+    - salesQuotationType
+    - salesOrganization
+    - distributionChannel
+    - organizationDivision
+    - soldToParty
+    - material
+    - requestedQuantity
+    properties:
+      csrfToken:
+        type: string
+        description: X-CSRF-Token fetched from the OData service for write operations.
+      salesInquiryType:
+        type: string
+        description: Sales inquiry document type (e.g. AF).
+      salesQuotationType:
+        type: string
+        description: Sales quotation document type (e.g. QT).
+      salesOrganization:
+        type: string
+        description: Sales organization.
+      distributionChannel:
+        type: string
+        description: Distribution channel.
+      organizationDivision:
+        type: string
+        description: Division.
+      soldToParty:
+        type: string
+        description: Sold-to party customer number.
+      material:
+        type: string
+        description: Material being inquired about and quoted.
+      requestedQuantity:
+        type: string
+        description: Quantity for the item.
+  steps:
+  - stepId: createInquiry
+    description: >-
+      Create a sales inquiry header with one deep-inserted item for the sold-to
+      party.
+    operationId: createSalesInquiry
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    requestBody:
+      contentType: application/json
+      payload:
+        SalesInquiryType: $inputs.salesInquiryType
+        SalesOrganization: $inputs.salesOrganization
+        DistributionChannel: $inputs.distributionChannel
+        OrganizationDivision: $inputs.organizationDivision
+        SoldToParty: $inputs.soldToParty
+        to_Item:
+          results:
+          - Material: $inputs.material
+            RequestedQuantity: $inputs.requestedQuantity
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      salesInquiry: $response.body#/d/SalesInquiry
+  - stepId: getInquiry
+    description: Read the created inquiry back to capture its sold-to party.
+    operationId: getSalesInquiry
+    parameters:
+    - name: SalesInquiry
+      in: path
+      value: $steps.createInquiry.outputs.salesInquiry
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      salesInquiry: $response.body#/d/SalesInquiry
+      soldToParty: $response.body#/d/SoldToParty
+  - stepId: listInquiryItems
+    description: List the inquiry items to confirm the inquired lines before quoting.
+    operationId: listSalesInquiryItems
+    parameters:
+    - name: SalesInquiry
+      in: path
+      value: $steps.getInquiry.outputs.salesInquiry
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      items: $response.body#/d/results
+  - stepId: createQuotation
+    description: >-
+      Create a sales quotation carrying the inquiry's sold-to party and
+      material forward.
+    operationId: createSalesQuotation
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    requestBody:
+      contentType: application/json
+      payload:
+        SalesQuotationType: $inputs.salesQuotationType
+        SalesOrganization: $inputs.salesOrganization
+        DistributionChannel: $inputs.distributionChannel
+        OrganizationDivision: $inputs.organizationDivision
+        SoldToParty: $steps.getInquiry.outputs.soldToParty
+        to_Item:
+          results:
+          - Material: $inputs.material
+            RequestedQuantity: $inputs.requestedQuantity
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      salesQuotation: $response.body#/d/SalesQuotation
+  outputs:
+    salesInquiry: $steps.getInquiry.outputs.salesInquiry
+    salesQuotation: $steps.createQuotation.outputs.salesQuotation

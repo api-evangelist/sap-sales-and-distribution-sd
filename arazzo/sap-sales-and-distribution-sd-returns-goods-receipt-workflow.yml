@@ -1,0 +1,77 @@
+arazzo: 1.0.1
+info:
+  title: SAP SD Returns Goods Receipt
+  summary: Read a returns delivery, list its items, then post goods receipt for it.
+  description: >-
+    Completes the inbound leg of a customer return in SAP Sales and
+    Distribution. The workflow reads a returns delivery header, lists its
+    delivery items to confirm the returned lines, and posts goods receipt to
+    bring the returned stock back into inventory. Each step inlines its OData
+    request so the flow reads and runs without opening the underlying OpenAPI
+    descriptions. The goods receipt POST requires an X-CSRF-Token header
+    supplied as a workflow input.
+  version: 1.0.0
+sourceDescriptions:
+- name: customerReturnsDeliveryApi
+  url: ../openapi/sap-sd-customer-returns-delivery-openapi.yml
+  type: openapi
+workflows:
+- workflowId: returns-goods-receipt
+  summary: Review a returns delivery and post its goods receipt.
+  description: >-
+    Reads a returns delivery, lists its items, and posts goods receipt against
+    the delivery document.
+  inputs:
+    type: object
+    required:
+    - csrfToken
+    - deliveryDocument
+    properties:
+      csrfToken:
+        type: string
+        description: X-CSRF-Token fetched from the OData service for write operations.
+      deliveryDocument:
+        type: string
+        description: Returns delivery document number to receive.
+  steps:
+  - stepId: getReturnsDelivery
+    description: Read the returns delivery header to confirm it exists.
+    operationId: getReturnsDelivery
+    parameters:
+    - name: DeliveryDocument
+      in: path
+      value: $inputs.deliveryDocument
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deliveryDocument: $response.body#/d/DeliveryDocument
+  - stepId: listItems
+    description: List the returns delivery items to review the returned lines.
+    operationId: listReturnsDeliveryItems
+    parameters:
+    - name: DeliveryDocument
+      in: path
+      value: $steps.getReturnsDelivery.outputs.deliveryDocument
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      items: $response.body#/d/results
+  - stepId: postGoodsReceipt
+    description: >-
+      Post goods receipt for the returns delivery, bringing the returned stock
+      back into inventory.
+    operationId: postGoodsReceipt
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    - name: DeliveryDocument
+      in: query
+      value: $steps.getReturnsDelivery.outputs.deliveryDocument
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deliveryDocument: $response.body#/d/DeliveryDocument
+  outputs:
+    deliveryDocument: $steps.postGoodsReceipt.outputs.deliveryDocument
+    items: $steps.listItems.outputs.items

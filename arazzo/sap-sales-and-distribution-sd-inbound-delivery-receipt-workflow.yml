@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: SAP SD Inbound Delivery Receipt
+  summary: Create an inbound delivery, read it, list its items, then post goods receipt.
+  description: >-
+    Handles inbound goods receipt in SAP Sales and Distribution. The workflow
+    creates an inbound delivery for a supplier and receiving plant, reads it
+    back, lists its delivery items, and posts goods receipt to bring the stock
+    into inventory. Each step inlines its OData request so the flow reads and
+    runs without opening the underlying OpenAPI descriptions. The creation and
+    goods receipt POSTs require an X-CSRF-Token header supplied as a workflow
+    input.
+  version: 1.0.0
+sourceDescriptions:
+- name: inboundDeliveryApi
+  url: ../openapi/sap-sd-inbound-delivery-openapi.yml
+  type: openapi
+workflows:
+- workflowId: inbound-delivery-receipt
+  summary: Create an inbound delivery and post its goods receipt.
+  description: >-
+    Creates an inbound delivery, retrieves it, lists its items, and posts goods
+    receipt against the delivery document.
+  inputs:
+    type: object
+    required:
+    - csrfToken
+    - deliveryDocumentType
+    - receivingPlant
+    - supplier
+    properties:
+      csrfToken:
+        type: string
+        description: X-CSRF-Token fetched from the OData service for write operations.
+      deliveryDocumentType:
+        type: string
+        description: Inbound delivery document type (e.g. EL).
+      receivingPlant:
+        type: string
+        description: Plant receiving the inbound delivery.
+      supplier:
+        type: string
+        description: Supplier delivering the goods.
+      deliveryDate:
+        type: string
+        description: Planned delivery date (YYYY-MM-DD).
+  steps:
+  - stepId: createDelivery
+    description: Create a new inbound delivery for the supplier and receiving plant.
+    operationId: createInboundDelivery
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    requestBody:
+      contentType: application/json
+      payload:
+        DeliveryDocumentType: $inputs.deliveryDocumentType
+        ReceivingPlant: $inputs.receivingPlant
+        Supplier: $inputs.supplier
+        DeliveryDate: $inputs.deliveryDate
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      deliveryDocument: $response.body#/d/DeliveryDocument
+  - stepId: getDelivery
+    description: Read the created inbound delivery back to confirm it persisted.
+    operationId: getInboundDelivery
+    parameters:
+    - name: DeliveryDocument
+      in: path
+      value: $steps.createDelivery.outputs.deliveryDocument
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deliveryDocument: $response.body#/d/DeliveryDocument
+  - stepId: listItems
+    description: List the inbound delivery items to review the received lines.
+    operationId: listInboundDeliveryItems
+    parameters:
+    - name: DeliveryDocument
+      in: path
+      value: $steps.getDelivery.outputs.deliveryDocument
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      items: $response.body#/d/results
+  - stepId: postGoodsReceipt
+    description: >-
+      Post goods receipt for the inbound delivery, bringing the delivered stock
+      into inventory.
+    operationId: postGoodsReceipt
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    - name: DeliveryDocument
+      in: query
+      value: $steps.getDelivery.outputs.deliveryDocument
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deliveryDocument: $response.body#/d/DeliveryDocument
+  outputs:
+    deliveryDocument: $steps.postGoodsReceipt.outputs.deliveryDocument
+    items: $steps.listItems.outputs.items

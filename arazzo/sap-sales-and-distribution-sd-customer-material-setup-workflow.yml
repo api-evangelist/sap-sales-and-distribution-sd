@@ -1,0 +1,112 @@
+arazzo: 1.0.1
+info:
+  title: SAP SD Customer Material Setup
+  summary: Create a customer-material info record, read it back, then list customer materials.
+  description: >-
+    Sets up a customer-material info record in SAP Sales and Distribution so a
+    customer's own material number maps to an internal material. The workflow
+    creates the info record, reads it back by its full key, and lists customer
+    materials filtered to the customer to confirm the mapping is in place. Each
+    step inlines its OData request so the flow reads and runs without opening
+    the underlying OpenAPI descriptions. The creation POST requires an
+    X-CSRF-Token header supplied as a workflow input.
+  version: 1.0.0
+sourceDescriptions:
+- name: customerMaterialApi
+  url: ../openapi/sap-sd-customer-material-openapi.yml
+  type: openapi
+workflows:
+- workflowId: customer-material-setup
+  summary: Create a customer-material info record and verify it.
+  description: >-
+    Creates a customer-material info record, retrieves it by its full key, and
+    lists customer materials filtered to the customer.
+  inputs:
+    type: object
+    required:
+    - csrfToken
+    - salesOrganization
+    - distributionChannel
+    - customer
+    - material
+    - materialByCustomer
+    properties:
+      csrfToken:
+        type: string
+        description: X-CSRF-Token fetched from the OData service for write operations.
+      salesOrganization:
+        type: string
+        description: Sales organization for the info record.
+      distributionChannel:
+        type: string
+        description: Distribution channel for the info record.
+      customer:
+        type: string
+        description: Customer number the mapping belongs to.
+      material:
+        type: string
+        description: Internal material number.
+      materialByCustomer:
+        type: string
+        description: The customer's own material number.
+      materialDescriptionByCustomer:
+        type: string
+        description: The customer's own description for the material.
+  steps:
+  - stepId: createCustomerMaterial
+    description: Create a customer-material info record mapping the customer's number.
+    operationId: createCustomerMaterial
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    requestBody:
+      contentType: application/json
+      payload:
+        SalesOrganization: $inputs.salesOrganization
+        DistributionChannel: $inputs.distributionChannel
+        Customer: $inputs.customer
+        Material: $inputs.material
+        MaterialByCustomer: $inputs.materialByCustomer
+        MaterialDescriptionByCustomer: $inputs.materialDescriptionByCustomer
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      material: $response.body#/d/Material
+      customer: $response.body#/d/Customer
+  - stepId: getCustomerMaterial
+    description: Read the created info record back by its full composite key.
+    operationId: getCustomerMaterial
+    parameters:
+    - name: SalesOrganization
+      in: path
+      value: $inputs.salesOrganization
+    - name: DistributionChannel
+      in: path
+      value: $inputs.distributionChannel
+    - name: Customer
+      in: path
+      value: $steps.createCustomerMaterial.outputs.customer
+    - name: Material
+      in: path
+      value: $steps.createCustomerMaterial.outputs.material
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      materialByCustomer: $response.body#/d/MaterialByCustomer
+  - stepId: listCustomerMaterials
+    description: >-
+      List customer materials filtered to the customer to confirm the new
+      mapping is in place.
+    operationId: listCustomerMaterials
+    parameters:
+    - name: $filter
+      in: query
+      value: "Customer eq '$inputs.customer'"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      customerMaterials: $response.body#/d/results
+  outputs:
+    materialByCustomer: $steps.getCustomerMaterial.outputs.materialByCustomer
+    customerMaterials: $steps.listCustomerMaterials.outputs.customerMaterials

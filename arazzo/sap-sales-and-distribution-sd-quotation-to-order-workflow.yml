@@ -1,0 +1,146 @@
+arazzo: 1.0.1
+info:
+  title: SAP SD Quotation to Order
+  summary: Create a sales quotation, read it, list its items, then create a sales order from it.
+  description: >-
+    Models the presales-to-order conversion in SAP Sales and Distribution. The
+    workflow creates a sales quotation with a deep-inserted item, reads the
+    quotation back, lists its items, and then creates a sales order for the
+    same sold-to party and material. Each step inlines its OData request so the
+    flow reads and runs without opening the underlying OpenAPI descriptions.
+    Both modifying POSTs require an X-CSRF-Token header supplied as a workflow
+    input. Adaptation note: the SalesOrderItem create schema does not expose a
+    ReferenceSDDocument field, so the conversion is modeled by carrying the
+    quotation's sold-to party and material forward into a new order rather than
+    by an OData document reference.
+  version: 1.0.0
+sourceDescriptions:
+- name: salesQuotationApi
+  url: ../openapi/sap-sd-sales-quotation-openapi.yml
+  type: openapi
+- name: salesOrderApi
+  url: ../openapi/sap-sd-sales-order-openapi.yml
+  type: openapi
+workflows:
+- workflowId: quotation-to-order
+  summary: Convert a sales quotation into a sales order.
+  description: >-
+    Creates a quotation, retrieves it, lists its items, and creates a sales
+    order carrying the same sold-to party and material forward.
+  inputs:
+    type: object
+    required:
+    - csrfToken
+    - salesQuotationType
+    - salesOrderType
+    - salesOrganization
+    - distributionChannel
+    - organizationDivision
+    - soldToParty
+    - material
+    - requestedQuantity
+    properties:
+      csrfToken:
+        type: string
+        description: X-CSRF-Token fetched from the OData service for write operations.
+      salesQuotationType:
+        type: string
+        description: Quotation document type (e.g. QT).
+      salesOrderType:
+        type: string
+        description: Sales order document type (e.g. OR).
+      salesOrganization:
+        type: string
+        description: Sales organization.
+      distributionChannel:
+        type: string
+        description: Distribution channel.
+      organizationDivision:
+        type: string
+        description: Division.
+      soldToParty:
+        type: string
+        description: Sold-to party customer number.
+      material:
+        type: string
+        description: Material number for the quoted and ordered item.
+      requestedQuantity:
+        type: string
+        description: Requested quantity for the item.
+  steps:
+  - stepId: createQuotation
+    description: >-
+      Create a sales quotation header with one deep-inserted item for the
+      sold-to party.
+    operationId: createSalesQuotation
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    requestBody:
+      contentType: application/json
+      payload:
+        SalesQuotationType: $inputs.salesQuotationType
+        SalesOrganization: $inputs.salesOrganization
+        DistributionChannel: $inputs.distributionChannel
+        OrganizationDivision: $inputs.organizationDivision
+        SoldToParty: $inputs.soldToParty
+        to_Item:
+          results:
+          - Material: $inputs.material
+            RequestedQuantity: $inputs.requestedQuantity
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      salesQuotation: $response.body#/d/SalesQuotation
+  - stepId: getQuotation
+    description: Read the created quotation back to confirm it persisted.
+    operationId: getSalesQuotation
+    parameters:
+    - name: SalesQuotation
+      in: path
+      value: $steps.createQuotation.outputs.salesQuotation
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      salesQuotation: $response.body#/d/SalesQuotation
+      soldToParty: $response.body#/d/SoldToParty
+  - stepId: listQuotationItems
+    description: List the quotation items to confirm the quoted lines before ordering.
+    operationId: listSalesQuotationItems
+    parameters:
+    - name: SalesQuotation
+      in: path
+      value: $steps.getQuotation.outputs.salesQuotation
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      items: $response.body#/d/results
+  - stepId: createOrder
+    description: >-
+      Create a sales order carrying the quotation's sold-to party and material
+      forward into a new order document.
+    operationId: createSalesOrder
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    requestBody:
+      contentType: application/json
+      payload:
+        SalesOrderType: $inputs.salesOrderType
+        SalesOrganization: $inputs.salesOrganization
+        DistributionChannel: $inputs.distributionChannel
+        OrganizationDivision: $inputs.organizationDivision
+        SoldToParty: $steps.getQuotation.outputs.soldToParty
+        to_Item:
+          results:
+          - Material: $inputs.material
+            RequestedQuantity: $inputs.requestedQuantity
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      salesOrder: $response.body#/d/SalesOrder
+  outputs:
+    salesQuotation: $steps.getQuotation.outputs.salesQuotation
+    salesOrder: $steps.createOrder.outputs.salesOrder

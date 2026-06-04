@@ -1,0 +1,133 @@
+arazzo: 1.0.1
+info:
+  title: SAP SD Order to Delivery
+  summary: Create a sales order, confirm it, then create an outbound delivery for it.
+  description: >-
+    The core order-to-cash starting flow in SAP Sales and Distribution. The
+    workflow creates a sales order with a deep-insert item, reads the created
+    order back to confirm it persisted, and then creates an outbound delivery
+    with reference to the sold-to party and shipping point. Every step spells
+    out its OData request inline so the flow can be read and executed without
+    opening the underlying OpenAPI descriptions. SAP S/4HANA OData v2 write
+    operations require a fetched X-CSRF-Token header, which is supplied as a
+    workflow input and inlined on each modifying POST.
+  version: 1.0.0
+sourceDescriptions:
+- name: salesOrderApi
+  url: ../openapi/sap-sd-sales-order-openapi.yml
+  type: openapi
+- name: outboundDeliveryApi
+  url: ../openapi/sap-sd-outbound-delivery-openapi.yml
+  type: openapi
+workflows:
+- workflowId: order-to-delivery
+  summary: Create a sales order and turn it into an outbound delivery.
+  description: >-
+    Creates a sales order header with one item, retrieves the new order to
+    verify creation, and creates an outbound delivery for the same sold-to
+    party and shipping point.
+  inputs:
+    type: object
+    required:
+    - csrfToken
+    - salesOrderType
+    - salesOrganization
+    - distributionChannel
+    - organizationDivision
+    - soldToParty
+    - material
+    - requestedQuantity
+    - shippingPoint
+    properties:
+      csrfToken:
+        type: string
+        description: X-CSRF-Token fetched from the OData service for write operations.
+      salesOrderType:
+        type: string
+        description: Sales document type (e.g. OR for a standard order).
+      salesOrganization:
+        type: string
+        description: Sales organization.
+      distributionChannel:
+        type: string
+        description: Distribution channel.
+      organizationDivision:
+        type: string
+        description: Division.
+      soldToParty:
+        type: string
+        description: Sold-to party customer number.
+      material:
+        type: string
+        description: Material number for the first order item.
+      requestedQuantity:
+        type: string
+        description: Requested quantity for the first order item.
+      deliveryDocumentType:
+        type: string
+        description: Delivery document type for the outbound delivery (e.g. LF).
+      shippingPoint:
+        type: string
+        description: Shipping point that ships the outbound delivery.
+  steps:
+  - stepId: createOrder
+    description: >-
+      Create a new sales order with header organizational data and a single
+      deep-inserted item.
+    operationId: createSalesOrder
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    requestBody:
+      contentType: application/json
+      payload:
+        SalesOrderType: $inputs.salesOrderType
+        SalesOrganization: $inputs.salesOrganization
+        DistributionChannel: $inputs.distributionChannel
+        OrganizationDivision: $inputs.organizationDivision
+        SoldToParty: $inputs.soldToParty
+        to_Item:
+          results:
+          - Material: $inputs.material
+            RequestedQuantity: $inputs.requestedQuantity
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      salesOrder: $response.body#/d/SalesOrder
+  - stepId: getOrder
+    description: >-
+      Read the newly created sales order back to confirm it persisted and to
+      capture its sold-to party for downstream delivery creation.
+    operationId: getSalesOrder
+    parameters:
+    - name: SalesOrder
+      in: path
+      value: $steps.createOrder.outputs.salesOrder
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      salesOrder: $response.body#/d/SalesOrder
+      soldToParty: $response.body#/d/SoldToParty
+  - stepId: createDelivery
+    description: >-
+      Create an outbound delivery for the same sold-to party and shipping
+      point so the confirmed order can be shipped.
+    operationId: createOutboundDelivery
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    requestBody:
+      contentType: application/json
+      payload:
+        DeliveryDocumentType: $inputs.deliveryDocumentType
+        ShippingPoint: $inputs.shippingPoint
+        SoldToParty: $steps.getOrder.outputs.soldToParty
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      deliveryDocument: $response.body#/d/DeliveryDocument
+  outputs:
+    salesOrder: $steps.getOrder.outputs.salesOrder
+    deliveryDocument: $steps.createDelivery.outputs.deliveryDocument

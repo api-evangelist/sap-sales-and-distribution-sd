@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: SAP SD Deliver and Post Goods Issue
+  summary: Create an outbound delivery, verify it, list its items, then post goods issue.
+  description: >-
+    The shipping leg of order-to-cash in SAP Sales and Distribution. The
+    workflow creates an outbound delivery, reads it back to confirm it
+    persisted, lists its delivery items, and finally posts goods issue to
+    update inventory and generate material documents. Each step inlines its
+    OData request so the flow reads and runs without opening the underlying
+    OpenAPI descriptions. The two modifying calls (delivery creation and goods
+    issue) require an X-CSRF-Token header, supplied as a workflow input.
+  version: 1.0.0
+sourceDescriptions:
+- name: outboundDeliveryApi
+  url: ../openapi/sap-sd-outbound-delivery-openapi.yml
+  type: openapi
+workflows:
+- workflowId: deliver-and-post-goods-issue
+  summary: Create an outbound delivery and post its goods issue.
+  description: >-
+    Creates an outbound delivery, retrieves it, lists its items, and posts
+    goods issue against the delivery document.
+  inputs:
+    type: object
+    required:
+    - csrfToken
+    - deliveryDocumentType
+    - shippingPoint
+    - soldToParty
+    properties:
+      csrfToken:
+        type: string
+        description: X-CSRF-Token fetched from the OData service for write operations.
+      deliveryDocumentType:
+        type: string
+        description: Delivery document type (e.g. LF for outbound delivery).
+      shippingPoint:
+        type: string
+        description: Shipping point that ships the delivery.
+      soldToParty:
+        type: string
+        description: Sold-to party customer number for the delivery.
+  steps:
+  - stepId: createDelivery
+    description: Create a new outbound delivery header for the sold-to party.
+    operationId: createOutboundDelivery
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    requestBody:
+      contentType: application/json
+      payload:
+        DeliveryDocumentType: $inputs.deliveryDocumentType
+        ShippingPoint: $inputs.shippingPoint
+        SoldToParty: $inputs.soldToParty
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      deliveryDocument: $response.body#/d/DeliveryDocument
+  - stepId: getDelivery
+    description: Read the created outbound delivery back to confirm it persisted.
+    operationId: getOutboundDelivery
+    parameters:
+    - name: DeliveryDocument
+      in: path
+      value: $steps.createDelivery.outputs.deliveryDocument
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deliveryDocument: $response.body#/d/DeliveryDocument
+  - stepId: listItems
+    description: List the items on the delivery so the picked lines can be reviewed.
+    operationId: listOutboundDeliveryItems
+    parameters:
+    - name: DeliveryDocument
+      in: path
+      value: $steps.getDelivery.outputs.deliveryDocument
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      items: $response.body#/d/results
+  - stepId: postGoodsIssue
+    description: >-
+      Post goods issue for the delivery, updating inventory and creating the
+      material documents that complete the shipment.
+    operationId: postGoodsIssue
+    parameters:
+    - name: X-CSRF-Token
+      in: header
+      value: $inputs.csrfToken
+    - name: DeliveryDocument
+      in: query
+      value: $steps.getDelivery.outputs.deliveryDocument
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deliveryDocument: $response.body#/d/DeliveryDocument
+  outputs:
+    deliveryDocument: $steps.postGoodsIssue.outputs.deliveryDocument
+    items: $steps.listItems.outputs.items
