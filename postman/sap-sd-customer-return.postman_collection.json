@@ -1,0 +1,1696 @@
+{
+  "info": {
+    "_postman_id": "d51c2a39-5ec1-4d47-aa97-814e85fa2734",
+    "name": "SAP Sales and Distribution (SD) SAP Customer Return API",
+    "description": "Create, read, update, and delete customer returns in SAP S/4HANA. This OData service (API_CUSTOMER_RETURN_SRV) supports integration with customer return processing including SAP Advanced Returns Management using deep insert requests. Customer returns initiate the reverse logistics process for returned goods.\n\nContact Support:\n Name: SAP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:37.000Z",
+    "updatedAt": "2026-06-05T15:16:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d51c2a39-5ec1-4d47-aa97-814e85fa2734"
+  },
+  "item": [
+    {
+      "name": "A_CustomerReturn",
+      "item": [
+        {
+          "name": "Retrieve a list of customer returns",
+          "id": "e7ea74ac-5670-4bdf-9f28-476ca226dab9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CustomerReturn?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CustomerReturn"
+              ],
+              "query": [
+                {
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$expand",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$inlinecount",
+                  "value": "allpages"
+                }
+              ]
+            },
+            "description": "Returns a collection of customer return headers. Supports filtering by return type, date, customer, and processing status."
+          },
+          "response": [
+            {
+              "id": "bcb03449-477e-4210-bee2-34fd18b5c7db",
+              "name": "Successfully retrieved customer returns",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"CustomerReturn\": \"<string>\",\n        \"CustomerReturnType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"OrganizationDivision\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"CustomerReturnDate\": \"<date>\",\n        \"TotalNetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"SDDocumentReason\": \"<string>\",\n        \"PurchaseOrderByCustomer\": \"<string>\",\n        \"OverallSDProcessStatus\": \"<string>\",\n        \"OverallDeliveryStatus\": \"<string>\",\n        \"OverallBillingStatus\": \"<string>\"\n      },\n      {\n        \"CustomerReturn\": \"<string>\",\n        \"CustomerReturnType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"OrganizationDivision\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"CustomerReturnDate\": \"<date>\",\n        \"TotalNetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"SDDocumentReason\": \"<string>\",\n        \"PurchaseOrderByCustomer\": \"<string>\",\n        \"OverallSDProcessStatus\": \"<string>\",\n        \"OverallDeliveryStatus\": \"<string>\",\n        \"OverallBillingStatus\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-bcb03449-477e-4210-bee2-34fd18b5c7db"
+            },
+            {
+              "id": "8c37d88f-0da0-4aa7-bc8b-0dcee3e1950a",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-8c37d88f-0da0-4aa7-bc8b-0dcee3e1950a"
+            },
+            {
+              "id": "6e1b6154-85d2-4bf9-afd4-23e7b59ead21",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-6e1b6154-85d2-4bf9-afd4-23e7b59ead21"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:38.000Z",
+          "updatedAt": "2026-06-05T15:16:38.000Z",
+          "uid": "35240-e7ea74ac-5670-4bdf-9f28-476ca226dab9"
+        },
+        {
+          "name": "Create a new customer return",
+          "id": "8278d8c6-58d0-4b3b-9189-123e3f3a20aa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CustomerReturnType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"CustomerReturnDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_CustomerReturn",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CustomerReturn"
+              ]
+            },
+            "description": "Creates a new customer return using deep insert with items, partners, and pricing elements. Can reference an original sales order."
+          },
+          "response": [
+            {
+              "id": "1803d785-17f1-4151-9b3c-b43bfd98564b",
+              "name": "Customer return successfully created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CustomerReturnType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"CustomerReturnDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"CustomerReturn\": \"<string>\",\n    \"CustomerReturnType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"OrganizationDivision\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"CustomerReturnDate\": \"<date>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"SDDocumentReason\": \"<string>\",\n    \"PurchaseOrderByCustomer\": \"<string>\",\n    \"OverallSDProcessStatus\": \"<string>\",\n    \"OverallDeliveryStatus\": \"<string>\",\n    \"OverallBillingStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-1803d785-17f1-4151-9b3c-b43bfd98564b"
+            },
+            {
+              "id": "650cea2a-d0bd-4b12-918b-ba36695775b9",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CustomerReturnType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"CustomerReturnDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-650cea2a-d0bd-4b12-918b-ba36695775b9"
+            },
+            {
+              "id": "c3ebcefb-79cf-4964-a9ef-f4f4e1c29c46",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CustomerReturnType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"CustomerReturnDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-c3ebcefb-79cf-4964-a9ef-f4f4e1c29c46"
+            },
+            {
+              "id": "4a2913d2-80db-4540-9168-90c21732510d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CustomerReturnType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"CustomerReturnDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-4a2913d2-80db-4540-9168-90c21732510d"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:38.000Z",
+          "updatedAt": "2026-06-05T15:16:38.000Z",
+          "uid": "35240-8278d8c6-58d0-4b3b-9189-123e3f3a20aa"
+        }
+      ],
+      "id": "525e607d-025f-4eea-972f-037532ef8373",
+      "createdAt": "2026-06-05T15:16:38.000Z",
+      "updatedAt": "2026-06-05T15:16:38.000Z",
+      "uid": "35240-525e607d-025f-4eea-972f-037532ef8373"
+    },
+    {
+      "name": "A_CustomerReturn('{CustomerReturn}')",
+      "item": [
+        {
+          "name": "to_Item",
+          "item": [
+            {
+              "name": "Retrieve items for a customer return",
+              "id": "efd73d3e-ddc2-43cc-b784-0bd2375ae8a6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')",
+                    "to_Item"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of line items for the specified customer return."
+              },
+              "response": [
+                {
+                  "id": "c6d1f685-2da4-4766-8439-62bfdd439f39",
+                  "name": "Successfully retrieved return items",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_CustomerReturn('{{CustomerReturn}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"CustomerReturn\": \"<string>\",\n        \"CustomerReturnItem\": \"<string>\",\n        \"CustomerReturnItemCategory\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"NetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\",\n        \"ReturnReason\": \"<string>\"\n      },\n      {\n        \"CustomerReturn\": \"<string>\",\n        \"CustomerReturnItem\": \"<string>\",\n        \"CustomerReturnItemCategory\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"NetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\",\n        \"ReturnReason\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:38.000Z",
+                  "updatedAt": "2026-06-05T15:16:38.000Z",
+                  "uid": "35240-c6d1f685-2da4-4766-8439-62bfdd439f39"
+                },
+                {
+                  "id": "f36c6075-6d79-414f-bd0a-d04da6305997",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_CustomerReturn('{{CustomerReturn}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:38.000Z",
+                  "updatedAt": "2026-06-05T15:16:38.000Z",
+                  "uid": "35240-f36c6075-6d79-414f-bd0a-d04da6305997"
+                },
+                {
+                  "id": "c873921d-5984-4ea1-8a86-c0eb7e7b5a41",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_CustomerReturn('{{CustomerReturn}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:38.000Z",
+                  "updatedAt": "2026-06-05T15:16:38.000Z",
+                  "uid": "35240-c873921d-5984-4ea1-8a86-c0eb7e7b5a41"
+                },
+                {
+                  "id": "5285dbdb-458a-41a6-b652-26d9812d8e7d",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_CustomerReturn('{{CustomerReturn}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:38.000Z",
+                  "updatedAt": "2026-06-05T15:16:38.000Z",
+                  "uid": "35240-5285dbdb-458a-41a6-b652-26d9812d8e7d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-efd73d3e-ddc2-43cc-b784-0bd2375ae8a6"
+            }
+          ],
+          "id": "42067168-496d-4695-9890-7fcab953c2c2",
+          "createdAt": "2026-06-05T15:16:38.000Z",
+          "updatedAt": "2026-06-05T15:16:38.000Z",
+          "uid": "35240-42067168-496d-4695-9890-7fcab953c2c2"
+        },
+        {
+          "name": "Retrieve a single customer return",
+          "id": "b156d4d2-9c62-4dd9-a0cc-eab293cadbb0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CustomerReturn('{{CustomerReturn}}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single customer return by its document number."
+          },
+          "response": [
+            {
+              "id": "0426ad43-1c73-4aea-a288-7f00500536c5",
+              "name": "Successfully retrieved the customer return",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"CustomerReturn\": \"<string>\",\n    \"CustomerReturnType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"OrganizationDivision\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"CustomerReturnDate\": \"<date>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"SDDocumentReason\": \"<string>\",\n    \"PurchaseOrderByCustomer\": \"<string>\",\n    \"OverallSDProcessStatus\": \"<string>\",\n    \"OverallDeliveryStatus\": \"<string>\",\n    \"OverallBillingStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-0426ad43-1c73-4aea-a288-7f00500536c5"
+            },
+            {
+              "id": "4cc0076b-ff1b-4698-aa1d-9284ed7041c8",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-4cc0076b-ff1b-4698-aa1d-9284ed7041c8"
+            },
+            {
+              "id": "f316702f-acc9-4708-a446-aeb32913e7df",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-f316702f-acc9-4708-a446-aeb32913e7df"
+            },
+            {
+              "id": "42d27756-dcdf-4b4b-b8ae-5279691b65b0",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-42d27756-dcdf-4b4b-b8ae-5279691b65b0"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:38.000Z",
+          "updatedAt": "2026-06-05T15:16:38.000Z",
+          "uid": "35240-b156d4d2-9c62-4dd9-a0cc-eab293cadbb0"
+        },
+        {
+          "name": "Update a customer return",
+          "id": "cc6f9987-b478-4d86-9fd4-e7010b947f59",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SDDocumentReason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CustomerReturn('{{CustomerReturn}}')"
+              ]
+            },
+            "description": "Updates an existing customer return header."
+          },
+          "response": [
+            {
+              "id": "3c9e59fc-a722-492f-a193-579808897451",
+              "name": "Customer return successfully updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SDDocumentReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-3c9e59fc-a722-492f-a193-579808897451"
+            },
+            {
+              "id": "02229235-36a1-4b28-a3be-3d9cbce48107",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SDDocumentReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-02229235-36a1-4b28-a3be-3d9cbce48107"
+            },
+            {
+              "id": "9f23e637-77d8-491c-91bc-968222f09534",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SDDocumentReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-9f23e637-77d8-491c-91bc-968222f09534"
+            },
+            {
+              "id": "aac2114d-bd76-447b-a353-fc1bb008b58d",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SDDocumentReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-aac2114d-bd76-447b-a353-fc1bb008b58d"
+            },
+            {
+              "id": "ec9a6fc3-ac9b-428f-958a-7bba06826863",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SDDocumentReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-ec9a6fc3-ac9b-428f-958a-7bba06826863"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:38.000Z",
+          "updatedAt": "2026-06-05T15:16:38.000Z",
+          "uid": "35240-cc6f9987-b478-4d86-9fd4-e7010b947f59"
+        },
+        {
+          "name": "Delete a customer return",
+          "id": "c3853ed3-4ed3-45ff-abd2-80de2816a04f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CustomerReturn('{{CustomerReturn}}')"
+              ]
+            },
+            "description": "Deletes an existing customer return."
+          },
+          "response": [
+            {
+              "id": "444d0547-f789-4a74-a1c2-8ffcd0b7572b",
+              "name": "Customer return successfully deleted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-444d0547-f789-4a74-a1c2-8ffcd0b7572b"
+            },
+            {
+              "id": "41c2e6da-7338-47cf-b34d-48226b766a53",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-41c2e6da-7338-47cf-b34d-48226b766a53"
+            },
+            {
+              "id": "6192c710-91ac-4fdc-b65f-32b57005baaa",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-6192c710-91ac-4fdc-b65f-32b57005baaa"
+            },
+            {
+              "id": "15be2d9e-f05d-4d76-94b2-f4f20712135a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerReturn('{{CustomerReturn}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerReturn('{{CustomerReturn}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:38.000Z",
+              "updatedAt": "2026-06-05T15:16:38.000Z",
+              "uid": "35240-15be2d9e-f05d-4d76-94b2-f4f20712135a"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:38.000Z",
+          "updatedAt": "2026-06-05T15:16:38.000Z",
+          "uid": "35240-c3853ed3-4ed3-45ff-abd2-80de2816a04f"
+        }
+      ],
+      "id": "1232176f-ad16-43c9-a70d-ec4f124d8b18",
+      "createdAt": "2026-06-05T15:16:38.000Z",
+      "updatedAt": "2026-06-05T15:16:38.000Z",
+      "uid": "35240-1232176f-ad16-43c9-a70d-ec4f124d8b18"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV"
+    },
+    {
+      "key": "CustomerReturn",
+      "value": "<string>"
+    }
+  ]
+}

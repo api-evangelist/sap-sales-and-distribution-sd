@@ -1,0 +1,251 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Credit Memo Request API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Credit Memo Request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of credit memo requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV/A_CreditMemoRequest",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$inlinecount",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of credit memo request headers. Supports OData query options for filtering by document type, date, customer, and status."
+        },
+        {
+          "info": {
+            "name": "Create a new credit memo request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV/A_CreditMemoRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new credit memo request with deep insert support for items, partners, and pricing elements."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single credit memo request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV/A_CreditMemoRequest(':CreditMemoRequest')",
+            "params": [
+              {
+                "name": "CreditMemoRequest",
+                "value": "",
+                "type": "path",
+                "description": "Credit memo request number (10 characters)"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a single credit memo request by its document number."
+        },
+        {
+          "info": {
+            "name": "Update a credit memo request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV/A_CreditMemoRequest(':CreditMemoRequest')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "CreditMemoRequest",
+                "value": "",
+                "type": "path",
+                "description": "Credit memo request number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing credit memo request header."
+        },
+        {
+          "info": {
+            "name": "Delete a credit memo request",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV/A_CreditMemoRequest(':CreditMemoRequest')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "CreditMemoRequest",
+                "value": "",
+                "type": "path",
+                "description": "Credit memo request number"
+              }
+            ]
+          },
+          "docs": "Deletes an existing credit memo request."
+        },
+        {
+          "info": {
+            "name": "Accept a credit memo approval request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV/AcceptApprovalRequest",
+            "params": [
+              {
+                "name": "CreditMemoRequest",
+                "value": "",
+                "type": "query",
+                "description": "Credit memo request number"
+              }
+            ]
+          },
+          "docs": "Accepts an approval request for a credit memo request that requires authorization."
+        },
+        {
+          "info": {
+            "name": "Reject a credit memo approval request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV/RejectApprovalRequest",
+            "params": [
+              {
+                "name": "CreditMemoRequest",
+                "value": "",
+                "type": "query",
+                "description": "Credit memo request number"
+              }
+            ]
+          },
+          "docs": "Rejects an approval request for a credit memo request."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Credit Memo Request Item",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve items for a credit memo request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV/A_CreditMemoRequest(':CreditMemoRequest')/to_Item",
+            "params": [
+              {
+                "name": "CreditMemoRequest",
+                "value": "",
+                "type": "path",
+                "description": "Credit memo request number"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of line items for the specified credit memo request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

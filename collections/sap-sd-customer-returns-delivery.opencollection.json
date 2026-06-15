@@ -1,0 +1,192 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Customer Returns Delivery API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Returns Delivery Header",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of customer returns deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_DELIVERY_SRV_0002/A_ReturnsDeliveryHeader",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$inlinecount",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of customer returns delivery headers. Supports filtering by delivery type, date, and goods receipt status."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single returns delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_DELIVERY_SRV_0002/A_ReturnsDeliveryHeader(':DeliveryDocument')",
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "path",
+                "description": "Delivery document number (10 characters)"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a single customer returns delivery by its document number."
+        },
+        {
+          "info": {
+            "name": "Update a returns delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_DELIVERY_SRV_0002/A_ReturnsDeliveryHeader(':DeliveryDocument')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "path",
+                "description": "Delivery document number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing customer returns delivery header."
+        },
+        {
+          "info": {
+            "name": "Post goods receipt for a returns delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_DELIVERY_SRV_0002/PostGoodsReceipt",
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "query",
+                "description": "Delivery document number"
+              }
+            ]
+          },
+          "docs": "Posts goods receipt for the specified returns delivery, recording the physical receipt of returned goods in inventory."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Returns Delivery Item",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve items for a returns delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_RETURN_DELIVERY_SRV_0002/A_ReturnsDeliveryHeader(':DeliveryDocument')/to_DeliveryDocumentItem",
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "path",
+                "description": "Delivery document number"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of items for the specified returns delivery."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

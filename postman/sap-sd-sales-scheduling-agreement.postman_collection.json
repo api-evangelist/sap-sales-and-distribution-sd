@@ -1,0 +1,1719 @@
+{
+  "info": {
+    "_postman_id": "ea6b8c8c-0d77-4a79-afbf-dfc7f4645def",
+    "name": "SAP Sales and Distribution (SD) SAP Sales Scheduling Agreement API",
+    "description": "Manage sales scheduling agreements in SAP S/4HANA. This OData service (API_SALES_SCHEDULING_AGREEMENT) supports scheduling agreements that define delivery schedules for recurring deliveries of materials to customers over a specified period. Includes header, item, and schedule line entities.\n\nContact Support:\n Name: SAP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:36.000Z",
+    "updatedAt": "2026-06-05T15:16:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ea6b8c8c-0d77-4a79-afbf-dfc7f4645def"
+  },
+  "item": [
+    {
+      "name": "A_SchAgrmtHeader",
+      "item": [
+        {
+          "name": "Retrieve a list of scheduling agreements",
+          "id": "2160f402-f935-48df-8e76-299b37ce2f06",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SchAgrmtHeader?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SchAgrmtHeader"
+              ],
+              "query": [
+                {
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$expand",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$inlinecount",
+                  "value": "allpages"
+                }
+              ]
+            },
+            "description": "Returns a collection of scheduling agreement headers. Supports filtering by agreement type, validity dates, customer, and status."
+          },
+          "response": [
+            {
+              "id": "3123a5ad-c4b5-428a-b9b4-d139366ba1d1",
+              "name": "Successfully retrieved scheduling agreements",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"SchedulingAgreement\": \"<string>\",\n        \"SchedulingAgreementType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"OrganizationDivision\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"SchedulingAgreementDate\": \"<date>\",\n        \"SchAgrmtValidityStartDate\": \"<date>\",\n        \"SchAgrmtValidityEndDate\": \"<date>\",\n        \"TotalNetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"PurchaseOrderByCustomer\": \"<string>\",\n        \"OverallSDProcessStatus\": \"<string>\"\n      },\n      {\n        \"SchedulingAgreement\": \"<string>\",\n        \"SchedulingAgreementType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"OrganizationDivision\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"SchedulingAgreementDate\": \"<date>\",\n        \"SchAgrmtValidityStartDate\": \"<date>\",\n        \"SchAgrmtValidityEndDate\": \"<date>\",\n        \"TotalNetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"PurchaseOrderByCustomer\": \"<string>\",\n        \"OverallSDProcessStatus\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-3123a5ad-c4b5-428a-b9b4-d139366ba1d1"
+            },
+            {
+              "id": "73a776b0-0b29-469e-bf13-7f8873772b73",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-73a776b0-0b29-469e-bf13-7f8873772b73"
+            },
+            {
+              "id": "430ff9c4-86b0-4f23-893c-4b630b45206e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-430ff9c4-86b0-4f23-893c-4b630b45206e"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:37.000Z",
+          "updatedAt": "2026-06-05T15:16:37.000Z",
+          "uid": "35240-2160f402-f935-48df-8e76-299b37ce2f06"
+        },
+        {
+          "name": "Create a new scheduling agreement",
+          "id": "9e7df463-8a3c-4302-ae1b-b7c1d908db21",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"SchedulingAgreementType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SchedulingAgreementDate\": \"<date>\",\n  \"SchAgrmtValidityStartDate\": \"<date>\",\n  \"SchAgrmtValidityEndDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_SchAgrmtHeader",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SchAgrmtHeader"
+              ]
+            },
+            "description": "Creates a new scheduling agreement with deep insert support for items and schedule lines."
+          },
+          "response": [
+            {
+              "id": "f8624a5f-4ed8-4ce9-977c-b3ba5d857dc3",
+              "name": "Scheduling agreement successfully created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SchedulingAgreementType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SchedulingAgreementDate\": \"<date>\",\n  \"SchAgrmtValidityStartDate\": \"<date>\",\n  \"SchAgrmtValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"SchedulingAgreement\": \"<string>\",\n    \"SchedulingAgreementType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"OrganizationDivision\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"SchedulingAgreementDate\": \"<date>\",\n    \"SchAgrmtValidityStartDate\": \"<date>\",\n    \"SchAgrmtValidityEndDate\": \"<date>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"PurchaseOrderByCustomer\": \"<string>\",\n    \"OverallSDProcessStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-f8624a5f-4ed8-4ce9-977c-b3ba5d857dc3"
+            },
+            {
+              "id": "b51dffa7-96af-4340-8a7b-bdb1395c35c8",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SchedulingAgreementType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SchedulingAgreementDate\": \"<date>\",\n  \"SchAgrmtValidityStartDate\": \"<date>\",\n  \"SchAgrmtValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-b51dffa7-96af-4340-8a7b-bdb1395c35c8"
+            },
+            {
+              "id": "57f6e94b-ccb2-4b28-872c-12e57c3b0324",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SchedulingAgreementType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SchedulingAgreementDate\": \"<date>\",\n  \"SchAgrmtValidityStartDate\": \"<date>\",\n  \"SchAgrmtValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-57f6e94b-ccb2-4b28-872c-12e57c3b0324"
+            },
+            {
+              "id": "cbae0fee-946b-4153-baf0-ec7a64076cad",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SchedulingAgreementType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SchedulingAgreementDate\": \"<date>\",\n  \"SchAgrmtValidityStartDate\": \"<date>\",\n  \"SchAgrmtValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-cbae0fee-946b-4153-baf0-ec7a64076cad"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:37.000Z",
+          "updatedAt": "2026-06-05T15:16:37.000Z",
+          "uid": "35240-9e7df463-8a3c-4302-ae1b-b7c1d908db21"
+        }
+      ],
+      "id": "85754b8c-4f02-47fa-a982-f9a0b78d62d6",
+      "createdAt": "2026-06-05T15:16:36.000Z",
+      "updatedAt": "2026-06-05T15:16:36.000Z",
+      "uid": "35240-85754b8c-4f02-47fa-a982-f9a0b78d62d6"
+    },
+    {
+      "name": "A_SchAgrmtHeader('{SchedulingAgreement}')",
+      "item": [
+        {
+          "name": "to_Item",
+          "item": [
+            {
+              "name": "Retrieve items for a scheduling agreement",
+              "id": "bf6b9ff5-9837-4482-82f9-77b26bad798e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader('{{SchedulingAgreement}}')",
+                    "to_Item"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of items for the specified scheduling agreement."
+              },
+              "response": [
+                {
+                  "id": "ebbd0a8d-2f00-481c-8568-5a08af4f3b81",
+                  "name": "Successfully retrieved agreement items",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SchAgrmtHeader('{{SchedulingAgreement}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"SchedulingAgreement\": \"<string>\",\n        \"SchedulingAgreementItem\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"NetAmount\": \"<string>\",\n        \"Plant\": \"<string>\"\n      },\n      {\n        \"SchedulingAgreement\": \"<string>\",\n        \"SchedulingAgreementItem\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"NetAmount\": \"<string>\",\n        \"Plant\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:37.000Z",
+                  "updatedAt": "2026-06-05T15:16:37.000Z",
+                  "uid": "35240-ebbd0a8d-2f00-481c-8568-5a08af4f3b81"
+                },
+                {
+                  "id": "4fa30a98-8470-4ac8-8da2-54a7b5d92a1b",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SchAgrmtHeader('{{SchedulingAgreement}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:37.000Z",
+                  "updatedAt": "2026-06-05T15:16:37.000Z",
+                  "uid": "35240-4fa30a98-8470-4ac8-8da2-54a7b5d92a1b"
+                },
+                {
+                  "id": "ae939ca7-806f-4a8c-8bb5-ebe9528bbd8d",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SchAgrmtHeader('{{SchedulingAgreement}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:37.000Z",
+                  "updatedAt": "2026-06-05T15:16:37.000Z",
+                  "uid": "35240-ae939ca7-806f-4a8c-8bb5-ebe9528bbd8d"
+                },
+                {
+                  "id": "ba1f0a24-c1dd-4c8c-a795-a799410fb609",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SchAgrmtHeader('{{SchedulingAgreement}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:37.000Z",
+                  "updatedAt": "2026-06-05T15:16:37.000Z",
+                  "uid": "35240-ba1f0a24-c1dd-4c8c-a795-a799410fb609"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-bf6b9ff5-9837-4482-82f9-77b26bad798e"
+            }
+          ],
+          "id": "49fd1ec8-34db-4ae6-9c90-8d9f4e7b645f",
+          "createdAt": "2026-06-05T15:16:36.000Z",
+          "updatedAt": "2026-06-05T15:16:36.000Z",
+          "uid": "35240-49fd1ec8-34db-4ae6-9c90-8d9f4e7b645f"
+        },
+        {
+          "name": "Retrieve a single scheduling agreement",
+          "id": "9aa867e3-ec39-47bc-8590-3915f297c330",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SchAgrmtHeader('{{SchedulingAgreement}}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single scheduling agreement by its document number."
+          },
+          "response": [
+            {
+              "id": "0ccb7eac-485e-4966-aaac-1a1e384d0789",
+              "name": "Successfully retrieved the scheduling agreement",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader('{{SchedulingAgreement}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"SchedulingAgreement\": \"<string>\",\n    \"SchedulingAgreementType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"OrganizationDivision\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"SchedulingAgreementDate\": \"<date>\",\n    \"SchAgrmtValidityStartDate\": \"<date>\",\n    \"SchAgrmtValidityEndDate\": \"<date>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"PurchaseOrderByCustomer\": \"<string>\",\n    \"OverallSDProcessStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-0ccb7eac-485e-4966-aaac-1a1e384d0789"
+            },
+            {
+              "id": "cb4796b7-613f-4de3-af53-bb07b9c7b595",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader('{{SchedulingAgreement}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-cb4796b7-613f-4de3-af53-bb07b9c7b595"
+            },
+            {
+              "id": "ce8b2eb0-6423-4985-9d8f-33ece1d51286",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader('{{SchedulingAgreement}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-ce8b2eb0-6423-4985-9d8f-33ece1d51286"
+            },
+            {
+              "id": "fc94dcf6-f2e0-4aa5-ae8c-e28fe23f1022",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader('{{SchedulingAgreement}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-fc94dcf6-f2e0-4aa5-ae8c-e28fe23f1022"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:37.000Z",
+          "updatedAt": "2026-06-05T15:16:37.000Z",
+          "uid": "35240-9aa867e3-ec39-47bc-8590-3915f297c330"
+        },
+        {
+          "name": "Update a scheduling agreement",
+          "id": "4d390e9a-fee2-465f-9ec7-898b46003f5f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SchAgrmtValidityEndDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SchAgrmtHeader('{{SchedulingAgreement}}')"
+              ]
+            },
+            "description": "Updates an existing scheduling agreement header."
+          },
+          "response": [
+            {
+              "id": "29a36c25-9e3e-4678-a5d0-79fc829f5666",
+              "name": "Scheduling agreement successfully updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SchAgrmtValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader('{{SchedulingAgreement}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-29a36c25-9e3e-4678-a5d0-79fc829f5666"
+            },
+            {
+              "id": "738a103b-7d1c-470a-b9ee-3f2c890b86b8",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SchAgrmtValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader('{{SchedulingAgreement}}')"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-738a103b-7d1c-470a-b9ee-3f2c890b86b8"
+            },
+            {
+              "id": "e9c6ba40-0651-42bd-b2c4-1d2ebee15de1",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SchAgrmtValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader('{{SchedulingAgreement}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-e9c6ba40-0651-42bd-b2c4-1d2ebee15de1"
+            },
+            {
+              "id": "169724cb-18dc-4003-a42d-69d872b40752",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SchAgrmtValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader('{{SchedulingAgreement}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-169724cb-18dc-4003-a42d-69d872b40752"
+            },
+            {
+              "id": "199b919e-c802-4b36-bc43-1785eec08fcf",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SchAgrmtValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtHeader('{{SchedulingAgreement}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtHeader('{{SchedulingAgreement}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-199b919e-c802-4b36-bc43-1785eec08fcf"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:37.000Z",
+          "updatedAt": "2026-06-05T15:16:37.000Z",
+          "uid": "35240-4d390e9a-fee2-465f-9ec7-898b46003f5f"
+        }
+      ],
+      "id": "c70b56d6-e3ff-4834-afbd-475369d4b016",
+      "createdAt": "2026-06-05T15:16:36.000Z",
+      "updatedAt": "2026-06-05T15:16:36.000Z",
+      "uid": "35240-c70b56d6-e3ff-4834-afbd-475369d4b016"
+    },
+    {
+      "name": "A_SchAgrmtScheduleLine",
+      "item": [
+        {
+          "name": "Retrieve delivery schedule lines",
+          "id": "9f823c7d-98f5-4392-befe-ae42b248ff4f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SchAgrmtScheduleLine?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SchAgrmtScheduleLine"
+              ],
+              "query": [
+                {
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a collection of delivery schedule lines across scheduling agreements."
+          },
+          "response": [
+            {
+              "id": "5a4d7ec5-cda0-418d-9b27-e851a2970970",
+              "name": "Successfully retrieved schedule lines",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtScheduleLine?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtScheduleLine"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"SchedulingAgreement\": \"<string>\",\n        \"SchedulingAgreementItem\": \"<string>\",\n        \"ScheduleLine\": \"<string>\",\n        \"DeliveryDate\": \"<date>\",\n        \"OrderQuantity\": \"<string>\",\n        \"OrderQuantityUnit\": \"<string>\",\n        \"DeliveredQuantity\": \"<string>\"\n      },\n      {\n        \"SchedulingAgreement\": \"<string>\",\n        \"SchedulingAgreementItem\": \"<string>\",\n        \"ScheduleLine\": \"<string>\",\n        \"DeliveryDate\": \"<date>\",\n        \"OrderQuantity\": \"<string>\",\n        \"OrderQuantityUnit\": \"<string>\",\n        \"DeliveredQuantity\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-5a4d7ec5-cda0-418d-9b27-e851a2970970"
+            },
+            {
+              "id": "6f889fb7-172a-491b-aef2-f25c8a24553f",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtScheduleLine?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtScheduleLine"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-6f889fb7-172a-491b-aef2-f25c8a24553f"
+            },
+            {
+              "id": "890af9bc-30ac-4c1d-b785-f13bf12dbe1a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SchAgrmtScheduleLine?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SchAgrmtScheduleLine"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:37.000Z",
+              "updatedAt": "2026-06-05T15:16:37.000Z",
+              "uid": "35240-890af9bc-30ac-4c1d-b785-f13bf12dbe1a"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:37.000Z",
+          "updatedAt": "2026-06-05T15:16:37.000Z",
+          "uid": "35240-9f823c7d-98f5-4392-befe-ae42b248ff4f"
+        }
+      ],
+      "id": "12bc400c-6e91-42e5-b415-3820a9dba3aa",
+      "createdAt": "2026-06-05T15:16:36.000Z",
+      "updatedAt": "2026-06-05T15:16:36.000Z",
+      "uid": "35240-12bc400c-6e91-42e5-b415-3820a9dba3aa"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_SCHEDULING_AGREEMENT"
+    },
+    {
+      "key": "SchedulingAgreement",
+      "value": "<string>"
+    }
+  ]
+}

@@ -1,0 +1,4070 @@
+{
+  "info": {
+    "_postman_id": "a8d624e7-fba7-408e-ba01-f5fd47749711",
+    "name": "SAP Sales and Distribution (SD) SAP Sales Order API",
+    "description": "Create, read, update, and delete sales orders in SAP S/4HANA. This OData service (API_SALES_ORDER_SRV) supports full CRUD operations on sales order headers, items, partners, pricing elements, schedule lines, billing plans, and text elements. Sales orders are created using deep insert requests that include header and related entity data in a single call.\n\nContact Support:\n Name: SAP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:20.000Z",
+    "updatedAt": "2026-06-05T15:16:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a8d624e7-fba7-408e-ba01-f5fd47749711"
+  },
+  "item": [
+    {
+      "name": "A_SalesOrder",
+      "item": [
+        {
+          "name": "Retrieve a list of sales orders",
+          "id": "f120ad3d-836f-44ce-bfe2-05cd91704e0c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesOrder?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesOrder"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Sort order for the result set",
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to include in the response",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of navigation properties to expand",
+                  "key": "$expand",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Include total count of matching resources",
+                  "key": "$inlinecount",
+                  "value": "allpages"
+                }
+              ]
+            },
+            "description": "Returns a collection of sales order headers with support for OData query options including $filter, $select, $expand, $top, $skip, $orderby, and $inlinecount. Use $expand to include related items, partners, pricing elements, and other sub-entities."
+          },
+          "response": [
+            {
+              "id": "3456e4ad-feb6-4890-b65c-808c4bc3cabe",
+              "name": "Successfully retrieved sales orders",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order for the result set",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count of matching resources",
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"SalesOrder\": \"<string>\",\n        \"SalesOrderType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"OrganizationDivision\": \"<string>\",\n        \"SalesGroup\": \"<string>\",\n        \"SalesOffice\": \"<string>\",\n        \"SalesDistrict\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"CreatedByUser\": \"<string>\",\n        \"LastChangeDate\": \"<date>\",\n        \"LastChangeDateTime\": \"<dateTime>\",\n        \"PurchaseOrderByCustomer\": \"<string>\",\n        \"CustomerPurchaseOrderType\": \"<string>\",\n        \"CustomerPurchaseOrderDate\": \"<date>\",\n        \"SalesOrderDate\": \"<date>\",\n        \"TotalNetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"SDDocumentReason\": \"<string>\",\n        \"PricingDate\": \"<date>\",\n        \"RequestedDeliveryDate\": \"<date>\",\n        \"ShippingCondition\": \"<string>\",\n        \"CompleteDeliveryIsDefined\": \"<boolean>\",\n        \"ShippingType\": \"<string>\",\n        \"HeaderBillingBlockReason\": \"<string>\",\n        \"DeliveryBlockReason\": \"<string>\",\n        \"IncotermsClassification\": \"<string>\",\n        \"IncotermsTransferLocation\": \"<string>\",\n        \"IncotermsLocation1\": \"<string>\",\n        \"IncotermsLocation2\": \"<string>\",\n        \"PaymentMethod\": \"<string>\",\n        \"CustomerPaymentTerms\": \"<string>\",\n        \"OverallSDProcessStatus\": \"<string>\",\n        \"TotalCreditCheckStatus\": \"<string>\",\n        \"OverallDeliveryStatus\": \"<string>\",\n        \"OverallBillingStatus\": \"<string>\"\n      },\n      {\n        \"SalesOrder\": \"<string>\",\n        \"SalesOrderType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"OrganizationDivision\": \"<string>\",\n        \"SalesGroup\": \"<string>\",\n        \"SalesOffice\": \"<string>\",\n        \"SalesDistrict\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"CreatedByUser\": \"<string>\",\n        \"LastChangeDate\": \"<date>\",\n        \"LastChangeDateTime\": \"<dateTime>\",\n        \"PurchaseOrderByCustomer\": \"<string>\",\n        \"CustomerPurchaseOrderType\": \"<string>\",\n        \"CustomerPurchaseOrderDate\": \"<date>\",\n        \"SalesOrderDate\": \"<date>\",\n        \"TotalNetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"SDDocumentReason\": \"<string>\",\n        \"PricingDate\": \"<date>\",\n        \"RequestedDeliveryDate\": \"<date>\",\n        \"ShippingCondition\": \"<string>\",\n        \"CompleteDeliveryIsDefined\": \"<boolean>\",\n        \"ShippingType\": \"<string>\",\n        \"HeaderBillingBlockReason\": \"<string>\",\n        \"DeliveryBlockReason\": \"<string>\",\n        \"IncotermsClassification\": \"<string>\",\n        \"IncotermsTransferLocation\": \"<string>\",\n        \"IncotermsLocation1\": \"<string>\",\n        \"IncotermsLocation2\": \"<string>\",\n        \"PaymentMethod\": \"<string>\",\n        \"CustomerPaymentTerms\": \"<string>\",\n        \"OverallSDProcessStatus\": \"<string>\",\n        \"TotalCreditCheckStatus\": \"<string>\",\n        \"OverallDeliveryStatus\": \"<string>\",\n        \"OverallBillingStatus\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-3456e4ad-feb6-4890-b65c-808c4bc3cabe"
+            },
+            {
+              "id": "77d2a83f-17b6-41e8-952f-9a4833185dc3",
+              "name": "Bad request - invalid parameters or payload",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order for the result set",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count of matching resources",
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-77d2a83f-17b6-41e8-952f-9a4833185dc3"
+            },
+            {
+              "id": "948567a8-1923-4d1b-aec7-0ab89b666f92",
+              "name": "Authentication required or credentials invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order for the result set",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count of matching resources",
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-948567a8-1923-4d1b-aec7-0ab89b666f92"
+            },
+            {
+              "id": "56226703-0d9b-4e3d-a261-c1ac895db9fe",
+              "name": "Insufficient authorization for the requested operation",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order for the result set",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count of matching resources",
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-56226703-0d9b-4e3d-a261-c1ac895db9fe"
+            },
+            {
+              "id": "81595e5a-5262-43ad-9d31-aba8a1a927bb",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order for the result set",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count of matching resources",
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-81595e5a-5262-43ad-9d31-aba8a1a927bb"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:20.000Z",
+          "updatedAt": "2026-06-05T15:16:20.000Z",
+          "uid": "35240-f120ad3d-836f-44ce-bfe2-05cd91704e0c"
+        },
+        {
+          "name": "Create a new sales order",
+          "id": "fd4614a5-278b-4e90-824d-3fb75575db84",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"SalesOrderType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SalesOrderDate\": \"<date>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"ShippingCondition\": \"<string>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"IncotermsClassification\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\"\n      }\n    ]\n  },\n  \"to_Partner\": {\n    \"results\": [\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      },\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesOrder",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesOrder"
+              ]
+            },
+            "description": "Creates a new sales order using a deep insert request. The request body can include header data along with related items, partners, pricing elements, schedule lines, billing plans, and text elements in a single POST operation."
+          },
+          "response": [
+            {
+              "id": "7f1b4922-e4be-41a1-b94a-b4855cfc67d0",
+              "name": "Sales order successfully created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesOrderType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SalesOrderDate\": \"<date>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"ShippingCondition\": \"<string>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"IncotermsClassification\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\"\n      }\n    ]\n  },\n  \"to_Partner\": {\n    \"results\": [\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      },\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"SalesOrder\": \"<string>\",\n    \"SalesOrderType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"OrganizationDivision\": \"<string>\",\n    \"SalesGroup\": \"<string>\",\n    \"SalesOffice\": \"<string>\",\n    \"SalesDistrict\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"CreatedByUser\": \"<string>\",\n    \"LastChangeDate\": \"<date>\",\n    \"LastChangeDateTime\": \"<dateTime>\",\n    \"PurchaseOrderByCustomer\": \"<string>\",\n    \"CustomerPurchaseOrderType\": \"<string>\",\n    \"CustomerPurchaseOrderDate\": \"<date>\",\n    \"SalesOrderDate\": \"<date>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"SDDocumentReason\": \"<string>\",\n    \"PricingDate\": \"<date>\",\n    \"RequestedDeliveryDate\": \"<date>\",\n    \"ShippingCondition\": \"<string>\",\n    \"CompleteDeliveryIsDefined\": \"<boolean>\",\n    \"ShippingType\": \"<string>\",\n    \"HeaderBillingBlockReason\": \"<string>\",\n    \"DeliveryBlockReason\": \"<string>\",\n    \"IncotermsClassification\": \"<string>\",\n    \"IncotermsTransferLocation\": \"<string>\",\n    \"IncotermsLocation1\": \"<string>\",\n    \"IncotermsLocation2\": \"<string>\",\n    \"PaymentMethod\": \"<string>\",\n    \"CustomerPaymentTerms\": \"<string>\",\n    \"OverallSDProcessStatus\": \"<string>\",\n    \"TotalCreditCheckStatus\": \"<string>\",\n    \"OverallDeliveryStatus\": \"<string>\",\n    \"OverallBillingStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-7f1b4922-e4be-41a1-b94a-b4855cfc67d0"
+            },
+            {
+              "id": "e5228678-a5b1-4452-a2ae-e1b574f16ec5",
+              "name": "Bad request - invalid parameters or payload",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesOrderType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SalesOrderDate\": \"<date>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"ShippingCondition\": \"<string>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"IncotermsClassification\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\"\n      }\n    ]\n  },\n  \"to_Partner\": {\n    \"results\": [\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      },\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-e5228678-a5b1-4452-a2ae-e1b574f16ec5"
+            },
+            {
+              "id": "484b8fab-a7bb-494d-bf59-f56efc39e4b1",
+              "name": "Authentication required or credentials invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesOrderType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SalesOrderDate\": \"<date>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"ShippingCondition\": \"<string>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"IncotermsClassification\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\"\n      }\n    ]\n  },\n  \"to_Partner\": {\n    \"results\": [\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      },\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-484b8fab-a7bb-494d-bf59-f56efc39e4b1"
+            },
+            {
+              "id": "e68b7050-8375-4cca-a30f-c61797aafbeb",
+              "name": "Insufficient authorization for the requested operation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesOrderType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SalesOrderDate\": \"<date>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"ShippingCondition\": \"<string>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"IncotermsClassification\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\"\n      }\n    ]\n  },\n  \"to_Partner\": {\n    \"results\": [\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      },\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-e68b7050-8375-4cca-a30f-c61797aafbeb"
+            },
+            {
+              "id": "8426df86-0fb7-4df3-b552-aa1d25310dfa",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesOrderType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SalesOrderDate\": \"<date>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"ShippingCondition\": \"<string>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"IncotermsClassification\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\"\n      }\n    ]\n  },\n  \"to_Partner\": {\n    \"results\": [\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      },\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-8426df86-0fb7-4df3-b552-aa1d25310dfa"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:20.000Z",
+          "updatedAt": "2026-06-05T15:16:20.000Z",
+          "uid": "35240-fd4614a5-278b-4e90-824d-3fb75575db84"
+        }
+      ],
+      "id": "082de299-ea56-46fc-9b71-c84f14d4e2a1",
+      "createdAt": "2026-06-05T15:16:20.000Z",
+      "updatedAt": "2026-06-05T15:16:20.000Z",
+      "uid": "35240-082de299-ea56-46fc-9b71-c84f14d4e2a1"
+    },
+    {
+      "name": "A_SalesOrder('{SalesOrder}')",
+      "item": [
+        {
+          "name": "to_Item",
+          "item": [
+            {
+              "name": "Retrieve items for a sales order",
+              "id": "a7c19706-5cb4-49c5-9dc1-5ed946152936",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Item?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')",
+                    "to_Item"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of line items for the specified sales order. Supports OData query options for filtering, sorting, and pagination."
+              },
+              "response": [
+                {
+                  "id": "d510fd5a-2279-48c7-a6a5-60afa29ac901",
+                  "name": "Successfully retrieved sales order items",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Item?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"SalesOrder\": \"<string>\",\n        \"SalesOrderItem\": \"<string>\",\n        \"SalesOrderItemCategory\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"MaterialByCustomer\": \"<string>\",\n        \"PricingDate\": \"<date>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"NetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"MaterialGroup\": \"<string>\",\n        \"Batch\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"StorageLocation\": \"<string>\",\n        \"ShippingPoint\": \"<string>\",\n        \"DeliveryGroup\": \"<string>\",\n        \"ItemBillingBlockReason\": \"<string>\",\n        \"SDProcessStatus\": \"<string>\",\n        \"DeliveryStatus\": \"<string>\",\n        \"OrderRelatedBillingStatus\": \"<string>\"\n      },\n      {\n        \"SalesOrder\": \"<string>\",\n        \"SalesOrderItem\": \"<string>\",\n        \"SalesOrderItemCategory\": \"<string>\",\n        \"SalesOrderItemText\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"MaterialByCustomer\": \"<string>\",\n        \"PricingDate\": \"<date>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"NetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"MaterialGroup\": \"<string>\",\n        \"Batch\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"StorageLocation\": \"<string>\",\n        \"ShippingPoint\": \"<string>\",\n        \"DeliveryGroup\": \"<string>\",\n        \"ItemBillingBlockReason\": \"<string>\",\n        \"SDProcessStatus\": \"<string>\",\n        \"DeliveryStatus\": \"<string>\",\n        \"OrderRelatedBillingStatus\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-d510fd5a-2279-48c7-a6a5-60afa29ac901"
+                },
+                {
+                  "id": "f5ab6539-ae93-40d5-bb1c-e6f95115ddaf",
+                  "name": "Authentication required or credentials invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Item?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-f5ab6539-ae93-40d5-bb1c-e6f95115ddaf"
+                },
+                {
+                  "id": "99dea75e-5aa7-45a1-8192-699187200ab2",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Item?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-99dea75e-5aa7-45a1-8192-699187200ab2"
+                },
+                {
+                  "id": "161d008d-ef13-4e84-bc32-aea93569d492",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Item?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-161d008d-ef13-4e84-bc32-aea93569d492"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-a7c19706-5cb4-49c5-9dc1-5ed946152936"
+            }
+          ],
+          "id": "006d390f-8671-4caf-a1d0-eeba7bef5c32",
+          "createdAt": "2026-06-05T15:16:20.000Z",
+          "updatedAt": "2026-06-05T15:16:20.000Z",
+          "uid": "35240-006d390f-8671-4caf-a1d0-eeba7bef5c32"
+        },
+        {
+          "name": "to_Partner",
+          "item": [
+            {
+              "name": "Retrieve partners for a sales order",
+              "id": "5d4e0bef-335a-4ad8-8606-1d4287eda87b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Partner?$top=<integer>&$skip=<integer>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')",
+                    "to_Partner"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of business partners associated with the specified sales order header, including sold-to party, ship-to party, bill-to party, and payer."
+              },
+              "response": [
+                {
+                  "id": "04cf4ab2-75cd-4045-9448-5cfe1a04b16e",
+                  "name": "Successfully retrieved sales order partners",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Partner?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_Partner"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      },\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\",\n        \"Personnel\": \"<string>\",\n        \"ContactPerson\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-04cf4ab2-75cd-4045-9448-5cfe1a04b16e"
+                },
+                {
+                  "id": "54f594e0-9d9f-41ba-9a2f-c0cdcedbeae7",
+                  "name": "Authentication required or credentials invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Partner?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_Partner"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-54f594e0-9d9f-41ba-9a2f-c0cdcedbeae7"
+                },
+                {
+                  "id": "6b8bce41-ba09-4abd-8282-bc867bd6886a",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Partner?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_Partner"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-6b8bce41-ba09-4abd-8282-bc867bd6886a"
+                },
+                {
+                  "id": "7be41859-c7ad-4fb7-9df4-cd588cbf34ff",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Partner?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_Partner"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-7be41859-c7ad-4fb7-9df4-cd588cbf34ff"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-5d4e0bef-335a-4ad8-8606-1d4287eda87b"
+            }
+          ],
+          "id": "661c93c3-84dd-48ce-be09-6eb373293f2b",
+          "createdAt": "2026-06-05T15:16:20.000Z",
+          "updatedAt": "2026-06-05T15:16:20.000Z",
+          "uid": "35240-661c93c3-84dd-48ce-be09-6eb373293f2b"
+        },
+        {
+          "name": "to_PricingElement",
+          "item": [
+            {
+              "name": "Retrieve pricing elements for a sales order",
+              "id": "9417f0f5-29c3-4cd9-aff7-404d912c1e9b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_PricingElement?$top=<integer>&$skip=<integer>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')",
+                    "to_PricingElement"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of header-level pricing elements (condition records) for the specified sales order."
+              },
+              "response": [
+                {
+                  "id": "cae54486-5667-4eed-a4ec-ec73901c7167",
+                  "name": "Successfully retrieved pricing elements",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_PricingElement?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_PricingElement"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PricingProcedureStep\": \"<string>\",\n        \"PricingProcedureCounter\": \"<string>\",\n        \"ConditionType\": \"<string>\",\n        \"ConditionRateValue\": \"<string>\",\n        \"ConditionCurrency\": \"<string>\",\n        \"ConditionQuantity\": \"<string>\",\n        \"ConditionQuantityUnit\": \"<string>\",\n        \"ConditionValue\": \"<string>\"\n      },\n      {\n        \"SalesOrder\": \"<string>\",\n        \"PricingProcedureStep\": \"<string>\",\n        \"PricingProcedureCounter\": \"<string>\",\n        \"ConditionType\": \"<string>\",\n        \"ConditionRateValue\": \"<string>\",\n        \"ConditionCurrency\": \"<string>\",\n        \"ConditionQuantity\": \"<string>\",\n        \"ConditionQuantityUnit\": \"<string>\",\n        \"ConditionValue\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-cae54486-5667-4eed-a4ec-ec73901c7167"
+                },
+                {
+                  "id": "ec087835-a6de-4f36-b384-09803fbf78e3",
+                  "name": "Authentication required or credentials invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_PricingElement?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_PricingElement"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-ec087835-a6de-4f36-b384-09803fbf78e3"
+                },
+                {
+                  "id": "27d6c839-b60c-4d9b-ac5e-7a282736a592",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_PricingElement?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_PricingElement"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-27d6c839-b60c-4d9b-ac5e-7a282736a592"
+                },
+                {
+                  "id": "65ebf94c-1ae7-4258-a60d-2342eb6c32fb",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_PricingElement?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_PricingElement"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-65ebf94c-1ae7-4258-a60d-2342eb6c32fb"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-9417f0f5-29c3-4cd9-aff7-404d912c1e9b"
+            }
+          ],
+          "id": "0a35e369-7180-434a-9f22-0acfe75ea946",
+          "createdAt": "2026-06-05T15:16:20.000Z",
+          "updatedAt": "2026-06-05T15:16:20.000Z",
+          "uid": "35240-0a35e369-7180-434a-9f22-0acfe75ea946"
+        },
+        {
+          "name": "to_Text",
+          "item": [
+            {
+              "name": "Retrieve texts for a sales order",
+              "id": "2c818ebb-82c6-4ed6-9924-d85b9cda6fd0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Text?$top=<integer>&$skip=<integer>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')",
+                    "to_Text"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of text elements associated with the specified sales order header."
+              },
+              "response": [
+                {
+                  "id": "01135890-a8dc-435e-9ff5-234ff78536a1",
+                  "name": "Successfully retrieved sales order texts",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Text?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_Text"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"SalesOrder\": \"<string>\",\n        \"Language\": \"<string>\",\n        \"LongTextID\": \"<string>\",\n        \"LongText\": \"<string>\"\n      },\n      {\n        \"SalesOrder\": \"<string>\",\n        \"Language\": \"<string>\",\n        \"LongTextID\": \"<string>\",\n        \"LongText\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-01135890-a8dc-435e-9ff5-234ff78536a1"
+                },
+                {
+                  "id": "5107d378-3c8d-4690-b84f-2d7372dd3e35",
+                  "name": "Authentication required or credentials invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Text?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_Text"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-5107d378-3c8d-4690-b84f-2d7372dd3e35"
+                },
+                {
+                  "id": "ad4be57b-fda8-475a-b174-e482dd45d189",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Text?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_Text"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-ad4be57b-fda8-475a-b174-e482dd45d189"
+                },
+                {
+                  "id": "aae69ffb-1363-4fb2-b17c-24b1f8b20b14",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')/to_Text?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesOrder('{{SalesOrder}}')",
+                        "to_Text"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include in the response",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:20.000Z",
+                  "updatedAt": "2026-06-05T15:16:20.000Z",
+                  "uid": "35240-aae69ffb-1363-4fb2-b17c-24b1f8b20b14"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-2c818ebb-82c6-4ed6-9924-d85b9cda6fd0"
+            }
+          ],
+          "id": "216b4b6e-ed39-40c7-b55c-47b2454c2450",
+          "createdAt": "2026-06-05T15:16:20.000Z",
+          "updatedAt": "2026-06-05T15:16:20.000Z",
+          "uid": "35240-216b4b6e-ed39-40c7-b55c-47b2454c2450"
+        },
+        {
+          "name": "Retrieve a single sales order",
+          "id": "418367a0-27fa-4a64-b028-0457155d352a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesOrder('{{SalesOrder}}')"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of properties to include in the response",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of navigation properties to expand",
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single sales order header by its key. Use $expand to include related entities such as items, partners, pricing elements, schedule lines, billing plans, and text elements."
+          },
+          "response": [
+            {
+              "id": "9a9bebd0-6895-4fff-8098-14bb8b72078f",
+              "name": "Successfully retrieved the sales order",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"SalesOrder\": \"<string>\",\n    \"SalesOrderType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"OrganizationDivision\": \"<string>\",\n    \"SalesGroup\": \"<string>\",\n    \"SalesOffice\": \"<string>\",\n    \"SalesDistrict\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"CreatedByUser\": \"<string>\",\n    \"LastChangeDate\": \"<date>\",\n    \"LastChangeDateTime\": \"<dateTime>\",\n    \"PurchaseOrderByCustomer\": \"<string>\",\n    \"CustomerPurchaseOrderType\": \"<string>\",\n    \"CustomerPurchaseOrderDate\": \"<date>\",\n    \"SalesOrderDate\": \"<date>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"SDDocumentReason\": \"<string>\",\n    \"PricingDate\": \"<date>\",\n    \"RequestedDeliveryDate\": \"<date>\",\n    \"ShippingCondition\": \"<string>\",\n    \"CompleteDeliveryIsDefined\": \"<boolean>\",\n    \"ShippingType\": \"<string>\",\n    \"HeaderBillingBlockReason\": \"<string>\",\n    \"DeliveryBlockReason\": \"<string>\",\n    \"IncotermsClassification\": \"<string>\",\n    \"IncotermsTransferLocation\": \"<string>\",\n    \"IncotermsLocation1\": \"<string>\",\n    \"IncotermsLocation2\": \"<string>\",\n    \"PaymentMethod\": \"<string>\",\n    \"CustomerPaymentTerms\": \"<string>\",\n    \"OverallSDProcessStatus\": \"<string>\",\n    \"TotalCreditCheckStatus\": \"<string>\",\n    \"OverallDeliveryStatus\": \"<string>\",\n    \"OverallBillingStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-9a9bebd0-6895-4fff-8098-14bb8b72078f"
+            },
+            {
+              "id": "ecc1cb29-90cd-4692-8940-06928ba856d9",
+              "name": "Authentication required or credentials invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-ecc1cb29-90cd-4692-8940-06928ba856d9"
+            },
+            {
+              "id": "113afc46-6954-486d-b249-1966b8b56e4e",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-113afc46-6954-486d-b249-1966b8b56e4e"
+            },
+            {
+              "id": "6b8a3807-93f3-44a2-b5b0-065af50776a1",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-6b8a3807-93f3-44a2-b5b0-065af50776a1"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:20.000Z",
+          "updatedAt": "2026-06-05T15:16:20.000Z",
+          "uid": "35240-418367a0-27fa-4a64-b028-0457155d352a"
+        },
+        {
+          "name": "Update a sales order",
+          "id": "4bfb6569-daa3-4ea4-899b-334836177c46",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "(Required) ETag value for optimistic concurrency control",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"ShippingCondition\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"DeliveryBlockReason\": \"<string>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"IncotermsClassification\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesOrder('{{SalesOrder}}')"
+              ]
+            },
+            "description": "Updates an existing sales order header. Only the fields included in the request body are updated. Requires an If-Match header with the ETag value for optimistic concurrency control."
+          },
+          "response": [
+            {
+              "id": "450d584e-3e3b-498f-aca7-0b957e872a0d",
+              "name": "Sales order successfully updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"ShippingCondition\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"DeliveryBlockReason\": \"<string>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"IncotermsClassification\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-450d584e-3e3b-498f-aca7-0b957e872a0d"
+            },
+            {
+              "id": "adfa1d0d-7e7d-4449-95dc-02d484780351",
+              "name": "Bad request - invalid parameters or payload",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"ShippingCondition\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"DeliveryBlockReason\": \"<string>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"IncotermsClassification\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-adfa1d0d-7e7d-4449-95dc-02d484780351"
+            },
+            {
+              "id": "1f5706d0-902e-4fe6-8b46-13e7e3b1b9f5",
+              "name": "Authentication required or credentials invalid",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"ShippingCondition\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"DeliveryBlockReason\": \"<string>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"IncotermsClassification\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-1f5706d0-902e-4fe6-8b46-13e7e3b1b9f5"
+            },
+            {
+              "id": "d2ed67f6-c27e-496a-892d-fcff18babf00",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"ShippingCondition\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"DeliveryBlockReason\": \"<string>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"IncotermsClassification\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-d2ed67f6-c27e-496a-892d-fcff18babf00"
+            },
+            {
+              "id": "528beec5-0e98-409f-b5a7-236467aed5fb",
+              "name": "ETag mismatch - resource was modified by another process",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"ShippingCondition\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"DeliveryBlockReason\": \"<string>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"IncotermsClassification\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ]
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-528beec5-0e98-409f-b5a7-236467aed5fb"
+            },
+            {
+              "id": "a4c4ce47-7027-420e-8f86-a9865babc07e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"ShippingCondition\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"DeliveryBlockReason\": \"<string>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"IncotermsClassification\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-a4c4ce47-7027-420e-8f86-a9865babc07e"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:20.000Z",
+          "updatedAt": "2026-06-05T15:16:20.000Z",
+          "uid": "35240-4bfb6569-daa3-4ea4-899b-334836177c46"
+        },
+        {
+          "name": "Delete a sales order",
+          "id": "e2a2cd53-a0ab-4edb-bf4d-24e3ab2ea0cc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "description": "(Required) ETag value for optimistic concurrency control",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesOrder('{{SalesOrder}}')"
+              ]
+            },
+            "description": "Deletes an existing sales order. Requires an If-Match header with the ETag value for optimistic concurrency control."
+          },
+          "response": [
+            {
+              "id": "3b935ba9-6528-4318-bbbe-7baa7dc431f4",
+              "name": "Sales order successfully deleted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-3b935ba9-6528-4318-bbbe-7baa7dc431f4"
+            },
+            {
+              "id": "85afe1f8-f315-4b61-8f4b-91f23760fc24",
+              "name": "Authentication required or credentials invalid",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-85afe1f8-f315-4b61-8f4b-91f23760fc24"
+            },
+            {
+              "id": "74ef46a4-5a55-43b4-8fae-aaa47e27a59a",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-74ef46a4-5a55-43b4-8fae-aaa47e27a59a"
+            },
+            {
+              "id": "3daedd08-7b91-4d83-9139-00f81346b9ec",
+              "name": "ETag mismatch - resource was modified by another process",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ]
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-3daedd08-7b91-4d83-9139-00f81346b9ec"
+            },
+            {
+              "id": "8d704f7a-4f7b-4c5b-9df2-9f623dcf522a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrder('{{SalesOrder}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-8d704f7a-4f7b-4c5b-9df2-9f623dcf522a"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:20.000Z",
+          "updatedAt": "2026-06-05T15:16:20.000Z",
+          "uid": "35240-e2a2cd53-a0ab-4edb-bf4d-24e3ab2ea0cc"
+        }
+      ],
+      "id": "b867ca60-309b-4d53-96de-fc201ab6b7ae",
+      "createdAt": "2026-06-05T15:16:20.000Z",
+      "updatedAt": "2026-06-05T15:16:20.000Z",
+      "uid": "35240-b867ca60-309b-4d53-96de-fc201ab6b7ae"
+    },
+    {
+      "name": "A_SalesOrderItem(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}')",
+      "item": [
+        {
+          "name": "Retrieve a single sales order item",
+          "id": "ec48a81b-6e21-4d4c-84a0-ebd7f836bd3f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of properties to include in the response",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of navigation properties to expand",
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single sales order item by its composite key (SalesOrder and SalesOrderItem number)."
+          },
+          "response": [
+            {
+              "id": "7345fe69-dd4e-47fe-b11c-7d54b05a384d",
+              "name": "Successfully retrieved the sales order item",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"SalesOrder\": \"<string>\",\n    \"SalesOrderItem\": \"<string>\",\n    \"SalesOrderItemCategory\": \"<string>\",\n    \"SalesOrderItemText\": \"<string>\",\n    \"Material\": \"<string>\",\n    \"MaterialByCustomer\": \"<string>\",\n    \"PricingDate\": \"<date>\",\n    \"RequestedQuantity\": \"<string>\",\n    \"RequestedQuantityUnit\": \"<string>\",\n    \"NetAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"MaterialGroup\": \"<string>\",\n    \"Batch\": \"<string>\",\n    \"Plant\": \"<string>\",\n    \"StorageLocation\": \"<string>\",\n    \"ShippingPoint\": \"<string>\",\n    \"DeliveryGroup\": \"<string>\",\n    \"ItemBillingBlockReason\": \"<string>\",\n    \"SDProcessStatus\": \"<string>\",\n    \"DeliveryStatus\": \"<string>\",\n    \"OrderRelatedBillingStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-7345fe69-dd4e-47fe-b11c-7d54b05a384d"
+            },
+            {
+              "id": "2fb737e2-261f-43bb-b26a-390275a10981",
+              "name": "Authentication required or credentials invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-2fb737e2-261f-43bb-b26a-390275a10981"
+            },
+            {
+              "id": "af80c33c-12bd-4656-a5df-11872079d48f",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-af80c33c-12bd-4656-a5df-11872079d48f"
+            },
+            {
+              "id": "c86c8c11-e146-4f85-b6bb-ec9a69febb62",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-c86c8c11-e146-4f85-b6bb-ec9a69febb62"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:20.000Z",
+          "updatedAt": "2026-06-05T15:16:20.000Z",
+          "uid": "35240-ec48a81b-6e21-4d4c-84a0-ebd7f836bd3f"
+        },
+        {
+          "name": "Update a sales order item",
+          "id": "a0403fff-0728-4560-9738-07a1869d619e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "(Required) ETag value for optimistic concurrency control",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"RequestedQuantity\": \"<string>\",\n  \"Plant\": \"<string>\",\n  \"StorageLocation\": \"<string>\",\n  \"ItemBillingBlockReason\": \"<string>\",\n  \"SalesOrderItemText\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+              ]
+            },
+            "description": "Updates an existing sales order item. Only the fields included in the request body are updated."
+          },
+          "response": [
+            {
+              "id": "dfa5acff-0d86-42bb-bc62-6da9b7133546",
+              "name": "Sales order item successfully updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RequestedQuantity\": \"<string>\",\n  \"Plant\": \"<string>\",\n  \"StorageLocation\": \"<string>\",\n  \"ItemBillingBlockReason\": \"<string>\",\n  \"SalesOrderItemText\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-dfa5acff-0d86-42bb-bc62-6da9b7133546"
+            },
+            {
+              "id": "f9853d90-39de-4a99-a5a8-2421d975dc1d",
+              "name": "Bad request - invalid parameters or payload",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RequestedQuantity\": \"<string>\",\n  \"Plant\": \"<string>\",\n  \"StorageLocation\": \"<string>\",\n  \"ItemBillingBlockReason\": \"<string>\",\n  \"SalesOrderItemText\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-f9853d90-39de-4a99-a5a8-2421d975dc1d"
+            },
+            {
+              "id": "b1028f26-a54a-40eb-8f04-30533190f1cc",
+              "name": "Authentication required or credentials invalid",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RequestedQuantity\": \"<string>\",\n  \"Plant\": \"<string>\",\n  \"StorageLocation\": \"<string>\",\n  \"ItemBillingBlockReason\": \"<string>\",\n  \"SalesOrderItemText\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-b1028f26-a54a-40eb-8f04-30533190f1cc"
+            },
+            {
+              "id": "eb908486-1d1c-4327-9d3b-d85dd41a7db5",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RequestedQuantity\": \"<string>\",\n  \"Plant\": \"<string>\",\n  \"StorageLocation\": \"<string>\",\n  \"ItemBillingBlockReason\": \"<string>\",\n  \"SalesOrderItemText\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-eb908486-1d1c-4327-9d3b-d85dd41a7db5"
+            },
+            {
+              "id": "9a4386d8-89fa-45af-b68c-6bf33193acf0",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RequestedQuantity\": \"<string>\",\n  \"Plant\": \"<string>\",\n  \"StorageLocation\": \"<string>\",\n  \"ItemBillingBlockReason\": \"<string>\",\n  \"SalesOrderItemText\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-9a4386d8-89fa-45af-b68c-6bf33193acf0"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:20.000Z",
+          "updatedAt": "2026-06-05T15:16:20.000Z",
+          "uid": "35240-a0403fff-0728-4560-9738-07a1869d619e"
+        },
+        {
+          "name": "Delete a sales order item",
+          "id": "5971bbea-5f99-4e90-afb0-e3b2debc3186",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "description": "(Required) ETag value for optimistic concurrency control",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+              ]
+            },
+            "description": "Deletes an existing sales order item from the specified sales order."
+          },
+          "response": [
+            {
+              "id": "1bed0d36-f75e-4617-b0af-d81d90520501",
+              "name": "Sales order item successfully deleted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-1bed0d36-f75e-4617-b0af-d81d90520501"
+            },
+            {
+              "id": "2bb551df-72c3-4ae0-baab-7ee4fba494be",
+              "name": "Authentication required or credentials invalid",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-2bb551df-72c3-4ae0-baab-7ee4fba494be"
+            },
+            {
+              "id": "d943ee35-02db-4043-a3a2-45fc07a0abaa",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-d943ee35-02db-4043-a3a2-45fc07a0abaa"
+            },
+            {
+              "id": "666b7cbd-dd8b-47ab-957d-b4ac8f612940",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-666b7cbd-dd8b-47ab-957d-b4ac8f612940"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:20.000Z",
+          "updatedAt": "2026-06-05T15:16:20.000Z",
+          "uid": "35240-5971bbea-5f99-4e90-afb0-e3b2debc3186"
+        }
+      ],
+      "id": "8235d5b5-928e-438c-9410-1146fae9cd04",
+      "createdAt": "2026-06-05T15:16:20.000Z",
+      "updatedAt": "2026-06-05T15:16:20.000Z",
+      "uid": "35240-8235d5b5-928e-438c-9410-1146fae9cd04"
+    },
+    {
+      "name": "A_SalesOrderScheduleLine(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}',ScheduleLine='{ScheduleLine}')",
+      "item": [
+        {
+          "name": "Retrieve a schedule line",
+          "id": "9b69669f-ac4f-48c3-8838-575203ea03c4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesOrderScheduleLine(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}',ScheduleLine='{{ScheduleLine}}')?$select=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesOrderScheduleLine(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}',ScheduleLine='{{ScheduleLine}}')"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of properties to include in the response",
+                  "key": "$select",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single schedule line for a sales order item, identified by its composite key of sales order, item, and schedule line number."
+          },
+          "response": [
+            {
+              "id": "9cfffd08-a498-4505-9cf7-841dea2f2e9c",
+              "name": "Successfully retrieved the schedule line",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderScheduleLine(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}',ScheduleLine='{{ScheduleLine}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderScheduleLine(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}',ScheduleLine='{{ScheduleLine}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"SalesOrder\": \"<string>\",\n    \"SalesOrderItem\": \"<string>\",\n    \"ScheduleLine\": \"<string>\",\n    \"RequestedDeliveryDate\": \"<date>\",\n    \"ConfirmedDeliveryDate\": \"<date>\",\n    \"OrderQuantityInSalesUnit\": \"<string>\",\n    \"ConfirmedOrderQuantity\": \"<string>\",\n    \"ScheduleLineOrderQuantity\": \"<string>\",\n    \"DeliveredQuantityInOrderQtyUnit\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-9cfffd08-a498-4505-9cf7-841dea2f2e9c"
+            },
+            {
+              "id": "2c89324a-f6b6-4c80-af22-40be821fc618",
+              "name": "Authentication required or credentials invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderScheduleLine(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}',ScheduleLine='{{ScheduleLine}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderScheduleLine(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}',ScheduleLine='{{ScheduleLine}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-2c89324a-f6b6-4c80-af22-40be821fc618"
+            },
+            {
+              "id": "cf825295-0490-46d2-9422-83a9038005e2",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderScheduleLine(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}',ScheduleLine='{{ScheduleLine}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderScheduleLine(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}',ScheduleLine='{{ScheduleLine}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-cf825295-0490-46d2-9422-83a9038005e2"
+            },
+            {
+              "id": "83016206-46a8-46f6-a744-9076c9eb81d9",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesOrderScheduleLine(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}',ScheduleLine='{{ScheduleLine}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesOrderScheduleLine(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}',ScheduleLine='{{ScheduleLine}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include in the response",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:20.000Z",
+              "updatedAt": "2026-06-05T15:16:20.000Z",
+              "uid": "35240-83016206-46a8-46f6-a744-9076c9eb81d9"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:20.000Z",
+          "updatedAt": "2026-06-05T15:16:20.000Z",
+          "uid": "35240-9b69669f-ac4f-48c3-8838-575203ea03c4"
+        }
+      ],
+      "id": "88594dfb-604c-4a9d-843f-c2ae8438ca21",
+      "createdAt": "2026-06-05T15:16:20.000Z",
+      "updatedAt": "2026-06-05T15:16:20.000Z",
+      "uid": "35240-88594dfb-604c-4a9d-843f-c2ae8438ca21"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV"
+    },
+    {
+      "key": "SalesOrder",
+      "value": "<string>"
+    },
+    {
+      "key": "SalesOrderItem",
+      "value": "<string>"
+    },
+    {
+      "key": "ScheduleLine",
+      "value": "<string>"
+    }
+  ]
+}

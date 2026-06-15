@@ -1,0 +1,207 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Customer Material API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Material",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of customer material records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_MATERIAL_SRV/A_CustomerMaterial",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$inlinecount",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of customer-material information records. Supports filtering by customer number, material, sales organization, and distribution channel."
+        },
+        {
+          "info": {
+            "name": "Create a customer material record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_MATERIAL_SRV/A_CustomerMaterial",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new customer-material information record linking a customer part number to an internal SAP material number."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single customer material record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_MATERIAL_SRV/A_CustomerMaterial(SalesOrganization=':SalesOrganization',DistributionChannel=':DistributionChannel',Customer=':Customer',Material=':Material')",
+            "params": [
+              {
+                "name": "SalesOrganization",
+                "value": "",
+                "type": "path",
+                "description": "Sales organization"
+              },
+              {
+                "name": "DistributionChannel",
+                "value": "",
+                "type": "path",
+                "description": "Distribution channel"
+              },
+              {
+                "name": "Customer",
+                "value": "",
+                "type": "path",
+                "description": "Customer number"
+              },
+              {
+                "name": "Material",
+                "value": "",
+                "type": "path",
+                "description": "Material number"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a single customer-material information record by its composite key."
+        },
+        {
+          "info": {
+            "name": "Update a customer material record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_MATERIAL_SRV/A_CustomerMaterial(SalesOrganization=':SalesOrganization',DistributionChannel=':DistributionChannel',Customer=':Customer',Material=':Material')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "SalesOrganization",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "DistributionChannel",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "Customer",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "Material",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing customer-material information record."
+        },
+        {
+          "info": {
+            "name": "Delete a customer material record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_MATERIAL_SRV/A_CustomerMaterial(SalesOrganization=':SalesOrganization',DistributionChannel=':DistributionChannel',Customer=':Customer',Material=':Material')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "SalesOrganization",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "DistributionChannel",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "Customer",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "Material",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an existing customer-material information record."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2182 @@
+{
+  "info": {
+    "_postman_id": "974c14ef-3fe2-4e54-93a4-631e949e8105",
+    "name": "SAP Sales and Distribution (SD) SAP Credit Memo Request API",
+    "description": "Create, read, update, and delete credit memo requests in SAP S/4HANA. This OData service (API_CREDIT_MEMO_REQUEST_SRV) also enables approval or denial of credit memo requests that require authorization before processing. Credit memo requests are used to issue credit to customers for returns, pricing adjustments, or other reasons.\n\nContact Support:\n Name: SAP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:31.000Z",
+    "updatedAt": "2026-06-05T15:16:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-974c14ef-3fe2-4e54-93a4-631e949e8105"
+  },
+  "item": [
+    {
+      "name": "A_CreditMemoRequest",
+      "item": [
+        {
+          "name": "Retrieve a list of credit memo requests",
+          "id": "13df98f6-4d07-41fe-a0de-ea5d3d99cd21",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CreditMemoRequest?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CreditMemoRequest"
+              ],
+              "query": [
+                {
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$expand",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$inlinecount",
+                  "value": "allpages"
+                }
+              ]
+            },
+            "description": "Returns a collection of credit memo request headers. Supports OData query options for filtering by document type, date, customer, and status."
+          },
+          "response": [
+            {
+              "id": "91480734-e1fd-4cd0-adfa-8652e849c0a3",
+              "name": "Successfully retrieved credit memo requests",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"CreditMemoRequest\": \"<string>\",\n        \"CreditMemoRequestType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"OrganizationDivision\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"CreditMemoRequestDate\": \"<date>\",\n        \"BillingDocumentDate\": \"<date>\",\n        \"TotalNetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"SDDocumentReason\": \"<string>\",\n        \"PurchaseOrderByCustomer\": \"<string>\",\n        \"CustomerPaymentTerms\": \"<string>\",\n        \"HeaderBillingBlockReason\": \"<string>\",\n        \"OverallSDProcessStatus\": \"<string>\",\n        \"TotalCreditCheckStatus\": \"<string>\",\n        \"OverallBillingStatus\": \"<string>\"\n      },\n      {\n        \"CreditMemoRequest\": \"<string>\",\n        \"CreditMemoRequestType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"OrganizationDivision\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"CreditMemoRequestDate\": \"<date>\",\n        \"BillingDocumentDate\": \"<date>\",\n        \"TotalNetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"SDDocumentReason\": \"<string>\",\n        \"PurchaseOrderByCustomer\": \"<string>\",\n        \"CustomerPaymentTerms\": \"<string>\",\n        \"HeaderBillingBlockReason\": \"<string>\",\n        \"OverallSDProcessStatus\": \"<string>\",\n        \"TotalCreditCheckStatus\": \"<string>\",\n        \"OverallBillingStatus\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-91480734-e1fd-4cd0-adfa-8652e849c0a3"
+            },
+            {
+              "id": "104777c3-ba66-4964-94be-62f215d86559",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-104777c3-ba66-4964-94be-62f215d86559"
+            },
+            {
+              "id": "07ec5479-9bd8-4ac7-884f-8c1bc3c86957",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-07ec5479-9bd8-4ac7-884f-8c1bc3c86957"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:32.000Z",
+          "updatedAt": "2026-06-05T15:16:32.000Z",
+          "uid": "35240-13df98f6-4d07-41fe-a0de-ea5d3d99cd21"
+        },
+        {
+          "name": "Create a new credit memo request",
+          "id": "5dbe87c4-b8f0-466f-ad1f-ac33d31d202f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CreditMemoRequestType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"CreditMemoRequestDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_CreditMemoRequest",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CreditMemoRequest"
+              ]
+            },
+            "description": "Creates a new credit memo request with deep insert support for items, partners, and pricing elements."
+          },
+          "response": [
+            {
+              "id": "4aaf7f4a-aaa3-4814-9f18-d70ca0c6d681",
+              "name": "Credit memo request successfully created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditMemoRequestType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"CreditMemoRequestDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"CreditMemoRequest\": \"<string>\",\n    \"CreditMemoRequestType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"OrganizationDivision\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"CreditMemoRequestDate\": \"<date>\",\n    \"BillingDocumentDate\": \"<date>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"SDDocumentReason\": \"<string>\",\n    \"PurchaseOrderByCustomer\": \"<string>\",\n    \"CustomerPaymentTerms\": \"<string>\",\n    \"HeaderBillingBlockReason\": \"<string>\",\n    \"OverallSDProcessStatus\": \"<string>\",\n    \"TotalCreditCheckStatus\": \"<string>\",\n    \"OverallBillingStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-4aaf7f4a-aaa3-4814-9f18-d70ca0c6d681"
+            },
+            {
+              "id": "1c8e13b9-1261-426c-929b-69e6c2a4f021",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditMemoRequestType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"CreditMemoRequestDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-1c8e13b9-1261-426c-929b-69e6c2a4f021"
+            },
+            {
+              "id": "70b1aa4b-2710-4ac9-a708-3ce20b87d99a",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditMemoRequestType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"CreditMemoRequestDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-70b1aa4b-2710-4ac9-a708-3ce20b87d99a"
+            },
+            {
+              "id": "fce11f9d-d7ce-4f4e-9c66-f5cba1a61f2a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditMemoRequestType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"CreditMemoRequestDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-fce11f9d-d7ce-4f4e-9c66-f5cba1a61f2a"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:32.000Z",
+          "updatedAt": "2026-06-05T15:16:32.000Z",
+          "uid": "35240-5dbe87c4-b8f0-466f-ad1f-ac33d31d202f"
+        }
+      ],
+      "id": "b0043905-1b13-45bc-982d-22dc8d510af8",
+      "createdAt": "2026-06-05T15:16:32.000Z",
+      "updatedAt": "2026-06-05T15:16:32.000Z",
+      "uid": "35240-b0043905-1b13-45bc-982d-22dc8d510af8"
+    },
+    {
+      "name": "A_CreditMemoRequest('{CreditMemoRequest}')",
+      "item": [
+        {
+          "name": "to_Item",
+          "item": [
+            {
+              "name": "Retrieve items for a credit memo request",
+              "id": "5a4c9fb3-d958-4f4f-83bc-8358cef597c2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                    "to_Item"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of line items for the specified credit memo request."
+              },
+              "response": [
+                {
+                  "id": "90098fd2-7462-4976-a6ce-58e8ef167a61",
+                  "name": "Successfully retrieved items",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"CreditMemoRequest\": \"<string>\",\n        \"CreditMemoRequestItem\": \"<string>\",\n        \"CreditMemoRequestItemCategory\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"NetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\",\n        \"Plant\": \"<string>\"\n      },\n      {\n        \"CreditMemoRequest\": \"<string>\",\n        \"CreditMemoRequestItem\": \"<string>\",\n        \"CreditMemoRequestItemCategory\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"NetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\",\n        \"Plant\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:32.000Z",
+                  "updatedAt": "2026-06-05T15:16:32.000Z",
+                  "uid": "35240-90098fd2-7462-4976-a6ce-58e8ef167a61"
+                },
+                {
+                  "id": "40cce561-7db0-400c-9907-6e60bd07bd89",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:32.000Z",
+                  "updatedAt": "2026-06-05T15:16:32.000Z",
+                  "uid": "35240-40cce561-7db0-400c-9907-6e60bd07bd89"
+                },
+                {
+                  "id": "adc33957-4553-413d-bb60-ce2588445dce",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:32.000Z",
+                  "updatedAt": "2026-06-05T15:16:32.000Z",
+                  "uid": "35240-adc33957-4553-413d-bb60-ce2588445dce"
+                },
+                {
+                  "id": "1782d44f-75c2-4fad-ba3c-8b68881c78fe",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:32.000Z",
+                  "updatedAt": "2026-06-05T15:16:32.000Z",
+                  "uid": "35240-1782d44f-75c2-4fad-ba3c-8b68881c78fe"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-5a4c9fb3-d958-4f4f-83bc-8358cef597c2"
+            }
+          ],
+          "id": "1e248cd0-1ea0-4e20-bebb-e57baa6d272a",
+          "createdAt": "2026-06-05T15:16:32.000Z",
+          "updatedAt": "2026-06-05T15:16:32.000Z",
+          "uid": "35240-1e248cd0-1ea0-4e20-bebb-e57baa6d272a"
+        },
+        {
+          "name": "Retrieve a single credit memo request",
+          "id": "e90b4cbc-cfa4-467b-8429-4a95c414e0a1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single credit memo request by its document number."
+          },
+          "response": [
+            {
+              "id": "1d31383d-11e8-46b8-91a1-91652b01ec64",
+              "name": "Successfully retrieved the credit memo request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"CreditMemoRequest\": \"<string>\",\n    \"CreditMemoRequestType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"OrganizationDivision\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"CreditMemoRequestDate\": \"<date>\",\n    \"BillingDocumentDate\": \"<date>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"SDDocumentReason\": \"<string>\",\n    \"PurchaseOrderByCustomer\": \"<string>\",\n    \"CustomerPaymentTerms\": \"<string>\",\n    \"HeaderBillingBlockReason\": \"<string>\",\n    \"OverallSDProcessStatus\": \"<string>\",\n    \"TotalCreditCheckStatus\": \"<string>\",\n    \"OverallBillingStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-1d31383d-11e8-46b8-91a1-91652b01ec64"
+            },
+            {
+              "id": "98138d1a-6425-4885-8675-ecec2a3f798d",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-98138d1a-6425-4885-8675-ecec2a3f798d"
+            },
+            {
+              "id": "271929a0-8682-4caf-acdf-e51fe766906f",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-271929a0-8682-4caf-acdf-e51fe766906f"
+            },
+            {
+              "id": "e0cda77e-65ee-486e-8aa4-7cf1c9e646fd",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-e0cda77e-65ee-486e-8aa4-7cf1c9e646fd"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:32.000Z",
+          "updatedAt": "2026-06-05T15:16:32.000Z",
+          "uid": "35240-e90b4cbc-cfa4-467b-8429-4a95c414e0a1"
+        },
+        {
+          "name": "Update a credit memo request",
+          "id": "0ec9d52a-52bc-4bae-9263-3e0405477c39",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"BillingDocumentDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+              ]
+            },
+            "description": "Updates an existing credit memo request header."
+          },
+          "response": [
+            {
+              "id": "deb8211d-5126-4267-be3e-3c39c960635e",
+              "name": "Credit memo request successfully updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"BillingDocumentDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-deb8211d-5126-4267-be3e-3c39c960635e"
+            },
+            {
+              "id": "83eb3544-d95d-439b-a118-303fe795b22a",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"BillingDocumentDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-83eb3544-d95d-439b-a118-303fe795b22a"
+            },
+            {
+              "id": "f0ee83e3-da71-4e70-ad59-2197e658d0ad",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"BillingDocumentDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-f0ee83e3-da71-4e70-ad59-2197e658d0ad"
+            },
+            {
+              "id": "530b0d1b-c485-4f74-b3d8-26a6f57bb076",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"BillingDocumentDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-530b0d1b-c485-4f74-b3d8-26a6f57bb076"
+            },
+            {
+              "id": "a1b49d15-ce35-4033-acc9-045ac456d9e1",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"BillingDocumentDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-a1b49d15-ce35-4033-acc9-045ac456d9e1"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:32.000Z",
+          "updatedAt": "2026-06-05T15:16:32.000Z",
+          "uid": "35240-0ec9d52a-52bc-4bae-9263-3e0405477c39"
+        },
+        {
+          "name": "Delete a credit memo request",
+          "id": "0b6ab39f-ded1-4f9b-a7fd-457cc1d83da7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+              ]
+            },
+            "description": "Deletes an existing credit memo request."
+          },
+          "response": [
+            {
+              "id": "ab46cb3b-d866-4b39-818e-bd8d163d7d79",
+              "name": "Credit memo request successfully deleted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-ab46cb3b-d866-4b39-818e-bd8d163d7d79"
+            },
+            {
+              "id": "727c1232-a7bf-4b6f-97a0-68775e73468a",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-727c1232-a7bf-4b6f-97a0-68775e73468a"
+            },
+            {
+              "id": "415b7ca9-3bf8-4f20-97bf-205a936f99ea",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-415b7ca9-3bf8-4f20-97bf-205a936f99ea"
+            },
+            {
+              "id": "e9d088f6-b793-41dc-afd5-75b9b583a688",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CreditMemoRequest('{{CreditMemoRequest}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CreditMemoRequest('{{CreditMemoRequest}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-e9d088f6-b793-41dc-afd5-75b9b583a688"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:32.000Z",
+          "updatedAt": "2026-06-05T15:16:32.000Z",
+          "uid": "35240-0b6ab39f-ded1-4f9b-a7fd-457cc1d83da7"
+        }
+      ],
+      "id": "b044b912-e054-4d7e-9281-884e78970019",
+      "createdAt": "2026-06-05T15:16:32.000Z",
+      "updatedAt": "2026-06-05T15:16:32.000Z",
+      "uid": "35240-b044b912-e054-4d7e-9281-884e78970019"
+    },
+    {
+      "name": "AcceptApprovalRequest",
+      "item": [
+        {
+          "name": "Accept a credit memo approval request",
+          "id": "02de2c40-3966-45fd-8a8c-50fd827f045f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/AcceptApprovalRequest?CreditMemoRequest=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AcceptApprovalRequest"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Credit memo request number",
+                  "key": "CreditMemoRequest",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Accepts an approval request for a credit memo request that requires authorization."
+          },
+          "response": [
+            {
+              "id": "bae63e54-0230-42fa-8d86-dbd2e97ff8a2",
+              "name": "Approval request accepted",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/AcceptApprovalRequest?CreditMemoRequest=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AcceptApprovalRequest"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Credit memo request number",
+                      "key": "CreditMemoRequest",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"CreditMemoRequest\": \"<string>\",\n    \"CreditMemoRequestType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"OrganizationDivision\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"CreditMemoRequestDate\": \"<date>\",\n    \"BillingDocumentDate\": \"<date>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"SDDocumentReason\": \"<string>\",\n    \"PurchaseOrderByCustomer\": \"<string>\",\n    \"CustomerPaymentTerms\": \"<string>\",\n    \"HeaderBillingBlockReason\": \"<string>\",\n    \"OverallSDProcessStatus\": \"<string>\",\n    \"TotalCreditCheckStatus\": \"<string>\",\n    \"OverallBillingStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-bae63e54-0230-42fa-8d86-dbd2e97ff8a2"
+            },
+            {
+              "id": "d0f0a3d8-9302-43cd-8725-a6c2ab5e1f06",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/AcceptApprovalRequest?CreditMemoRequest=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AcceptApprovalRequest"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Credit memo request number",
+                      "key": "CreditMemoRequest",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-d0f0a3d8-9302-43cd-8725-a6c2ab5e1f06"
+            },
+            {
+              "id": "9d801732-7590-46cf-9f01-6fefb3131362",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/AcceptApprovalRequest?CreditMemoRequest=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AcceptApprovalRequest"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Credit memo request number",
+                      "key": "CreditMemoRequest",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-9d801732-7590-46cf-9f01-6fefb3131362"
+            },
+            {
+              "id": "22f5e29c-0d15-4712-9c5c-e1dbf4befa8e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/AcceptApprovalRequest?CreditMemoRequest=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AcceptApprovalRequest"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Credit memo request number",
+                      "key": "CreditMemoRequest",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-22f5e29c-0d15-4712-9c5c-e1dbf4befa8e"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:32.000Z",
+          "updatedAt": "2026-06-05T15:16:32.000Z",
+          "uid": "35240-02de2c40-3966-45fd-8a8c-50fd827f045f"
+        }
+      ],
+      "id": "f44d4bad-f708-4e56-a607-44c4859215cf",
+      "createdAt": "2026-06-05T15:16:32.000Z",
+      "updatedAt": "2026-06-05T15:16:32.000Z",
+      "uid": "35240-f44d4bad-f708-4e56-a607-44c4859215cf"
+    },
+    {
+      "name": "RejectApprovalRequest",
+      "item": [
+        {
+          "name": "Reject a credit memo approval request",
+          "id": "79acd40f-3303-4de9-82cc-e8f3814a7c14",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/RejectApprovalRequest?CreditMemoRequest=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "RejectApprovalRequest"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Credit memo request number",
+                  "key": "CreditMemoRequest",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Rejects an approval request for a credit memo request."
+          },
+          "response": [
+            {
+              "id": "4d7bf81d-5c9e-4924-8790-3892f41c2bd3",
+              "name": "Approval request rejected",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/RejectApprovalRequest?CreditMemoRequest=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "RejectApprovalRequest"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Credit memo request number",
+                      "key": "CreditMemoRequest",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"CreditMemoRequest\": \"<string>\",\n    \"CreditMemoRequestType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"OrganizationDivision\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"CreditMemoRequestDate\": \"<date>\",\n    \"BillingDocumentDate\": \"<date>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"SDDocumentReason\": \"<string>\",\n    \"PurchaseOrderByCustomer\": \"<string>\",\n    \"CustomerPaymentTerms\": \"<string>\",\n    \"HeaderBillingBlockReason\": \"<string>\",\n    \"OverallSDProcessStatus\": \"<string>\",\n    \"TotalCreditCheckStatus\": \"<string>\",\n    \"OverallBillingStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-4d7bf81d-5c9e-4924-8790-3892f41c2bd3"
+            },
+            {
+              "id": "7970520a-d566-43fb-ab49-aedb59d8855d",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/RejectApprovalRequest?CreditMemoRequest=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "RejectApprovalRequest"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Credit memo request number",
+                      "key": "CreditMemoRequest",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-7970520a-d566-43fb-ab49-aedb59d8855d"
+            },
+            {
+              "id": "b2f91b89-b300-4ef2-92f0-512cf580d817",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/RejectApprovalRequest?CreditMemoRequest=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "RejectApprovalRequest"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Credit memo request number",
+                      "key": "CreditMemoRequest",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-b2f91b89-b300-4ef2-92f0-512cf580d817"
+            },
+            {
+              "id": "cbbe1a4e-7636-49d4-8822-33efdde9ca5f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/RejectApprovalRequest?CreditMemoRequest=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "RejectApprovalRequest"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Credit memo request number",
+                      "key": "CreditMemoRequest",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:32.000Z",
+              "updatedAt": "2026-06-05T15:16:32.000Z",
+              "uid": "35240-cbbe1a4e-7636-49d4-8822-33efdde9ca5f"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:32.000Z",
+          "updatedAt": "2026-06-05T15:16:32.000Z",
+          "uid": "35240-79acd40f-3303-4de9-82cc-e8f3814a7c14"
+        }
+      ],
+      "id": "1578fce2-6827-419b-a261-370c41e0ff82",
+      "createdAt": "2026-06-05T15:16:32.000Z",
+      "updatedAt": "2026-06-05T15:16:32.000Z",
+      "uid": "35240-1578fce2-6827-419b-a261-370c41e0ff82"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV"
+    },
+    {
+      "key": "CreditMemoRequest",
+      "value": "<string>"
+    }
+  ]
+}

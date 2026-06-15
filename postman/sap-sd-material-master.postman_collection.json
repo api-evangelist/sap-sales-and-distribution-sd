@@ -1,0 +1,2082 @@
+{
+  "info": {
+    "_postman_id": "d2342477-75db-43c0-b04c-654b49872aa9",
+    "name": "SAP Sales and Distribution (SD) SAP Material Master (Product) API",
+    "description": "Access material master data including product information, descriptions, sales-relevant data, plant data, and storage location data. This OData service (API_PRODUCT_SRV) provides read and write access to product records used across procurement, manufacturing, and sales processes in SAP S/4HANA.\n\nContact Support:\n Name: SAP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:30.000Z",
+    "updatedAt": "2026-06-05T15:16:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d2342477-75db-43c0-b04c-654b49872aa9"
+  },
+  "item": [
+    {
+      "name": "A_Product",
+      "item": [
+        {
+          "name": "Retrieve a list of products",
+          "id": "38421937-be44-467f-809c-5eccc4381df4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_Product?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_Product"
+              ],
+              "query": [
+                {
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$expand",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$inlinecount",
+                  "value": "none"
+                }
+              ]
+            },
+            "description": "Returns a collection of material master records. Use OData query options to filter by material number, material type, material group, and other attributes. Supports $expand for descriptions, plant data, and sales data."
+          },
+          "response": [
+            {
+              "id": "75390620-52c1-494f-a73b-ce76a77c392c",
+              "name": "Successfully retrieved products",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"Product\": \"<string>\",\n        \"ProductType\": \"<string>\",\n        \"ProductGroup\": \"<string>\",\n        \"BaseUnit\": \"<string>\",\n        \"GrossWeight\": \"<string>\",\n        \"NetWeight\": \"<string>\",\n        \"WeightUnit\": \"<string>\",\n        \"Volume\": \"<string>\",\n        \"VolumeUnit\": \"<string>\",\n        \"Division\": \"<string>\",\n        \"ProductOldID\": \"<string>\",\n        \"IndustryStandardName\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"LastChangeDate\": \"<date>\",\n        \"CreatedByUser\": \"<string>\",\n        \"LastChangedByUser\": \"<string>\",\n        \"IsMarkedForDeletion\": \"<boolean>\",\n        \"ProductStandardID\": \"<string>\",\n        \"SizeOrDimensionText\": \"<string>\"\n      },\n      {\n        \"Product\": \"<string>\",\n        \"ProductType\": \"<string>\",\n        \"ProductGroup\": \"<string>\",\n        \"BaseUnit\": \"<string>\",\n        \"GrossWeight\": \"<string>\",\n        \"NetWeight\": \"<string>\",\n        \"WeightUnit\": \"<string>\",\n        \"Volume\": \"<string>\",\n        \"VolumeUnit\": \"<string>\",\n        \"Division\": \"<string>\",\n        \"ProductOldID\": \"<string>\",\n        \"IndustryStandardName\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"LastChangeDate\": \"<date>\",\n        \"CreatedByUser\": \"<string>\",\n        \"LastChangedByUser\": \"<string>\",\n        \"IsMarkedForDeletion\": \"<boolean>\",\n        \"ProductStandardID\": \"<string>\",\n        \"SizeOrDimensionText\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-75390620-52c1-494f-a73b-ce76a77c392c"
+            },
+            {
+              "id": "93fff638-fffa-47d3-a06f-1d204a18869b",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-93fff638-fffa-47d3-a06f-1d204a18869b"
+            },
+            {
+              "id": "4173031b-1483-4915-b35c-7ccc515e5e68",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-4173031b-1483-4915-b35c-7ccc515e5e68"
+            },
+            {
+              "id": "826c996e-9ac4-4b02-9541-e067f7a5bb7a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-826c996e-9ac4-4b02-9541-e067f7a5bb7a"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:31.000Z",
+          "updatedAt": "2026-06-05T15:16:31.000Z",
+          "uid": "35240-38421937-be44-467f-809c-5eccc4381df4"
+        },
+        {
+          "name": "Create a new product",
+          "id": "1c2428f2-936f-427f-9f44-25bc6f3c3d83",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Product\": \"<string>\",\n  \"ProductType\": \"<string>\",\n  \"ProductGroup\": \"<string>\",\n  \"BaseUnit\": \"<string>\",\n  \"GrossWeight\": \"<string>\",\n  \"NetWeight\": \"<string>\",\n  \"WeightUnit\": \"<string>\",\n  \"Division\": \"<string>\",\n  \"to_Description\": {\n    \"results\": [\n      {\n        \"Language\": \"<string>\",\n        \"ProductDescription\": \"<string>\"\n      },\n      {\n        \"Language\": \"<string>\",\n        \"ProductDescription\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_Product",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_Product"
+              ]
+            },
+            "description": "Creates a new material master record with support for deep insert including descriptions, plant data, and sales data."
+          },
+          "response": [
+            {
+              "id": "5920d9f0-e74b-4370-9b61-4c969e4084a4",
+              "name": "Product successfully created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Product\": \"<string>\",\n  \"ProductType\": \"<string>\",\n  \"ProductGroup\": \"<string>\",\n  \"BaseUnit\": \"<string>\",\n  \"GrossWeight\": \"<string>\",\n  \"NetWeight\": \"<string>\",\n  \"WeightUnit\": \"<string>\",\n  \"Division\": \"<string>\",\n  \"to_Description\": {\n    \"results\": [\n      {\n        \"Language\": \"<string>\",\n        \"ProductDescription\": \"<string>\"\n      },\n      {\n        \"Language\": \"<string>\",\n        \"ProductDescription\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"Product\": \"<string>\",\n    \"ProductType\": \"<string>\",\n    \"ProductGroup\": \"<string>\",\n    \"BaseUnit\": \"<string>\",\n    \"GrossWeight\": \"<string>\",\n    \"NetWeight\": \"<string>\",\n    \"WeightUnit\": \"<string>\",\n    \"Volume\": \"<string>\",\n    \"VolumeUnit\": \"<string>\",\n    \"Division\": \"<string>\",\n    \"ProductOldID\": \"<string>\",\n    \"IndustryStandardName\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"LastChangeDate\": \"<date>\",\n    \"CreatedByUser\": \"<string>\",\n    \"LastChangedByUser\": \"<string>\",\n    \"IsMarkedForDeletion\": \"<boolean>\",\n    \"ProductStandardID\": \"<string>\",\n    \"SizeOrDimensionText\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-5920d9f0-e74b-4370-9b61-4c969e4084a4"
+            },
+            {
+              "id": "d78f0061-f21c-4685-89dc-293f850881be",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Product\": \"<string>\",\n  \"ProductType\": \"<string>\",\n  \"ProductGroup\": \"<string>\",\n  \"BaseUnit\": \"<string>\",\n  \"GrossWeight\": \"<string>\",\n  \"NetWeight\": \"<string>\",\n  \"WeightUnit\": \"<string>\",\n  \"Division\": \"<string>\",\n  \"to_Description\": {\n    \"results\": [\n      {\n        \"Language\": \"<string>\",\n        \"ProductDescription\": \"<string>\"\n      },\n      {\n        \"Language\": \"<string>\",\n        \"ProductDescription\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-d78f0061-f21c-4685-89dc-293f850881be"
+            },
+            {
+              "id": "164a8ec1-e5d6-40e8-9bf6-5c3063d4b023",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Product\": \"<string>\",\n  \"ProductType\": \"<string>\",\n  \"ProductGroup\": \"<string>\",\n  \"BaseUnit\": \"<string>\",\n  \"GrossWeight\": \"<string>\",\n  \"NetWeight\": \"<string>\",\n  \"WeightUnit\": \"<string>\",\n  \"Division\": \"<string>\",\n  \"to_Description\": {\n    \"results\": [\n      {\n        \"Language\": \"<string>\",\n        \"ProductDescription\": \"<string>\"\n      },\n      {\n        \"Language\": \"<string>\",\n        \"ProductDescription\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-164a8ec1-e5d6-40e8-9bf6-5c3063d4b023"
+            },
+            {
+              "id": "aa60593a-eb19-4d78-8584-8cb165813480",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Product\": \"<string>\",\n  \"ProductType\": \"<string>\",\n  \"ProductGroup\": \"<string>\",\n  \"BaseUnit\": \"<string>\",\n  \"GrossWeight\": \"<string>\",\n  \"NetWeight\": \"<string>\",\n  \"WeightUnit\": \"<string>\",\n  \"Division\": \"<string>\",\n  \"to_Description\": {\n    \"results\": [\n      {\n        \"Language\": \"<string>\",\n        \"ProductDescription\": \"<string>\"\n      },\n      {\n        \"Language\": \"<string>\",\n        \"ProductDescription\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-aa60593a-eb19-4d78-8584-8cb165813480"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:31.000Z",
+          "updatedAt": "2026-06-05T15:16:31.000Z",
+          "uid": "35240-1c2428f2-936f-427f-9f44-25bc6f3c3d83"
+        }
+      ],
+      "id": "3e711184-233f-4b7a-8c64-063cff2329f0",
+      "createdAt": "2026-06-05T15:16:31.000Z",
+      "updatedAt": "2026-06-05T15:16:31.000Z",
+      "uid": "35240-3e711184-233f-4b7a-8c64-063cff2329f0"
+    },
+    {
+      "name": "A_Product('{Product}')",
+      "item": [
+        {
+          "name": "to_Description",
+          "item": [
+            {
+              "name": "Retrieve descriptions for a product",
+              "id": "91a3c4b3-a3da-43b0-b3e1-7852369ea23f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product('{{Product}}')/to_Description?$top=<integer>&$skip=<integer>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product('{{Product}}')",
+                    "to_Description"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns language-dependent descriptions for the specified product."
+              },
+              "response": [
+                {
+                  "id": "f4ef6b55-e019-49c1-a288-4af92f68ecd2",
+                  "name": "Successfully retrieved product descriptions",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_Product('{{Product}}')/to_Description?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_Product('{{Product}}')",
+                        "to_Description"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"Product\": \"<string>\",\n        \"Language\": \"<string>\",\n        \"ProductDescription\": \"<string>\"\n      },\n      {\n        \"Product\": \"<string>\",\n        \"Language\": \"<string>\",\n        \"ProductDescription\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:31.000Z",
+                  "updatedAt": "2026-06-05T15:16:31.000Z",
+                  "uid": "35240-f4ef6b55-e019-49c1-a288-4af92f68ecd2"
+                },
+                {
+                  "id": "001b2c65-5c55-48ee-b2fd-9890761f0840",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_Product('{{Product}}')/to_Description?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_Product('{{Product}}')",
+                        "to_Description"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:31.000Z",
+                  "updatedAt": "2026-06-05T15:16:31.000Z",
+                  "uid": "35240-001b2c65-5c55-48ee-b2fd-9890761f0840"
+                },
+                {
+                  "id": "bca974be-89bf-4e36-8207-e9a210ece9b6",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_Product('{{Product}}')/to_Description?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_Product('{{Product}}')",
+                        "to_Description"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:31.000Z",
+                  "updatedAt": "2026-06-05T15:16:31.000Z",
+                  "uid": "35240-bca974be-89bf-4e36-8207-e9a210ece9b6"
+                },
+                {
+                  "id": "8ad44ef3-51a9-4096-b258-5407e123df49",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_Product('{{Product}}')/to_Description?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_Product('{{Product}}')",
+                        "to_Description"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:31.000Z",
+                  "updatedAt": "2026-06-05T15:16:31.000Z",
+                  "uid": "35240-8ad44ef3-51a9-4096-b258-5407e123df49"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-91a3c4b3-a3da-43b0-b3e1-7852369ea23f"
+            }
+          ],
+          "id": "6fa1fd33-259f-41db-ba01-7a1fe3e1222a",
+          "createdAt": "2026-06-05T15:16:31.000Z",
+          "updatedAt": "2026-06-05T15:16:31.000Z",
+          "uid": "35240-6fa1fd33-259f-41db-ba01-7a1fe3e1222a"
+        },
+        {
+          "name": "to_Plant",
+          "item": [
+            {
+              "name": "Retrieve plant data for a product",
+              "id": "4578ef36-184c-4b61-8a69-d86c9bc06193",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product('{{Product}}')/to_Plant?$top=<integer>&$skip=<integer>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product('{{Product}}')",
+                    "to_Plant"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns plant-level data for the specified product including MRP, purchasing, and production information."
+              },
+              "response": [
+                {
+                  "id": "38a993f2-0a1b-49c6-bef6-47e8ad2dd123",
+                  "name": "Successfully retrieved product plant data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_Product('{{Product}}')/to_Plant?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_Product('{{Product}}')",
+                        "to_Plant"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"Product\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"PurchasingGroup\": \"<string>\",\n        \"AvailabilityCheckType\": \"<string>\",\n        \"GoodsIssueUnit\": \"<string>\",\n        \"MRPType\": \"<string>\",\n        \"MRPResponsible\": \"<string>\"\n      },\n      {\n        \"Product\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"PurchasingGroup\": \"<string>\",\n        \"AvailabilityCheckType\": \"<string>\",\n        \"GoodsIssueUnit\": \"<string>\",\n        \"MRPType\": \"<string>\",\n        \"MRPResponsible\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:31.000Z",
+                  "updatedAt": "2026-06-05T15:16:31.000Z",
+                  "uid": "35240-38a993f2-0a1b-49c6-bef6-47e8ad2dd123"
+                },
+                {
+                  "id": "44b9e18b-e773-420d-9a8b-8f70d299f12e",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_Product('{{Product}}')/to_Plant?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_Product('{{Product}}')",
+                        "to_Plant"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:31.000Z",
+                  "updatedAt": "2026-06-05T15:16:31.000Z",
+                  "uid": "35240-44b9e18b-e773-420d-9a8b-8f70d299f12e"
+                },
+                {
+                  "id": "ab786670-7880-4337-9600-a12765c9401e",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_Product('{{Product}}')/to_Plant?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_Product('{{Product}}')",
+                        "to_Plant"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:31.000Z",
+                  "updatedAt": "2026-06-05T15:16:31.000Z",
+                  "uid": "35240-ab786670-7880-4337-9600-a12765c9401e"
+                },
+                {
+                  "id": "f7a0e106-6609-41fb-af02-5b3c70726bc5",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_Product('{{Product}}')/to_Plant?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_Product('{{Product}}')",
+                        "to_Plant"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:31.000Z",
+                  "updatedAt": "2026-06-05T15:16:31.000Z",
+                  "uid": "35240-f7a0e106-6609-41fb-af02-5b3c70726bc5"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-4578ef36-184c-4b61-8a69-d86c9bc06193"
+            }
+          ],
+          "id": "68e84499-3a19-48ff-8148-49a16ae4752c",
+          "createdAt": "2026-06-05T15:16:31.000Z",
+          "updatedAt": "2026-06-05T15:16:31.000Z",
+          "uid": "35240-68e84499-3a19-48ff-8148-49a16ae4752c"
+        },
+        {
+          "name": "Retrieve a single product",
+          "id": "bdbd0f33-2a6d-4e80-803b-169e40bf89ac",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_Product('{{Product}}')?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_Product('{{Product}}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single material master record by its material number."
+          },
+          "response": [
+            {
+              "id": "b07c2d1c-fa85-47e7-8838-98b9e2dcf2f5",
+              "name": "Successfully retrieved the product",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product('{{Product}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product('{{Product}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"Product\": \"<string>\",\n    \"ProductType\": \"<string>\",\n    \"ProductGroup\": \"<string>\",\n    \"BaseUnit\": \"<string>\",\n    \"GrossWeight\": \"<string>\",\n    \"NetWeight\": \"<string>\",\n    \"WeightUnit\": \"<string>\",\n    \"Volume\": \"<string>\",\n    \"VolumeUnit\": \"<string>\",\n    \"Division\": \"<string>\",\n    \"ProductOldID\": \"<string>\",\n    \"IndustryStandardName\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"LastChangeDate\": \"<date>\",\n    \"CreatedByUser\": \"<string>\",\n    \"LastChangedByUser\": \"<string>\",\n    \"IsMarkedForDeletion\": \"<boolean>\",\n    \"ProductStandardID\": \"<string>\",\n    \"SizeOrDimensionText\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-b07c2d1c-fa85-47e7-8838-98b9e2dcf2f5"
+            },
+            {
+              "id": "7606c925-c23a-4aeb-9759-186f62076518",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product('{{Product}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product('{{Product}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-7606c925-c23a-4aeb-9759-186f62076518"
+            },
+            {
+              "id": "6c7133f0-c2c7-42d0-a5a4-2249489e561a",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product('{{Product}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product('{{Product}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-6c7133f0-c2c7-42d0-a5a4-2249489e561a"
+            },
+            {
+              "id": "3c644c83-c755-4b0b-a4af-7d3d3a7d2c03",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product('{{Product}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product('{{Product}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-3c644c83-c755-4b0b-a4af-7d3d3a7d2c03"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:31.000Z",
+          "updatedAt": "2026-06-05T15:16:31.000Z",
+          "uid": "35240-bdbd0f33-2a6d-4e80-803b-169e40bf89ac"
+        },
+        {
+          "name": "Update a product",
+          "id": "29861204-4f5b-4e39-9c5d-6879791fc6ec",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ProductGroup\": \"<string>\",\n  \"GrossWeight\": \"<string>\",\n  \"NetWeight\": \"<string>\",\n  \"WeightUnit\": \"<string>\",\n  \"IsMarkedForDeletion\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_Product('{{Product}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_Product('{{Product}}')"
+              ]
+            },
+            "description": "Updates an existing material master record."
+          },
+          "response": [
+            {
+              "id": "a10a5867-2f34-448e-a09d-a4c00a6b9a32",
+              "name": "Product successfully updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ProductGroup\": \"<string>\",\n  \"GrossWeight\": \"<string>\",\n  \"NetWeight\": \"<string>\",\n  \"WeightUnit\": \"<string>\",\n  \"IsMarkedForDeletion\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product('{{Product}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product('{{Product}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-a10a5867-2f34-448e-a09d-a4c00a6b9a32"
+            },
+            {
+              "id": "840f2e63-2593-464a-bc94-64312e0cfc4b",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ProductGroup\": \"<string>\",\n  \"GrossWeight\": \"<string>\",\n  \"NetWeight\": \"<string>\",\n  \"WeightUnit\": \"<string>\",\n  \"IsMarkedForDeletion\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product('{{Product}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product('{{Product}}')"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-840f2e63-2593-464a-bc94-64312e0cfc4b"
+            },
+            {
+              "id": "8d1e7a6a-7dcb-452c-a7fa-4dbbad04430a",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ProductGroup\": \"<string>\",\n  \"GrossWeight\": \"<string>\",\n  \"NetWeight\": \"<string>\",\n  \"WeightUnit\": \"<string>\",\n  \"IsMarkedForDeletion\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product('{{Product}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product('{{Product}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-8d1e7a6a-7dcb-452c-a7fa-4dbbad04430a"
+            },
+            {
+              "id": "7a5c2190-45b6-48e7-a0e9-9a368221985a",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ProductGroup\": \"<string>\",\n  \"GrossWeight\": \"<string>\",\n  \"NetWeight\": \"<string>\",\n  \"WeightUnit\": \"<string>\",\n  \"IsMarkedForDeletion\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product('{{Product}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product('{{Product}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-7a5c2190-45b6-48e7-a0e9-9a368221985a"
+            },
+            {
+              "id": "080ba2f8-a09a-4a8a-a6a2-324728c64ea8",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ProductGroup\": \"<string>\",\n  \"GrossWeight\": \"<string>\",\n  \"NetWeight\": \"<string>\",\n  \"WeightUnit\": \"<string>\",\n  \"IsMarkedForDeletion\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_Product('{{Product}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Product('{{Product}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-080ba2f8-a09a-4a8a-a6a2-324728c64ea8"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:31.000Z",
+          "updatedAt": "2026-06-05T15:16:31.000Z",
+          "uid": "35240-29861204-4f5b-4e39-9c5d-6879791fc6ec"
+        }
+      ],
+      "id": "1a87973a-4218-4cb0-94dd-9eca415607cd",
+      "createdAt": "2026-06-05T15:16:31.000Z",
+      "updatedAt": "2026-06-05T15:16:31.000Z",
+      "uid": "35240-1a87973a-4218-4cb0-94dd-9eca415607cd"
+    },
+    {
+      "name": "A_ProductSalesDelivery(Product='{Product}',ProductSalesOrg='{ProductSalesOrg}',ProductDistributionChnl='{ProductDistributionChnl}')",
+      "item": [
+        {
+          "name": "Retrieve sales and delivery data for a product",
+          "id": "866af92f-83da-4354-8e99-f96074b548e7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_ProductSalesDelivery(Product='{{Product}}',ProductSalesOrg='{{ProductSalesOrg}}',ProductDistributionChnl='{{ProductDistributionChnl}}')?$select=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_ProductSalesDelivery(Product='{{Product}}',ProductSalesOrg='{{ProductSalesOrg}}',ProductDistributionChnl='{{ProductDistributionChnl}}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns sales organization-specific data for a product including delivering plant, minimum order quantity, and delivery unit."
+          },
+          "response": [
+            {
+              "id": "91404313-2d00-4991-809b-5362992f28d9",
+              "name": "Successfully retrieved product sales data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_ProductSalesDelivery(Product='{{Product}}',ProductSalesOrg='{{ProductSalesOrg}}',ProductDistributionChnl='{{ProductDistributionChnl}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_ProductSalesDelivery(Product='{{Product}}',ProductSalesOrg='{{ProductSalesOrg}}',ProductDistributionChnl='{{ProductDistributionChnl}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"Product\": \"<string>\",\n    \"ProductSalesOrg\": \"<string>\",\n    \"ProductDistributionChnl\": \"<string>\",\n    \"MinimumOrderQuantity\": \"<string>\",\n    \"DeliveryQuantityUnit\": \"<string>\",\n    \"DeliveryQuantity\": \"<string>\",\n    \"SupplyingPlant\": \"<string>\",\n    \"ItemCategoryGroup\": \"<string>\",\n    \"AccountDetnProductGroup\": \"<string>\",\n    \"ProductSalesStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-91404313-2d00-4991-809b-5362992f28d9"
+            },
+            {
+              "id": "61c98dea-467f-46f6-801e-b804ca8f4098",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_ProductSalesDelivery(Product='{{Product}}',ProductSalesOrg='{{ProductSalesOrg}}',ProductDistributionChnl='{{ProductDistributionChnl}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_ProductSalesDelivery(Product='{{Product}}',ProductSalesOrg='{{ProductSalesOrg}}',ProductDistributionChnl='{{ProductDistributionChnl}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-61c98dea-467f-46f6-801e-b804ca8f4098"
+            },
+            {
+              "id": "95199813-ede6-44ea-a7e8-237fdc3ec616",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_ProductSalesDelivery(Product='{{Product}}',ProductSalesOrg='{{ProductSalesOrg}}',ProductDistributionChnl='{{ProductDistributionChnl}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_ProductSalesDelivery(Product='{{Product}}',ProductSalesOrg='{{ProductSalesOrg}}',ProductDistributionChnl='{{ProductDistributionChnl}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-95199813-ede6-44ea-a7e8-237fdc3ec616"
+            },
+            {
+              "id": "376cbc30-14c0-4b09-a36b-f6f5983fa340",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_ProductSalesDelivery(Product='{{Product}}',ProductSalesOrg='{{ProductSalesOrg}}',ProductDistributionChnl='{{ProductDistributionChnl}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_ProductSalesDelivery(Product='{{Product}}',ProductSalesOrg='{{ProductSalesOrg}}',ProductDistributionChnl='{{ProductDistributionChnl}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:31.000Z",
+              "updatedAt": "2026-06-05T15:16:31.000Z",
+              "uid": "35240-376cbc30-14c0-4b09-a36b-f6f5983fa340"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:31.000Z",
+          "updatedAt": "2026-06-05T15:16:31.000Z",
+          "uid": "35240-866af92f-83da-4354-8e99-f96074b548e7"
+        }
+      ],
+      "id": "8218dfad-0a40-4eb6-bca5-25cd26de4af2",
+      "createdAt": "2026-06-05T15:16:31.000Z",
+      "updatedAt": "2026-06-05T15:16:31.000Z",
+      "uid": "35240-8218dfad-0a40-4eb6-bca5-25cd26de4af2"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_PRODUCT_SRV"
+    },
+    {
+      "key": "Product",
+      "value": "<string>"
+    },
+    {
+      "key": "ProductSalesOrg",
+      "value": "<string>"
+    },
+    {
+      "key": "ProductDistributionChnl",
+      "value": "<string>"
+    }
+  ]
+}

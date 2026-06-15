@@ -1,0 +1,1389 @@
+{
+  "info": {
+    "_postman_id": "b1a6ae67-aca6-48b3-b37d-8ca210fc4e40",
+    "name": "SAP Sales and Distribution (SD) SAP Customer Material API",
+    "description": "Manage customer-material information records in SAP S/4HANA. This OData service (API_CUSTOMER_MATERIAL_SRV) links customer-specific material numbers and descriptions to internal material numbers. These records support the sales process by mapping customer part numbers to SAP material master records.\n\nContact Support:\n Name: SAP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:39.000Z",
+    "updatedAt": "2026-06-05T15:16:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b1a6ae67-aca6-48b3-b37d-8ca210fc4e40"
+  },
+  "item": [
+    {
+      "name": "A_CustomerMaterial",
+      "item": [
+        {
+          "name": "Retrieve a list of customer material records",
+          "id": "0662b9fd-ba06-496f-8579-f80936856848",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CustomerMaterial?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$inlinecount=allpages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CustomerMaterial"
+              ],
+              "query": [
+                {
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$inlinecount",
+                  "value": "allpages"
+                }
+              ]
+            },
+            "description": "Returns a collection of customer-material information records. Supports filtering by customer number, material, sales organization, and distribution channel."
+          },
+          "response": [
+            {
+              "id": "22850f8f-a086-4257-92f4-e96abdfa2229",
+              "name": "Successfully retrieved customer material records",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"MaterialByCustomer\": \"<string>\",\n        \"MaterialDescriptionByCustomer\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"DeliveryPriority\": \"<string>\",\n        \"MinDeliveryQtyInBaseUnit\": \"<string>\",\n        \"BaseUnit\": \"<string>\",\n        \"PartialDeliveryIsAllowed\": \"<string>\"\n      },\n      {\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"MaterialByCustomer\": \"<string>\",\n        \"MaterialDescriptionByCustomer\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"DeliveryPriority\": \"<string>\",\n        \"MinDeliveryQtyInBaseUnit\": \"<string>\",\n        \"BaseUnit\": \"<string>\",\n        \"PartialDeliveryIsAllowed\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-22850f8f-a086-4257-92f4-e96abdfa2229"
+            },
+            {
+              "id": "dae46006-258f-498e-a50c-3d93ac573456",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-dae46006-258f-498e-a50c-3d93ac573456"
+            },
+            {
+              "id": "c188d066-c1af-45c8-ab85-01e6224f9a56",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-c188d066-c1af-45c8-ab85-01e6224f9a56"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:40.000Z",
+          "updatedAt": "2026-06-05T15:16:40.000Z",
+          "uid": "35240-0662b9fd-ba06-496f-8579-f80936856848"
+        },
+        {
+          "name": "Create a customer material record",
+          "id": "e0c28498-d84e-45d1-b96f-f21393d36069",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"Customer\": \"<string>\",\n  \"Material\": \"<string>\",\n  \"MaterialByCustomer\": \"<string>\",\n  \"MaterialDescriptionByCustomer\": \"<string>\",\n  \"Plant\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_CustomerMaterial",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CustomerMaterial"
+              ]
+            },
+            "description": "Creates a new customer-material information record linking a customer part number to an internal SAP material number."
+          },
+          "response": [
+            {
+              "id": "4e81cfbe-a201-49f9-91ea-928619034222",
+              "name": "Customer material record successfully created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"Customer\": \"<string>\",\n  \"Material\": \"<string>\",\n  \"MaterialByCustomer\": \"<string>\",\n  \"MaterialDescriptionByCustomer\": \"<string>\",\n  \"Plant\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"Customer\": \"<string>\",\n    \"Material\": \"<string>\",\n    \"MaterialByCustomer\": \"<string>\",\n    \"MaterialDescriptionByCustomer\": \"<string>\",\n    \"Plant\": \"<string>\",\n    \"DeliveryPriority\": \"<string>\",\n    \"MinDeliveryQtyInBaseUnit\": \"<string>\",\n    \"BaseUnit\": \"<string>\",\n    \"PartialDeliveryIsAllowed\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-4e81cfbe-a201-49f9-91ea-928619034222"
+            },
+            {
+              "id": "7553eeb2-b66f-434b-8c36-62564f6718bd",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"Customer\": \"<string>\",\n  \"Material\": \"<string>\",\n  \"MaterialByCustomer\": \"<string>\",\n  \"MaterialDescriptionByCustomer\": \"<string>\",\n  \"Plant\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-7553eeb2-b66f-434b-8c36-62564f6718bd"
+            },
+            {
+              "id": "193766a1-185c-48da-b81a-2cdf2dd03009",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"Customer\": \"<string>\",\n  \"Material\": \"<string>\",\n  \"MaterialByCustomer\": \"<string>\",\n  \"MaterialDescriptionByCustomer\": \"<string>\",\n  \"Plant\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-193766a1-185c-48da-b81a-2cdf2dd03009"
+            },
+            {
+              "id": "33f8494c-981f-4ea5-aad1-76d208a539a9",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"Customer\": \"<string>\",\n  \"Material\": \"<string>\",\n  \"MaterialByCustomer\": \"<string>\",\n  \"MaterialDescriptionByCustomer\": \"<string>\",\n  \"Plant\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-33f8494c-981f-4ea5-aad1-76d208a539a9"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:40.000Z",
+          "updatedAt": "2026-06-05T15:16:40.000Z",
+          "uid": "35240-e0c28498-d84e-45d1-b96f-f21393d36069"
+        }
+      ],
+      "id": "865a0b2b-a836-435c-891d-3ff84b6e39dd",
+      "createdAt": "2026-06-05T15:16:40.000Z",
+      "updatedAt": "2026-06-05T15:16:40.000Z",
+      "uid": "35240-865a0b2b-a836-435c-891d-3ff84b6e39dd"
+    },
+    {
+      "name": "A_CustomerMaterial(SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Customer='{Customer}',Material='{Material}')",
+      "item": [
+        {
+          "name": "Retrieve a single customer material record",
+          "id": "2c2c9d58-2be8-4d76-8e11-802e53077f5b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')?$select=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single customer-material information record by its composite key."
+          },
+          "response": [
+            {
+              "id": "f1aa539f-31f5-4cc2-9601-d5b4225da05d",
+              "name": "Successfully retrieved the customer material record",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"Customer\": \"<string>\",\n    \"Material\": \"<string>\",\n    \"MaterialByCustomer\": \"<string>\",\n    \"MaterialDescriptionByCustomer\": \"<string>\",\n    \"Plant\": \"<string>\",\n    \"DeliveryPriority\": \"<string>\",\n    \"MinDeliveryQtyInBaseUnit\": \"<string>\",\n    \"BaseUnit\": \"<string>\",\n    \"PartialDeliveryIsAllowed\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-f1aa539f-31f5-4cc2-9601-d5b4225da05d"
+            },
+            {
+              "id": "bd710e8a-4a5a-4592-92cf-cf1fbfcd48cf",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-bd710e8a-4a5a-4592-92cf-cf1fbfcd48cf"
+            },
+            {
+              "id": "3b5efa91-4bbd-419c-be34-96c0bee26aea",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-3b5efa91-4bbd-419c-be34-96c0bee26aea"
+            },
+            {
+              "id": "710e6ed7-ff5e-4220-9cae-ff7c46898d1f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-710e6ed7-ff5e-4220-9cae-ff7c46898d1f"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:40.000Z",
+          "updatedAt": "2026-06-05T15:16:40.000Z",
+          "uid": "35240-2c2c9d58-2be8-4d76-8e11-802e53077f5b"
+        },
+        {
+          "name": "Update a customer material record",
+          "id": "45722800-dd02-4b9a-8fb8-ee595fcbc15f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"MaterialByCustomer\": \"<string>\",\n  \"MaterialDescriptionByCustomer\": \"<string>\",\n  \"DeliveryPriority\": \"<string>\",\n  \"Plant\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+              ]
+            },
+            "description": "Updates an existing customer-material information record."
+          },
+          "response": [
+            {
+              "id": "74550320-9965-42b0-ae73-1c39f9fc1815",
+              "name": "Customer material record successfully updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"MaterialByCustomer\": \"<string>\",\n  \"MaterialDescriptionByCustomer\": \"<string>\",\n  \"DeliveryPriority\": \"<string>\",\n  \"Plant\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-74550320-9965-42b0-ae73-1c39f9fc1815"
+            },
+            {
+              "id": "b74c3430-d89f-4d36-aa5c-ab708c57517c",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"MaterialByCustomer\": \"<string>\",\n  \"MaterialDescriptionByCustomer\": \"<string>\",\n  \"DeliveryPriority\": \"<string>\",\n  \"Plant\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-b74c3430-d89f-4d36-aa5c-ab708c57517c"
+            },
+            {
+              "id": "8543c76f-21f8-4b98-a2e1-50a26b87e06c",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"MaterialByCustomer\": \"<string>\",\n  \"MaterialDescriptionByCustomer\": \"<string>\",\n  \"DeliveryPriority\": \"<string>\",\n  \"Plant\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-8543c76f-21f8-4b98-a2e1-50a26b87e06c"
+            },
+            {
+              "id": "7d84e356-d41d-4147-99d6-0f00ab0f93a5",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"MaterialByCustomer\": \"<string>\",\n  \"MaterialDescriptionByCustomer\": \"<string>\",\n  \"DeliveryPriority\": \"<string>\",\n  \"Plant\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-7d84e356-d41d-4147-99d6-0f00ab0f93a5"
+            },
+            {
+              "id": "d73cd1b0-950a-41a4-b331-f4db8b81e294",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"MaterialByCustomer\": \"<string>\",\n  \"MaterialDescriptionByCustomer\": \"<string>\",\n  \"DeliveryPriority\": \"<string>\",\n  \"Plant\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-d73cd1b0-950a-41a4-b331-f4db8b81e294"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:40.000Z",
+          "updatedAt": "2026-06-05T15:16:40.000Z",
+          "uid": "35240-45722800-dd02-4b9a-8fb8-ee595fcbc15f"
+        },
+        {
+          "name": "Delete a customer material record",
+          "id": "5127b2d1-0e49-40fa-b285-0bee57bd24c4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+              ]
+            },
+            "description": "Deletes an existing customer-material information record."
+          },
+          "response": [
+            {
+              "id": "a4cb52cd-de42-4524-ace0-ee588e35f397",
+              "name": "Customer material record successfully deleted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-a4cb52cd-de42-4524-ace0-ee588e35f397"
+            },
+            {
+              "id": "209ad9c0-4cc5-4378-b878-e4e2b7d7346e",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-209ad9c0-4cc5-4378-b878-e4e2b7d7346e"
+            },
+            {
+              "id": "23134c9a-d02f-4b48-9a1c-b2e9d08ab385",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-23134c9a-d02f-4b48-9a1c-b2e9d08ab385"
+            },
+            {
+              "id": "af023d87-6b99-4d52-8aae-773b34a78b2c",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerMaterial(SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Customer='{{Customer}}',Material='{{Material}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:40.000Z",
+              "updatedAt": "2026-06-05T15:16:40.000Z",
+              "uid": "35240-af023d87-6b99-4d52-8aae-773b34a78b2c"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:40.000Z",
+          "updatedAt": "2026-06-05T15:16:40.000Z",
+          "uid": "35240-5127b2d1-0e49-40fa-b285-0bee57bd24c4"
+        }
+      ],
+      "id": "96930a89-aca0-4f5a-96e5-cb588946e100",
+      "createdAt": "2026-06-05T15:16:40.000Z",
+      "updatedAt": "2026-06-05T15:16:40.000Z",
+      "uid": "35240-96930a89-aca0-4f5a-96e5-cb588946e100"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_MATERIAL_SRV"
+    },
+    {
+      "key": "SalesOrganization",
+      "value": "<string>"
+    },
+    {
+      "key": "DistributionChannel",
+      "value": "<string>"
+    },
+    {
+      "key": "Customer",
+      "value": "<string>"
+    },
+    {
+      "key": "Material",
+      "value": "<string>"
+    }
+  ]
+}

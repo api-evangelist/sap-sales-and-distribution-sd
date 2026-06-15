@@ -1,0 +1,1993 @@
+{
+  "info": {
+    "_postman_id": "6d28794b-4604-473b-adcd-ad9d54d4b203",
+    "name": "SAP Sales and Distribution (SD) SAP Credit Management API",
+    "description": "Manage customer credit limits, credit exposure, and credit checks in SAP S/4HANA. This OData service (API_CREDIT_MANAGEMENT) enables automated credit risk assessment during sales order processing, including reading credit accounts, credit exposure data, and managing credit limits for business partners.\n\nContact Support:\n Name: SAP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:29.000Z",
+    "updatedAt": "2026-06-05T15:16:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6d28794b-4604-473b-adcd-ad9d54d4b203"
+  },
+  "item": [
+    {
+      "name": "A_CrdtMgmtBusinessPartner",
+      "item": [
+        {
+          "name": "Retrieve a list of credit management accounts",
+          "id": "7a1d2f31-d8a5-4ee3-a888-2b5a3e09d30a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CrdtMgmtBusinessPartner"
+              ],
+              "query": [
+                {
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$expand",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$inlinecount",
+                  "value": "none"
+                }
+              ]
+            },
+            "description": "Returns a collection of credit management business partner accounts with credit profile information."
+          },
+          "response": [
+            {
+              "id": "98d08251-0568-409b-893b-61e3d3b31642",
+              "name": "Successfully retrieved credit accounts",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtBusinessPartner"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"BusinessPartner\": \"<string>\",\n        \"CreditRiskClass\": \"<string>\",\n        \"CreditRating\": \"<string>\",\n        \"CreditIsBlockedForBP\": \"<boolean>\",\n        \"LastInternalReviewDate\": \"<date>\",\n        \"NextInternalReviewDate\": \"<date>\"\n      },\n      {\n        \"BusinessPartner\": \"<string>\",\n        \"CreditRiskClass\": \"<string>\",\n        \"CreditRating\": \"<string>\",\n        \"CreditIsBlockedForBP\": \"<boolean>\",\n        \"LastInternalReviewDate\": \"<date>\",\n        \"NextInternalReviewDate\": \"<date>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-98d08251-0568-409b-893b-61e3d3b31642"
+            },
+            {
+              "id": "436663e3-8251-4eef-80f3-34c6e22795b2",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtBusinessPartner"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-436663e3-8251-4eef-80f3-34c6e22795b2"
+            },
+            {
+              "id": "c7a97e63-bd93-4eea-932f-306716e80a7b",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtBusinessPartner"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-c7a97e63-bd93-4eea-932f-306716e80a7b"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:29.000Z",
+          "updatedAt": "2026-06-05T15:16:29.000Z",
+          "uid": "35240-7a1d2f31-d8a5-4ee3-a888-2b5a3e09d30a"
+        }
+      ],
+      "id": "2f3df6c6-bc2d-4e96-87c3-a6bf6d3ccf41",
+      "createdAt": "2026-06-05T15:16:29.000Z",
+      "updatedAt": "2026-06-05T15:16:29.000Z",
+      "uid": "35240-2f3df6c6-bc2d-4e96-87c3-a6bf6d3ccf41"
+    },
+    {
+      "name": "A_CrdtMgmtBusinessPartner('{BusinessPartner}')",
+      "item": [
+        {
+          "name": "Retrieve a single credit management account",
+          "id": "246d59c6-45aa-4de4-8e76-16281fe958f1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns credit management data for a single business partner, including credit rating, risk class, and credit block status."
+          },
+          "response": [
+            {
+              "id": "516dcbd0-98bd-49fa-a7f2-c642fda52c7a",
+              "name": "Successfully retrieved the credit account",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"BusinessPartner\": \"<string>\",\n    \"CreditRiskClass\": \"<string>\",\n    \"CreditRating\": \"<string>\",\n    \"CreditIsBlockedForBP\": \"<boolean>\",\n    \"LastInternalReviewDate\": \"<date>\",\n    \"NextInternalReviewDate\": \"<date>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-516dcbd0-98bd-49fa-a7f2-c642fda52c7a"
+            },
+            {
+              "id": "69738928-2195-4515-ba88-1376e5a50704",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-69738928-2195-4515-ba88-1376e5a50704"
+            },
+            {
+              "id": "3b570ccb-012c-44d0-8225-95b4940e5140",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-3b570ccb-012c-44d0-8225-95b4940e5140"
+            },
+            {
+              "id": "8ab38112-c503-4592-8288-6ab61dda3e75",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-8ab38112-c503-4592-8288-6ab61dda3e75"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:29.000Z",
+          "updatedAt": "2026-06-05T15:16:29.000Z",
+          "uid": "35240-246d59c6-45aa-4de4-8e76-16281fe958f1"
+        },
+        {
+          "name": "Update a credit management account",
+          "id": "4dd54ad5-9008-4022-8e7d-4fa16339f876",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CreditRiskClass\": \"<string>\",\n  \"CreditRating\": \"<string>\",\n  \"CreditIsBlockedForBP\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')"
+              ]
+            },
+            "description": "Updates credit management data for a business partner."
+          },
+          "response": [
+            {
+              "id": "b1acf96b-c009-4f42-b559-db9b949ca326",
+              "name": "Credit account successfully updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditRiskClass\": \"<string>\",\n  \"CreditRating\": \"<string>\",\n  \"CreditIsBlockedForBP\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-b1acf96b-c009-4f42-b559-db9b949ca326"
+            },
+            {
+              "id": "e5990408-8061-48c8-b3c9-d2e90bcaf03b",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditRiskClass\": \"<string>\",\n  \"CreditRating\": \"<string>\",\n  \"CreditIsBlockedForBP\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-e5990408-8061-48c8-b3c9-d2e90bcaf03b"
+            },
+            {
+              "id": "b83006a0-32c0-4789-8ad7-ea70d813e71d",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditRiskClass\": \"<string>\",\n  \"CreditRating\": \"<string>\",\n  \"CreditIsBlockedForBP\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-b83006a0-32c0-4789-8ad7-ea70d813e71d"
+            },
+            {
+              "id": "be4ebe6b-6597-43f6-97dd-82d872946200",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditRiskClass\": \"<string>\",\n  \"CreditRating\": \"<string>\",\n  \"CreditIsBlockedForBP\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-be4ebe6b-6597-43f6-97dd-82d872946200"
+            },
+            {
+              "id": "2ab7bda8-e868-40f3-bd82-8d9036347459",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditRiskClass\": \"<string>\",\n  \"CreditRating\": \"<string>\",\n  \"CreditIsBlockedForBP\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtBusinessPartner('{{BusinessPartner}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-2ab7bda8-e868-40f3-bd82-8d9036347459"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:29.000Z",
+          "updatedAt": "2026-06-05T15:16:29.000Z",
+          "uid": "35240-4dd54ad5-9008-4022-8e7d-4fa16339f876"
+        }
+      ],
+      "id": "337da02b-210a-4773-b356-a63dadd9c269",
+      "createdAt": "2026-06-05T15:16:29.000Z",
+      "updatedAt": "2026-06-05T15:16:29.000Z",
+      "uid": "35240-337da02b-210a-4773-b356-a63dadd9c269"
+    },
+    {
+      "name": "A_CrdtMgmtCreditLimit",
+      "item": [
+        {
+          "name": "Retrieve credit limits",
+          "id": "f332ca33-0fe7-4fe8-8884-8a71a6ee9b01",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$inlinecount=none",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CrdtMgmtCreditLimit"
+              ],
+              "query": [
+                {
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$inlinecount",
+                  "value": "none"
+                }
+              ]
+            },
+            "description": "Returns a collection of credit limits for business partners across credit control areas and credit segments."
+          },
+          "response": [
+            {
+              "id": "44548218-4cc8-4ebe-975f-4c8e9355a19c",
+              "name": "Successfully retrieved credit limits",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditLimit"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"BusinessPartner\": \"<string>\",\n        \"CreditSegment\": \"<string>\",\n        \"CreditLimitAmount\": \"<string>\",\n        \"CreditLimitAmountCurrency\": \"<string>\",\n        \"CreditLimitValidityEndDate\": \"<date>\",\n        \"CreditLimitIsExceeded\": \"<boolean>\"\n      },\n      {\n        \"BusinessPartner\": \"<string>\",\n        \"CreditSegment\": \"<string>\",\n        \"CreditLimitAmount\": \"<string>\",\n        \"CreditLimitAmountCurrency\": \"<string>\",\n        \"CreditLimitValidityEndDate\": \"<date>\",\n        \"CreditLimitIsExceeded\": \"<boolean>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-44548218-4cc8-4ebe-975f-4c8e9355a19c"
+            },
+            {
+              "id": "a0ef1b78-d2fa-4900-9e7d-a020197976b2",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditLimit"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-a0ef1b78-d2fa-4900-9e7d-a020197976b2"
+            },
+            {
+              "id": "dc8994fa-cf95-4617-bc3c-1d05279c70ee",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditLimit"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-dc8994fa-cf95-4617-bc3c-1d05279c70ee"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:29.000Z",
+          "updatedAt": "2026-06-05T15:16:29.000Z",
+          "uid": "35240-f332ca33-0fe7-4fe8-8884-8a71a6ee9b01"
+        }
+      ],
+      "id": "570d46a4-642d-4329-9b9c-2da24dfc677e",
+      "createdAt": "2026-06-05T15:16:29.000Z",
+      "updatedAt": "2026-06-05T15:16:29.000Z",
+      "uid": "35240-570d46a4-642d-4329-9b9c-2da24dfc677e"
+    },
+    {
+      "name": "A_CrdtMgmtCreditLimit(BusinessPartner='{BusinessPartner}',CreditSegment='{CreditSegment}')",
+      "item": [
+        {
+          "name": "Retrieve a specific credit limit",
+          "id": "c0510ea2-e35d-4319-9930-5160f6b44e71",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')?$select=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns credit limit data for a specific business partner and credit segment combination."
+          },
+          "response": [
+            {
+              "id": "dded1a03-d32a-4124-a6b6-c319c900b62b",
+              "name": "Successfully retrieved the credit limit",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"BusinessPartner\": \"<string>\",\n    \"CreditSegment\": \"<string>\",\n    \"CreditLimitAmount\": \"<string>\",\n    \"CreditLimitAmountCurrency\": \"<string>\",\n    \"CreditLimitValidityEndDate\": \"<date>\",\n    \"CreditLimitIsExceeded\": \"<boolean>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-dded1a03-d32a-4124-a6b6-c319c900b62b"
+            },
+            {
+              "id": "fc62928c-f362-4b1b-ad58-0a7f3e8cf19d",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-fc62928c-f362-4b1b-ad58-0a7f3e8cf19d"
+            },
+            {
+              "id": "cf1cabe9-6b43-4887-bdeb-a77f10931b39",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-cf1cabe9-6b43-4887-bdeb-a77f10931b39"
+            },
+            {
+              "id": "1c51b2a8-10a1-41b2-a2f9-d1f1ec936d54",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-1c51b2a8-10a1-41b2-a2f9-d1f1ec936d54"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:29.000Z",
+          "updatedAt": "2026-06-05T15:16:29.000Z",
+          "uid": "35240-c0510ea2-e35d-4319-9930-5160f6b44e71"
+        },
+        {
+          "name": "Update a credit limit",
+          "id": "93fad245-8275-427d-b6e1-34c1ec1b1e1b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CreditLimitAmount\": \"<string>\",\n  \"CreditLimitAmountCurrency\": \"<string>\",\n  \"CreditLimitValidityEndDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+              ]
+            },
+            "description": "Updates the credit limit for a specific business partner and credit segment."
+          },
+          "response": [
+            {
+              "id": "1595e74c-8f33-489e-b314-eb2742528db7",
+              "name": "Credit limit successfully updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditLimitAmount\": \"<string>\",\n  \"CreditLimitAmountCurrency\": \"<string>\",\n  \"CreditLimitValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-1595e74c-8f33-489e-b314-eb2742528db7"
+            },
+            {
+              "id": "cc94a1ae-b236-464a-9679-b7a613a0ac0a",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditLimitAmount\": \"<string>\",\n  \"CreditLimitAmountCurrency\": \"<string>\",\n  \"CreditLimitValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-cc94a1ae-b236-464a-9679-b7a613a0ac0a"
+            },
+            {
+              "id": "1ae42520-ee23-4a7a-a188-921c25d62ad4",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditLimitAmount\": \"<string>\",\n  \"CreditLimitAmountCurrency\": \"<string>\",\n  \"CreditLimitValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-1ae42520-ee23-4a7a-a188-921c25d62ad4"
+            },
+            {
+              "id": "2c789de9-2ba6-4e30-b17d-b93d87c769c2",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditLimitAmount\": \"<string>\",\n  \"CreditLimitAmountCurrency\": \"<string>\",\n  \"CreditLimitValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-2c789de9-2ba6-4e30-b17d-b93d87c769c2"
+            },
+            {
+              "id": "c0b351ec-f216-47e7-8b8c-eb54c03c8cba",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreditLimitAmount\": \"<string>\",\n  \"CreditLimitAmountCurrency\": \"<string>\",\n  \"CreditLimitValidityEndDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditLimit(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-c0b351ec-f216-47e7-8b8c-eb54c03c8cba"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:29.000Z",
+          "updatedAt": "2026-06-05T15:16:29.000Z",
+          "uid": "35240-93fad245-8275-427d-b6e1-34c1ec1b1e1b"
+        }
+      ],
+      "id": "88b17062-0c7c-4891-9ef3-c40fb2aa4f29",
+      "createdAt": "2026-06-05T15:16:29.000Z",
+      "updatedAt": "2026-06-05T15:16:29.000Z",
+      "uid": "35240-88b17062-0c7c-4891-9ef3-c40fb2aa4f29"
+    },
+    {
+      "name": "A_CrdtMgmtCreditExposure(BusinessPartner='{BusinessPartner}',CreditSegment='{CreditSegment}')",
+      "item": [
+        {
+          "name": "Retrieve credit exposure for a business partner",
+          "id": "3b31efdb-a616-45f0-af71-06903806fcf3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CrdtMgmtCreditExposure(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')?$select=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CrdtMgmtCreditExposure(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns credit exposure data showing the current credit utilization for a specific business partner and credit segment."
+          },
+          "response": [
+            {
+              "id": "dc0742ab-84ed-4135-b028-ce120ee9a224",
+              "name": "Successfully retrieved credit exposure",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditExposure(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditExposure(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"BusinessPartner\": \"<string>\",\n    \"CreditSegment\": \"<string>\",\n    \"CreditExposureAmount\": \"<string>\",\n    \"CreditExposureCurrency\": \"<string>\",\n    \"OpenOrderValue\": \"<string>\",\n    \"OpenDeliveryValue\": \"<string>\",\n    \"OpenBillingDocValue\": \"<string>\",\n    \"OpenItemValue\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-dc0742ab-84ed-4135-b028-ce120ee9a224"
+            },
+            {
+              "id": "a5f3060b-3b01-4995-836d-ebba277b182a",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditExposure(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditExposure(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-a5f3060b-3b01-4995-836d-ebba277b182a"
+            },
+            {
+              "id": "6fd97cdf-ce9b-4c06-8ade-42bad0d9dce9",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditExposure(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditExposure(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-6fd97cdf-ce9b-4c06-8ade-42bad0d9dce9"
+            },
+            {
+              "id": "aa528bc9-bdac-444f-93fd-d1c900455244",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CrdtMgmtCreditExposure(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CrdtMgmtCreditExposure(BusinessPartner='{{BusinessPartner}}',CreditSegment='{{CreditSegment}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:29.000Z",
+              "updatedAt": "2026-06-05T15:16:29.000Z",
+              "uid": "35240-aa528bc9-bdac-444f-93fd-d1c900455244"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:29.000Z",
+          "updatedAt": "2026-06-05T15:16:29.000Z",
+          "uid": "35240-3b31efdb-a616-45f0-af71-06903806fcf3"
+        }
+      ],
+      "id": "41e2218a-b8d9-4f55-b8f1-daeb4c0b81fc",
+      "createdAt": "2026-06-05T15:16:29.000Z",
+      "updatedAt": "2026-06-05T15:16:29.000Z",
+      "uid": "35240-41e2218a-b8d9-4f55-b8f1-daeb4c0b81fc"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CREDIT_MANAGEMENT"
+    },
+    {
+      "key": "BusinessPartner",
+      "value": "<string>"
+    },
+    {
+      "key": "CreditSegment",
+      "value": "<string>"
+    }
+  ]
+}

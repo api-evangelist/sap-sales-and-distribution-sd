@@ -1,0 +1,1696 @@
+{
+  "info": {
+    "_postman_id": "6d8b8250-3f2e-410b-b3a1-46d4d8347b26",
+    "name": "SAP Sales and Distribution (SD) SAP Sales Contract API",
+    "description": "Create and manage sales contracts including quantity contracts and value contracts in SAP S/4HANA. This OData service (API_SALES_CONTRACT_SRV) supports contract lifecycle management from creation through fulfillment tracking, including header, item, partner, and pricing element entities.\n\nContact Support:\n Name: SAP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:34.000Z",
+    "updatedAt": "2026-06-05T15:16:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6d8b8250-3f2e-410b-b3a1-46d4d8347b26"
+  },
+  "item": [
+    {
+      "name": "A_SalesContract",
+      "item": [
+        {
+          "name": "Retrieve a list of sales contracts",
+          "id": "1531a913-2516-4036-af3c-aaa4182653c3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesContract?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesContract"
+              ],
+              "query": [
+                {
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$expand",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$inlinecount",
+                  "value": "none"
+                }
+              ]
+            },
+            "description": "Returns a collection of sales contract headers. Supports filtering by contract type, validity dates, customer, and status."
+          },
+          "response": [
+            {
+              "id": "c1fdf1d2-35b3-456d-9f71-bde025d66098",
+              "name": "Successfully retrieved sales contracts",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"SalesContract\": \"<string>\",\n        \"SalesContractType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"OrganizationDivision\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"SalesContractDate\": \"<date>\",\n        \"SalesContractValidityStartDate\": \"<date>\",\n        \"SalesContractValidityEndDate\": \"<date>\",\n        \"TotalNetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"PurchaseOrderByCustomer\": \"<string>\",\n        \"CustomerPaymentTerms\": \"<string>\",\n        \"OverallSDProcessStatus\": \"<string>\"\n      },\n      {\n        \"SalesContract\": \"<string>\",\n        \"SalesContractType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"OrganizationDivision\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"SalesContractDate\": \"<date>\",\n        \"SalesContractValidityStartDate\": \"<date>\",\n        \"SalesContractValidityEndDate\": \"<date>\",\n        \"TotalNetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"PurchaseOrderByCustomer\": \"<string>\",\n        \"CustomerPaymentTerms\": \"<string>\",\n        \"OverallSDProcessStatus\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-c1fdf1d2-35b3-456d-9f71-bde025d66098"
+            },
+            {
+              "id": "9c3415b2-fa02-43b9-ad91-be370d0f1ffe",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-9c3415b2-fa02-43b9-ad91-be370d0f1ffe"
+            },
+            {
+              "id": "1bf3f2f8-407b-48e7-97d2-b0023afbcb8c",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-1bf3f2f8-407b-48e7-97d2-b0023afbcb8c"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:34.000Z",
+          "updatedAt": "2026-06-05T15:16:34.000Z",
+          "uid": "35240-1531a913-2516-4036-af3c-aaa4182653c3"
+        },
+        {
+          "name": "Create a new sales contract",
+          "id": "fda5d9be-b8bd-44e5-a7a6-f18829536414",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"SalesContractType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SalesContractDate\": \"<date>\",\n  \"SalesContractValidityStartDate\": \"<date>\",\n  \"SalesContractValidityEndDate\": \"<date>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesContract",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesContract"
+              ]
+            },
+            "description": "Creates a new sales contract using deep insert with items, partners, and pricing elements."
+          },
+          "response": [
+            {
+              "id": "79c47418-e22e-453f-bc97-d52aeef9f228",
+              "name": "Sales contract successfully created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesContractType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SalesContractDate\": \"<date>\",\n  \"SalesContractValidityStartDate\": \"<date>\",\n  \"SalesContractValidityEndDate\": \"<date>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"SalesContract\": \"<string>\",\n    \"SalesContractType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"OrganizationDivision\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"SalesContractDate\": \"<date>\",\n    \"SalesContractValidityStartDate\": \"<date>\",\n    \"SalesContractValidityEndDate\": \"<date>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"PurchaseOrderByCustomer\": \"<string>\",\n    \"CustomerPaymentTerms\": \"<string>\",\n    \"OverallSDProcessStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-79c47418-e22e-453f-bc97-d52aeef9f228"
+            },
+            {
+              "id": "4294bfb0-4b0b-4592-bf46-6b0268274390",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesContractType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SalesContractDate\": \"<date>\",\n  \"SalesContractValidityStartDate\": \"<date>\",\n  \"SalesContractValidityEndDate\": \"<date>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-4294bfb0-4b0b-4592-bf46-6b0268274390"
+            },
+            {
+              "id": "24b3dcfe-327e-4256-b680-df15568b6364",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesContractType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SalesContractDate\": \"<date>\",\n  \"SalesContractValidityStartDate\": \"<date>\",\n  \"SalesContractValidityEndDate\": \"<date>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-24b3dcfe-327e-4256-b680-df15568b6364"
+            },
+            {
+              "id": "0a520dfc-d4c0-4285-8513-f299def76436",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesContractType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SalesContractDate\": \"<date>\",\n  \"SalesContractValidityStartDate\": \"<date>\",\n  \"SalesContractValidityEndDate\": \"<date>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-0a520dfc-d4c0-4285-8513-f299def76436"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:34.000Z",
+          "updatedAt": "2026-06-05T15:16:34.000Z",
+          "uid": "35240-fda5d9be-b8bd-44e5-a7a6-f18829536414"
+        }
+      ],
+      "id": "6a7e269d-ece7-4109-b5e4-9ed263210e24",
+      "createdAt": "2026-06-05T15:16:34.000Z",
+      "updatedAt": "2026-06-05T15:16:34.000Z",
+      "uid": "35240-6a7e269d-ece7-4109-b5e4-9ed263210e24"
+    },
+    {
+      "name": "A_SalesContract('{SalesContract}')",
+      "item": [
+        {
+          "name": "to_Item",
+          "item": [
+            {
+              "name": "Retrieve items for a sales contract",
+              "id": "2fb21b78-f2cb-4855-9d14-21b4cd66232f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')",
+                    "to_Item"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of line items for the specified sales contract."
+              },
+              "response": [
+                {
+                  "id": "83878e52-94ae-4a3c-8401-914561a50b79",
+                  "name": "Successfully retrieved contract items",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesContract('{{SalesContract}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"SalesContract\": \"<string>\",\n        \"SalesContractItem\": \"<string>\",\n        \"SalesContractItemCategory\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"NetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"MaterialGroup\": \"<string>\"\n      },\n      {\n        \"SalesContract\": \"<string>\",\n        \"SalesContractItem\": \"<string>\",\n        \"SalesContractItemCategory\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"TargetQuantity\": \"<string>\",\n        \"TargetQuantityUnit\": \"<string>\",\n        \"NetAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"MaterialGroup\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:34.000Z",
+                  "updatedAt": "2026-06-05T15:16:34.000Z",
+                  "uid": "35240-83878e52-94ae-4a3c-8401-914561a50b79"
+                },
+                {
+                  "id": "63f602f8-0344-4792-914e-430c2ed7a679",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesContract('{{SalesContract}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:34.000Z",
+                  "updatedAt": "2026-06-05T15:16:34.000Z",
+                  "uid": "35240-63f602f8-0344-4792-914e-430c2ed7a679"
+                },
+                {
+                  "id": "c05bdb03-c35e-44e6-9c38-d582fc5cbb4d",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesContract('{{SalesContract}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:34.000Z",
+                  "updatedAt": "2026-06-05T15:16:34.000Z",
+                  "uid": "35240-c05bdb03-c35e-44e6-9c38-d582fc5cbb4d"
+                },
+                {
+                  "id": "9aa36e28-c8f8-42fc-87e9-0b4f5e0b5c06",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')/to_Item?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_SalesContract('{{SalesContract}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:34.000Z",
+                  "updatedAt": "2026-06-05T15:16:34.000Z",
+                  "uid": "35240-9aa36e28-c8f8-42fc-87e9-0b4f5e0b5c06"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-2fb21b78-f2cb-4855-9d14-21b4cd66232f"
+            }
+          ],
+          "id": "b744e994-503a-4006-ba89-b69c2abbb112",
+          "createdAt": "2026-06-05T15:16:34.000Z",
+          "updatedAt": "2026-06-05T15:16:34.000Z",
+          "uid": "35240-b744e994-503a-4006-ba89-b69c2abbb112"
+        },
+        {
+          "name": "Retrieve a single sales contract",
+          "id": "82b20b23-3be4-4d7f-bfd1-1526208993e9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesContract('{{SalesContract}}')"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single sales contract by its document number."
+          },
+          "response": [
+            {
+              "id": "f3624762-c94f-4672-be45-c840b3b11ccf",
+              "name": "Successfully retrieved the sales contract",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"SalesContract\": \"<string>\",\n    \"SalesContractType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"OrganizationDivision\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"SalesContractDate\": \"<date>\",\n    \"SalesContractValidityStartDate\": \"<date>\",\n    \"SalesContractValidityEndDate\": \"<date>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"PurchaseOrderByCustomer\": \"<string>\",\n    \"CustomerPaymentTerms\": \"<string>\",\n    \"OverallSDProcessStatus\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-f3624762-c94f-4672-be45-c840b3b11ccf"
+            },
+            {
+              "id": "7ff85bcc-133e-4af5-8d25-8fc5067af2a3",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-7ff85bcc-133e-4af5-8d25-8fc5067af2a3"
+            },
+            {
+              "id": "33d8618b-2084-48b1-826c-ca87cb427d39",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-33d8618b-2084-48b1-826c-ca87cb427d39"
+            },
+            {
+              "id": "f7f411eb-8b45-4454-918c-2f1008e90e9a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-f7f411eb-8b45-4454-918c-2f1008e90e9a"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:34.000Z",
+          "updatedAt": "2026-06-05T15:16:34.000Z",
+          "uid": "35240-82b20b23-3be4-4d7f-bfd1-1526208993e9"
+        },
+        {
+          "name": "Update a sales contract",
+          "id": "935a001a-5344-4b8a-8d1c-2953b15cdc97",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SalesContractValidityEndDate\": \"<date>\",\n  \"CustomerPaymentTerms\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesContract('{{SalesContract}}')"
+              ]
+            },
+            "description": "Updates an existing sales contract header."
+          },
+          "response": [
+            {
+              "id": "f9f35b67-1f3a-4169-ab65-92b8481e5942",
+              "name": "Sales contract successfully updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SalesContractValidityEndDate\": \"<date>\",\n  \"CustomerPaymentTerms\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-f9f35b67-1f3a-4169-ab65-92b8481e5942"
+            },
+            {
+              "id": "df24d5b2-d698-4532-b0e4-86d9d3a919f5",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SalesContractValidityEndDate\": \"<date>\",\n  \"CustomerPaymentTerms\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-df24d5b2-d698-4532-b0e4-86d9d3a919f5"
+            },
+            {
+              "id": "b57c79f7-6c7b-4990-accb-2fb6f2bd2ad0",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SalesContractValidityEndDate\": \"<date>\",\n  \"CustomerPaymentTerms\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-b57c79f7-6c7b-4990-accb-2fb6f2bd2ad0"
+            },
+            {
+              "id": "83c88e26-0e23-4f11-8597-30d3ecb83a39",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SalesContractValidityEndDate\": \"<date>\",\n  \"CustomerPaymentTerms\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-83c88e26-0e23-4f11-8597-30d3ecb83a39"
+            },
+            {
+              "id": "8ea27df1-5607-4066-a78c-f3667f2ec202",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"SalesContractValidityEndDate\": \"<date>\",\n  \"CustomerPaymentTerms\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-8ea27df1-5607-4066-a78c-f3667f2ec202"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:34.000Z",
+          "updatedAt": "2026-06-05T15:16:34.000Z",
+          "uid": "35240-935a001a-5344-4b8a-8d1c-2953b15cdc97"
+        },
+        {
+          "name": "Delete a sales contract",
+          "id": "7a59140f-926b-4e4b-99de-e4f7c99c2e77",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SalesContract('{{SalesContract}}')"
+              ]
+            },
+            "description": "Deletes an existing sales contract."
+          },
+          "response": [
+            {
+              "id": "9aee75ee-2955-444f-b4f5-67b6bd8d899f",
+              "name": "Sales contract successfully deleted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-9aee75ee-2955-444f-b4f5-67b6bd8d899f"
+            },
+            {
+              "id": "8e2ff71e-c6ee-4e13-ad28-4d522a9daa22",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-8e2ff71e-c6ee-4e13-ad28-4d522a9daa22"
+            },
+            {
+              "id": "a67697fd-d1e3-47f6-91c9-8a0c4a3cb733",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-a67697fd-d1e3-47f6-91c9-8a0c4a3cb733"
+            },
+            {
+              "id": "55978583-72b6-48cb-b09f-3cfa2b748bfb",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SalesContract('{{SalesContract}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SalesContract('{{SalesContract}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:34.000Z",
+              "updatedAt": "2026-06-05T15:16:34.000Z",
+              "uid": "35240-55978583-72b6-48cb-b09f-3cfa2b748bfb"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:34.000Z",
+          "updatedAt": "2026-06-05T15:16:34.000Z",
+          "uid": "35240-7a59140f-926b-4e4b-99de-e4f7c99c2e77"
+        }
+      ],
+      "id": "00c8cfae-6430-4c09-95f3-31c43f987da9",
+      "createdAt": "2026-06-05T15:16:34.000Z",
+      "updatedAt": "2026-06-05T15:16:34.000Z",
+      "uid": "35240-00c8cfae-6430-4c09-95f3-31c43f987da9"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_CONTRACT_SRV"
+    },
+    {
+      "key": "SalesContract",
+      "value": "<string>"
+    }
+  ]
+}

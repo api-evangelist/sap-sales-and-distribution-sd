@@ -1,0 +1,245 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing Document",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of billing documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_BillingDocument",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated properties to include"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Navigation properties to expand"
+              },
+              {
+                "name": "$inlinecount",
+                "value": "",
+                "type": "query",
+                "description": "Include total count"
+              }
+            ]
+          },
+          "docs": "Returns a collection of billing document headers. Use OData query options to filter by billing date, billing type, sales organization, customer, or cancellation status."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single billing document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_BillingDocument(':BillingDocument')",
+            "params": [
+              {
+                "name": "BillingDocument",
+                "value": "",
+                "type": "path",
+                "description": "Billing document number (10 characters)"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated properties to include"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Navigation properties to expand"
+              }
+            ]
+          },
+          "docs": "Returns a single billing document header by its key. Use $expand to include related items, partners, and pricing elements."
+        },
+        {
+          "info": {
+            "name": "Cancel a billing document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/CancelBillingDocument",
+            "params": [
+              {
+                "name": "BillingDocument",
+                "value": "",
+                "type": "query",
+                "description": "Billing document number to cancel"
+              }
+            ]
+          },
+          "docs": "Cancels a billing document by creating a cancellation document. The original document is flagged as cancelled and a new reversal document is generated."
+        },
+        {
+          "info": {
+            "name": "Retrieve a billing document as PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/GetPDF",
+            "params": [
+              {
+                "name": "BillingDocument",
+                "value": "",
+                "type": "query",
+                "description": "Billing document number"
+              }
+            ]
+          },
+          "docs": "Returns the billing document output as a PDF binary stream. The PDF is generated based on the configured output type and form."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Billing Document Item",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve items for a billing document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_BillingDocument(':BillingDocument')/to_Item",
+            "params": [
+              {
+                "name": "BillingDocument",
+                "value": "",
+                "type": "path",
+                "description": "Billing document number"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated properties to include"
+              }
+            ]
+          },
+          "docs": "Returns a collection of line items for the specified billing document."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Billing Document Partner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve partners for a billing document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_BillingDocument(':BillingDocument')/to_Partner",
+            "params": [
+              {
+                "name": "BillingDocument",
+                "value": "",
+                "type": "path",
+                "description": "Billing document number"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated properties to include"
+              }
+            ]
+          },
+          "docs": "Returns a collection of business partners associated with the billing document."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

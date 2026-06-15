@@ -1,0 +1,232 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Inbound Delivery API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inbound Delivery Header",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of inbound deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002/A_InbDeliveryHeader",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$inlinecount",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of inbound delivery headers. Supports OData query options for filtering by delivery date, vendor, delivery type, and goods receipt status."
+        },
+        {
+          "info": {
+            "name": "Create a new inbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002/A_InbDeliveryHeader",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new inbound delivery with reference to a purchase order or other procurement document. Supports deep insert with items."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single inbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002/A_InbDeliveryHeader(':DeliveryDocument')",
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "path",
+                "description": "Delivery document number (10 characters)"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a single inbound delivery header by its document number."
+        },
+        {
+          "info": {
+            "name": "Update an inbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002/A_InbDeliveryHeader(':DeliveryDocument')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "path",
+                "description": "Delivery document number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing inbound delivery header."
+        },
+        {
+          "info": {
+            "name": "Delete an inbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002/A_InbDeliveryHeader(':DeliveryDocument')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "path",
+                "description": "Delivery document number"
+              }
+            ]
+          },
+          "docs": "Deletes an existing inbound delivery."
+        },
+        {
+          "info": {
+            "name": "Post goods receipt for an inbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002/PostGoodsReceipt",
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "query",
+                "description": "Delivery document number"
+              }
+            ]
+          },
+          "docs": "Posts goods receipt for the specified inbound delivery, updating inventory and creating material documents."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Inbound Delivery Item",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve items for an inbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002/A_InbDeliveryHeader(':DeliveryDocument')/to_DeliveryDocumentItem",
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "path",
+                "description": "Delivery document number"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of items for the specified inbound delivery."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

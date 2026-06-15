@@ -1,0 +1,2414 @@
+{
+  "info": {
+    "_postman_id": "6cbaf754-8abb-4f06-92d0-d2e28e2af825",
+    "name": "SAP Sales and Distribution (SD) SAP Customer Master Data (Business Partner) API",
+    "description": "Manage customer master data including business partner records, addresses, contact information, bank details, tax numbers, and customer-specific sales area data. This OData service (API_BUSINESS_PARTNER) provides access to business partner records used across SAP S/4HANA modules. Business partners can be of category Person (1), Organization (2), or Group (3).\n\nContact Support:\n Name: SAP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:21.000Z",
+    "updatedAt": "2026-06-05T15:16:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6cbaf754-8abb-4f06-92d0-d2e28e2af825"
+  },
+  "item": [
+    {
+      "name": "A_BusinessPartner",
+      "item": [
+        {
+          "name": "Retrieve a list of business partners",
+          "id": "8d693509-ba42-4ffc-8478-277e356de7da",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_BusinessPartner?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_BusinessPartner"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Sort order for the result set",
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of properties to include",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of navigation properties to expand",
+                  "key": "$expand",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Include total count of matching resources",
+                  "key": "$inlinecount",
+                  "value": "none"
+                }
+              ]
+            },
+            "description": "Returns a collection of business partner records. Use OData query options to filter by category, name, or other attributes. Supports $expand for including addresses, roles, tax numbers, and bank accounts."
+          },
+          "response": [
+            {
+              "id": "50dd2dce-7e19-4ba2-a368-f0a0e07e3b54",
+              "name": "Successfully retrieved business partners",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order for the result set",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count of matching resources",
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"BusinessPartner\": \"<string>\",\n        \"BusinessPartnerCategory\": \"<string>\",\n        \"BusinessPartnerFullName\": \"<string>\",\n        \"BusinessPartnerGrouping\": \"<string>\",\n        \"BusinessPartnerName\": \"<string>\",\n        \"FirstName\": \"<string>\",\n        \"LastName\": \"<string>\",\n        \"OrganizationBPName1\": \"<string>\",\n        \"OrganizationBPName2\": \"<string>\",\n        \"SearchTerm1\": \"<string>\",\n        \"SearchTerm2\": \"<string>\",\n        \"BusinessPartnerIsBlocked\": \"<boolean>\",\n        \"Language\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"LastChangeDate\": \"<date>\",\n        \"LastChangedByUser\": \"<string>\",\n        \"IsNaturalPerson\": \"<string>\",\n        \"IsFemale\": \"<boolean>\",\n        \"IsMale\": \"<boolean>\",\n        \"TradingPartner\": \"<string>\"\n      },\n      {\n        \"BusinessPartner\": \"<string>\",\n        \"BusinessPartnerCategory\": \"<string>\",\n        \"BusinessPartnerFullName\": \"<string>\",\n        \"BusinessPartnerGrouping\": \"<string>\",\n        \"BusinessPartnerName\": \"<string>\",\n        \"FirstName\": \"<string>\",\n        \"LastName\": \"<string>\",\n        \"OrganizationBPName1\": \"<string>\",\n        \"OrganizationBPName2\": \"<string>\",\n        \"SearchTerm1\": \"<string>\",\n        \"SearchTerm2\": \"<string>\",\n        \"BusinessPartnerIsBlocked\": \"<boolean>\",\n        \"Language\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"LastChangeDate\": \"<date>\",\n        \"LastChangedByUser\": \"<string>\",\n        \"IsNaturalPerson\": \"<string>\",\n        \"IsFemale\": \"<boolean>\",\n        \"IsMale\": \"<boolean>\",\n        \"TradingPartner\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-50dd2dce-7e19-4ba2-a368-f0a0e07e3b54"
+            },
+            {
+              "id": "4020ea27-2b8b-4ceb-845a-c1cf3e3162c1",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order for the result set",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count of matching resources",
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-4020ea27-2b8b-4ceb-845a-c1cf3e3162c1"
+            },
+            {
+              "id": "24b14705-3bf9-4103-a94a-ebaa519b1dec",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order for the result set",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count of matching resources",
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-24b14705-3bf9-4103-a94a-ebaa519b1dec"
+            },
+            {
+              "id": "5f44e5db-d90c-4662-b527-987627d9ecd2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order for the result set",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count of matching resources",
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-5f44e5db-d90c-4662-b527-987627d9ecd2"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:22.000Z",
+          "updatedAt": "2026-06-05T15:16:22.000Z",
+          "uid": "35240-8d693509-ba42-4ffc-8478-277e356de7da"
+        },
+        {
+          "name": "Create a new business partner",
+          "id": "0c4f4bd3-a67b-455d-990c-ae111b1f8747",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"BusinessPartnerCategory\": \"<string>\",\n  \"BusinessPartnerGrouping\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"OrganizationBPName1\": \"<string>\",\n  \"OrganizationBPName2\": \"<string>\",\n  \"Language\": \"<string>\",\n  \"SearchTerm1\": \"<string>\",\n  \"to_BusinessPartnerAddress\": {\n    \"results\": [\n      {\n        \"StreetName\": \"<string>\",\n        \"HouseNumber\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"CityName\": \"<string>\",\n        \"Region\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Language\": \"<string>\"\n      },\n      {\n        \"StreetName\": \"<string>\",\n        \"HouseNumber\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"CityName\": \"<string>\",\n        \"Region\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Language\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_BusinessPartner",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_BusinessPartner"
+              ]
+            },
+            "description": "Creates a new business partner record. Supports deep insert with addresses, roles, tax numbers, and bank accounts in a single request."
+          },
+          "response": [
+            {
+              "id": "8eb5e123-3870-4445-8a4c-e64e76096681",
+              "name": "Business partner successfully created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"BusinessPartnerCategory\": \"<string>\",\n  \"BusinessPartnerGrouping\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"OrganizationBPName1\": \"<string>\",\n  \"OrganizationBPName2\": \"<string>\",\n  \"Language\": \"<string>\",\n  \"SearchTerm1\": \"<string>\",\n  \"to_BusinessPartnerAddress\": {\n    \"results\": [\n      {\n        \"StreetName\": \"<string>\",\n        \"HouseNumber\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"CityName\": \"<string>\",\n        \"Region\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Language\": \"<string>\"\n      },\n      {\n        \"StreetName\": \"<string>\",\n        \"HouseNumber\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"CityName\": \"<string>\",\n        \"Region\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Language\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"BusinessPartner\": \"<string>\",\n    \"BusinessPartnerCategory\": \"<string>\",\n    \"BusinessPartnerFullName\": \"<string>\",\n    \"BusinessPartnerGrouping\": \"<string>\",\n    \"BusinessPartnerName\": \"<string>\",\n    \"FirstName\": \"<string>\",\n    \"LastName\": \"<string>\",\n    \"OrganizationBPName1\": \"<string>\",\n    \"OrganizationBPName2\": \"<string>\",\n    \"SearchTerm1\": \"<string>\",\n    \"SearchTerm2\": \"<string>\",\n    \"BusinessPartnerIsBlocked\": \"<boolean>\",\n    \"Language\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"LastChangeDate\": \"<date>\",\n    \"LastChangedByUser\": \"<string>\",\n    \"IsNaturalPerson\": \"<string>\",\n    \"IsFemale\": \"<boolean>\",\n    \"IsMale\": \"<boolean>\",\n    \"TradingPartner\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-8eb5e123-3870-4445-8a4c-e64e76096681"
+            },
+            {
+              "id": "b345c9f5-86b6-4bf2-ba24-8c910e7a4207",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"BusinessPartnerCategory\": \"<string>\",\n  \"BusinessPartnerGrouping\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"OrganizationBPName1\": \"<string>\",\n  \"OrganizationBPName2\": \"<string>\",\n  \"Language\": \"<string>\",\n  \"SearchTerm1\": \"<string>\",\n  \"to_BusinessPartnerAddress\": {\n    \"results\": [\n      {\n        \"StreetName\": \"<string>\",\n        \"HouseNumber\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"CityName\": \"<string>\",\n        \"Region\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Language\": \"<string>\"\n      },\n      {\n        \"StreetName\": \"<string>\",\n        \"HouseNumber\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"CityName\": \"<string>\",\n        \"Region\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Language\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-b345c9f5-86b6-4bf2-ba24-8c910e7a4207"
+            },
+            {
+              "id": "380dca0d-afa6-4d17-9c99-ebd1097b8210",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"BusinessPartnerCategory\": \"<string>\",\n  \"BusinessPartnerGrouping\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"OrganizationBPName1\": \"<string>\",\n  \"OrganizationBPName2\": \"<string>\",\n  \"Language\": \"<string>\",\n  \"SearchTerm1\": \"<string>\",\n  \"to_BusinessPartnerAddress\": {\n    \"results\": [\n      {\n        \"StreetName\": \"<string>\",\n        \"HouseNumber\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"CityName\": \"<string>\",\n        \"Region\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Language\": \"<string>\"\n      },\n      {\n        \"StreetName\": \"<string>\",\n        \"HouseNumber\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"CityName\": \"<string>\",\n        \"Region\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Language\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-380dca0d-afa6-4d17-9c99-ebd1097b8210"
+            },
+            {
+              "id": "09fe244c-0827-4a21-94b9-c2a1f676b3ee",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"BusinessPartnerCategory\": \"<string>\",\n  \"BusinessPartnerGrouping\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"OrganizationBPName1\": \"<string>\",\n  \"OrganizationBPName2\": \"<string>\",\n  \"Language\": \"<string>\",\n  \"SearchTerm1\": \"<string>\",\n  \"to_BusinessPartnerAddress\": {\n    \"results\": [\n      {\n        \"StreetName\": \"<string>\",\n        \"HouseNumber\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"CityName\": \"<string>\",\n        \"Region\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Language\": \"<string>\"\n      },\n      {\n        \"StreetName\": \"<string>\",\n        \"HouseNumber\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"CityName\": \"<string>\",\n        \"Region\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Language\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-09fe244c-0827-4a21-94b9-c2a1f676b3ee"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:22.000Z",
+          "updatedAt": "2026-06-05T15:16:22.000Z",
+          "uid": "35240-0c4f4bd3-a67b-455d-990c-ae111b1f8747"
+        }
+      ],
+      "id": "bb6bcd4b-b672-4c42-8bcb-042905c05477",
+      "createdAt": "2026-06-05T15:16:22.000Z",
+      "updatedAt": "2026-06-05T15:16:22.000Z",
+      "uid": "35240-bb6bcd4b-b672-4c42-8bcb-042905c05477"
+    },
+    {
+      "name": "A_BusinessPartner('{BusinessPartner}')",
+      "item": [
+        {
+          "name": "to_BusinessPartnerAddress",
+          "item": [
+            {
+              "name": "Retrieve addresses for a business partner",
+              "id": "0db628a1-2bf6-4cb4-8b56-db6fd2560b60",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')/to_BusinessPartnerAddress?$top=<integer>&$skip=<integer>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner('{{BusinessPartner}}')",
+                    "to_BusinessPartnerAddress"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of address records associated with the specified business partner."
+              },
+              "response": [
+                {
+                  "id": "649fe2cd-b293-45b0-9ef9-94f4e64447b8",
+                  "name": "Successfully retrieved addresses",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')/to_BusinessPartnerAddress?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BusinessPartner('{{BusinessPartner}}')",
+                        "to_BusinessPartnerAddress"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"BusinessPartner\": \"<string>\",\n        \"AddressID\": \"<string>\",\n        \"StreetName\": \"<string>\",\n        \"HouseNumber\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"CityName\": \"<string>\",\n        \"Region\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Language\": \"<string>\",\n        \"POBox\": \"<string>\",\n        \"POBoxPostalCode\": \"<string>\",\n        \"CompanyPostalCode\": \"<string>\"\n      },\n      {\n        \"BusinessPartner\": \"<string>\",\n        \"AddressID\": \"<string>\",\n        \"StreetName\": \"<string>\",\n        \"HouseNumber\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"CityName\": \"<string>\",\n        \"Region\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Language\": \"<string>\",\n        \"POBox\": \"<string>\",\n        \"POBoxPostalCode\": \"<string>\",\n        \"CompanyPostalCode\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:22.000Z",
+                  "updatedAt": "2026-06-05T15:16:22.000Z",
+                  "uid": "35240-649fe2cd-b293-45b0-9ef9-94f4e64447b8"
+                },
+                {
+                  "id": "703a47da-977e-4580-8e08-473c5ab72332",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')/to_BusinessPartnerAddress?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BusinessPartner('{{BusinessPartner}}')",
+                        "to_BusinessPartnerAddress"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:22.000Z",
+                  "updatedAt": "2026-06-05T15:16:22.000Z",
+                  "uid": "35240-703a47da-977e-4580-8e08-473c5ab72332"
+                },
+                {
+                  "id": "68e76566-f85d-4894-9f23-03b038ecbd33",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')/to_BusinessPartnerAddress?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BusinessPartner('{{BusinessPartner}}')",
+                        "to_BusinessPartnerAddress"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:22.000Z",
+                  "updatedAt": "2026-06-05T15:16:22.000Z",
+                  "uid": "35240-68e76566-f85d-4894-9f23-03b038ecbd33"
+                },
+                {
+                  "id": "83cb7e17-4964-44f1-80c4-2aa923995dcb",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')/to_BusinessPartnerAddress?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BusinessPartner('{{BusinessPartner}}')",
+                        "to_BusinessPartnerAddress"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:22.000Z",
+                  "updatedAt": "2026-06-05T15:16:22.000Z",
+                  "uid": "35240-83cb7e17-4964-44f1-80c4-2aa923995dcb"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-0db628a1-2bf6-4cb4-8b56-db6fd2560b60"
+            },
+            {
+              "name": "Create an address for a business partner",
+              "id": "ad99f20a-c83c-48f9-aa2e-9e46af026e65",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"StreetName\": \"<string>\",\n  \"HouseNumber\": \"<string>\",\n  \"PostalCode\": \"<string>\",\n  \"CityName\": \"<string>\",\n  \"Region\": \"<string>\",\n  \"Country\": \"<string>\",\n  \"Language\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')/to_BusinessPartnerAddress",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner('{{BusinessPartner}}')",
+                    "to_BusinessPartnerAddress"
+                  ]
+                },
+                "description": "Creates a new address record for the specified business partner."
+              },
+              "response": [
+                {
+                  "id": "fe4e71ca-9f52-473d-be93-98548a7bccb8",
+                  "name": "Address successfully created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"StreetName\": \"<string>\",\n  \"HouseNumber\": \"<string>\",\n  \"PostalCode\": \"<string>\",\n  \"CityName\": \"<string>\",\n  \"Region\": \"<string>\",\n  \"Country\": \"<string>\",\n  \"Language\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')/to_BusinessPartnerAddress",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BusinessPartner('{{BusinessPartner}}')",
+                        "to_BusinessPartnerAddress"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"BusinessPartner\": \"<string>\",\n    \"AddressID\": \"<string>\",\n    \"StreetName\": \"<string>\",\n    \"HouseNumber\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"CityName\": \"<string>\",\n    \"Region\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Language\": \"<string>\",\n    \"POBox\": \"<string>\",\n    \"POBoxPostalCode\": \"<string>\",\n    \"CompanyPostalCode\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:22.000Z",
+                  "updatedAt": "2026-06-05T15:16:22.000Z",
+                  "uid": "35240-fe4e71ca-9f52-473d-be93-98548a7bccb8"
+                },
+                {
+                  "id": "1bd35f57-a09c-48ea-92fe-0fbf82304b8b",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"StreetName\": \"<string>\",\n  \"HouseNumber\": \"<string>\",\n  \"PostalCode\": \"<string>\",\n  \"CityName\": \"<string>\",\n  \"Region\": \"<string>\",\n  \"Country\": \"<string>\",\n  \"Language\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')/to_BusinessPartnerAddress",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BusinessPartner('{{BusinessPartner}}')",
+                        "to_BusinessPartnerAddress"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:22.000Z",
+                  "updatedAt": "2026-06-05T15:16:22.000Z",
+                  "uid": "35240-1bd35f57-a09c-48ea-92fe-0fbf82304b8b"
+                },
+                {
+                  "id": "34cfc5e2-5aa5-433b-8b6e-5414156e25d8",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"StreetName\": \"<string>\",\n  \"HouseNumber\": \"<string>\",\n  \"PostalCode\": \"<string>\",\n  \"CityName\": \"<string>\",\n  \"Region\": \"<string>\",\n  \"Country\": \"<string>\",\n  \"Language\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')/to_BusinessPartnerAddress",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BusinessPartner('{{BusinessPartner}}')",
+                        "to_BusinessPartnerAddress"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:22.000Z",
+                  "updatedAt": "2026-06-05T15:16:22.000Z",
+                  "uid": "35240-34cfc5e2-5aa5-433b-8b6e-5414156e25d8"
+                },
+                {
+                  "id": "bd6be2fb-4e47-4667-9f09-aa12c427d581",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"StreetName\": \"<string>\",\n  \"HouseNumber\": \"<string>\",\n  \"PostalCode\": \"<string>\",\n  \"CityName\": \"<string>\",\n  \"Region\": \"<string>\",\n  \"Country\": \"<string>\",\n  \"Language\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')/to_BusinessPartnerAddress",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BusinessPartner('{{BusinessPartner}}')",
+                        "to_BusinessPartnerAddress"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:22.000Z",
+                  "updatedAt": "2026-06-05T15:16:22.000Z",
+                  "uid": "35240-bd6be2fb-4e47-4667-9f09-aa12c427d581"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-ad99f20a-c83c-48f9-aa2e-9e46af026e65"
+            }
+          ],
+          "id": "c091c8c0-f206-45e1-a525-9c624494f331",
+          "createdAt": "2026-06-05T15:16:22.000Z",
+          "updatedAt": "2026-06-05T15:16:22.000Z",
+          "uid": "35240-c091c8c0-f206-45e1-a525-9c624494f331"
+        },
+        {
+          "name": "Retrieve a single business partner",
+          "id": "4064f51f-c373-48be-91fd-20b5fef4e08f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_BusinessPartner('{{BusinessPartner}}')"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of properties to include",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of navigation properties to expand",
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single business partner record by its key. Use $expand to include related addresses, roles, tax numbers, and bank accounts."
+          },
+          "response": [
+            {
+              "id": "897651cd-3afc-4f83-87c1-82c2feece46d",
+              "name": "Successfully retrieved the business partner",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner('{{BusinessPartner}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"BusinessPartner\": \"<string>\",\n    \"BusinessPartnerCategory\": \"<string>\",\n    \"BusinessPartnerFullName\": \"<string>\",\n    \"BusinessPartnerGrouping\": \"<string>\",\n    \"BusinessPartnerName\": \"<string>\",\n    \"FirstName\": \"<string>\",\n    \"LastName\": \"<string>\",\n    \"OrganizationBPName1\": \"<string>\",\n    \"OrganizationBPName2\": \"<string>\",\n    \"SearchTerm1\": \"<string>\",\n    \"SearchTerm2\": \"<string>\",\n    \"BusinessPartnerIsBlocked\": \"<boolean>\",\n    \"Language\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"LastChangeDate\": \"<date>\",\n    \"LastChangedByUser\": \"<string>\",\n    \"IsNaturalPerson\": \"<string>\",\n    \"IsFemale\": \"<boolean>\",\n    \"IsMale\": \"<boolean>\",\n    \"TradingPartner\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-897651cd-3afc-4f83-87c1-82c2feece46d"
+            },
+            {
+              "id": "da648e8c-c04b-4b46-8eba-1922d60b48d5",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner('{{BusinessPartner}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-da648e8c-c04b-4b46-8eba-1922d60b48d5"
+            },
+            {
+              "id": "74d94162-1700-4fbb-be0a-9c7632903322",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner('{{BusinessPartner}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-74d94162-1700-4fbb-be0a-9c7632903322"
+            },
+            {
+              "id": "025ae97f-4a8a-4bf1-b480-f554562ae6d1",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner('{{BusinessPartner}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-025ae97f-4a8a-4bf1-b480-f554562ae6d1"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:22.000Z",
+          "updatedAt": "2026-06-05T15:16:22.000Z",
+          "uid": "35240-4064f51f-c373-48be-91fd-20b5fef4e08f"
+        },
+        {
+          "name": "Update a business partner",
+          "id": "de49e1de-9ac1-4eb2-a13c-918a94ae9011",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "(Required) ETag value for optimistic concurrency control",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"OrganizationBPName1\": \"<string>\",\n  \"OrganizationBPName2\": \"<string>\",\n  \"SearchTerm1\": \"<string>\",\n  \"Language\": \"<string>\",\n  \"BusinessPartnerIsBlocked\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_BusinessPartner('{{BusinessPartner}}')"
+              ]
+            },
+            "description": "Updates an existing business partner record. Only fields included in the request body are modified."
+          },
+          "response": [
+            {
+              "id": "72a13f66-4ae7-4d23-a031-a394e3769d88",
+              "name": "Business partner successfully updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"OrganizationBPName1\": \"<string>\",\n  \"OrganizationBPName2\": \"<string>\",\n  \"SearchTerm1\": \"<string>\",\n  \"Language\": \"<string>\",\n  \"BusinessPartnerIsBlocked\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner('{{BusinessPartner}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-72a13f66-4ae7-4d23-a031-a394e3769d88"
+            },
+            {
+              "id": "07f54b67-820b-493c-a2b9-89b5feeb5312",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"OrganizationBPName1\": \"<string>\",\n  \"OrganizationBPName2\": \"<string>\",\n  \"SearchTerm1\": \"<string>\",\n  \"Language\": \"<string>\",\n  \"BusinessPartnerIsBlocked\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner('{{BusinessPartner}}')"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-07f54b67-820b-493c-a2b9-89b5feeb5312"
+            },
+            {
+              "id": "2f31f557-f69b-4a13-a120-26f906638efc",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"OrganizationBPName1\": \"<string>\",\n  \"OrganizationBPName2\": \"<string>\",\n  \"SearchTerm1\": \"<string>\",\n  \"Language\": \"<string>\",\n  \"BusinessPartnerIsBlocked\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner('{{BusinessPartner}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-2f31f557-f69b-4a13-a120-26f906638efc"
+            },
+            {
+              "id": "27f445d2-5fa3-46cd-806e-77d19749b625",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"OrganizationBPName1\": \"<string>\",\n  \"OrganizationBPName2\": \"<string>\",\n  \"SearchTerm1\": \"<string>\",\n  \"Language\": \"<string>\",\n  \"BusinessPartnerIsBlocked\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner('{{BusinessPartner}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-27f445d2-5fa3-46cd-806e-77d19749b625"
+            },
+            {
+              "id": "9416a2ee-4204-4fe1-a674-8bf87f706bf1",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"OrganizationBPName1\": \"<string>\",\n  \"OrganizationBPName2\": \"<string>\",\n  \"SearchTerm1\": \"<string>\",\n  \"Language\": \"<string>\",\n  \"BusinessPartnerIsBlocked\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_BusinessPartner('{{BusinessPartner}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BusinessPartner('{{BusinessPartner}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-9416a2ee-4204-4fe1-a674-8bf87f706bf1"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:22.000Z",
+          "updatedAt": "2026-06-05T15:16:22.000Z",
+          "uid": "35240-de49e1de-9ac1-4eb2-a13c-918a94ae9011"
+        }
+      ],
+      "id": "b3d693a7-6db8-4a4f-ac1b-62cefe816a5c",
+      "createdAt": "2026-06-05T15:16:22.000Z",
+      "updatedAt": "2026-06-05T15:16:22.000Z",
+      "uid": "35240-b3d693a7-6db8-4a4f-ac1b-62cefe816a5c"
+    },
+    {
+      "name": "A_Customer('{Customer}')",
+      "item": [
+        {
+          "name": "Retrieve customer-specific data",
+          "id": "578ac6a8-4d13-48fe-89d2-7bf6d2558f75",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_Customer('{{Customer}}')?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_Customer('{{Customer}}')"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of properties to include",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of navigation properties to expand",
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns customer-specific data for the specified customer number, including payment terms, delivery priority, and account group."
+          },
+          "response": [
+            {
+              "id": "fc0c472a-95ab-4101-a460-74259e28829d",
+              "name": "Successfully retrieved customer data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Customer('{{Customer}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Customer('{{Customer}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"Customer\": \"<string>\",\n    \"CustomerAccountGroup\": \"<string>\",\n    \"CustomerName\": \"<string>\",\n    \"DeliveryIsBlocked\": \"<string>\",\n    \"OrderIsBlocked\": \"<string>\",\n    \"PostingIsBlocked\": \"<boolean>\",\n    \"CreationDate\": \"<date>\",\n    \"CustomerClassification\": \"<string>\",\n    \"IndustryCode1\": \"<string>\",\n    \"NFPartnerIsNaturalPerson\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-fc0c472a-95ab-4101-a460-74259e28829d"
+            },
+            {
+              "id": "7df2922f-7758-4ac0-a8af-bb725926ccf5",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Customer('{{Customer}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Customer('{{Customer}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-7df2922f-7758-4ac0-a8af-bb725926ccf5"
+            },
+            {
+              "id": "ca31f546-02f6-496d-9023-d16dfc55dad4",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Customer('{{Customer}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Customer('{{Customer}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-ca31f546-02f6-496d-9023-d16dfc55dad4"
+            },
+            {
+              "id": "aad1857e-c762-4526-8363-4de557284259",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_Customer('{{Customer}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_Customer('{{Customer}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-aad1857e-c762-4526-8363-4de557284259"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:22.000Z",
+          "updatedAt": "2026-06-05T15:16:22.000Z",
+          "uid": "35240-578ac6a8-4d13-48fe-89d2-7bf6d2558f75"
+        }
+      ],
+      "id": "3c42f8ba-4278-4842-98b7-8b1e67b0ee37",
+      "createdAt": "2026-06-05T15:16:22.000Z",
+      "updatedAt": "2026-06-05T15:16:22.000Z",
+      "uid": "35240-3c42f8ba-4278-4842-98b7-8b1e67b0ee37"
+    },
+    {
+      "name": "A_CustomerSalesArea(Customer='{Customer}',SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Division='{Division}')",
+      "item": [
+        {
+          "name": "Retrieve customer sales area data",
+          "id": "c1fbeb08-65f1-4dc1-b94e-f33353872391",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')?$select=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of properties to include",
+                  "key": "$select",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns sales area-specific data for a customer, including pricing, shipping, and billing information specific to the sales organization, distribution channel, and division."
+          },
+          "response": [
+            {
+              "id": "451fa7bf-8508-4396-85ef-a8491e068588",
+              "name": "Successfully retrieved customer sales area data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"Customer\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"Division\": \"<string>\",\n    \"CustomerPaymentTerms\": \"<string>\",\n    \"DeliveryPriority\": \"<string>\",\n    \"ShippingCondition\": \"<string>\",\n    \"IncotermsClassification\": \"<string>\",\n    \"Currency\": \"<string>\",\n    \"CustomerPricingProcedure\": \"<string>\",\n    \"CustomerAccountAssignmentGroup\": \"<string>\",\n    \"CompleteDeliveryIsDefined\": \"<boolean>\",\n    \"PartialDeliveryIsAllowed\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-451fa7bf-8508-4396-85ef-a8491e068588"
+            },
+            {
+              "id": "4091b3ab-3f3a-4808-968e-09e899fdf65e",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-4091b3ab-3f3a-4808-968e-09e899fdf65e"
+            },
+            {
+              "id": "6fc3ac9a-9916-4df0-8ef2-975a42e1d3f4",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-6fc3ac9a-9916-4df0-8ef2-975a42e1d3f4"
+            },
+            {
+              "id": "dc763f6f-c766-4c55-90c2-023394b11075",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')?$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:22.000Z",
+              "updatedAt": "2026-06-05T15:16:22.000Z",
+              "uid": "35240-dc763f6f-c766-4c55-90c2-023394b11075"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:22.000Z",
+          "updatedAt": "2026-06-05T15:16:22.000Z",
+          "uid": "35240-c1fbeb08-65f1-4dc1-b94e-f33353872391"
+        }
+      ],
+      "id": "3eaff1a4-e163-4d57-92f8-52b8d42d380e",
+      "createdAt": "2026-06-05T15:16:22.000Z",
+      "updatedAt": "2026-06-05T15:16:22.000Z",
+      "uid": "35240-3eaff1a4-e163-4d57-92f8-52b8d42d380e"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+    },
+    {
+      "key": "BusinessPartner",
+      "value": "<string>"
+    },
+    {
+      "key": "Customer",
+      "value": "<string>"
+    },
+    {
+      "key": "SalesOrganization",
+      "value": "<string>"
+    },
+    {
+      "key": "DistributionChannel",
+      "value": "<string>"
+    },
+    {
+      "key": "Division",
+      "value": "<string>"
+    }
+  ]
+}

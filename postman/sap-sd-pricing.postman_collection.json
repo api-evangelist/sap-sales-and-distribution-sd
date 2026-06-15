@@ -1,0 +1,1784 @@
+{
+  "info": {
+    "_postman_id": "cc87895a-1f38-4efa-9b4a-ba1fc478a9b5",
+    "name": "SAP Sales and Distribution (SD) SAP Pricing Condition Record API",
+    "description": "Create, read, update, and delete condition records for pricing in sales. This OData service (API_SLSPRCGCONDITIONRECORD_SRV) manages sales pricing condition records including price lists, discounts, surcharges, and freight conditions used to determine prices in sales documents within SAP S/4HANA.\n\nContact Support:\n Name: SAP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:25.000Z",
+    "updatedAt": "2026-06-05T15:16:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cc87895a-1f38-4efa-9b4a-ba1fc478a9b5"
+  },
+  "item": [
+    {
+      "name": "A_SlsPrcgConditionRecord",
+      "item": [
+        {
+          "name": "Retrieve a list of pricing condition records",
+          "id": "4ce7acea-0375-45fc-98e4-4da2d92e4804",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SlsPrcgConditionRecord"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Sort order",
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated properties to include",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Navigation properties to expand",
+                  "key": "$expand",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Include total count",
+                  "key": "$inlinecount",
+                  "value": "allpages"
+                }
+              ]
+            },
+            "description": "Returns a collection of sales pricing condition records. Use OData query options to filter by condition type, material, customer, sales organization, validity dates, and other attributes."
+          },
+          "response": [
+            {
+              "id": "298adfcf-d981-4de0-84be-fee3b91a3591",
+              "name": "Successfully retrieved pricing condition records",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count",
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionSequentialNumber\": \"<string>\",\n        \"ConditionTable\": \"<string>\",\n        \"ConditionApplication\": \"<string>\",\n        \"ConditionType\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"CreatedByUser\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"ConditionRateValue\": \"<string>\",\n        \"ConditionRateValueUnit\": \"<string>\",\n        \"ConditionQuantity\": \"<string>\",\n        \"ConditionQuantityUnit\": \"<string>\",\n        \"ConditionScaleQuantity\": \"<string>\",\n        \"ConditionScaleQuantityUnit\": \"<string>\",\n        \"ConditionCalculationType\": \"<string>\",\n        \"ConditionIsDeleted\": \"<boolean>\",\n        \"PricingScaleType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"Customer\": \"<string>\"\n      },\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionSequentialNumber\": \"<string>\",\n        \"ConditionTable\": \"<string>\",\n        \"ConditionApplication\": \"<string>\",\n        \"ConditionType\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"CreatedByUser\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"ConditionRateValue\": \"<string>\",\n        \"ConditionRateValueUnit\": \"<string>\",\n        \"ConditionQuantity\": \"<string>\",\n        \"ConditionQuantityUnit\": \"<string>\",\n        \"ConditionScaleQuantity\": \"<string>\",\n        \"ConditionScaleQuantityUnit\": \"<string>\",\n        \"ConditionCalculationType\": \"<string>\",\n        \"ConditionIsDeleted\": \"<boolean>\",\n        \"PricingScaleType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"Customer\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-298adfcf-d981-4de0-84be-fee3b91a3591"
+            },
+            {
+              "id": "e5be7cea-1eb7-4b8b-a7e3-1ea0519ea303",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count",
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-e5be7cea-1eb7-4b8b-a7e3-1ea0519ea303"
+            },
+            {
+              "id": "e84065d7-5e83-47fa-a8b3-fc5e86f0233d",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count",
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-e84065d7-5e83-47fa-a8b3-fc5e86f0233d"
+            },
+            {
+              "id": "59ae420d-90b7-4aec-baa1-3e54ed2e7a75",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count",
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-59ae420d-90b7-4aec-baa1-3e54ed2e7a75"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:25.000Z",
+          "updatedAt": "2026-06-05T15:16:25.000Z",
+          "uid": "35240-4ce7acea-0375-45fc-98e4-4da2d92e4804"
+        },
+        {
+          "name": "Create a pricing condition record",
+          "id": "fbb13627-a42e-4bad-a1ef-2a9f0debb653",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ConditionType\": \"<string>\",\n  \"ConditionValidityEndDate\": \"<date>\",\n  \"ConditionValidityStartDate\": \"<date>\",\n  \"ConditionRateValue\": \"<string>\",\n  \"ConditionRateValueUnit\": \"<string>\",\n  \"ConditionQuantity\": \"<string>\",\n  \"ConditionQuantityUnit\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"Material\": \"<string>\",\n  \"Customer\": \"<string>\",\n  \"to_SlsPrcgCndnRecdValidity\": {\n    \"results\": [\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"ConditionType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\"\n      },\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"ConditionType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SlsPrcgConditionRecord"
+              ]
+            },
+            "description": "Creates a new sales pricing condition record. The request can include the condition record along with its validity periods, pricing scales, and supplements using deep insert."
+          },
+          "response": [
+            {
+              "id": "67b404ee-fc11-40c1-aa07-39481e76f322",
+              "name": "Condition record successfully created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ConditionType\": \"<string>\",\n  \"ConditionValidityEndDate\": \"<date>\",\n  \"ConditionValidityStartDate\": \"<date>\",\n  \"ConditionRateValue\": \"<string>\",\n  \"ConditionRateValueUnit\": \"<string>\",\n  \"ConditionQuantity\": \"<string>\",\n  \"ConditionQuantityUnit\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"Material\": \"<string>\",\n  \"Customer\": \"<string>\",\n  \"to_SlsPrcgCndnRecdValidity\": {\n    \"results\": [\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"ConditionType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\"\n      },\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"ConditionType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"ConditionRecord\": \"<string>\",\n    \"ConditionSequentialNumber\": \"<string>\",\n    \"ConditionTable\": \"<string>\",\n    \"ConditionApplication\": \"<string>\",\n    \"ConditionType\": \"<string>\",\n    \"ConditionValidityEndDate\": \"<date>\",\n    \"ConditionValidityStartDate\": \"<date>\",\n    \"CreatedByUser\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"ConditionRateValue\": \"<string>\",\n    \"ConditionRateValueUnit\": \"<string>\",\n    \"ConditionQuantity\": \"<string>\",\n    \"ConditionQuantityUnit\": \"<string>\",\n    \"ConditionScaleQuantity\": \"<string>\",\n    \"ConditionScaleQuantityUnit\": \"<string>\",\n    \"ConditionCalculationType\": \"<string>\",\n    \"ConditionIsDeleted\": \"<boolean>\",\n    \"PricingScaleType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"Material\": \"<string>\",\n    \"Customer\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-67b404ee-fc11-40c1-aa07-39481e76f322"
+            },
+            {
+              "id": "76300100-7d0e-4456-98bc-8585697c1342",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ConditionType\": \"<string>\",\n  \"ConditionValidityEndDate\": \"<date>\",\n  \"ConditionValidityStartDate\": \"<date>\",\n  \"ConditionRateValue\": \"<string>\",\n  \"ConditionRateValueUnit\": \"<string>\",\n  \"ConditionQuantity\": \"<string>\",\n  \"ConditionQuantityUnit\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"Material\": \"<string>\",\n  \"Customer\": \"<string>\",\n  \"to_SlsPrcgCndnRecdValidity\": {\n    \"results\": [\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"ConditionType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\"\n      },\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"ConditionType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-76300100-7d0e-4456-98bc-8585697c1342"
+            },
+            {
+              "id": "fac606e5-be54-4c9f-b401-f8b3e015ef87",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ConditionType\": \"<string>\",\n  \"ConditionValidityEndDate\": \"<date>\",\n  \"ConditionValidityStartDate\": \"<date>\",\n  \"ConditionRateValue\": \"<string>\",\n  \"ConditionRateValueUnit\": \"<string>\",\n  \"ConditionQuantity\": \"<string>\",\n  \"ConditionQuantityUnit\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"Material\": \"<string>\",\n  \"Customer\": \"<string>\",\n  \"to_SlsPrcgCndnRecdValidity\": {\n    \"results\": [\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"ConditionType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\"\n      },\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"ConditionType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-fac606e5-be54-4c9f-b401-f8b3e015ef87"
+            },
+            {
+              "id": "2a3f0f6c-071a-4063-99ee-083561ac3aed",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ConditionType\": \"<string>\",\n  \"ConditionValidityEndDate\": \"<date>\",\n  \"ConditionValidityStartDate\": \"<date>\",\n  \"ConditionRateValue\": \"<string>\",\n  \"ConditionRateValueUnit\": \"<string>\",\n  \"ConditionQuantity\": \"<string>\",\n  \"ConditionQuantityUnit\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"Material\": \"<string>\",\n  \"Customer\": \"<string>\",\n  \"to_SlsPrcgCndnRecdValidity\": {\n    \"results\": [\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"ConditionType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\"\n      },\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"ConditionType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-2a3f0f6c-071a-4063-99ee-083561ac3aed"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:25.000Z",
+          "updatedAt": "2026-06-05T15:16:25.000Z",
+          "uid": "35240-fbb13627-a42e-4bad-a1ef-2a9f0debb653"
+        }
+      ],
+      "id": "ae8132cb-b03b-446c-96f8-cc8d8b0f402c",
+      "createdAt": "2026-06-05T15:16:25.000Z",
+      "updatedAt": "2026-06-05T15:16:25.000Z",
+      "uid": "35240-ae8132cb-b03b-446c-96f8-cc8d8b0f402c"
+    },
+    {
+      "name": "A_SlsPrcgConditionRecord('{ConditionRecord}')",
+      "item": [
+        {
+          "name": "Retrieve a single pricing condition record",
+          "id": "1627c513-1481-43c1-a293-9057cb82ed51",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated properties to include",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Navigation properties to expand",
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single pricing condition record by its key. Use $expand to include validity periods, scales, and supplements."
+          },
+          "response": [
+            {
+              "id": "0b50d938-49e5-4194-b060-e05041883c55",
+              "name": "Successfully retrieved the condition record",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"ConditionRecord\": \"<string>\",\n    \"ConditionSequentialNumber\": \"<string>\",\n    \"ConditionTable\": \"<string>\",\n    \"ConditionApplication\": \"<string>\",\n    \"ConditionType\": \"<string>\",\n    \"ConditionValidityEndDate\": \"<date>\",\n    \"ConditionValidityStartDate\": \"<date>\",\n    \"CreatedByUser\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"ConditionRateValue\": \"<string>\",\n    \"ConditionRateValueUnit\": \"<string>\",\n    \"ConditionQuantity\": \"<string>\",\n    \"ConditionQuantityUnit\": \"<string>\",\n    \"ConditionScaleQuantity\": \"<string>\",\n    \"ConditionScaleQuantityUnit\": \"<string>\",\n    \"ConditionCalculationType\": \"<string>\",\n    \"ConditionIsDeleted\": \"<boolean>\",\n    \"PricingScaleType\": \"<string>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"Material\": \"<string>\",\n    \"Customer\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-0b50d938-49e5-4194-b060-e05041883c55"
+            },
+            {
+              "id": "307b5d7c-d594-48c3-bdc2-86bc11fa5828",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-307b5d7c-d594-48c3-bdc2-86bc11fa5828"
+            },
+            {
+              "id": "378e2ecf-db8c-42b1-9b8b-4c1bdb3ce91b",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-378e2ecf-db8c-42b1-9b8b-4c1bdb3ce91b"
+            },
+            {
+              "id": "fea665dd-e0ed-44cb-989f-7ea84625a842",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-fea665dd-e0ed-44cb-989f-7ea84625a842"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:25.000Z",
+          "updatedAt": "2026-06-05T15:16:25.000Z",
+          "uid": "35240-1627c513-1481-43c1-a293-9057cb82ed51"
+        },
+        {
+          "name": "Update a pricing condition record",
+          "id": "0229e5bd-ce22-40c9-8c66-802e6bc7befc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "(Required) ETag value for concurrency control",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ConditionRateValue\": \"<string>\",\n  \"ConditionRateValueUnit\": \"<string>\",\n  \"ConditionQuantity\": \"<string>\",\n  \"ConditionIsDeleted\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+              ]
+            },
+            "description": "Updates an existing pricing condition record. Only the fields included in the request body are modified."
+          },
+          "response": [
+            {
+              "id": "16bcc78f-68fe-494b-b17c-718bdd094f2a",
+              "name": "Condition record successfully updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ConditionRateValue\": \"<string>\",\n  \"ConditionRateValueUnit\": \"<string>\",\n  \"ConditionQuantity\": \"<string>\",\n  \"ConditionIsDeleted\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-16bcc78f-68fe-494b-b17c-718bdd094f2a"
+            },
+            {
+              "id": "27423bde-05ae-4bab-b639-8c288b125844",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ConditionRateValue\": \"<string>\",\n  \"ConditionRateValueUnit\": \"<string>\",\n  \"ConditionQuantity\": \"<string>\",\n  \"ConditionIsDeleted\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-27423bde-05ae-4bab-b639-8c288b125844"
+            },
+            {
+              "id": "1319ed6d-8134-4d40-8b52-bbc08aee6c18",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ConditionRateValue\": \"<string>\",\n  \"ConditionRateValueUnit\": \"<string>\",\n  \"ConditionQuantity\": \"<string>\",\n  \"ConditionIsDeleted\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-1319ed6d-8134-4d40-8b52-bbc08aee6c18"
+            },
+            {
+              "id": "ff264704-04df-4209-b099-9ec068d70343",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ConditionRateValue\": \"<string>\",\n  \"ConditionRateValueUnit\": \"<string>\",\n  \"ConditionQuantity\": \"<string>\",\n  \"ConditionIsDeleted\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-ff264704-04df-4209-b099-9ec068d70343"
+            },
+            {
+              "id": "d2e82c26-eaf4-4598-95b1-668f9acec0aa",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ConditionRateValue\": \"<string>\",\n  \"ConditionRateValueUnit\": \"<string>\",\n  \"ConditionQuantity\": \"<string>\",\n  \"ConditionIsDeleted\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-d2e82c26-eaf4-4598-95b1-668f9acec0aa"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:25.000Z",
+          "updatedAt": "2026-06-05T15:16:25.000Z",
+          "uid": "35240-0229e5bd-ce22-40c9-8c66-802e6bc7befc"
+        },
+        {
+          "name": "Delete a pricing condition record",
+          "id": "32b1083a-7170-49fb-870f-f2fb27f4b9fb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "description": "(Required) ETag value for concurrency control",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+              ]
+            },
+            "description": "Deletes an existing pricing condition record."
+          },
+          "response": [
+            {
+              "id": "9261f13f-8139-496d-8e3e-e9102a4f79b0",
+              "name": "Condition record successfully deleted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-9261f13f-8139-496d-8e3e-e9102a4f79b0"
+            },
+            {
+              "id": "5602993f-ed29-4c53-90ba-e55712df90c1",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-5602993f-ed29-4c53-90ba-e55712df90c1"
+            },
+            {
+              "id": "7f809e3b-ad6a-48e2-8394-3565197e8d40",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-7f809e3b-ad6a-48e2-8394-3565197e8d40"
+            },
+            {
+              "id": "6097297c-dda2-4542-9eb1-bb11d6414433",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgConditionRecord('{{ConditionRecord}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgConditionRecord('{{ConditionRecord}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-6097297c-dda2-4542-9eb1-bb11d6414433"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:25.000Z",
+          "updatedAt": "2026-06-05T15:16:25.000Z",
+          "uid": "35240-32b1083a-7170-49fb-870f-f2fb27f4b9fb"
+        }
+      ],
+      "id": "490cae5d-6ffd-44a9-bf15-f218f5d7e25e",
+      "createdAt": "2026-06-05T15:16:25.000Z",
+      "updatedAt": "2026-06-05T15:16:25.000Z",
+      "uid": "35240-490cae5d-6ffd-44a9-bf15-f218f5d7e25e"
+    },
+    {
+      "name": "A_SlsPrcgCndnRecdValidity",
+      "item": [
+        {
+          "name": "Retrieve condition record validity periods",
+          "id": "1b522d19-54c3-460d-8473-2b8a00f86902",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_SlsPrcgCndnRecdValidity?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_SlsPrcgCndnRecdValidity"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated properties to include",
+                  "key": "$select",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a collection of validity records that define the time ranges and key field combinations for condition records."
+          },
+          "response": [
+            {
+              "id": "0c2393bf-9583-40e6-969a-71d7e06713c0",
+              "name": "Successfully retrieved validity records",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgCndnRecdValidity?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgCndnRecdValidity"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"ConditionType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\"\n      },\n      {\n        \"ConditionRecord\": \"<string>\",\n        \"ConditionValidityEndDate\": \"<date>\",\n        \"ConditionValidityStartDate\": \"<date>\",\n        \"ConditionType\": \"<string>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Material\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-0c2393bf-9583-40e6-969a-71d7e06713c0"
+            },
+            {
+              "id": "49cd9c52-cfe3-423a-9515-345c786c3124",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgCndnRecdValidity?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgCndnRecdValidity"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-49cd9c52-cfe3-423a-9515-345c786c3124"
+            },
+            {
+              "id": "43120b4f-3b64-4c82-af16-cb1503d22205",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_SlsPrcgCndnRecdValidity?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_SlsPrcgCndnRecdValidity"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:25.000Z",
+              "updatedAt": "2026-06-05T15:16:25.000Z",
+              "uid": "35240-43120b4f-3b64-4c82-af16-cb1503d22205"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:25.000Z",
+          "updatedAt": "2026-06-05T15:16:25.000Z",
+          "uid": "35240-1b522d19-54c3-460d-8473-2b8a00f86902"
+        }
+      ],
+      "id": "e34bb373-95d3-4cbe-b1f7-6ca39e4066dc",
+      "createdAt": "2026-06-05T15:16:25.000Z",
+      "updatedAt": "2026-06-05T15:16:25.000Z",
+      "uid": "35240-e34bb373-95d3-4cbe-b1f7-6ca39e4066dc"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SLSPRCGCONDITIONRECORD_SRV"
+    },
+    {
+      "key": "ConditionRecord",
+      "value": "<string>"
+    }
+  ]
+}

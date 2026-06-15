@@ -1,0 +1,2637 @@
+{
+  "info": {
+    "_postman_id": "04e59cd4-6653-4321-968a-aeb9bb065fc1",
+    "name": "SAP Sales and Distribution (SD) SAP Outbound Delivery API",
+    "description": "Create and manage outbound deliveries, goods issue, and shipping documents in SAP S/4HANA. This OData service (API_OUTBOUND_DELIVERY_SRV) supports delivery creation with reference to sales orders, picking confirmation, goods issue posting, and subsequent logistics processing. Part of the Delivery Processing Integration (SAP_COM_0106) communication scenario.\n\nContact Support:\n Name: SAP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:23.000Z",
+    "updatedAt": "2026-06-05T15:16:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-04e59cd4-6653-4321-968a-aeb9bb065fc1"
+  },
+  "item": [
+    {
+      "name": "A_OutbDeliveryHeader",
+      "item": [
+        {
+          "name": "Retrieve a list of outbound deliveries",
+          "id": "42af3369-9909-419d-820b-dafdc440e5ef",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_OutbDeliveryHeader?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_OutbDeliveryHeader"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Sort order",
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated properties to include",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Navigation properties to expand",
+                  "key": "$expand",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Include total count",
+                  "key": "$inlinecount",
+                  "value": "none"
+                }
+              ]
+            },
+            "description": "Returns a collection of outbound delivery headers. Supports OData query options for filtering by delivery date, shipping point, sold-to party, delivery status, and other attributes."
+          },
+          "response": [
+            {
+              "id": "3f6cf243-f655-4e65-952e-cfe7178f75ee",
+              "name": "Successfully retrieved outbound deliveries",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count",
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"DeliveryDocument\": \"<string>\",\n        \"DeliveryDocumentBySupplier\": \"<string>\",\n        \"DeliveryDocumentType\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"ShipToParty\": \"<string>\",\n        \"ShippingPoint\": \"<string>\",\n        \"DeliveryDate\": \"<date>\",\n        \"ActualDeliveryRoute\": \"<string>\",\n        \"DeliveryBlockReason\": \"<string>\",\n        \"DeliveryPriority\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"CreationTime\": \"<string>\",\n        \"CreatedByUser\": \"<string>\",\n        \"ActualGoodsMovementDate\": \"<date>\",\n        \"ActualGoodsMovementTime\": \"<string>\",\n        \"GoodsIssueOrReceiptSlipNumber\": \"<string>\",\n        \"BillingDocumentDate\": \"<date>\",\n        \"CompleteDeliveryIsDefined\": \"<boolean>\",\n        \"OverallDelivConfStatus\": \"<string>\",\n        \"OverallGoodsMovementStatus\": \"<string>\",\n        \"OverallPackingStatus\": \"<string>\",\n        \"OverallPickingConfStatus\": \"<string>\",\n        \"OverallPickingStatus\": \"<string>\",\n        \"TotalNumberOfPackage\": \"<string>\",\n        \"TransportationPlanningDate\": \"<date>\"\n      },\n      {\n        \"DeliveryDocument\": \"<string>\",\n        \"DeliveryDocumentBySupplier\": \"<string>\",\n        \"DeliveryDocumentType\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"ShipToParty\": \"<string>\",\n        \"ShippingPoint\": \"<string>\",\n        \"DeliveryDate\": \"<date>\",\n        \"ActualDeliveryRoute\": \"<string>\",\n        \"DeliveryBlockReason\": \"<string>\",\n        \"DeliveryPriority\": \"<string>\",\n        \"CreationDate\": \"<date>\",\n        \"CreationTime\": \"<string>\",\n        \"CreatedByUser\": \"<string>\",\n        \"ActualGoodsMovementDate\": \"<date>\",\n        \"ActualGoodsMovementTime\": \"<string>\",\n        \"GoodsIssueOrReceiptSlipNumber\": \"<string>\",\n        \"BillingDocumentDate\": \"<date>\",\n        \"CompleteDeliveryIsDefined\": \"<boolean>\",\n        \"OverallDelivConfStatus\": \"<string>\",\n        \"OverallGoodsMovementStatus\": \"<string>\",\n        \"OverallPackingStatus\": \"<string>\",\n        \"OverallPickingConfStatus\": \"<string>\",\n        \"OverallPickingStatus\": \"<string>\",\n        \"TotalNumberOfPackage\": \"<string>\",\n        \"TransportationPlanningDate\": \"<date>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-3f6cf243-f655-4e65-952e-cfe7178f75ee"
+            },
+            {
+              "id": "3e6464d3-4eb3-4af9-bc26-6b3049c59906",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count",
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-3e6464d3-4eb3-4af9-bc26-6b3049c59906"
+            },
+            {
+              "id": "84a62e5b-d99c-456d-b8a9-2654ad43347e",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count",
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-84a62e5b-d99c-456d-b8a9-2654ad43347e"
+            },
+            {
+              "id": "a3431fef-02dd-4e1d-9ebf-e8d804319945",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=none",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count",
+                      "key": "$inlinecount",
+                      "value": "none"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-a3431fef-02dd-4e1d-9ebf-e8d804319945"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:23.000Z",
+          "updatedAt": "2026-06-05T15:16:23.000Z",
+          "uid": "35240-42af3369-9909-419d-820b-dafdc440e5ef"
+        },
+        {
+          "name": "Create a new outbound delivery",
+          "id": "8bac2270-1f9e-4222-806c-39959438ae14",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"DeliveryDocumentType\": \"<string>\",\n  \"ShippingPoint\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"DeliveryDate\": \"<date>\",\n  \"to_DeliveryDocumentItem\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ActualDeliveryQuantity\": \"<string>\",\n        \"DeliveryQuantityUnit\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ActualDeliveryQuantity\": \"<string>\",\n        \"DeliveryQuantityUnit\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_OutbDeliveryHeader",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_OutbDeliveryHeader"
+              ]
+            },
+            "description": "Creates a new outbound delivery, typically with reference to a sales order. The delivery can be created with header and item data in a single deep insert request."
+          },
+          "response": [
+            {
+              "id": "9e2fca27-18cf-479e-9fb4-eb26d2675612",
+              "name": "Outbound delivery successfully created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DeliveryDocumentType\": \"<string>\",\n  \"ShippingPoint\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"DeliveryDate\": \"<date>\",\n  \"to_DeliveryDocumentItem\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ActualDeliveryQuantity\": \"<string>\",\n        \"DeliveryQuantityUnit\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ActualDeliveryQuantity\": \"<string>\",\n        \"DeliveryQuantityUnit\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"DeliveryDocument\": \"<string>\",\n    \"DeliveryDocumentBySupplier\": \"<string>\",\n    \"DeliveryDocumentType\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"ShipToParty\": \"<string>\",\n    \"ShippingPoint\": \"<string>\",\n    \"DeliveryDate\": \"<date>\",\n    \"ActualDeliveryRoute\": \"<string>\",\n    \"DeliveryBlockReason\": \"<string>\",\n    \"DeliveryPriority\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"CreationTime\": \"<string>\",\n    \"CreatedByUser\": \"<string>\",\n    \"ActualGoodsMovementDate\": \"<date>\",\n    \"ActualGoodsMovementTime\": \"<string>\",\n    \"GoodsIssueOrReceiptSlipNumber\": \"<string>\",\n    \"BillingDocumentDate\": \"<date>\",\n    \"CompleteDeliveryIsDefined\": \"<boolean>\",\n    \"OverallDelivConfStatus\": \"<string>\",\n    \"OverallGoodsMovementStatus\": \"<string>\",\n    \"OverallPackingStatus\": \"<string>\",\n    \"OverallPickingConfStatus\": \"<string>\",\n    \"OverallPickingStatus\": \"<string>\",\n    \"TotalNumberOfPackage\": \"<string>\",\n    \"TransportationPlanningDate\": \"<date>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-9e2fca27-18cf-479e-9fb4-eb26d2675612"
+            },
+            {
+              "id": "27b9d82b-0f54-4962-9970-8256c2c4a473",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DeliveryDocumentType\": \"<string>\",\n  \"ShippingPoint\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"DeliveryDate\": \"<date>\",\n  \"to_DeliveryDocumentItem\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ActualDeliveryQuantity\": \"<string>\",\n        \"DeliveryQuantityUnit\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ActualDeliveryQuantity\": \"<string>\",\n        \"DeliveryQuantityUnit\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-27b9d82b-0f54-4962-9970-8256c2c4a473"
+            },
+            {
+              "id": "ae598fa8-6fff-434b-91c9-901ecbd5d808",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DeliveryDocumentType\": \"<string>\",\n  \"ShippingPoint\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"DeliveryDate\": \"<date>\",\n  \"to_DeliveryDocumentItem\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ActualDeliveryQuantity\": \"<string>\",\n        \"DeliveryQuantityUnit\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ActualDeliveryQuantity\": \"<string>\",\n        \"DeliveryQuantityUnit\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-ae598fa8-6fff-434b-91c9-901ecbd5d808"
+            },
+            {
+              "id": "5ee62532-c0bf-4124-a4cf-091d310b7ba1",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DeliveryDocumentType\": \"<string>\",\n  \"ShippingPoint\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"DeliveryDate\": \"<date>\",\n  \"to_DeliveryDocumentItem\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ActualDeliveryQuantity\": \"<string>\",\n        \"DeliveryQuantityUnit\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"ActualDeliveryQuantity\": \"<string>\",\n        \"DeliveryQuantityUnit\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-5ee62532-c0bf-4124-a4cf-091d310b7ba1"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:23.000Z",
+          "updatedAt": "2026-06-05T15:16:23.000Z",
+          "uid": "35240-8bac2270-1f9e-4222-806c-39959438ae14"
+        }
+      ],
+      "id": "fe7c48d0-adcc-4fdd-89fc-adbab2364be5",
+      "createdAt": "2026-06-05T15:16:23.000Z",
+      "updatedAt": "2026-06-05T15:16:23.000Z",
+      "uid": "35240-fe7c48d0-adcc-4fdd-89fc-adbab2364be5"
+    },
+    {
+      "name": "A_OutbDeliveryHeader('{DeliveryDocument}')",
+      "item": [
+        {
+          "name": "to_DeliveryDocumentItem",
+          "item": [
+            {
+              "name": "Retrieve items for an outbound delivery",
+              "id": "f168c1ca-6e19-40cb-94e1-6f0eaca4728c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')/to_DeliveryDocumentItem?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                    "to_DeliveryDocumentItem"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of line items for the specified outbound delivery."
+              },
+              "response": [
+                {
+                  "id": "1df90d62-e8f9-429b-ac53-6193b832b407",
+                  "name": "Successfully retrieved delivery items",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')/to_DeliveryDocumentItem?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                        "to_DeliveryDocumentItem"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"DeliveryDocument\": \"<string>\",\n        \"DeliveryDocumentItem\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"MaterialGroup\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"StorageLocation\": \"<string>\",\n        \"Batch\": \"<string>\",\n        \"ActualDeliveryQuantity\": \"<string>\",\n        \"DeliveryQuantityUnit\": \"<string>\",\n        \"ItemNetWeight\": \"<string>\",\n        \"ItemGrossWeight\": \"<string>\",\n        \"ItemWeightUnit\": \"<string>\",\n        \"ItemVolume\": \"<string>\",\n        \"ItemVolumeUnit\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\",\n        \"PickedQuantityInSalesUnit\": \"<string>\",\n        \"PickingConfirmationStatus\": \"<string>\",\n        \"GoodsMovementStatus\": \"<string>\"\n      },\n      {\n        \"DeliveryDocument\": \"<string>\",\n        \"DeliveryDocumentItem\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"MaterialGroup\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"StorageLocation\": \"<string>\",\n        \"Batch\": \"<string>\",\n        \"ActualDeliveryQuantity\": \"<string>\",\n        \"DeliveryQuantityUnit\": \"<string>\",\n        \"ItemNetWeight\": \"<string>\",\n        \"ItemGrossWeight\": \"<string>\",\n        \"ItemWeightUnit\": \"<string>\",\n        \"ItemVolume\": \"<string>\",\n        \"ItemVolumeUnit\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\",\n        \"PickedQuantityInSalesUnit\": \"<string>\",\n        \"PickingConfirmationStatus\": \"<string>\",\n        \"GoodsMovementStatus\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:23.000Z",
+                  "updatedAt": "2026-06-05T15:16:23.000Z",
+                  "uid": "35240-1df90d62-e8f9-429b-ac53-6193b832b407"
+                },
+                {
+                  "id": "8441bc18-e6f8-4504-b067-d933f0b4bc3b",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')/to_DeliveryDocumentItem?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                        "to_DeliveryDocumentItem"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:23.000Z",
+                  "updatedAt": "2026-06-05T15:16:23.000Z",
+                  "uid": "35240-8441bc18-e6f8-4504-b067-d933f0b4bc3b"
+                },
+                {
+                  "id": "eab11969-2fcf-447e-a27e-e2fbdf442dc1",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')/to_DeliveryDocumentItem?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                        "to_DeliveryDocumentItem"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:23.000Z",
+                  "updatedAt": "2026-06-05T15:16:23.000Z",
+                  "uid": "35240-eab11969-2fcf-447e-a27e-e2fbdf442dc1"
+                },
+                {
+                  "id": "97da5e10-5fb2-47f6-8d23-4098b9e5c345",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')/to_DeliveryDocumentItem?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                        "to_DeliveryDocumentItem"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:23.000Z",
+                  "updatedAt": "2026-06-05T15:16:23.000Z",
+                  "uid": "35240-97da5e10-5fb2-47f6-8d23-4098b9e5c345"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-f168c1ca-6e19-40cb-94e1-6f0eaca4728c"
+            }
+          ],
+          "id": "2a7e91f3-712a-4b59-bc4a-9e6d47c33588",
+          "createdAt": "2026-06-05T15:16:23.000Z",
+          "updatedAt": "2026-06-05T15:16:23.000Z",
+          "uid": "35240-2a7e91f3-712a-4b59-bc4a-9e6d47c33588"
+        },
+        {
+          "name": "to_DeliveryDocumentPartner",
+          "item": [
+            {
+              "name": "Retrieve partners for an outbound delivery",
+              "id": "f60b7206-abeb-4e0b-b918-99920a73c289",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')/to_DeliveryDocumentPartner?$top=<integer>&$skip=<integer>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                    "to_DeliveryDocumentPartner"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of business partners associated with the delivery."
+              },
+              "response": [
+                {
+                  "id": "7664fae6-4615-4829-9f54-ee402f858e39",
+                  "name": "Successfully retrieved delivery partners",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')/to_DeliveryDocumentPartner?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                        "to_DeliveryDocumentPartner"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"PartnerFunction\": \"<string>\",\n        \"SDDocument\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\"\n      },\n      {\n        \"PartnerFunction\": \"<string>\",\n        \"SDDocument\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:23.000Z",
+                  "updatedAt": "2026-06-05T15:16:23.000Z",
+                  "uid": "35240-7664fae6-4615-4829-9f54-ee402f858e39"
+                },
+                {
+                  "id": "291d723e-bb51-4a01-95cd-2be818da685a",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')/to_DeliveryDocumentPartner?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                        "to_DeliveryDocumentPartner"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:23.000Z",
+                  "updatedAt": "2026-06-05T15:16:23.000Z",
+                  "uid": "35240-291d723e-bb51-4a01-95cd-2be818da685a"
+                },
+                {
+                  "id": "7494b464-34a9-47df-8951-af58fa1ca97c",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')/to_DeliveryDocumentPartner?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                        "to_DeliveryDocumentPartner"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:23.000Z",
+                  "updatedAt": "2026-06-05T15:16:23.000Z",
+                  "uid": "35240-7494b464-34a9-47df-8951-af58fa1ca97c"
+                },
+                {
+                  "id": "67947469-3fb6-4a4f-8dd3-c407f3875dd7",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')/to_DeliveryDocumentPartner?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                        "to_DeliveryDocumentPartner"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:23.000Z",
+                  "updatedAt": "2026-06-05T15:16:23.000Z",
+                  "uid": "35240-67947469-3fb6-4a4f-8dd3-c407f3875dd7"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-f60b7206-abeb-4e0b-b918-99920a73c289"
+            }
+          ],
+          "id": "8cd630d4-e86d-43e5-99b1-98f5e2f9ab08",
+          "createdAt": "2026-06-05T15:16:23.000Z",
+          "updatedAt": "2026-06-05T15:16:23.000Z",
+          "uid": "35240-8cd630d4-e86d-43e5-99b1-98f5e2f9ab08"
+        },
+        {
+          "name": "Retrieve a single outbound delivery",
+          "id": "e861f0d6-f3c6-4303-8fac-58f8a848147c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated properties to include",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Navigation properties to expand",
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single outbound delivery header by its delivery document number. Use $expand to include items, partners, and addresses."
+          },
+          "response": [
+            {
+              "id": "1bc5adf4-8783-4655-86e1-289d45000a73",
+              "name": "Successfully retrieved the outbound delivery",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"DeliveryDocument\": \"<string>\",\n    \"DeliveryDocumentBySupplier\": \"<string>\",\n    \"DeliveryDocumentType\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"ShipToParty\": \"<string>\",\n    \"ShippingPoint\": \"<string>\",\n    \"DeliveryDate\": \"<date>\",\n    \"ActualDeliveryRoute\": \"<string>\",\n    \"DeliveryBlockReason\": \"<string>\",\n    \"DeliveryPriority\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"CreationTime\": \"<string>\",\n    \"CreatedByUser\": \"<string>\",\n    \"ActualGoodsMovementDate\": \"<date>\",\n    \"ActualGoodsMovementTime\": \"<string>\",\n    \"GoodsIssueOrReceiptSlipNumber\": \"<string>\",\n    \"BillingDocumentDate\": \"<date>\",\n    \"CompleteDeliveryIsDefined\": \"<boolean>\",\n    \"OverallDelivConfStatus\": \"<string>\",\n    \"OverallGoodsMovementStatus\": \"<string>\",\n    \"OverallPackingStatus\": \"<string>\",\n    \"OverallPickingConfStatus\": \"<string>\",\n    \"OverallPickingStatus\": \"<string>\",\n    \"TotalNumberOfPackage\": \"<string>\",\n    \"TransportationPlanningDate\": \"<date>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-1bc5adf4-8783-4655-86e1-289d45000a73"
+            },
+            {
+              "id": "4d5b89f3-d951-43bc-9071-fd451bed7c9b",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-4d5b89f3-d951-43bc-9071-fd451bed7c9b"
+            },
+            {
+              "id": "0869a642-f286-44e6-bcfd-172c8a975952",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-0869a642-f286-44e6-bcfd-172c8a975952"
+            },
+            {
+              "id": "70f095fe-d9d7-4a5b-abb3-ef4a8b714c7c",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-70f095fe-d9d7-4a5b-abb3-ef4a8b714c7c"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:23.000Z",
+          "updatedAt": "2026-06-05T15:16:23.000Z",
+          "uid": "35240-e861f0d6-f3c6-4303-8fac-58f8a848147c"
+        },
+        {
+          "name": "Update an outbound delivery",
+          "id": "70460597-90df-478d-9fdb-4d2f5212b3fb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "description": "(Required) ETag value for concurrency control",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"DeliveryDate\": \"<date>\",\n  \"DeliveryBlockReason\": \"<string>\",\n  \"ActualDeliveryRoute\": \"<string>\",\n  \"DeliveryPriority\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+              ]
+            },
+            "description": "Updates an existing outbound delivery header. Only the fields included in the request body are modified."
+          },
+          "response": [
+            {
+              "id": "2c30d4ce-9652-411f-9174-2cfe4d5779f2",
+              "name": "Outbound delivery successfully updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DeliveryDate\": \"<date>\",\n  \"DeliveryBlockReason\": \"<string>\",\n  \"ActualDeliveryRoute\": \"<string>\",\n  \"DeliveryPriority\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-2c30d4ce-9652-411f-9174-2cfe4d5779f2"
+            },
+            {
+              "id": "e63a1e46-1890-4ebb-b1c9-50620de285a7",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DeliveryDate\": \"<date>\",\n  \"DeliveryBlockReason\": \"<string>\",\n  \"ActualDeliveryRoute\": \"<string>\",\n  \"DeliveryPriority\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-e63a1e46-1890-4ebb-b1c9-50620de285a7"
+            },
+            {
+              "id": "fad94b9c-f62b-447f-9939-867405b97bfa",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DeliveryDate\": \"<date>\",\n  \"DeliveryBlockReason\": \"<string>\",\n  \"ActualDeliveryRoute\": \"<string>\",\n  \"DeliveryPriority\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-fad94b9c-f62b-447f-9939-867405b97bfa"
+            },
+            {
+              "id": "974286e8-64ce-4e2e-a5bf-95f0c001ac10",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DeliveryDate\": \"<date>\",\n  \"DeliveryBlockReason\": \"<string>\",\n  \"ActualDeliveryRoute\": \"<string>\",\n  \"DeliveryPriority\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-974286e8-64ce-4e2e-a5bf-95f0c001ac10"
+            },
+            {
+              "id": "d19b02cf-e3ba-44ea-a588-7511fd02d64e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DeliveryDate\": \"<date>\",\n  \"DeliveryBlockReason\": \"<string>\",\n  \"ActualDeliveryRoute\": \"<string>\",\n  \"DeliveryPriority\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-d19b02cf-e3ba-44ea-a588-7511fd02d64e"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:23.000Z",
+          "updatedAt": "2026-06-05T15:16:23.000Z",
+          "uid": "35240-70460597-90df-478d-9fdb-4d2f5212b3fb"
+        },
+        {
+          "name": "Delete an outbound delivery",
+          "id": "2d98f86f-5182-463f-ba65-7ff0dc7d19d3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "description": "(Required) ETag value for concurrency control",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+              ]
+            },
+            "description": "Deletes an existing outbound delivery document."
+          },
+          "response": [
+            {
+              "id": "fbf957f7-373e-459a-941c-2dffc665bdcd",
+              "name": "Outbound delivery successfully deleted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-fbf957f7-373e-459a-941c-2dffc665bdcd"
+            },
+            {
+              "id": "5063b6a9-168e-4e3f-9dad-b74ad30e4672",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-5063b6a9-168e-4e3f-9dad-b74ad30e4672"
+            },
+            {
+              "id": "17b6876e-0e57-42a5-92e6-5f5c9f2422f3",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-17b6876e-0e57-42a5-92e6-5f5c9f2422f3"
+            },
+            {
+              "id": "6e1baf3f-2c5f-4366-9442-34d1c905bb0f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-6e1baf3f-2c5f-4366-9442-34d1c905bb0f"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:23.000Z",
+          "updatedAt": "2026-06-05T15:16:23.000Z",
+          "uid": "35240-2d98f86f-5182-463f-ba65-7ff0dc7d19d3"
+        }
+      ],
+      "id": "408c7971-68f8-4441-b29c-623efa10acea",
+      "createdAt": "2026-06-05T15:16:23.000Z",
+      "updatedAt": "2026-06-05T15:16:23.000Z",
+      "uid": "35240-408c7971-68f8-4441-b29c-623efa10acea"
+    },
+    {
+      "name": "PostGoodsIssue",
+      "item": [
+        {
+          "name": "Post goods issue for an outbound delivery",
+          "id": "f9d35b8d-eb65-453e-a7f6-44a2957e9c4f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/PostGoodsIssue?DeliveryDocument=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "PostGoodsIssue"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Delivery document number for goods issue",
+                  "key": "DeliveryDocument",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Triggers the goods issue posting for the specified outbound delivery. This operation updates inventory and creates material documents."
+          },
+          "response": [
+            {
+              "id": "28595ef6-415a-4edf-a83e-d527a037ec5c",
+              "name": "Goods issue successfully posted",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/PostGoodsIssue?DeliveryDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "PostGoodsIssue"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Delivery document number for goods issue",
+                      "key": "DeliveryDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"DeliveryDocument\": \"<string>\",\n    \"DeliveryDocumentBySupplier\": \"<string>\",\n    \"DeliveryDocumentType\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"ShipToParty\": \"<string>\",\n    \"ShippingPoint\": \"<string>\",\n    \"DeliveryDate\": \"<date>\",\n    \"ActualDeliveryRoute\": \"<string>\",\n    \"DeliveryBlockReason\": \"<string>\",\n    \"DeliveryPriority\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"CreationTime\": \"<string>\",\n    \"CreatedByUser\": \"<string>\",\n    \"ActualGoodsMovementDate\": \"<date>\",\n    \"ActualGoodsMovementTime\": \"<string>\",\n    \"GoodsIssueOrReceiptSlipNumber\": \"<string>\",\n    \"BillingDocumentDate\": \"<date>\",\n    \"CompleteDeliveryIsDefined\": \"<boolean>\",\n    \"OverallDelivConfStatus\": \"<string>\",\n    \"OverallGoodsMovementStatus\": \"<string>\",\n    \"OverallPackingStatus\": \"<string>\",\n    \"OverallPickingConfStatus\": \"<string>\",\n    \"OverallPickingStatus\": \"<string>\",\n    \"TotalNumberOfPackage\": \"<string>\",\n    \"TransportationPlanningDate\": \"<date>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-28595ef6-415a-4edf-a83e-d527a037ec5c"
+            },
+            {
+              "id": "8efe7a5b-34d7-4ecc-a574-609783fcfe06",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/PostGoodsIssue?DeliveryDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "PostGoodsIssue"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Delivery document number for goods issue",
+                      "key": "DeliveryDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-8efe7a5b-34d7-4ecc-a574-609783fcfe06"
+            },
+            {
+              "id": "861865c7-0ff9-4e27-abc1-f863233a9202",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/PostGoodsIssue?DeliveryDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "PostGoodsIssue"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Delivery document number for goods issue",
+                      "key": "DeliveryDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-861865c7-0ff9-4e27-abc1-f863233a9202"
+            },
+            {
+              "id": "7cd5ef3b-7240-4759-9dbe-3d46fb204284",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/PostGoodsIssue?DeliveryDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "PostGoodsIssue"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Delivery document number for goods issue",
+                      "key": "DeliveryDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-7cd5ef3b-7240-4759-9dbe-3d46fb204284"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:23.000Z",
+          "updatedAt": "2026-06-05T15:16:23.000Z",
+          "uid": "35240-f9d35b8d-eb65-453e-a7f6-44a2957e9c4f"
+        }
+      ],
+      "id": "0d2f724b-0758-4414-9024-3de8ffedf83b",
+      "createdAt": "2026-06-05T15:16:23.000Z",
+      "updatedAt": "2026-06-05T15:16:23.000Z",
+      "uid": "35240-0d2f724b-0758-4414-9024-3de8ffedf83b"
+    },
+    {
+      "name": "ReverseGoodsIssue",
+      "item": [
+        {
+          "name": "Reverse goods issue for an outbound delivery",
+          "id": "6b9ef58b-09d0-451c-9177-54201523366b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ReverseGoodsIssue?DeliveryDocument=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ReverseGoodsIssue"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Delivery document number",
+                  "key": "DeliveryDocument",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Reverses a previously posted goods issue for the specified delivery."
+          },
+          "response": [
+            {
+              "id": "a18b4c64-895b-44f9-a4c6-9934a9ed3144",
+              "name": "Goods issue successfully reversed",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ReverseGoodsIssue?DeliveryDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ReverseGoodsIssue"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Delivery document number",
+                      "key": "DeliveryDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"DeliveryDocument\": \"<string>\",\n    \"DeliveryDocumentBySupplier\": \"<string>\",\n    \"DeliveryDocumentType\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"ShipToParty\": \"<string>\",\n    \"ShippingPoint\": \"<string>\",\n    \"DeliveryDate\": \"<date>\",\n    \"ActualDeliveryRoute\": \"<string>\",\n    \"DeliveryBlockReason\": \"<string>\",\n    \"DeliveryPriority\": \"<string>\",\n    \"CreationDate\": \"<date>\",\n    \"CreationTime\": \"<string>\",\n    \"CreatedByUser\": \"<string>\",\n    \"ActualGoodsMovementDate\": \"<date>\",\n    \"ActualGoodsMovementTime\": \"<string>\",\n    \"GoodsIssueOrReceiptSlipNumber\": \"<string>\",\n    \"BillingDocumentDate\": \"<date>\",\n    \"CompleteDeliveryIsDefined\": \"<boolean>\",\n    \"OverallDelivConfStatus\": \"<string>\",\n    \"OverallGoodsMovementStatus\": \"<string>\",\n    \"OverallPackingStatus\": \"<string>\",\n    \"OverallPickingConfStatus\": \"<string>\",\n    \"OverallPickingStatus\": \"<string>\",\n    \"TotalNumberOfPackage\": \"<string>\",\n    \"TransportationPlanningDate\": \"<date>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-a18b4c64-895b-44f9-a4c6-9934a9ed3144"
+            },
+            {
+              "id": "5065acc1-30a8-4d45-a128-f302e23e078a",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ReverseGoodsIssue?DeliveryDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ReverseGoodsIssue"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Delivery document number",
+                      "key": "DeliveryDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-5065acc1-30a8-4d45-a128-f302e23e078a"
+            },
+            {
+              "id": "916dfdc4-855d-4783-a59a-e113866b6cf1",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ReverseGoodsIssue?DeliveryDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ReverseGoodsIssue"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Delivery document number",
+                      "key": "DeliveryDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-916dfdc4-855d-4783-a59a-e113866b6cf1"
+            },
+            {
+              "id": "ee0c998b-9600-4b61-9d0a-864fd8925ee7",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ReverseGoodsIssue?DeliveryDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ReverseGoodsIssue"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Delivery document number",
+                      "key": "DeliveryDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:23.000Z",
+              "updatedAt": "2026-06-05T15:16:23.000Z",
+              "uid": "35240-ee0c998b-9600-4b61-9d0a-864fd8925ee7"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:23.000Z",
+          "updatedAt": "2026-06-05T15:16:23.000Z",
+          "uid": "35240-6b9ef58b-09d0-451c-9177-54201523366b"
+        }
+      ],
+      "id": "bf7fde84-9164-49bd-9748-7bec6d4ad873",
+      "createdAt": "2026-06-05T15:16:23.000Z",
+      "updatedAt": "2026-06-05T15:16:23.000Z",
+      "uid": "35240-bf7fde84-9164-49bd-9748-7bec6d4ad873"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV"
+    },
+    {
+      "key": "DeliveryDocument",
+      "value": "<string>"
+    }
+  ]
+}

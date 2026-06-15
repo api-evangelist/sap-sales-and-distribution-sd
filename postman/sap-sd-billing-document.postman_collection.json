@@ -1,0 +1,1807 @@
+{
+  "info": {
+    "_postman_id": "e357e421-f4a2-4213-af29-41ccdfb8f52d",
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document API",
+    "description": "Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.\n\nContact Support:\n Name: SAP Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:16:24.000Z",
+    "updatedAt": "2026-06-05T15:16:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e357e421-f4a2-4213-af29-41ccdfb8f52d"
+  },
+  "item": [
+    {
+      "name": "A_BillingDocument",
+      "item": [
+        {
+          "name": "Retrieve a list of billing documents",
+          "id": "ffe94836-9482-498a-ab1d-94cd632a404a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_BillingDocument?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_BillingDocument"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "OData filter expression",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Sort order",
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated properties to include",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Navigation properties to expand",
+                  "key": "$expand",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Include total count",
+                  "key": "$inlinecount",
+                  "value": "allpages"
+                }
+              ]
+            },
+            "description": "Returns a collection of billing document headers. Use OData query options to filter by billing date, billing type, sales organization, customer, or cancellation status."
+          },
+          "response": [
+            {
+              "id": "e4b1d43e-83c4-41aa-8bd3-dab29ce68268",
+              "name": "Successfully retrieved billing documents",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BillingDocument?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BillingDocument"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count",
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"BillingDocument\": \"<string>\",\n        \"BillingDocumentType\": \"<string>\",\n        \"BillingDocumentCategory\": \"<string>\",\n        \"SDDocumentCategory\": \"<string>\",\n        \"BillingDocumentDate\": \"<date>\",\n        \"CreationDate\": \"<date>\",\n        \"CreationTime\": \"<string>\",\n        \"LastChangeDate\": \"<date>\",\n        \"LastChangeDateTime\": \"<dateTime>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Division\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"PayerParty\": \"<string>\",\n        \"TotalNetAmount\": \"<string>\",\n        \"TotalGrossAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"TotalTaxAmount\": \"<string>\",\n        \"CustomerPaymentTerms\": \"<string>\",\n        \"PaymentMethod\": \"<string>\",\n        \"BillingDocumentIsCancelled\": \"<boolean>\",\n        \"CancelledBillingDocument\": \"<string>\",\n        \"AccountingDocument\": \"<string>\",\n        \"AccountingPostingStatus\": \"<string>\",\n        \"IncotermsClassification\": \"<string>\",\n        \"CompanyCode\": \"<string>\"\n      },\n      {\n        \"BillingDocument\": \"<string>\",\n        \"BillingDocumentType\": \"<string>\",\n        \"BillingDocumentCategory\": \"<string>\",\n        \"SDDocumentCategory\": \"<string>\",\n        \"BillingDocumentDate\": \"<date>\",\n        \"CreationDate\": \"<date>\",\n        \"CreationTime\": \"<string>\",\n        \"LastChangeDate\": \"<date>\",\n        \"LastChangeDateTime\": \"<dateTime>\",\n        \"SalesOrganization\": \"<string>\",\n        \"DistributionChannel\": \"<string>\",\n        \"Division\": \"<string>\",\n        \"SoldToParty\": \"<string>\",\n        \"PayerParty\": \"<string>\",\n        \"TotalNetAmount\": \"<string>\",\n        \"TotalGrossAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"TotalTaxAmount\": \"<string>\",\n        \"CustomerPaymentTerms\": \"<string>\",\n        \"PaymentMethod\": \"<string>\",\n        \"BillingDocumentIsCancelled\": \"<boolean>\",\n        \"CancelledBillingDocument\": \"<string>\",\n        \"AccountingDocument\": \"<string>\",\n        \"AccountingPostingStatus\": \"<string>\",\n        \"IncotermsClassification\": \"<string>\",\n        \"CompanyCode\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-e4b1d43e-83c4-41aa-8bd3-dab29ce68268"
+            },
+            {
+              "id": "ba0ae04c-5145-4c69-8559-6a862737d774",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BillingDocument?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BillingDocument"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count",
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-ba0ae04c-5145-4c69-8559-6a862737d774"
+            },
+            {
+              "id": "99d87ba8-3c26-40c9-a91f-d9cb4d3a9759",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BillingDocument?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BillingDocument"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count",
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-99d87ba8-3c26-40c9-a91f-d9cb4d3a9759"
+            },
+            {
+              "id": "c22569d7-381e-4897-8238-3575e36bdfac",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BillingDocument?$top=<integer>&$skip=<integer>&$filter=<string>&$orderby=<string>&$select=<string>&$expand=<string>&$inlinecount=allpages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BillingDocument"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include total count",
+                      "key": "$inlinecount",
+                      "value": "allpages"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-c22569d7-381e-4897-8238-3575e36bdfac"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:24.000Z",
+          "updatedAt": "2026-06-05T15:16:24.000Z",
+          "uid": "35240-ffe94836-9482-498a-ab1d-94cd632a404a"
+        }
+      ],
+      "id": "f08dba31-fec3-49ce-a110-a173ddca9d8e",
+      "createdAt": "2026-06-05T15:16:24.000Z",
+      "updatedAt": "2026-06-05T15:16:24.000Z",
+      "uid": "35240-f08dba31-fec3-49ce-a110-a173ddca9d8e"
+    },
+    {
+      "name": "A_BillingDocument('{BillingDocument}')",
+      "item": [
+        {
+          "name": "to_Item",
+          "item": [
+            {
+              "name": "Retrieve items for a billing document",
+              "id": "82c60dde-d43b-4c4f-81bc-6e5c796c45a9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')/to_Item?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BillingDocument('{{BillingDocument}}')",
+                    "to_Item"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "OData filter expression",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of line items for the specified billing document."
+              },
+              "response": [
+                {
+                  "id": "2880cc47-d514-4e43-87e5-57d5d17adb5b",
+                  "name": "Successfully retrieved billing document items",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')/to_Item?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BillingDocument('{{BillingDocument}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"BillingDocument\": \"<string>\",\n        \"BillingDocumentItem\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"BillingQuantity\": \"<string>\",\n        \"BillingQuantityUnit\": \"<string>\",\n        \"NetAmount\": \"<string>\",\n        \"GrossAmount\": \"<string>\",\n        \"TaxAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\",\n        \"MaterialGroup\": \"<string>\",\n        \"Batch\": \"<string>\"\n      },\n      {\n        \"BillingDocument\": \"<string>\",\n        \"BillingDocumentItem\": \"<string>\",\n        \"Material\": \"<string>\",\n        \"Plant\": \"<string>\",\n        \"BillingQuantity\": \"<string>\",\n        \"BillingQuantityUnit\": \"<string>\",\n        \"NetAmount\": \"<string>\",\n        \"GrossAmount\": \"<string>\",\n        \"TaxAmount\": \"<string>\",\n        \"TransactionCurrency\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\",\n        \"ReferenceSDDocument\": \"<string>\",\n        \"ReferenceSDDocumentItem\": \"<string>\",\n        \"MaterialGroup\": \"<string>\",\n        \"Batch\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:24.000Z",
+                  "updatedAt": "2026-06-05T15:16:24.000Z",
+                  "uid": "35240-2880cc47-d514-4e43-87e5-57d5d17adb5b"
+                },
+                {
+                  "id": "0faf2769-cffa-4e4b-a297-605240444529",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')/to_Item?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BillingDocument('{{BillingDocument}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:24.000Z",
+                  "updatedAt": "2026-06-05T15:16:24.000Z",
+                  "uid": "35240-0faf2769-cffa-4e4b-a297-605240444529"
+                },
+                {
+                  "id": "2cb9de63-931a-44f9-98aa-c08fa24a2ab6",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')/to_Item?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BillingDocument('{{BillingDocument}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:24.000Z",
+                  "updatedAt": "2026-06-05T15:16:24.000Z",
+                  "uid": "35240-2cb9de63-931a-44f9-98aa-c08fa24a2ab6"
+                },
+                {
+                  "id": "0caaab27-a323-480b-818f-470d03b58390",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')/to_Item?$top=<integer>&$skip=<integer>&$filter=<string>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BillingDocument('{{BillingDocument}}')",
+                        "to_Item"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "OData filter expression",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:24.000Z",
+                  "updatedAt": "2026-06-05T15:16:24.000Z",
+                  "uid": "35240-0caaab27-a323-480b-818f-470d03b58390"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-82c60dde-d43b-4c4f-81bc-6e5c796c45a9"
+            }
+          ],
+          "id": "b5b87b8b-b4dc-4c2f-84fc-d30599740b3b",
+          "createdAt": "2026-06-05T15:16:24.000Z",
+          "updatedAt": "2026-06-05T15:16:24.000Z",
+          "uid": "35240-b5b87b8b-b4dc-4c2f-84fc-d30599740b3b"
+        },
+        {
+          "name": "to_Partner",
+          "item": [
+            {
+              "name": "Retrieve partners for a billing document",
+              "id": "720a9228-97e3-4754-9096-e935ecdc7398",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')/to_Partner?$top=<integer>&$skip=<integer>&$select=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BillingDocument('{{BillingDocument}}')",
+                    "to_Partner"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a collection of business partners associated with the billing document."
+              },
+              "response": [
+                {
+                  "id": "ace3356a-4cc4-43e2-ad74-fb4f253df70c",
+                  "name": "Successfully retrieved billing document partners",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')/to_Partner?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BillingDocument('{{BillingDocument}}')",
+                        "to_Partner"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"BillingDocument\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\"\n      },\n      {\n        \"BillingDocument\": \"<string>\",\n        \"PartnerFunction\": \"<string>\",\n        \"Customer\": \"<string>\",\n        \"Supplier\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:24.000Z",
+                  "updatedAt": "2026-06-05T15:16:24.000Z",
+                  "uid": "35240-ace3356a-4cc4-43e2-ad74-fb4f253df70c"
+                },
+                {
+                  "id": "0a8b8659-801e-42cd-a1d8-a595eee9092e",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')/to_Partner?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BillingDocument('{{BillingDocument}}')",
+                        "to_Partner"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:24.000Z",
+                  "updatedAt": "2026-06-05T15:16:24.000Z",
+                  "uid": "35240-0a8b8659-801e-42cd-a1d8-a595eee9092e"
+                },
+                {
+                  "id": "30e47fea-a0c9-4eae-896a-f49ee8a90bf1",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')/to_Partner?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BillingDocument('{{BillingDocument}}')",
+                        "to_Partner"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:24.000Z",
+                  "updatedAt": "2026-06-05T15:16:24.000Z",
+                  "uid": "35240-30e47fea-a0c9-4eae-896a-f49ee8a90bf1"
+                },
+                {
+                  "id": "484a1811-7d32-46e7-a144-227694ce5153",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')/to_Partner?$top=<integer>&$skip=<integer>&$select=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "A_BillingDocument('{{BillingDocument}}')",
+                        "to_Partner"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of records to return",
+                          "key": "$top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to skip",
+                          "key": "$skip",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated properties to include",
+                          "key": "$select",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:16:24.000Z",
+                  "updatedAt": "2026-06-05T15:16:24.000Z",
+                  "uid": "35240-484a1811-7d32-46e7-a144-227694ce5153"
+                }
+              ],
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-720a9228-97e3-4754-9096-e935ecdc7398"
+            }
+          ],
+          "id": "e2ffc8cb-ad61-47b9-a82e-27979a7bea3c",
+          "createdAt": "2026-06-05T15:16:24.000Z",
+          "updatedAt": "2026-06-05T15:16:24.000Z",
+          "uid": "35240-e2ffc8cb-ad61-47b9-a82e-27979a7bea3c"
+        },
+        {
+          "name": "Retrieve a single billing document",
+          "id": "59e92f58-b5c1-4366-b916-da213e0dc094",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')?$select=<string>&$expand=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "A_BillingDocument('{{BillingDocument}}')"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated properties to include",
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Navigation properties to expand",
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single billing document header by its key. Use $expand to include related items, partners, and pricing elements."
+          },
+          "response": [
+            {
+              "id": "88434c68-f791-4b02-ba4c-4f84a216e010",
+              "name": "Successfully retrieved the billing document",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BillingDocument('{{BillingDocument}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"BillingDocument\": \"<string>\",\n    \"BillingDocumentType\": \"<string>\",\n    \"BillingDocumentCategory\": \"<string>\",\n    \"SDDocumentCategory\": \"<string>\",\n    \"BillingDocumentDate\": \"<date>\",\n    \"CreationDate\": \"<date>\",\n    \"CreationTime\": \"<string>\",\n    \"LastChangeDate\": \"<date>\",\n    \"LastChangeDateTime\": \"<dateTime>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"Division\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"PayerParty\": \"<string>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TotalGrossAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"TotalTaxAmount\": \"<string>\",\n    \"CustomerPaymentTerms\": \"<string>\",\n    \"PaymentMethod\": \"<string>\",\n    \"BillingDocumentIsCancelled\": \"<boolean>\",\n    \"CancelledBillingDocument\": \"<string>\",\n    \"AccountingDocument\": \"<string>\",\n    \"AccountingPostingStatus\": \"<string>\",\n    \"IncotermsClassification\": \"<string>\",\n    \"CompanyCode\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-88434c68-f791-4b02-ba4c-4f84a216e010"
+            },
+            {
+              "id": "afea1e75-a245-49b0-a897-fa3aff45ba80",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BillingDocument('{{BillingDocument}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-afea1e75-a245-49b0-a897-fa3aff45ba80"
+            },
+            {
+              "id": "b4229f39-0b91-44ac-9b69-80e14645d287",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BillingDocument('{{BillingDocument}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-b4229f39-0b91-44ac-9b69-80e14645d287"
+            },
+            {
+              "id": "8df86d80-1375-455b-bdb7-9b8f3b5f2ff4",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/A_BillingDocument('{{BillingDocument}}')?$select=<string>&$expand=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "A_BillingDocument('{{BillingDocument}}')"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated properties to include",
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Navigation properties to expand",
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-8df86d80-1375-455b-bdb7-9b8f3b5f2ff4"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:24.000Z",
+          "updatedAt": "2026-06-05T15:16:24.000Z",
+          "uid": "35240-59e92f58-b5c1-4366-b916-da213e0dc094"
+        }
+      ],
+      "id": "b35356d4-5b88-437c-aad2-eca433f125af",
+      "createdAt": "2026-06-05T15:16:24.000Z",
+      "updatedAt": "2026-06-05T15:16:24.000Z",
+      "uid": "35240-b35356d4-5b88-437c-aad2-eca433f125af"
+    },
+    {
+      "name": "CancelBillingDocument",
+      "item": [
+        {
+          "name": "Cancel a billing document",
+          "id": "6a7c490b-f4b9-415d-b1a5-48f1f48ace94",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/CancelBillingDocument?BillingDocument=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "CancelBillingDocument"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Billing document number to cancel",
+                  "key": "BillingDocument",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Cancels a billing document by creating a cancellation document. The original document is flagged as cancelled and a new reversal document is generated."
+          },
+          "response": [
+            {
+              "id": "5cd2bc06-5724-41b4-b770-0924ae526d9a",
+              "name": "Billing document successfully cancelled",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/CancelBillingDocument?BillingDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CancelBillingDocument"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Billing document number to cancel",
+                      "key": "BillingDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"d\": {\n    \"BillingDocument\": \"<string>\",\n    \"BillingDocumentType\": \"<string>\",\n    \"BillingDocumentCategory\": \"<string>\",\n    \"SDDocumentCategory\": \"<string>\",\n    \"BillingDocumentDate\": \"<date>\",\n    \"CreationDate\": \"<date>\",\n    \"CreationTime\": \"<string>\",\n    \"LastChangeDate\": \"<date>\",\n    \"LastChangeDateTime\": \"<dateTime>\",\n    \"SalesOrganization\": \"<string>\",\n    \"DistributionChannel\": \"<string>\",\n    \"Division\": \"<string>\",\n    \"SoldToParty\": \"<string>\",\n    \"PayerParty\": \"<string>\",\n    \"TotalNetAmount\": \"<string>\",\n    \"TotalGrossAmount\": \"<string>\",\n    \"TransactionCurrency\": \"<string>\",\n    \"TotalTaxAmount\": \"<string>\",\n    \"CustomerPaymentTerms\": \"<string>\",\n    \"PaymentMethod\": \"<string>\",\n    \"BillingDocumentIsCancelled\": \"<boolean>\",\n    \"CancelledBillingDocument\": \"<string>\",\n    \"AccountingDocument\": \"<string>\",\n    \"AccountingPostingStatus\": \"<string>\",\n    \"IncotermsClassification\": \"<string>\",\n    \"CompanyCode\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-5cd2bc06-5724-41b4-b770-0924ae526d9a"
+            },
+            {
+              "id": "d27882d4-7d4d-42b3-ba0a-d11af95d87b0",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/CancelBillingDocument?BillingDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CancelBillingDocument"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Billing document number to cancel",
+                      "key": "BillingDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-d27882d4-7d4d-42b3-ba0a-d11af95d87b0"
+            },
+            {
+              "id": "f0600c33-b925-47a6-9da4-dbc3e83e924d",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/CancelBillingDocument?BillingDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CancelBillingDocument"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Billing document number to cancel",
+                      "key": "BillingDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-f0600c33-b925-47a6-9da4-dbc3e83e924d"
+            },
+            {
+              "id": "8d08f489-3ffd-4f6c-b7c5-8c5366666d36",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/CancelBillingDocument?BillingDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CancelBillingDocument"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Billing document number to cancel",
+                      "key": "BillingDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-8d08f489-3ffd-4f6c-b7c5-8c5366666d36"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:24.000Z",
+          "updatedAt": "2026-06-05T15:16:24.000Z",
+          "uid": "35240-6a7c490b-f4b9-415d-b1a5-48f1f48ace94"
+        }
+      ],
+      "id": "3077ca66-44cd-4f1f-9474-4067692dfdfd",
+      "createdAt": "2026-06-05T15:16:24.000Z",
+      "updatedAt": "2026-06-05T15:16:24.000Z",
+      "uid": "35240-3077ca66-44cd-4f1f-9474-4067692dfdfd"
+    },
+    {
+      "name": "GetPDF",
+      "item": [
+        {
+          "name": "Retrieve a billing document as PDF",
+          "id": "288f441b-28c8-4861-84d8-793213e1e3d2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/GetPDF?BillingDocument=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "GetPDF"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Billing document number",
+                  "key": "BillingDocument",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns the billing document output as a PDF binary stream. The PDF is generated based on the configured output type and form."
+          },
+          "response": [
+            {
+              "id": "509371d5-3745-481c-a0c2-d4800cb807e0",
+              "name": "PDF document successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/GetPDF?BillingDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "GetPDF"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Billing document number",
+                      "key": "BillingDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<binary>",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-509371d5-3745-481c-a0c2-d4800cb807e0"
+            },
+            {
+              "id": "e3ea1aff-bc77-4f44-b3d2-52f090462526",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/GetPDF?BillingDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "GetPDF"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Billing document number",
+                      "key": "BillingDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-e3ea1aff-bc77-4f44-b3d2-52f090462526"
+            },
+            {
+              "id": "1db2be83-d2be-46b7-8753-b1c63c2232f8",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/GetPDF?BillingDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "GetPDF"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Billing document number",
+                      "key": "BillingDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-1db2be83-d2be-46b7-8753-b1c63c2232f8"
+            },
+            {
+              "id": "0957fbe6-0be2-414c-895f-cb418fd08aa0",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/GetPDF?BillingDocument=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "GetPDF"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Billing document number",
+                      "key": "BillingDocument",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": {\n      \"lang\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:16:24.000Z",
+              "updatedAt": "2026-06-05T15:16:24.000Z",
+              "uid": "35240-0957fbe6-0be2-414c-895f-cb418fd08aa0"
+            }
+          ],
+          "createdAt": "2026-06-05T15:16:24.000Z",
+          "updatedAt": "2026-06-05T15:16:24.000Z",
+          "uid": "35240-288f441b-28c8-4861-84d8-793213e1e3d2"
+        }
+      ],
+      "id": "e71937a3-4433-4251-89f4-71b9533eef90",
+      "createdAt": "2026-06-05T15:16:24.000Z",
+      "updatedAt": "2026-06-05T15:16:24.000Z",
+      "uid": "35240-e71937a3-4433-4251-89f4-71b9533eef90"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV"
+    },
+    {
+      "key": "BillingDocument",
+      "value": "<string>"
+    }
+  ]
+}

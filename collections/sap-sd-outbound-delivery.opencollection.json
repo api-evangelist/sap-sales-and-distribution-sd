@@ -1,0 +1,314 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Outbound Delivery API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Outbound Delivery Header",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of outbound deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeader",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated properties to include"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Navigation properties to expand"
+              },
+              {
+                "name": "$inlinecount",
+                "value": "",
+                "type": "query",
+                "description": "Include total count"
+              }
+            ]
+          },
+          "docs": "Returns a collection of outbound delivery headers. Supports OData query options for filtering by delivery date, shipping point, sold-to party, delivery status, and other attributes."
+        },
+        {
+          "info": {
+            "name": "Create a new outbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeader",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new outbound delivery, typically with reference to a sales order. The delivery can be created with header and item data in a single deep insert request."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single outbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeader(':DeliveryDocument')",
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "path",
+                "description": "Delivery document number (10 characters)"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated properties to include"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Navigation properties to expand"
+              }
+            ]
+          },
+          "docs": "Returns a single outbound delivery header by its delivery document number. Use $expand to include items, partners, and addresses."
+        },
+        {
+          "info": {
+            "name": "Update an outbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeader(':DeliveryDocument')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "path",
+                "description": "Delivery document number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing outbound delivery header. Only the fields included in the request body are modified."
+        },
+        {
+          "info": {
+            "name": "Delete an outbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeader(':DeliveryDocument')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "path",
+                "description": "Delivery document number"
+              }
+            ]
+          },
+          "docs": "Deletes an existing outbound delivery document."
+        },
+        {
+          "info": {
+            "name": "Post goods issue for an outbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV/PostGoodsIssue",
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "query",
+                "description": "Delivery document number for goods issue"
+              }
+            ]
+          },
+          "docs": "Triggers the goods issue posting for the specified outbound delivery. This operation updates inventory and creates material documents."
+        },
+        {
+          "info": {
+            "name": "Reverse goods issue for an outbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV/ReverseGoodsIssue",
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "query",
+                "description": "Delivery document number"
+              }
+            ]
+          },
+          "docs": "Reverses a previously posted goods issue for the specified delivery."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Outbound Delivery Item",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve items for an outbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeader(':DeliveryDocument')/to_DeliveryDocumentItem",
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "path",
+                "description": "Delivery document number"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated properties to include"
+              }
+            ]
+          },
+          "docs": "Returns a collection of line items for the specified outbound delivery."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Outbound Delivery Partner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve partners for an outbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV/A_OutbDeliveryHeader(':DeliveryDocument')/to_DeliveryDocumentPartner",
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "path",
+                "description": "Delivery document number"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated properties to include"
+              }
+            ]
+          },
+          "docs": "Returns a collection of business partners associated with the delivery."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
