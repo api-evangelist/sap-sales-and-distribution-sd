@@ -369,60 +369,57 @@ apis:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/sap-sales-and-distribution-sd/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/sap-sales-and-distribution-sd-billing-review-and-cancel-workflow.yml
-        name: SAP SD Billing Review and Cancel
-        summary: Read a billing document, list its items and partners, then optionally cancel it.
-      - url: arazzo/sap-sales-and-distribution-sd-contract-release-order-workflow.yml
-        name: SAP SD Contract Release Order
-        summary: Create a sales contract, read it, list its items, then release a sales order from it.
-      - url: arazzo/sap-sales-and-distribution-sd-credit-check-workflow.yml
-        name: SAP SD Credit Check
-        summary: Read a customer's credit account, then its credit limit and credit exposure.
-      - url: arazzo/sap-sales-and-distribution-sd-credit-memo-approval-workflow.yml
-        name: SAP SD Credit Memo Approval
-        summary: Create a credit memo request, read it, then accept or reject its approval by amount.
-      - url: arazzo/sap-sales-and-distribution-sd-customer-lookup-to-order-workflow.yml
-        name: SAP SD Customer Lookup to Order
-        summary: Verify a customer and its sales area, then create a sales order for it.
-      - url: arazzo/sap-sales-and-distribution-sd-customer-material-setup-workflow.yml
-        name: SAP SD Customer Material Setup
-        summary: Create a customer-material info record, read it back, then list customer materials.
-      - url: arazzo/sap-sales-and-distribution-sd-customer-onboarding-workflow.yml
-        name: SAP SD Customer Onboarding
-        summary: Create a business partner, read it, add an address, then list its addresses.
-      - url: arazzo/sap-sales-and-distribution-sd-customer-return-intake-workflow.yml
-        name: SAP SD Customer Return Intake
-        summary: Create a customer return referencing an order, read it, and list its items.
-      - url: arazzo/sap-sales-and-distribution-sd-debit-memo-intake-workflow.yml
-        name: SAP SD Debit Memo Intake
-        summary: Create a debit memo request, read it back, then list its items.
-      - url: arazzo/sap-sales-and-distribution-sd-deliver-and-post-goods-issue-workflow.yml
-        name: SAP SD Deliver and Post Goods Issue
-        summary: Create an outbound delivery, verify it, list its items, then post goods issue.
-      - url: arazzo/sap-sales-and-distribution-sd-inbound-delivery-receipt-workflow.yml
-        name: SAP SD Inbound Delivery Receipt
-        summary: Create an inbound delivery, read it, list its items, then post goods receipt.
-      - url: arazzo/sap-sales-and-distribution-sd-inquiry-to-quotation-workflow.yml
-        name: SAP SD Inquiry to Quotation
-        summary: Create a sales inquiry, read it, list its items, then create a quotation from it.
-      - url: arazzo/sap-sales-and-distribution-sd-material-onboarding-workflow.yml
-        name: SAP SD Material Onboarding
-        summary: Create a product, read it back, list its plants, and read its sales/delivery view.
-      - url: arazzo/sap-sales-and-distribution-sd-order-to-delivery-workflow.yml
-        name: SAP SD Order to Delivery
-        summary: Create a sales order, confirm it, then create an outbound delivery for it.
-      - url: arazzo/sap-sales-and-distribution-sd-pricing-setup-workflow.yml
-        name: SAP SD Pricing Setup
-        summary: Create a pricing condition record, read it back, then list its validity periods.
-      - url: arazzo/sap-sales-and-distribution-sd-quotation-to-order-workflow.yml
-        name: SAP SD Quotation to Order
-        summary: Create a sales quotation, read it, list its items, then create a sales order from it.
-      - url: arazzo/sap-sales-and-distribution-sd-returns-goods-receipt-workflow.yml
-        name: SAP SD Returns Goods Receipt
-        summary: Read a returns delivery, list its items, then post goods receipt for it.
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-billing-review-and-cancel-workflow.yml
+    name: SAP SD Billing Review and Cancel
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-contract-release-order-workflow.yml
+    name: SAP SD Contract Release Order
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-credit-check-workflow.yml
+    name: SAP SD Credit Check
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-credit-memo-approval-workflow.yml
+    name: SAP SD Credit Memo Approval
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-customer-lookup-to-order-workflow.yml
+    name: SAP SD Customer Lookup to Order
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-customer-material-setup-workflow.yml
+    name: SAP SD Customer Material Setup
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-customer-onboarding-workflow.yml
+    name: SAP SD Customer Onboarding
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-customer-return-intake-workflow.yml
+    name: SAP SD Customer Return Intake
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-debit-memo-intake-workflow.yml
+    name: SAP SD Debit Memo Intake
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-deliver-and-post-goods-issue-workflow.yml
+    name: SAP SD Deliver and Post Goods Issue
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-inbound-delivery-receipt-workflow.yml
+    name: SAP SD Inbound Delivery Receipt
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-inquiry-to-quotation-workflow.yml
+    name: SAP SD Inquiry to Quotation
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-material-onboarding-workflow.yml
+    name: SAP SD Material Onboarding
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-order-to-delivery-workflow.yml
+    name: SAP SD Order to Delivery
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-pricing-setup-workflow.yml
+    name: SAP SD Pricing Setup
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-quotation-to-order-workflow.yml
+    name: SAP SD Quotation to Order
+  - type: Arazzo
+    url: arazzo/sap-sales-and-distribution-sd-returns-goods-receipt-workflow.yml
+    name: SAP SD Returns Goods Receipt
   - type: Portal
     url: https://api.sap.com
   - type: Documentation
@@ -449,11 +446,11 @@ common:
     url: https://community.sap.com
   - type: Login
     url: https://accounts.sap.com
-  - type: SignUp
+  - type: Signup
     url: https://developers.sap.com
-  - type: SDK
+  - type: SDKs
     url: https://sap.github.io/cloud-sdk/
-  - type: SDK
+  - type: SDKs
     url: https://github.com/SAP/cloud-sdk-js
   - type: SpectralRules
     url: rules/sap-sd-rules.yml
