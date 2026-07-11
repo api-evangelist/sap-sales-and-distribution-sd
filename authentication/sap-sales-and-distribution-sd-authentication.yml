@@ -1,0 +1,60 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sap-sd-billing-document-openapi.yml, openapi/sap-sd-credit-management-openapi.yml,
+  openapi/sap-sd-credit-memo-request-openapi.yml, openapi/sap-sd-customer-master-data-openapi.yml,
+  openapi/sap-sd-customer-material-openapi.yml, openapi/sap-sd-customer-return-openapi.yml,
+  openapi/sap-sd-customer-returns-delivery-openapi.yml, openapi/sap-sd-debit-memo-request-openapi.yml,
+  openapi/sap-sd-inbound-delivery-openapi.yml, openapi/sap-sd-material-master-openapi.yml, openapi/sap-sd-outbound-delivery-openapi.yml,
+  openapi/sap-sd-pricing-openapi.yml ...
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/sap-sd-billing-document-openapi.yml
+  - openapi/sap-sd-credit-management-openapi.yml
+  - openapi/sap-sd-credit-memo-request-openapi.yml
+  - openapi/sap-sd-customer-master-data-openapi.yml
+  - openapi/sap-sd-customer-material-openapi.yml
+  - openapi/sap-sd-customer-return-openapi.yml
+  - openapi/sap-sd-customer-returns-delivery-openapi.yml
+  - openapi/sap-sd-debit-memo-request-openapi.yml
+  - openapi/sap-sd-inbound-delivery-openapi.yml
+  - openapi/sap-sd-material-master-openapi.yml
+  - openapi/sap-sd-outbound-delivery-openapi.yml
+  - openapi/sap-sd-pricing-openapi.yml
+  - openapi/sap-sd-sales-contract-openapi.yml
+  - openapi/sap-sd-sales-inquiry-openapi.yml
+  - openapi/sap-sd-sales-order-openapi.yml
+  - openapi/sap-sd-sales-quotation-openapi.yml
+  - openapi/sap-sd-sales-scheduling-agreement-openapi.yml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+    scopes: 1
+  sources:
+  - openapi/sap-sd-billing-document-openapi.yml
+  - openapi/sap-sd-credit-management-openapi.yml
+  - openapi/sap-sd-credit-memo-request-openapi.yml
+  - openapi/sap-sd-customer-master-data-openapi.yml
+  - openapi/sap-sd-customer-material-openapi.yml
+  - openapi/sap-sd-customer-return-openapi.yml
+  - openapi/sap-sd-customer-returns-delivery-openapi.yml
+  - openapi/sap-sd-debit-memo-request-openapi.yml
+  - openapi/sap-sd-inbound-delivery-openapi.yml
+  - openapi/sap-sd-material-master-openapi.yml
+  - openapi/sap-sd-outbound-delivery-openapi.yml
+  - openapi/sap-sd-pricing-openapi.yml
+  - openapi/sap-sd-sales-contract-openapi.yml
+  - openapi/sap-sd-sales-inquiry-openapi.yml
+  - openapi/sap-sd-sales-order-openapi.yml
+  - openapi/sap-sd-sales-quotation-openapi.yml
+  - openapi/sap-sd-sales-scheduling-agreement-openapi.yml

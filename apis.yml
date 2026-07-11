@@ -367,6 +367,10 @@ apis:
       - type: JSONLD
         url: json-ld/sap-sd-context.jsonld
 common:
+  - type: VulnerabilityDisclosure
+    url: security/sap-sales-and-distribution-sd-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/sap-sales-and-distribution-sd-domain-security.yml
   - type: Authentication
     url: authentication/sap-sales-and-distribution-sd-authentication.yml
   - type: OAuthScopes
