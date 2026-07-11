@@ -367,6 +367,10 @@ apis:
       - type: JSONLD
         url: json-ld/sap-sd-context.jsonld
 common:
+  - type: Authentication
+    url: authentication/sap-sales-and-distribution-sd-authentication.yml
+  - type: OAuthScopes
+    url: scopes/sap-sales-and-distribution-sd-scopes.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/sap-sales-and-distribution-sd/overview
   - type: Arazzo
