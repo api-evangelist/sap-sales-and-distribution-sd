@@ -1,0 +1,1525 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/sap-sd-billing-document-openapi.yml, openapi/sap-sd-credit-management-openapi.yml,
+  openapi/sap-sd-credit-memo-request-openapi.yml, openapi/sap-sd-customer-master-data-openapi.yml,
+  openapi/sap-sd-customer-material-openapi.yml, openapi/sap-sd-customer-return-openapi.yml,
+  openapi/sap-sd-customer-returns-delivery-openapi.yml, openapi/sap-sd-debit-memo-request-openapi.yml,
+  openapi/sap-sd-inbound-delivery-openapi.yml, openapi/sap-sd-material-master-openapi.yml, openapi/sap-sd-outbound-delivery-openapi.yml,
+  openapi/sap-sd-pricing-openapi.yml, openapi/sap-sd-sales-contract-openapi.yml, openapi/sap-sd-sales-inquiry-openapi.yml,
+  openapi/sap-sd-sales-order-openapi.yml, openapi/sap-sd-sales-quotation-openapi.yml, openapi/sap-sd-sales-scheduling-agreement-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 118
+  by_action_class:
+    connected: 66
+    acting: 52
+  by_consequence:
+    read: 66
+    write: 47
+    physical: 5
+  human_in_the_loop_required: 0
+operations:
+- path: /A_BillingDocument
+  method: get
+  operationId: listBillingDocuments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_BillingDocument('{BillingDocument}')
+  method: get
+  operationId: getBillingDocument
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_BillingDocument('{BillingDocument}')/to_Item
+  method: get
+  operationId: listBillingDocumentItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_BillingDocument('{BillingDocument}')/to_Partner
+  method: get
+  operationId: listBillingDocumentPartners
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /CancelBillingDocument
+  method: post
+  operationId: cancelBillingDocument
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /GetPDF
+  method: get
+  operationId: getBillingDocumentPDF
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CrdtMgmtBusinessPartner
+  method: get
+  operationId: listCreditAccounts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CrdtMgmtBusinessPartner('{BusinessPartner}')
+  method: get
+  operationId: getCreditAccount
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CrdtMgmtBusinessPartner('{BusinessPartner}')
+  method: patch
+  operationId: updateCreditAccount
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_CrdtMgmtCreditLimit
+  method: get
+  operationId: listCreditLimits
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CrdtMgmtCreditLimit(BusinessPartner='{BusinessPartner}',CreditSegment='{CreditSegment}')
+  method: get
+  operationId: getCreditLimit
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CrdtMgmtCreditLimit(BusinessPartner='{BusinessPartner}',CreditSegment='{CreditSegment}')
+  method: patch
+  operationId: updateCreditLimit
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_CrdtMgmtCreditExposure(BusinessPartner='{BusinessPartner}',CreditSegment='{CreditSegment}')
+  method: get
+  operationId: getCreditExposure
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CreditMemoRequest
+  method: get
+  operationId: listCreditMemoRequests
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CreditMemoRequest
+  method: post
+  operationId: createCreditMemoRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_CreditMemoRequest('{CreditMemoRequest}')
+  method: get
+  operationId: getCreditMemoRequest
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CreditMemoRequest('{CreditMemoRequest}')
+  method: patch
+  operationId: updateCreditMemoRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_CreditMemoRequest('{CreditMemoRequest}')
+  method: delete
+  operationId: deleteCreditMemoRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_CreditMemoRequest('{CreditMemoRequest}')/to_Item
+  method: get
+  operationId: listCreditMemoRequestItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /AcceptApprovalRequest
+  method: post
+  operationId: acceptCreditMemoApprovalRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /RejectApprovalRequest
+  method: post
+  operationId: rejectCreditMemoApprovalRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_BusinessPartner
+  method: get
+  operationId: listBusinessPartners
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_BusinessPartner
+  method: post
+  operationId: createBusinessPartner
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_BusinessPartner('{BusinessPartner}')
+  method: get
+  operationId: getBusinessPartner
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_BusinessPartner('{BusinessPartner}')
+  method: patch
+  operationId: updateBusinessPartner
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_BusinessPartner('{BusinessPartner}')/to_BusinessPartnerAddress
+  method: get
+  operationId: listBusinessPartnerAddresses
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_BusinessPartner('{BusinessPartner}')/to_BusinessPartnerAddress
+  method: post
+  operationId: createBusinessPartnerAddress
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_Customer('{Customer}')
+  method: get
+  operationId: getCustomer
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CustomerSalesArea(Customer='{Customer}',SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Division='{Division}')
+  method: get
+  operationId: getCustomerSalesArea
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CustomerMaterial
+  method: get
+  operationId: listCustomerMaterials
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CustomerMaterial
+  method: post
+  operationId: createCustomerMaterial
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_CustomerMaterial(SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Customer='{Customer}',Material='{Material}')
+  method: get
+  operationId: getCustomerMaterial
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CustomerMaterial(SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Customer='{Customer}',Material='{Material}')
+  method: patch
+  operationId: updateCustomerMaterial
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_CustomerMaterial(SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Customer='{Customer}',Material='{Material}')
+  method: delete
+  operationId: deleteCustomerMaterial
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_CustomerReturn
+  method: get
+  operationId: listCustomerReturns
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CustomerReturn
+  method: post
+  operationId: createCustomerReturn
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_CustomerReturn('{CustomerReturn}')
+  method: get
+  operationId: getCustomerReturn
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_CustomerReturn('{CustomerReturn}')
+  method: patch
+  operationId: updateCustomerReturn
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_CustomerReturn('{CustomerReturn}')
+  method: delete
+  operationId: deleteCustomerReturn
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_CustomerReturn('{CustomerReturn}')/to_Item
+  method: get
+  operationId: listCustomerReturnItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_ReturnsDeliveryHeader
+  method: get
+  operationId: listReturnsDeliveries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_ReturnsDeliveryHeader('{DeliveryDocument}')
+  method: get
+  operationId: getReturnsDelivery
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_ReturnsDeliveryHeader('{DeliveryDocument}')
+  method: patch
+  operationId: updateReturnsDelivery
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_ReturnsDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentItem
+  method: get
+  operationId: listReturnsDeliveryItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /PostGoodsReceipt
+  method: post
+  operationId: postGoodsReceipt
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_DebitMemoRequest
+  method: get
+  operationId: listDebitMemoRequests
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_DebitMemoRequest
+  method: post
+  operationId: createDebitMemoRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_DebitMemoRequest('{DebitMemoRequest}')
+  method: get
+  operationId: getDebitMemoRequest
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_DebitMemoRequest('{DebitMemoRequest}')
+  method: patch
+  operationId: updateDebitMemoRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_DebitMemoRequest('{DebitMemoRequest}')
+  method: delete
+  operationId: deleteDebitMemoRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_DebitMemoRequest('{DebitMemoRequest}')/to_Item
+  method: get
+  operationId: listDebitMemoRequestItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_InbDeliveryHeader
+  method: get
+  operationId: listInboundDeliveries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_InbDeliveryHeader
+  method: post
+  operationId: createInboundDelivery
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_InbDeliveryHeader('{DeliveryDocument}')
+  method: get
+  operationId: getInboundDelivery
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_InbDeliveryHeader('{DeliveryDocument}')
+  method: patch
+  operationId: updateInboundDelivery
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_InbDeliveryHeader('{DeliveryDocument}')
+  method: delete
+  operationId: deleteInboundDelivery
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_InbDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentItem
+  method: get
+  operationId: listInboundDeliveryItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /PostGoodsReceipt
+  method: post
+  operationId: postGoodsReceipt
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_Product
+  method: get
+  operationId: listProducts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_Product
+  method: post
+  operationId: createProduct
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_Product('{Product}')
+  method: get
+  operationId: getProduct
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_Product('{Product}')
+  method: patch
+  operationId: updateProduct
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_Product('{Product}')/to_Description
+  method: get
+  operationId: listProductDescriptions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_Product('{Product}')/to_Plant
+  method: get
+  operationId: listProductPlants
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_ProductSalesDelivery(Product='{Product}',ProductSalesOrg='{ProductSalesOrg}',ProductDistributionChnl='{ProductDistributionChnl}')
+  method: get
+  operationId: getProductSalesDelivery
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_OutbDeliveryHeader
+  method: get
+  operationId: listOutboundDeliveries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_OutbDeliveryHeader
+  method: post
+  operationId: createOutboundDelivery
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_OutbDeliveryHeader('{DeliveryDocument}')
+  method: get
+  operationId: getOutboundDelivery
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_OutbDeliveryHeader('{DeliveryDocument}')
+  method: patch
+  operationId: updateOutboundDelivery
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_OutbDeliveryHeader('{DeliveryDocument}')
+  method: delete
+  operationId: deleteOutboundDelivery
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_OutbDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentItem
+  method: get
+  operationId: listOutboundDeliveryItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_OutbDeliveryHeader('{DeliveryDocument}')/to_DeliveryDocumentPartner
+  method: get
+  operationId: listOutboundDeliveryPartners
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /PostGoodsIssue
+  method: post
+  operationId: postGoodsIssue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /ReverseGoodsIssue
+  method: post
+  operationId: reverseGoodsIssue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SlsPrcgConditionRecord
+  method: get
+  operationId: listPricingConditionRecords
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SlsPrcgConditionRecord
+  method: post
+  operationId: createPricingConditionRecord
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SlsPrcgConditionRecord('{ConditionRecord}')
+  method: get
+  operationId: getPricingConditionRecord
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SlsPrcgConditionRecord('{ConditionRecord}')
+  method: patch
+  operationId: updatePricingConditionRecord
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SlsPrcgConditionRecord('{ConditionRecord}')
+  method: delete
+  operationId: deletePricingConditionRecord
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SlsPrcgCndnRecdValidity
+  method: get
+  operationId: listConditionRecordValidities
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesContract
+  method: get
+  operationId: listSalesContracts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesContract
+  method: post
+  operationId: createSalesContract
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesContract('{SalesContract}')
+  method: get
+  operationId: getSalesContract
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesContract('{SalesContract}')
+  method: patch
+  operationId: updateSalesContract
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesContract('{SalesContract}')
+  method: delete
+  operationId: deleteSalesContract
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesContract('{SalesContract}')/to_Item
+  method: get
+  operationId: listSalesContractItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesInquiry
+  method: get
+  operationId: listSalesInquiries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesInquiry
+  method: post
+  operationId: createSalesInquiry
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesInquiry('{SalesInquiry}')
+  method: get
+  operationId: getSalesInquiry
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesInquiry('{SalesInquiry}')
+  method: patch
+  operationId: updateSalesInquiry
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesInquiry('{SalesInquiry}')
+  method: delete
+  operationId: deleteSalesInquiry
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesInquiry('{SalesInquiry}')/to_Item
+  method: get
+  operationId: listSalesInquiryItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesOrder
+  method: get
+  operationId: listSalesOrders
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesOrder
+  method: post
+  operationId: createSalesOrder
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesOrder('{SalesOrder}')
+  method: get
+  operationId: getSalesOrder
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesOrder('{SalesOrder}')
+  method: patch
+  operationId: updateSalesOrder
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesOrder('{SalesOrder}')
+  method: delete
+  operationId: deleteSalesOrder
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesOrder('{SalesOrder}')/to_Item
+  method: get
+  operationId: listSalesOrderItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesOrderItem(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}')
+  method: get
+  operationId: getSalesOrderItem
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesOrderItem(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}')
+  method: patch
+  operationId: updateSalesOrderItem
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesOrderItem(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}')
+  method: delete
+  operationId: deleteSalesOrderItem
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesOrder('{SalesOrder}')/to_Partner
+  method: get
+  operationId: listSalesOrderPartners
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesOrder('{SalesOrder}')/to_PricingElement
+  method: get
+  operationId: listSalesOrderPricingElements
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesOrderScheduleLine(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}',ScheduleLine='{ScheduleLine}')
+  method: get
+  operationId: getSalesOrderScheduleLine
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesOrder('{SalesOrder}')/to_Text
+  method: get
+  operationId: listSalesOrderTexts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesQuotation
+  method: get
+  operationId: listSalesQuotations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesQuotation
+  method: post
+  operationId: createSalesQuotation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesQuotation('{SalesQuotation}')
+  method: get
+  operationId: getSalesQuotation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesQuotation('{SalesQuotation}')
+  method: patch
+  operationId: updateSalesQuotation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesQuotation('{SalesQuotation}')
+  method: delete
+  operationId: deleteSalesQuotation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SalesQuotation('{SalesQuotation}')/to_Item
+  method: get
+  operationId: listSalesQuotationItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SalesQuotation('{SalesQuotation}')/to_Partner
+  method: get
+  operationId: listSalesQuotationPartners
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SchAgrmtHeader
+  method: get
+  operationId: listSchedulingAgreements
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SchAgrmtHeader
+  method: post
+  operationId: createSchedulingAgreement
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SchAgrmtHeader('{SchedulingAgreement}')
+  method: get
+  operationId: getSchedulingAgreement
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SchAgrmtHeader('{SchedulingAgreement}')
+  method: patch
+  operationId: updateSchedulingAgreement
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /A_SchAgrmtHeader('{SchedulingAgreement}')/to_Item
+  method: get
+  operationId: listSchedulingAgreementItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /A_SchAgrmtScheduleLine
+  method: get
+  operationId: listScheduleLines
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

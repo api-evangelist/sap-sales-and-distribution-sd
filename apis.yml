@@ -367,6 +367,8 @@ apis:
       - type: JSONLD
         url: json-ld/sap-sd-context.jsonld
 common:
+  - type: AgenticAccess
+    url: agentic-access/sap-sales-and-distribution-sd-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/sap-sales-and-distribution-sd-vulnerability-disclosure.yml
   - type: DomainSecurity
