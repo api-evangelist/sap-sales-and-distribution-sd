@@ -1,11 +1,7 @@
 openapi: 3.1.0
 info:
-  title: SAP Sales and Distribution (SD) SAP Sales Inquiry API
-  description: >-
-    Read sales inquiries from SAP S/4HANA. This OData service
-    (API_SALES_INQUIRY_SRV) provides access to sales inquiry documents used
-    in the pre-sales process to capture customer interest in products or
-    services. Inquiries can be converted to quotations or sales orders.
+  title: SAP Sales and Distribution (SD) SAP Billing Document Sales Inquiry API
+  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
   version: 1.0.0
   contact:
     name: SAP Support
@@ -14,41 +10,37 @@ info:
     name: SAP Developer License
     url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
 servers:
-  - url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_INQUIRY_SRV
-    description: SAP S/4HANA Cloud Sandbox
-  - url: https://{host}:{port}/sap/opu/odata/sap/API_SALES_INQUIRY_SRV
-    description: SAP S/4HANA On-Premise
-    variables:
-      host:
-        default: localhost
-      port:
-        default: '443'
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA Cloud Sandbox
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA On-Premise
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '443'
 security:
-  - basicAuth: []
-  - oauth2: []
+- basicAuth: []
+- oauth2: []
 tags:
-  - name: Sales Inquiry
-    description: Operations on sales inquiry header (A_SalesInquiry)
-  - name: Sales Inquiry Item
-    description: Operations on sales inquiry items (A_SalesInquiryItem)
+- name: Sales Inquiry
+  description: Operations on sales inquiry header (A_SalesInquiry)
 paths:
   /A_SalesInquiry:
     get:
       operationId: listSalesInquiries
       summary: Retrieve a list of sales inquiries
-      description: >-
-        Returns a collection of sales inquiry headers. Supports filtering by
-        inquiry type, date, customer, and status.
+      description: Returns a collection of sales inquiry headers. Supports filtering by inquiry type, date, customer, and status.
       tags:
-        - Sales Inquiry
+      - Sales Inquiry
       parameters:
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/filter'
-        - $ref: '#/components/parameters/orderby'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/expand'
-        - $ref: '#/components/parameters/inlinecount'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/inlinecount'
       responses:
         '200':
           description: Successfully retrieved sales inquiries
@@ -71,10 +63,9 @@ paths:
     post:
       operationId: createSalesInquiry
       summary: Create a new sales inquiry
-      description: >-
-        Creates a new sales inquiry with deep insert support for items and partners.
+      description: Creates a new sales inquiry with deep insert support for items and partners.
       tags:
-        - Sales Inquiry
+      - Sales Inquiry
       requestBody:
         required: true
         content:
@@ -101,20 +92,19 @@ paths:
     get:
       operationId: getSalesInquiry
       summary: Retrieve a single sales inquiry
-      description: >-
-        Returns a single sales inquiry by its document number.
+      description: Returns a single sales inquiry by its document number.
       tags:
-        - Sales Inquiry
+      - Sales Inquiry
       parameters:
-        - name: SalesInquiry
-          in: path
-          required: true
-          description: Sales inquiry number (10 characters)
-          schema:
-            type: string
-            maxLength: 10
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/expand'
+      - name: SalesInquiry
+        in: path
+        required: true
+        description: Sales inquiry number (10 characters)
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
       responses:
         '200':
           description: Successfully retrieved the sales inquiry
@@ -134,19 +124,18 @@ paths:
     patch:
       operationId: updateSalesInquiry
       summary: Update a sales inquiry
-      description: >-
-        Updates an existing sales inquiry header.
+      description: Updates an existing sales inquiry header.
       tags:
-        - Sales Inquiry
+      - Sales Inquiry
       parameters:
-        - name: SalesInquiry
-          in: path
-          required: true
-          description: Sales inquiry number
-          schema:
-            type: string
-            maxLength: 10
-        - $ref: '#/components/parameters/ifMatch'
+      - name: SalesInquiry
+        in: path
+        required: true
+        description: Sales inquiry number
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/ifMatch'
       requestBody:
         required: true
         content:
@@ -167,19 +156,18 @@ paths:
     delete:
       operationId: deleteSalesInquiry
       summary: Delete a sales inquiry
-      description: >-
-        Deletes an existing sales inquiry.
+      description: Deletes an existing sales inquiry.
       tags:
-        - Sales Inquiry
+      - Sales Inquiry
       parameters:
-        - name: SalesInquiry
-          in: path
-          required: true
-          description: Sales inquiry number
-          schema:
-            type: string
-            maxLength: 10
-        - $ref: '#/components/parameters/ifMatch'
+      - name: SalesInquiry
+        in: path
+        required: true
+        description: Sales inquiry number
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/ifMatch'
       responses:
         '204':
           description: Sales inquiry successfully deleted
@@ -189,106 +177,19 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /A_SalesInquiry('{SalesInquiry}')/to_Item:
-    get:
-      operationId: listSalesInquiryItems
-      summary: Retrieve items for a sales inquiry
-      description: >-
-        Returns a collection of line items for the specified sales inquiry.
-      tags:
-        - Sales Inquiry Item
-      parameters:
-        - name: SalesInquiry
-          in: path
-          required: true
-          description: Sales inquiry number
-          schema:
-            type: string
-            maxLength: 10
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/select'
-      responses:
-        '200':
-          description: Successfully retrieved inquiry items
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  d:
-                    type: object
-                    properties:
-                      results:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/SalesInquiryItem'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
 components:
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
-    oauth2:
-      type: oauth2
-      flows:
-        clientCredentials:
-          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
-          scopes:
-            API_SALES_INQUIRY_SRV: Access to Sales Inquiry API
-  parameters:
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    orderby:
-      name: $orderby
-      in: query
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
-    inlinecount:
-      name: $inlinecount
-      in: query
-      schema:
-        type: string
-        enum:
-          - allpages
-          - none
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
   schemas:
+    SalesInquiryItemCreate:
+      type: object
+      properties:
+        Material:
+          type: string
+          maxLength: 40
+        RequestedQuantity:
+          type: string
+        RequestedQuantityUnit:
+          type: string
+          maxLength: 3
     SalesInquiry:
       type: object
       description: Sales inquiry header entity (A_SalesInquiry)
@@ -352,13 +253,22 @@ components:
           type: string
           maxLength: 1
           description: Overall processing status
+    SalesInquiryUpdate:
+      type: object
+      properties:
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+        BindingPeriodValidityEndDate:
+          type: string
+          format: date
     SalesInquiryCreate:
       type: object
       required:
-        - SalesInquiryType
-        - SalesOrganization
-        - DistributionChannel
-        - OrganizationDivision
+      - SalesInquiryType
+      - SalesOrganization
+      - DistributionChannel
+      - OrganizationDivision
       properties:
         SalesInquiryType:
           type: string
@@ -385,64 +295,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/SalesInquiryItemCreate'
-    SalesInquiryUpdate:
-      type: object
-      properties:
-        PurchaseOrderByCustomer:
-          type: string
-          maxLength: 35
-        BindingPeriodValidityEndDate:
-          type: string
-          format: date
-    SalesInquiryItem:
-      type: object
-      description: Sales inquiry item entity (A_SalesInquiryItem)
-      properties:
-        SalesInquiry:
-          type: string
-          maxLength: 10
-          description: Sales inquiry number
-        SalesInquiryItem:
-          type: string
-          maxLength: 6
-          description: Item number
-        Material:
-          type: string
-          maxLength: 40
-          description: Material number
-        RequestedQuantity:
-          type: string
-          description: Order quantity
-        RequestedQuantityUnit:
-          type: string
-          maxLength: 3
-          description: Sales unit
-        NetAmount:
-          type: string
-          description: Net value
-        TransactionCurrency:
-          type: string
-          maxLength: 5
-          description: Document currency
-        Plant:
-          type: string
-          maxLength: 4
-          description: Plant
-        MaterialGroup:
-          type: string
-          maxLength: 9
-          description: Material group
-    SalesInquiryItemCreate:
-      type: object
-      properties:
-        Material:
-          type: string
-          maxLength: 40
-        RequestedQuantity:
-          type: string
-        RequestedQuantityUnit:
-          type: string
-          maxLength: 3
     Error:
       type: object
       properties:
@@ -458,7 +310,60 @@ components:
                   type: string
                 value:
                   type: string
+  parameters:
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
   responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     BadRequest:
       description: Bad request
       content:
@@ -477,9 +382,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BILLING_DOCUMENT_SRV: Access to Billing Document API

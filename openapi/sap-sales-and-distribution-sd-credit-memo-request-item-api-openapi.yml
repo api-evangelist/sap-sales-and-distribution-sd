@@ -1,0 +1,178 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales and Distribution (SD) SAP Billing Document Credit Memo Request Item API
+  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA Cloud Sandbox
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA On-Premise
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '443'
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Credit Memo Request Item
+  description: Operations on credit memo request items (A_CreditMemoReqItem)
+paths:
+  /A_CreditMemoRequest('{CreditMemoRequest}')/to_Item:
+    get:
+      operationId: listCreditMemoRequestItems
+      summary: Retrieve items for a credit memo request
+      description: Returns a collection of line items for the specified credit memo request.
+      tags:
+      - Credit Memo Request Item
+      parameters:
+      - name: CreditMemoRequest
+        in: path
+        required: true
+        description: Credit memo request number
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/CreditMemoRequestItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  parameters:
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    CreditMemoRequestItem:
+      type: object
+      description: Credit memo request item entity (A_CreditMemoReqItem)
+      properties:
+        CreditMemoRequest:
+          type: string
+          maxLength: 10
+          description: Credit memo request number
+        CreditMemoRequestItem:
+          type: string
+          maxLength: 6
+          description: Item number
+        CreditMemoRequestItemCategory:
+          type: string
+          maxLength: 4
+          description: Item category
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number
+        RequestedQuantity:
+          type: string
+          description: Order quantity
+        RequestedQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Sales unit
+        NetAmount:
+          type: string
+          description: Net value of the item
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: Document currency
+        SalesDocument:
+          type: string
+          maxLength: 10
+          description: Reference sales document
+        SalesDocumentItem:
+          type: string
+          maxLength: 6
+          description: Reference sales document item
+        Plant:
+          type: string
+          maxLength: 4
+          description: Plant
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BILLING_DOCUMENT_SRV: Access to Billing Document API

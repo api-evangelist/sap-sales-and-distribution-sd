@@ -1,0 +1,415 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales and Distribution (SD) SAP Billing Document Debit Memo Request API
+  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA Cloud Sandbox
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA On-Premise
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '443'
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Debit Memo Request
+  description: Operations on debit memo request header (A_DebitMemoRequest)
+paths:
+  /A_DebitMemoRequest:
+    get:
+      operationId: listDebitMemoRequests
+      summary: Retrieve a list of debit memo requests
+      description: Returns a collection of debit memo request headers with support for OData query options.
+      tags:
+      - Debit Memo Request
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved debit memo requests
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/DebitMemoRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createDebitMemoRequest
+      summary: Create a new debit memo request
+      description: Creates a new debit memo request with deep insert support for items, partners, and pricing elements.
+      tags:
+      - Debit Memo Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DebitMemoRequestCreate'
+      responses:
+        '201':
+          description: Debit memo request successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/DebitMemoRequest'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_DebitMemoRequest('{DebitMemoRequest}'):
+    get:
+      operationId: getDebitMemoRequest
+      summary: Retrieve a single debit memo request
+      description: Returns a single debit memo request by its document number.
+      tags:
+      - Debit Memo Request
+      parameters:
+      - name: DebitMemoRequest
+        in: path
+        required: true
+        description: Debit memo request number (10 characters)
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the debit memo request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/DebitMemoRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateDebitMemoRequest
+      summary: Update a debit memo request
+      description: Updates an existing debit memo request header.
+      tags:
+      - Debit Memo Request
+      parameters:
+      - name: DebitMemoRequest
+        in: path
+        required: true
+        description: Debit memo request number
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DebitMemoRequestUpdate'
+      responses:
+        '204':
+          description: Debit memo request successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deleteDebitMemoRequest
+      summary: Delete a debit memo request
+      description: Deletes an existing debit memo request.
+      tags:
+      - Debit Memo Request
+      parameters:
+      - name: DebitMemoRequest
+        in: path
+        required: true
+        description: Debit memo request number
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/ifMatch'
+      responses:
+        '204':
+          description: Debit memo request successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  parameters:
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    DebitMemoRequestUpdate:
+      type: object
+      properties:
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+        HeaderBillingBlockReason:
+          type: string
+          maxLength: 2
+        BillingDocumentDate:
+          type: string
+          format: date
+    DebitMemoRequestCreate:
+      type: object
+      required:
+      - DebitMemoRequestType
+      - SalesOrganization
+      - DistributionChannel
+      - OrganizationDivision
+      properties:
+        DebitMemoRequestType:
+          type: string
+          maxLength: 4
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+        SoldToParty:
+          type: string
+          maxLength: 10
+        DebitMemoRequestDate:
+          type: string
+          format: date
+        SDDocumentReason:
+          type: string
+          maxLength: 3
+        to_Item:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/DebitMemoRequestItemCreate'
+    DebitMemoRequest:
+      type: object
+      description: Debit memo request header entity (A_DebitMemoRequest)
+      properties:
+        DebitMemoRequest:
+          type: string
+          maxLength: 10
+          description: Debit memo request number
+        DebitMemoRequestType:
+          type: string
+          maxLength: 4
+          description: Sales document type
+        SalesOrganization:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        DistributionChannel:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+          description: Division
+        SoldToParty:
+          type: string
+          maxLength: 10
+          description: Sold-to party
+        CreationDate:
+          type: string
+          format: date
+          description: Creation date
+        DebitMemoRequestDate:
+          type: string
+          format: date
+          description: Document date
+        BillingDocumentDate:
+          type: string
+          format: date
+          description: Billing date
+        TotalNetAmount:
+          type: string
+          description: Net value in document currency
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: Document currency
+        SDDocumentReason:
+          type: string
+          maxLength: 3
+          description: Order reason
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+          description: Customer purchase order number
+        CustomerPaymentTerms:
+          type: string
+          maxLength: 4
+          description: Payment terms
+        HeaderBillingBlockReason:
+          type: string
+          maxLength: 2
+          description: Billing block
+        OverallSDProcessStatus:
+          type: string
+          maxLength: 1
+          description: Overall processing status
+        OverallBillingStatus:
+          type: string
+          maxLength: 1
+          description: Billing status
+    DebitMemoRequestItemCreate:
+      type: object
+      properties:
+        Material:
+          type: string
+          maxLength: 40
+        RequestedQuantity:
+          type: string
+        RequestedQuantityUnit:
+          type: string
+          maxLength: 3
+        SalesDocument:
+          type: string
+          maxLength: 10
+        SalesDocumentItem:
+          type: string
+          maxLength: 6
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BILLING_DOCUMENT_SRV: Access to Billing Document API

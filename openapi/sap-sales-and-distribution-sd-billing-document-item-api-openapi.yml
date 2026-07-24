@@ -1,0 +1,206 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales and Distribution (SD) SAP Billing Document Billing Document Item API
+  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA Cloud Sandbox
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA On-Premise
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '443'
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Billing Document Item
+  description: Operations on billing document items (A_BillingDocumentItem)
+paths:
+  /A_BillingDocument('{BillingDocument}')/to_Item:
+    get:
+      operationId: listBillingDocumentItems
+      summary: Retrieve items for a billing document
+      description: Returns a collection of line items for the specified billing document.
+      tags:
+      - Billing Document Item
+      parameters:
+      - name: BillingDocument
+        in: path
+        required: true
+        description: Billing document number
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved billing document items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/BillingDocumentItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  parameters:
+    skip:
+      name: $skip
+      in: query
+      description: Number of records to skip
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      description: Comma-separated properties to include
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    BillingDocumentItem:
+      type: object
+      description: Billing document item entity (A_BillingDocumentItem)
+      properties:
+        BillingDocument:
+          type: string
+          maxLength: 10
+          description: Billing document number
+        BillingDocumentItem:
+          type: string
+          maxLength: 6
+          description: Billing item number
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number
+        Plant:
+          type: string
+          maxLength: 4
+          description: Plant
+        BillingQuantity:
+          type: string
+          description: Billing quantity in sales unit
+        BillingQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Sales unit
+        NetAmount:
+          type: string
+          description: Net value of the item
+        GrossAmount:
+          type: string
+          description: Gross value of the item
+        TaxAmount:
+          type: string
+          description: Tax amount
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: SD document currency
+        SalesDocument:
+          type: string
+          maxLength: 10
+          description: Reference sales document
+        SalesDocumentItem:
+          type: string
+          maxLength: 6
+          description: Reference sales document item
+        ReferenceSDDocument:
+          type: string
+          maxLength: 10
+          description: Reference delivery document
+        ReferenceSDDocumentItem:
+          type: string
+          maxLength: 6
+          description: Reference delivery item
+        MaterialGroup:
+          type: string
+          maxLength: 9
+          description: Material group
+        Batch:
+          type: string
+          maxLength: 10
+          description: Batch number
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BILLING_DOCUMENT_SRV: Access to Billing Document API

@@ -1,0 +1,254 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales and Distribution (SD) SAP Billing Document Business Partner Address API
+  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA Cloud Sandbox
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA On-Premise
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '443'
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Business Partner Address
+  description: Operations on business partner addresses (A_BusinessPartnerAddress)
+paths:
+  /A_BusinessPartner('{BusinessPartner}')/to_BusinessPartnerAddress:
+    get:
+      operationId: listBusinessPartnerAddresses
+      summary: Retrieve addresses for a business partner
+      description: Returns a collection of address records associated with the specified business partner.
+      tags:
+      - Business Partner Address
+      parameters:
+      - name: BusinessPartner
+        in: path
+        required: true
+        description: Business partner number
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved addresses
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/BusinessPartnerAddress'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createBusinessPartnerAddress
+      summary: Create an address for a business partner
+      description: Creates a new address record for the specified business partner.
+      tags:
+      - Business Partner Address
+      parameters:
+      - name: BusinessPartner
+        in: path
+        required: true
+        description: Business partner number
+        schema:
+          type: string
+          maxLength: 10
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessPartnerAddressCreate'
+      responses:
+        '201':
+          description: Address successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/BusinessPartnerAddress'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  parameters:
+    skip:
+      name: $skip
+      in: query
+      description: Number of records to skip
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    BusinessPartnerAddress:
+      type: object
+      description: Business partner address entity (A_BusinessPartnerAddress)
+      properties:
+        BusinessPartner:
+          type: string
+          maxLength: 10
+          description: Business partner number
+        AddressID:
+          type: string
+          maxLength: 10
+          description: Address number
+        StreetName:
+          type: string
+          maxLength: 60
+          description: Street name
+        HouseNumber:
+          type: string
+          maxLength: 10
+          description: House number
+        PostalCode:
+          type: string
+          maxLength: 10
+          description: Postal code
+        CityName:
+          type: string
+          maxLength: 40
+          description: City name
+        Region:
+          type: string
+          maxLength: 3
+          description: Region (state, province)
+        Country:
+          type: string
+          maxLength: 3
+          description: Country key (ISO 3166)
+        Language:
+          type: string
+          maxLength: 2
+          description: Language key
+        POBox:
+          type: string
+          maxLength: 10
+          description: PO box number
+        POBoxPostalCode:
+          type: string
+          maxLength: 10
+          description: PO box postal code
+        CompanyPostalCode:
+          type: string
+          maxLength: 10
+          description: Company postal code
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+    BusinessPartnerAddressCreate:
+      type: object
+      description: Business partner address creation payload
+      properties:
+        StreetName:
+          type: string
+          maxLength: 60
+        HouseNumber:
+          type: string
+          maxLength: 10
+        PostalCode:
+          type: string
+          maxLength: 10
+        CityName:
+          type: string
+          maxLength: 40
+        Region:
+          type: string
+          maxLength: 3
+        Country:
+          type: string
+          maxLength: 3
+        Language:
+          type: string
+          maxLength: 2
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BILLING_DOCUMENT_SRV: Access to Billing Document API

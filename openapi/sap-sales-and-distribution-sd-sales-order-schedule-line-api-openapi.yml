@@ -1,0 +1,167 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales and Distribution (SD) SAP Billing Document Sales Order Schedule Line API
+  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA Cloud Sandbox
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA On-Premise
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '443'
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Sales Order Schedule Line
+  description: Operations on sales order schedule lines (A_SalesOrderScheduleLine)
+paths:
+  /A_SalesOrderScheduleLine(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}',ScheduleLine='{ScheduleLine}'):
+    get:
+      operationId: getSalesOrderScheduleLine
+      summary: Retrieve a schedule line
+      description: Returns a single schedule line for a sales order item, identified by its composite key of sales order, item, and schedule line number.
+      tags:
+      - Sales Order Schedule Line
+      parameters:
+      - name: SalesOrder
+        in: path
+        required: true
+        description: Sales order number
+        schema:
+          type: string
+          maxLength: 10
+      - name: SalesOrderItem
+        in: path
+        required: true
+        description: Sales order item number
+        schema:
+          type: string
+          maxLength: 6
+      - name: ScheduleLine
+        in: path
+        required: true
+        description: Schedule line number
+        schema:
+          type: string
+          maxLength: 4
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved the schedule line
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SalesOrderScheduleLine'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or credentials invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Requested resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response
+      schema:
+        type: string
+  schemas:
+    Error:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+                  description: Error message text
+    SalesOrderScheduleLine:
+      type: object
+      description: Sales order schedule line entity (A_SalesOrderScheduleLine)
+      properties:
+        SalesOrder:
+          type: string
+          maxLength: 10
+          description: Sales order number
+        SalesOrderItem:
+          type: string
+          maxLength: 6
+          description: Sales order item number
+        ScheduleLine:
+          type: string
+          maxLength: 4
+          description: Schedule line number
+        RequestedDeliveryDate:
+          type: string
+          format: date
+          description: Schedule line delivery date
+        ConfirmedDeliveryDate:
+          type: string
+          format: date
+          description: Confirmed delivery date
+        OrderQuantityInSalesUnit:
+          type: string
+          description: Order quantity in sales unit
+        ConfirmedOrderQuantity:
+          type: string
+          description: Confirmed quantity
+        ScheduleLineOrderQuantity:
+          type: string
+          description: Scheduled order quantity
+        DeliveredQuantityInOrderQtyUnit:
+          type: string
+          description: Quantity already delivered
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BILLING_DOCUMENT_SRV: Access to Billing Document API

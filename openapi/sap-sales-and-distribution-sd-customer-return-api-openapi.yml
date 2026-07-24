@@ -1,0 +1,407 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales and Distribution (SD) SAP Billing Document Customer Return API
+  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA Cloud Sandbox
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA On-Premise
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '443'
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Customer Return
+  description: Operations on customer return header (A_CustomerReturn)
+paths:
+  /A_CustomerReturn:
+    get:
+      operationId: listCustomerReturns
+      summary: Retrieve a list of customer returns
+      description: Returns a collection of customer return headers. Supports filtering by return type, date, customer, and processing status.
+      tags:
+      - Customer Return
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved customer returns
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/CustomerReturn'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: createCustomerReturn
+      summary: Create a new customer return
+      description: Creates a new customer return using deep insert with items, partners, and pricing elements. Can reference an original sales order.
+      tags:
+      - Customer Return
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerReturnCreate'
+      responses:
+        '201':
+          description: Customer return successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/CustomerReturn'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_CustomerReturn('{CustomerReturn}'):
+    get:
+      operationId: getCustomerReturn
+      summary: Retrieve a single customer return
+      description: Returns a single customer return by its document number.
+      tags:
+      - Customer Return
+      parameters:
+      - name: CustomerReturn
+        in: path
+        required: true
+        description: Customer return number (10 characters)
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the customer return
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/CustomerReturn'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateCustomerReturn
+      summary: Update a customer return
+      description: Updates an existing customer return header.
+      tags:
+      - Customer Return
+      parameters:
+      - name: CustomerReturn
+        in: path
+        required: true
+        description: Customer return number
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerReturnUpdate'
+      responses:
+        '204':
+          description: Customer return successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deleteCustomerReturn
+      summary: Delete a customer return
+      description: Deletes an existing customer return.
+      tags:
+      - Customer Return
+      parameters:
+      - name: CustomerReturn
+        in: path
+        required: true
+        description: Customer return number
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/ifMatch'
+      responses:
+        '204':
+          description: Customer return successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  schemas:
+    CustomerReturnCreate:
+      type: object
+      required:
+      - CustomerReturnType
+      - SalesOrganization
+      - DistributionChannel
+      - OrganizationDivision
+      properties:
+        CustomerReturnType:
+          type: string
+          maxLength: 4
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+        SoldToParty:
+          type: string
+          maxLength: 10
+        CustomerReturnDate:
+          type: string
+          format: date
+        SDDocumentReason:
+          type: string
+          maxLength: 3
+        to_Item:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerReturnItemCreate'
+    CustomerReturn:
+      type: object
+      description: Customer return header entity (A_CustomerReturn)
+      properties:
+        CustomerReturn:
+          type: string
+          maxLength: 10
+          description: Customer return number
+        CustomerReturnType:
+          type: string
+          maxLength: 4
+          description: Sales document type
+        SalesOrganization:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        DistributionChannel:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+          description: Division
+        SoldToParty:
+          type: string
+          maxLength: 10
+          description: Sold-to party
+        CreationDate:
+          type: string
+          format: date
+          description: Creation date
+        CustomerReturnDate:
+          type: string
+          format: date
+          description: Document date
+        TotalNetAmount:
+          type: string
+          description: Net value in document currency
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: Document currency
+        SDDocumentReason:
+          type: string
+          maxLength: 3
+          description: Return reason
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+          description: Customer reference
+        OverallSDProcessStatus:
+          type: string
+          maxLength: 1
+          description: Overall processing status
+        OverallDeliveryStatus:
+          type: string
+          maxLength: 1
+          description: Delivery status
+        OverallBillingStatus:
+          type: string
+          maxLength: 1
+          description: Billing status
+    CustomerReturnItemCreate:
+      type: object
+      properties:
+        Material:
+          type: string
+          maxLength: 40
+        RequestedQuantity:
+          type: string
+        RequestedQuantityUnit:
+          type: string
+          maxLength: 3
+        Plant:
+          type: string
+          maxLength: 4
+        ReferenceSDDocument:
+          type: string
+          maxLength: 10
+        ReferenceSDDocumentItem:
+          type: string
+          maxLength: 6
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+    CustomerReturnUpdate:
+      type: object
+      properties:
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+        SDDocumentReason:
+          type: string
+          maxLength: 3
+  parameters:
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BILLING_DOCUMENT_SRV: Access to Billing Document API

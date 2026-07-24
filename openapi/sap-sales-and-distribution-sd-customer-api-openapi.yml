@@ -1,0 +1,164 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales and Distribution (SD) SAP Billing Document Customer API
+  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA Cloud Sandbox
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA On-Premise
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '443'
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Customer
+  description: Operations on customer-specific data (A_Customer)
+paths:
+  /A_Customer('{Customer}'):
+    get:
+      operationId: getCustomer
+      summary: Retrieve customer-specific data
+      description: Returns customer-specific data for the specified customer number, including payment terms, delivery priority, and account group.
+      tags:
+      - Customer
+      parameters:
+      - name: Customer
+        in: path
+        required: true
+        description: Customer number
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved customer data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Customer:
+      type: object
+      description: Customer entity (A_Customer)
+      properties:
+        Customer:
+          type: string
+          maxLength: 10
+          description: Customer number
+        CustomerAccountGroup:
+          type: string
+          maxLength: 4
+          description: Customer account group
+        CustomerName:
+          type: string
+          maxLength: 80
+          description: Customer name
+        DeliveryIsBlocked:
+          type: string
+          maxLength: 2
+          description: Delivery block
+        OrderIsBlocked:
+          type: string
+          maxLength: 2
+          description: Order block
+        PostingIsBlocked:
+          type: boolean
+          description: Posting block
+        CreationDate:
+          type: string
+          format: date
+          description: Customer creation date
+        CustomerClassification:
+          type: string
+          maxLength: 2
+          description: Customer classification
+        IndustryCode1:
+          type: string
+          maxLength: 4
+          description: Industry key
+        NFPartnerIsNaturalPerson:
+          type: string
+          maxLength: 1
+          description: Natural person indicator
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of navigation properties to expand
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BILLING_DOCUMENT_SRV: Access to Billing Document API

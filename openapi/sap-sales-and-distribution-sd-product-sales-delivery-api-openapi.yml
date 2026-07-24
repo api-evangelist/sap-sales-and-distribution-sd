@@ -1,0 +1,169 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales and Distribution (SD) SAP Billing Document Product Sales Delivery API
+  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA Cloud Sandbox
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA On-Premise
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '443'
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Product Sales Delivery
+  description: Operations on product sales and delivery data
+paths:
+  ? /A_ProductSalesDelivery(Product='{Product}',ProductSalesOrg='{ProductSalesOrg}',ProductDistributionChnl='{ProductDistributionChnl}')
+  : get:
+      operationId: getProductSalesDelivery
+      summary: Retrieve sales and delivery data for a product
+      description: Returns sales organization-specific data for a product including delivering plant, minimum order quantity, and delivery unit.
+      tags:
+      - Product Sales Delivery
+      parameters:
+      - name: Product
+        in: path
+        required: true
+        description: Material number
+        schema:
+          type: string
+          maxLength: 40
+      - name: ProductSalesOrg
+        in: path
+        required: true
+        description: Sales organization
+        schema:
+          type: string
+          maxLength: 4
+      - name: ProductDistributionChnl
+        in: path
+        required: true
+        description: Distribution channel
+        schema:
+          type: string
+          maxLength: 2
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved product sales data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/ProductSalesDelivery'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  schemas:
+    ProductSalesDelivery:
+      type: object
+      description: Product sales and delivery entity
+      properties:
+        Product:
+          type: string
+          maxLength: 40
+          description: Material number
+        ProductSalesOrg:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        ProductDistributionChnl:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        MinimumOrderQuantity:
+          type: string
+          description: Minimum order quantity
+        DeliveryQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Delivery unit
+        DeliveryQuantity:
+          type: string
+          description: Delivery quantity
+        SupplyingPlant:
+          type: string
+          maxLength: 4
+          description: Delivering plant
+        ItemCategoryGroup:
+          type: string
+          maxLength: 4
+          description: Item category group
+        AccountDetnProductGroup:
+          type: string
+          maxLength: 2
+          description: Account assignment group
+        ProductSalesStatus:
+          type: string
+          maxLength: 2
+          description: Distribution-chain-specific status
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BILLING_DOCUMENT_SRV: Access to Billing Document API

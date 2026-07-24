@@ -1,0 +1,151 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales and Distribution (SD) SAP Billing Document Credit Exposure API
+  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA Cloud Sandbox
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA On-Premise
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '443'
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Credit Exposure
+  description: Operations on credit exposure data
+paths:
+  /A_CrdtMgmtCreditExposure(BusinessPartner='{BusinessPartner}',CreditSegment='{CreditSegment}'):
+    get:
+      operationId: getCreditExposure
+      summary: Retrieve credit exposure for a business partner
+      description: Returns credit exposure data showing the current credit utilization for a specific business partner and credit segment.
+      tags:
+      - Credit Exposure
+      parameters:
+      - name: BusinessPartner
+        in: path
+        required: true
+        description: Business partner number
+        schema:
+          type: string
+          maxLength: 10
+      - name: CreditSegment
+        in: path
+        required: true
+        description: Credit segment
+        schema:
+          type: string
+          maxLength: 4
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved credit exposure
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/CrdtMgmtCreditExposure'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  schemas:
+    CrdtMgmtCreditExposure:
+      type: object
+      description: Credit exposure entity
+      properties:
+        BusinessPartner:
+          type: string
+          maxLength: 10
+          description: Business partner number
+        CreditSegment:
+          type: string
+          maxLength: 4
+          description: Credit segment
+        CreditExposureAmount:
+          type: string
+          description: Total credit exposure amount
+        CreditExposureCurrency:
+          type: string
+          maxLength: 5
+          description: Currency of credit exposure
+        OpenOrderValue:
+          type: string
+          description: Value of open sales orders
+        OpenDeliveryValue:
+          type: string
+          description: Value of open deliveries
+        OpenBillingDocValue:
+          type: string
+          description: Value of open billing documents
+        OpenItemValue:
+          type: string
+          description: Value of open items in accounting
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BILLING_DOCUMENT_SRV: Access to Billing Document API

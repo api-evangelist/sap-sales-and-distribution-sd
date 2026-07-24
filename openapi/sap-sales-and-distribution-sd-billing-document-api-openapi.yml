@@ -1,0 +1,361 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales and Distribution (SD) SAP Billing Document API
+  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA Cloud Sandbox
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA On-Premise
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '443'
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Billing Document
+  description: Operations on billing document header (A_BillingDocument)
+paths:
+  /A_BillingDocument:
+    get:
+      operationId: listBillingDocuments
+      summary: Retrieve a list of billing documents
+      description: Returns a collection of billing document headers. Use OData query options to filter by billing date, billing type, sales organization, customer, or cancellation status.
+      tags:
+      - Billing Document
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/inlinecount'
+      responses:
+        '200':
+          description: Successfully retrieved billing documents
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/BillingDocument'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_BillingDocument('{BillingDocument}'):
+    get:
+      operationId: getBillingDocument
+      summary: Retrieve a single billing document
+      description: Returns a single billing document header by its key. Use $expand to include related items, partners, and pricing elements.
+      tags:
+      - Billing Document
+      parameters:
+      - name: BillingDocument
+        in: path
+        required: true
+        description: Billing document number (10 characters)
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the billing document
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/BillingDocument'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /CancelBillingDocument:
+    post:
+      operationId: cancelBillingDocument
+      summary: Cancel a billing document
+      description: Cancels a billing document by creating a cancellation document. The original document is flagged as cancelled and a new reversal document is generated.
+      tags:
+      - Billing Document
+      parameters:
+      - name: BillingDocument
+        in: query
+        required: true
+        description: Billing document number to cancel
+        schema:
+          type: string
+          maxLength: 10
+      responses:
+        '200':
+          description: Billing document successfully cancelled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/BillingDocument'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /GetPDF:
+    get:
+      operationId: getBillingDocumentPDF
+      summary: Retrieve a billing document as PDF
+      description: Returns the billing document output as a PDF binary stream. The PDF is generated based on the configured output type and form.
+      tags:
+      - Billing Document
+      parameters:
+      - name: BillingDocument
+        in: query
+        required: true
+        description: Billing document number
+        schema:
+          type: string
+          maxLength: 10
+      responses:
+        '200':
+          description: PDF document successfully retrieved
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  parameters:
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of records to skip
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      description: Comma-separated properties to include
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Sort order
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      description: Navigation properties to expand
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
+    inlinecount:
+      name: $inlinecount
+      in: query
+      description: Include total count
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    BillingDocument:
+      type: object
+      description: Billing document header entity (A_BillingDocument)
+      properties:
+        BillingDocument:
+          type: string
+          maxLength: 10
+          description: Billing document number
+        BillingDocumentType:
+          type: string
+          maxLength: 4
+          description: Billing document type (F2=Invoice, G2=Credit Memo, L2=Debit Memo)
+        BillingDocumentCategory:
+          type: string
+          maxLength: 1
+          description: Billing document category
+        SDDocumentCategory:
+          type: string
+          maxLength: 4
+          description: SD document category
+        BillingDocumentDate:
+          type: string
+          format: date
+          description: Billing date
+        CreationDate:
+          type: string
+          format: date
+          description: Date the document was created
+        CreationTime:
+          type: string
+          description: Time the document was created
+        LastChangeDate:
+          type: string
+          format: date
+          description: Date of last change
+        LastChangeDateTime:
+          type: string
+          format: date-time
+          description: Timestamp of last change
+        SalesOrganization:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        DistributionChannel:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        Division:
+          type: string
+          maxLength: 2
+          description: Division
+        SoldToParty:
+          type: string
+          maxLength: 10
+          description: Sold-to party
+        PayerParty:
+          type: string
+          maxLength: 10
+          description: Payer
+        TotalNetAmount:
+          type: string
+          description: Net value in document currency
+        TotalGrossAmount:
+          type: string
+          description: Gross value in document currency
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: SD document currency
+        TotalTaxAmount:
+          type: string
+          description: Tax amount in document currency
+        CustomerPaymentTerms:
+          type: string
+          maxLength: 4
+          description: Terms of payment key
+        PaymentMethod:
+          type: string
+          maxLength: 1
+          description: Payment method
+        BillingDocumentIsCancelled:
+          type: boolean
+          description: Indicates if the billing document is cancelled
+        CancelledBillingDocument:
+          type: string
+          maxLength: 10
+          description: Cancelled billing document number
+        AccountingDocument:
+          type: string
+          maxLength: 10
+          description: Accounting document number
+        AccountingPostingStatus:
+          type: string
+          maxLength: 1
+          description: Accounting posting status
+        IncotermsClassification:
+          type: string
+          maxLength: 3
+          description: Incoterms (part 1)
+        CompanyCode:
+          type: string
+          maxLength: 4
+          description: Company code
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BILLING_DOCUMENT_SRV: Access to Billing Document API

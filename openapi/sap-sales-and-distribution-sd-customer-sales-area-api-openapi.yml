@@ -1,0 +1,190 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales and Distribution (SD) SAP Billing Document Customer Sales Area API
+  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA Cloud Sandbox
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA On-Premise
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '443'
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Customer Sales Area
+  description: Operations on customer sales area data (A_CustomerSalesArea)
+paths:
+  ? /A_CustomerSalesArea(Customer='{Customer}',SalesOrganization='{SalesOrganization}',DistributionChannel='{DistributionChannel}',Division='{Division}')
+  : get:
+      operationId: getCustomerSalesArea
+      summary: Retrieve customer sales area data
+      description: Returns sales area-specific data for a customer, including pricing, shipping, and billing information specific to the sales organization, distribution channel, and division.
+      tags:
+      - Customer Sales Area
+      parameters:
+      - name: Customer
+        in: path
+        required: true
+        description: Customer number
+        schema:
+          type: string
+          maxLength: 10
+      - name: SalesOrganization
+        in: path
+        required: true
+        description: Sales organization
+        schema:
+          type: string
+          maxLength: 4
+      - name: DistributionChannel
+        in: path
+        required: true
+        description: Distribution channel
+        schema:
+          type: string
+          maxLength: 2
+      - name: Division
+        in: path
+        required: true
+        description: Division
+        schema:
+          type: string
+          maxLength: 2
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved customer sales area data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/CustomerSalesArea'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    CustomerSalesArea:
+      type: object
+      description: Customer sales area entity (A_CustomerSalesArea)
+      properties:
+        Customer:
+          type: string
+          maxLength: 10
+          description: Customer number
+        SalesOrganization:
+          type: string
+          maxLength: 4
+          description: Sales organization
+        DistributionChannel:
+          type: string
+          maxLength: 2
+          description: Distribution channel
+        Division:
+          type: string
+          maxLength: 2
+          description: Division
+        CustomerPaymentTerms:
+          type: string
+          maxLength: 4
+          description: Terms of payment key
+        DeliveryPriority:
+          type: string
+          maxLength: 2
+          description: Delivery priority
+        ShippingCondition:
+          type: string
+          maxLength: 2
+          description: Shipping conditions
+        IncotermsClassification:
+          type: string
+          maxLength: 3
+          description: Incoterms (part 1)
+        Currency:
+          type: string
+          maxLength: 5
+          description: Currency
+        CustomerPricingProcedure:
+          type: string
+          maxLength: 1
+          description: Pricing procedure assigned to the customer
+        CustomerAccountAssignmentGroup:
+          type: string
+          maxLength: 2
+          description: Account assignment group for the customer
+        CompleteDeliveryIsDefined:
+          type: boolean
+          description: Complete delivery flag
+        PartialDeliveryIsAllowed:
+          type: string
+          maxLength: 1
+          description: Partial delivery at item level
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BILLING_DOCUMENT_SRV: Access to Billing Document API

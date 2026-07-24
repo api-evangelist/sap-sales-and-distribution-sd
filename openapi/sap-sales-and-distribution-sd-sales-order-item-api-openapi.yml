@@ -1,0 +1,379 @@
+openapi: 3.1.0
+info:
+  title: SAP Sales and Distribution (SD) SAP Billing Document Sales Order Item API
+  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  version: 1.0.0
+  contact:
+    name: SAP Support
+    url: https://support.sap.com
+  license:
+    name: SAP Developer License
+    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+servers:
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA Cloud Sandbox
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+  description: SAP S/4HANA On-Premise
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '443'
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Sales Order Item
+  description: Operations on sales order item entity (A_SalesOrderItem)
+paths:
+  /A_SalesOrder('{SalesOrder}')/to_Item:
+    get:
+      operationId: listSalesOrderItems
+      summary: Retrieve items for a sales order
+      description: Returns a collection of line items for the specified sales order. Supports OData query options for filtering, sorting, and pagination.
+      tags:
+      - Sales Order Item
+      parameters:
+      - name: SalesOrder
+        in: path
+        required: true
+        description: Sales order number
+        schema:
+          type: string
+          maxLength: 10
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          description: Successfully retrieved sales order items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SalesOrderItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /A_SalesOrderItem(SalesOrder='{SalesOrder}',SalesOrderItem='{SalesOrderItem}'):
+    get:
+      operationId: getSalesOrderItem
+      summary: Retrieve a single sales order item
+      description: Returns a single sales order item by its composite key (SalesOrder and SalesOrderItem number).
+      tags:
+      - Sales Order Item
+      parameters:
+      - name: SalesOrder
+        in: path
+        required: true
+        description: Sales order number
+        schema:
+          type: string
+          maxLength: 10
+      - name: SalesOrderItem
+        in: path
+        required: true
+        description: Sales order item number (6 characters)
+        schema:
+          type: string
+          maxLength: 6
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Successfully retrieved the sales order item
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    $ref: '#/components/schemas/SalesOrderItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    patch:
+      operationId: updateSalesOrderItem
+      summary: Update a sales order item
+      description: Updates an existing sales order item. Only the fields included in the request body are updated.
+      tags:
+      - Sales Order Item
+      parameters:
+      - name: SalesOrder
+        in: path
+        required: true
+        description: Sales order number
+        schema:
+          type: string
+          maxLength: 10
+      - name: SalesOrderItem
+        in: path
+        required: true
+        description: Sales order item number
+        schema:
+          type: string
+          maxLength: 6
+      - $ref: '#/components/parameters/ifMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalesOrderItemUpdate'
+      responses:
+        '204':
+          description: Sales order item successfully updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      operationId: deleteSalesOrderItem
+      summary: Delete a sales order item
+      description: Deletes an existing sales order item from the specified sales order.
+      tags:
+      - Sales Order Item
+      parameters:
+      - name: SalesOrder
+        in: path
+        required: true
+        description: Sales order number
+        schema:
+          type: string
+          maxLength: 10
+      - name: SalesOrderItem
+        in: path
+        required: true
+        description: Sales order item number
+        schema:
+          type: string
+          maxLength: 6
+      - $ref: '#/components/parameters/ifMatch'
+      responses:
+        '204':
+          description: Sales order item successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  parameters:
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of records to skip
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response
+      schema:
+        type: string
+    ifMatch:
+      name: If-Match
+      in: header
+      description: ETag value for optimistic concurrency control
+      required: true
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of navigation properties to expand
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
+  schemas:
+    SalesOrderItemUpdate:
+      type: object
+      description: Sales order item update payload
+      properties:
+        RequestedQuantity:
+          type: string
+          description: Order quantity
+        Plant:
+          type: string
+          maxLength: 4
+        StorageLocation:
+          type: string
+          maxLength: 4
+        ItemBillingBlockReason:
+          type: string
+          maxLength: 2
+        SalesOrderItemText:
+          type: string
+          maxLength: 40
+    SalesOrderItem:
+      type: object
+      description: Sales order item entity (A_SalesOrderItem)
+      properties:
+        SalesOrder:
+          type: string
+          maxLength: 10
+          description: Sales order number
+        SalesOrderItem:
+          type: string
+          maxLength: 6
+          description: Sales order item number
+        SalesOrderItemCategory:
+          type: string
+          maxLength: 4
+          description: Sales document item category
+        SalesOrderItemText:
+          type: string
+          maxLength: 40
+          description: Short text for the sales order item
+        Material:
+          type: string
+          maxLength: 40
+          description: Material number
+        MaterialByCustomer:
+          type: string
+          maxLength: 35
+          description: Material number used by customer
+        PricingDate:
+          type: string
+          format: date
+          description: Pricing date
+        RequestedQuantity:
+          type: string
+          description: Cumulative order quantity in sales units
+        RequestedQuantityUnit:
+          type: string
+          maxLength: 3
+          description: Sales unit
+        NetAmount:
+          type: string
+          description: Net value of the item in document currency
+        TransactionCurrency:
+          type: string
+          maxLength: 5
+          description: SD document currency
+        MaterialGroup:
+          type: string
+          maxLength: 9
+          description: Material group
+        Batch:
+          type: string
+          maxLength: 10
+          description: Batch number
+        Plant:
+          type: string
+          maxLength: 4
+          description: Plant (delivering)
+        StorageLocation:
+          type: string
+          maxLength: 4
+          description: Storage location
+        ShippingPoint:
+          type: string
+          maxLength: 4
+          description: Shipping point / receiving point
+        DeliveryGroup:
+          type: string
+          maxLength: 3
+          description: Delivery group
+        ItemBillingBlockReason:
+          type: string
+          maxLength: 2
+          description: Billing block for the item
+        SDProcessStatus:
+          type: string
+          maxLength: 1
+          description: Overall processing status of the item
+        DeliveryStatus:
+          type: string
+          maxLength: 1
+          description: Delivery status
+        OrderRelatedBillingStatus:
+          type: string
+          maxLength: 1
+          description: Billing status
+    Error:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+                  description: Error message text
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters or payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or credentials invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Requested resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
+          scopes:
+            API_BILLING_DOCUMENT_SRV: Access to Billing Document API
