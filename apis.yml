@@ -3354,10 +3354,6 @@ common:
     url: https://github.com/SAP/cloud-sdk-js
   - type: SpectralRules
     url: rules/sap-sd-rules.yml
-  - type: Capabilities
-    url: capabilities/order-to-cash.yaml
-  - type: Capabilities
-    url: capabilities/customer-management.yaml
   - type: Vocabulary
     url: vocabulary/sap-sd-vocabulary.yml
 maintainers:
