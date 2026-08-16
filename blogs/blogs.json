@@ -5,7 +5,7 @@
       "source": "https://community.sap.com:443/khhcw49343/rss/Community?interaction.style=forum",
       "feed_url": "https://community.sap.com:443/khhcw49343/rss/Community?interaction.style=forum",
       "title": "",
-      "saved": 0,
+      "saved": 19,
       "method": "feed"
     },
     {
@@ -13,9 +13,10 @@
       "feed_url": "https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "none",
+      "error": "parse_failed"
     }
   ],
-  "post_count": 189,
-  "fetched": "2026-08-06T14:08:46Z"
+  "post_count": 208,
+  "fetched": "2026-08-15T12:11:08Z"
 }
