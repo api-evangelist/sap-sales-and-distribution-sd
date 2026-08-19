@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Customer API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve customer-specific data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_Customer(':Customer')",
+            "params": [
+              {
+                "name": "Customer",
+                "value": "",
+                "type": "path",
+                "description": "Customer number"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of navigation properties to expand"
+              }
+            ]
+          },
+          "docs": "Returns customer-specific data for the specified customer number, including payment terms, delivery priority, and account group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

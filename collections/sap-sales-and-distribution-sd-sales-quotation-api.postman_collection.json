@@ -1,0 +1,1497 @@
+{
+  "item": [
+    {
+      "id": "76abdfd1-6e84-4457-b726-a552b2a56171",
+      "name": "Sales Quotation",
+      "description": {
+        "content": "Operations on sales quotation header (A_SalesQuotation)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ad771ae2-849f-427a-a694-72282d7e0203",
+          "name": "Retrieve a list of sales quotations",
+          "request": {
+            "name": "Retrieve a list of sales quotations",
+            "description": {
+              "content": "Returns a collection of sales quotation headers. Supports OData query options for filtering by quotation type, sales organization, sold-to party, validity dates, and status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_SalesQuotation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of records to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated properties to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>",
+                  "description": "Navigation properties to expand"
+                },
+                {
+                  "disabled": false,
+                  "key": "$inlinecount",
+                  "value": "<string>",
+                  "description": "Include total count"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd481d74-d92c-445b-b4ab-27ec59273be6",
+              "name": "Successfully retrieved sales quotations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"SalesQuotation\": \"string\",\n        \"SalesQuotationType\": \"stri\",\n        \"SalesOrganization\": \"stri\",\n        \"DistributionChannel\": \"st\",\n        \"OrganizationDivision\": \"st\",\n        \"SalesGroup\": \"str\",\n        \"SalesOffice\": \"stri\",\n        \"SoldToParty\": \"string\",\n        \"CreationDate\": \"2013-03-04\",\n        \"LastChangeDate\": \"1985-09-07\",\n        \"SalesQuotationDate\": \"1961-09-29\",\n        \"BindingPeriodValidityStartDate\": \"2002-03-28\",\n        \"BindingPeriodValidityEndDate\": \"1957-07-04\",\n        \"PurchaseOrderByCustomer\": \"string\",\n        \"TotalNetAmount\": \"string\",\n        \"TransactionCurrency\": \"strin\",\n        \"SDDocumentReason\": \"str\",\n        \"PricingDate\": \"2002-05-06\",\n        \"RequestedDeliveryDate\": \"1958-05-14\",\n        \"ShippingCondition\": \"st\",\n        \"ShippingType\": \"st\",\n        \"HeaderBillingBlockReason\": \"st\",\n        \"DeliveryBlockReason\": \"st\",\n        \"IncotermsClassification\": \"str\",\n        \"CustomerPaymentTerms\": \"stri\",\n        \"OverallSDProcessStatus\": \"s\",\n        \"ApprovalRequestReason\": \"stri\"\n      },\n      {\n        \"SalesQuotation\": \"string\",\n        \"SalesQuotationType\": \"stri\",\n        \"SalesOrganization\": \"stri\",\n        \"DistributionChannel\": \"st\",\n        \"OrganizationDivision\": \"st\",\n        \"SalesGroup\": \"str\",\n        \"SalesOffice\": \"stri\",\n        \"SoldToParty\": \"string\",\n        \"CreationDate\": \"2004-06-08\",\n        \"LastChangeDate\": \"1999-08-15\",\n        \"SalesQuotationDate\": \"1985-06-09\",\n        \"BindingPeriodValidityStartDate\": \"1991-06-21\",\n        \"BindingPeriodValidityEndDate\": \"1954-09-14\",\n        \"PurchaseOrderByCustomer\": \"string\",\n        \"TotalNetAmount\": \"string\",\n        \"TransactionCurrency\": \"strin\",\n        \"SDDocumentReason\": \"str\",\n        \"PricingDate\": \"2002-02-08\",\n        \"RequestedDeliveryDate\": \"2009-02-05\",\n        \"ShippingCondition\": \"st\",\n        \"ShippingType\": \"st\",\n        \"HeaderBillingBlockReason\": \"st\",\n        \"DeliveryBlockReason\": \"st\",\n        \"IncotermsClassification\": \"str\",\n        \"CustomerPaymentTerms\": \"stri\",\n        \"OverallSDProcessStatus\": \"s\",\n        \"ApprovalRequestReason\": \"stri\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20af03ea-3ac8-472f-bc5f-7a7d6385b3f2",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e00d769-943e-4ab1-abaa-9a32a18bd90e",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "316f8fb3-4153-415a-8901-9b31c1c338ac",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d51c94b3-8d96-41cf-940d-7fa6b92c8900",
+          "name": "Create a new sales quotation",
+          "request": {
+            "name": "Create a new sales quotation",
+            "description": {
+              "content": "Creates a new sales quotation using a deep insert request with header, items, partners, pricing elements, and texts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_SalesQuotation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"SalesQuotationType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SalesQuotationDate\": \"<date>\",\n  \"BindingPeriodValidityStartDate\": \"<date>\",\n  \"BindingPeriodValidityEndDate\": \"<date>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"Plant\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "811628bc-9123-48c6-905c-159e6067c4a5",
+              "name": "Sales quotation successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesQuotationType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SalesQuotationDate\": \"<date>\",\n  \"BindingPeriodValidityStartDate\": \"<date>\",\n  \"BindingPeriodValidityEndDate\": \"<date>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"Plant\": \"stri\"\n      },\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"Plant\": \"stri\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"SalesQuotation\": \"string\",\n    \"SalesQuotationType\": \"stri\",\n    \"SalesOrganization\": \"stri\",\n    \"DistributionChannel\": \"st\",\n    \"OrganizationDivision\": \"st\",\n    \"SalesGroup\": \"str\",\n    \"SalesOffice\": \"stri\",\n    \"SoldToParty\": \"string\",\n    \"CreationDate\": \"2016-11-05\",\n    \"LastChangeDate\": \"2006-11-17\",\n    \"SalesQuotationDate\": \"1956-09-27\",\n    \"BindingPeriodValidityStartDate\": \"1992-08-17\",\n    \"BindingPeriodValidityEndDate\": \"1970-05-27\",\n    \"PurchaseOrderByCustomer\": \"string\",\n    \"TotalNetAmount\": \"string\",\n    \"TransactionCurrency\": \"strin\",\n    \"SDDocumentReason\": \"str\",\n    \"PricingDate\": \"2001-12-27\",\n    \"RequestedDeliveryDate\": \"1987-11-14\",\n    \"ShippingCondition\": \"st\",\n    \"ShippingType\": \"st\",\n    \"HeaderBillingBlockReason\": \"st\",\n    \"DeliveryBlockReason\": \"st\",\n    \"IncotermsClassification\": \"str\",\n    \"CustomerPaymentTerms\": \"stri\",\n    \"OverallSDProcessStatus\": \"s\",\n    \"ApprovalRequestReason\": \"stri\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afc2bf4b-ef5e-4739-b484-8d9f6ec1feac",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesQuotationType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SalesQuotationDate\": \"<date>\",\n  \"BindingPeriodValidityStartDate\": \"<date>\",\n  \"BindingPeriodValidityEndDate\": \"<date>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"Plant\": \"stri\"\n      },\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"Plant\": \"stri\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bde0908b-65a7-4750-9c31-b94fa607d834",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesQuotationType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SalesQuotationDate\": \"<date>\",\n  \"BindingPeriodValidityStartDate\": \"<date>\",\n  \"BindingPeriodValidityEndDate\": \"<date>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"Plant\": \"stri\"\n      },\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"Plant\": \"stri\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d0e23ea-6751-430b-8888-d9ea019b1491",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SalesQuotationType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"SalesQuotationDate\": \"<date>\",\n  \"BindingPeriodValidityStartDate\": \"<date>\",\n  \"BindingPeriodValidityEndDate\": \"<date>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"CustomerPaymentTerms\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"Plant\": \"stri\"\n      },\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"Plant\": \"stri\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b259e281-21f6-4219-a570-c3e0ba07979b",
+          "name": "Retrieve a single sales quotation",
+          "request": {
+            "name": "Retrieve a single sales quotation",
+            "description": {
+              "content": "Returns a single sales quotation header by its key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_SalesQuotation('{{SalesQuotation}}')"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated properties to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>",
+                  "description": "Navigation properties to expand"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37f51fe8-06a7-4656-9ad9-71d789a85a96",
+              "name": "Successfully retrieved the sales quotation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation('{{SalesQuotation}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"SalesQuotation\": \"string\",\n    \"SalesQuotationType\": \"stri\",\n    \"SalesOrganization\": \"stri\",\n    \"DistributionChannel\": \"st\",\n    \"OrganizationDivision\": \"st\",\n    \"SalesGroup\": \"str\",\n    \"SalesOffice\": \"stri\",\n    \"SoldToParty\": \"string\",\n    \"CreationDate\": \"2016-11-05\",\n    \"LastChangeDate\": \"2006-11-17\",\n    \"SalesQuotationDate\": \"1956-09-27\",\n    \"BindingPeriodValidityStartDate\": \"1992-08-17\",\n    \"BindingPeriodValidityEndDate\": \"1970-05-27\",\n    \"PurchaseOrderByCustomer\": \"string\",\n    \"TotalNetAmount\": \"string\",\n    \"TransactionCurrency\": \"strin\",\n    \"SDDocumentReason\": \"str\",\n    \"PricingDate\": \"2001-12-27\",\n    \"RequestedDeliveryDate\": \"1987-11-14\",\n    \"ShippingCondition\": \"st\",\n    \"ShippingType\": \"st\",\n    \"HeaderBillingBlockReason\": \"st\",\n    \"DeliveryBlockReason\": \"st\",\n    \"IncotermsClassification\": \"str\",\n    \"CustomerPaymentTerms\": \"stri\",\n    \"OverallSDProcessStatus\": \"s\",\n    \"ApprovalRequestReason\": \"stri\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7ef3dc7-30a6-4ada-9dc1-491b3a37a551",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation('{{SalesQuotation}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62c73388-dfcf-4c9e-8379-d328a49f69e6",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation('{{SalesQuotation}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f0a434b-0b31-4329-b0cf-e23b22cf9b06",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation('{{SalesQuotation}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e36c5971-8a46-4844-9699-9657090c1064",
+          "name": "Update a sales quotation",
+          "request": {
+            "name": "Update a sales quotation",
+            "description": {
+              "content": "Updates an existing sales quotation header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_SalesQuotation('{{SalesQuotation}}')"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ETag value for concurrency control",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"BindingPeriodValidityEndDate\": \"<date>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"DeliveryBlockReason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "81b082d0-b0f8-4c82-ae63-085c21ee9201",
+              "name": "Sales quotation successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation('{{SalesQuotation}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"BindingPeriodValidityEndDate\": \"<date>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"DeliveryBlockReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b56b9f5-30f8-4af7-a8ac-721a9fa15fcd",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation('{{SalesQuotation}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"BindingPeriodValidityEndDate\": \"<date>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"DeliveryBlockReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c61d4ba-7863-47d8-97de-1ce0dde7bcda",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation('{{SalesQuotation}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"BindingPeriodValidityEndDate\": \"<date>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"DeliveryBlockReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f81a2683-0691-4f30-abda-c0affb642599",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation('{{SalesQuotation}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"BindingPeriodValidityEndDate\": \"<date>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"DeliveryBlockReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "020c8320-597c-43aa-b37d-add57e9fc205",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation('{{SalesQuotation}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"RequestedDeliveryDate\": \"<date>\",\n  \"BindingPeriodValidityEndDate\": \"<date>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"DeliveryBlockReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad2e0779-6680-4b86-b7b2-554fd8fbb5a7",
+          "name": "Delete a sales quotation",
+          "request": {
+            "name": "Delete a sales quotation",
+            "description": {
+              "content": "Deletes an existing sales quotation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_SalesQuotation('{{SalesQuotation}}')"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ETag value for concurrency control",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6dfca68-35d9-48e4-9601-d6f2c6044a37",
+              "name": "Sales quotation successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation('{{SalesQuotation}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7806dc48-aa50-4491-b7ce-0f761e4b723e",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation('{{SalesQuotation}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3a2aa02-08a3-480e-a9e9-889ff4bb919d",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation('{{SalesQuotation}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08f70990-15a8-4bed-b008-8e0a56b1806f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesQuotation('{{SalesQuotation}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Sales quotation number (10 characters)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "SalesQuotation"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "050d768d-b11e-4888-b560-e900faf1f88f",
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Sales Quotation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

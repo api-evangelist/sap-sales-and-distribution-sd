@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Credit Limit API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Credit Limit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve credit limits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_CrdtMgmtCreditLimit",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$inlinecount",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of credit limits for business partners across credit control areas and credit segments."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific credit limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_CrdtMgmtCreditLimit(BusinessPartner=':BusinessPartner',CreditSegment=':CreditSegment')",
+            "params": [
+              {
+                "name": "BusinessPartner",
+                "value": "",
+                "type": "path",
+                "description": "Business partner number"
+              },
+              {
+                "name": "CreditSegment",
+                "value": "",
+                "type": "path",
+                "description": "Credit segment"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns credit limit data for a specific business partner and credit segment combination."
+        },
+        {
+          "info": {
+            "name": "Update a credit limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_CrdtMgmtCreditLimit(BusinessPartner=':BusinessPartner',CreditSegment=':CreditSegment')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "BusinessPartner",
+                "value": "",
+                "type": "path",
+                "description": "Business partner number"
+              },
+              {
+                "name": "CreditSegment",
+                "value": "",
+                "type": "path",
+                "description": "Credit segment"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the credit limit for a specific business partner and credit segment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

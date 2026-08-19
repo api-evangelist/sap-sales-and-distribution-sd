@@ -1,0 +1,1194 @@
+{
+  "item": [
+    {
+      "id": "a24d5742-4d7f-42dc-9efe-451bc8ae91c0",
+      "name": "Sales Order Item",
+      "description": {
+        "content": "Operations on sales order item entity (A_SalesOrderItem)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4e0e51e1-d751-4372-9550-78b8865754a5",
+          "name": "Retrieve items for a sales order",
+          "request": {
+            "name": "Retrieve items for a sales order",
+            "description": {
+              "content": "Returns a collection of line items for the specified sales order. Supports OData query options for filtering, sorting, and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_SalesOrder('{{SalesOrder}}')",
+                "to_Item"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of records to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e305f21d-8027-4bfe-8f3a-9b49fbd81baa",
+              "name": "Successfully retrieved sales order items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')",
+                    "to_Item"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"SalesOrder\": \"string\",\n        \"SalesOrderItem\": \"string\",\n        \"SalesOrderItemCategory\": \"stri\",\n        \"SalesOrderItemText\": \"string\",\n        \"Material\": \"string\",\n        \"MaterialByCustomer\": \"string\",\n        \"PricingDate\": \"2020-06-15\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"NetAmount\": \"string\",\n        \"TransactionCurrency\": \"strin\",\n        \"MaterialGroup\": \"string\",\n        \"Batch\": \"string\",\n        \"Plant\": \"stri\",\n        \"StorageLocation\": \"stri\",\n        \"ShippingPoint\": \"stri\",\n        \"DeliveryGroup\": \"str\",\n        \"ItemBillingBlockReason\": \"st\",\n        \"SDProcessStatus\": \"s\",\n        \"DeliveryStatus\": \"s\",\n        \"OrderRelatedBillingStatus\": \"s\"\n      },\n      {\n        \"SalesOrder\": \"string\",\n        \"SalesOrderItem\": \"string\",\n        \"SalesOrderItemCategory\": \"stri\",\n        \"SalesOrderItemText\": \"string\",\n        \"Material\": \"string\",\n        \"MaterialByCustomer\": \"string\",\n        \"PricingDate\": \"1988-10-20\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"NetAmount\": \"string\",\n        \"TransactionCurrency\": \"strin\",\n        \"MaterialGroup\": \"string\",\n        \"Batch\": \"string\",\n        \"Plant\": \"stri\",\n        \"StorageLocation\": \"stri\",\n        \"ShippingPoint\": \"stri\",\n        \"DeliveryGroup\": \"str\",\n        \"ItemBillingBlockReason\": \"st\",\n        \"SDProcessStatus\": \"s\",\n        \"DeliveryStatus\": \"s\",\n        \"OrderRelatedBillingStatus\": \"s\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99820622-903d-494a-a0bd-8ead1df0c236",
+              "name": "Authentication required or credentials invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')",
+                    "to_Item"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87f6cfff-fdc4-43c6-aa58-9289064435de",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')",
+                    "to_Item"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3796ca01-19b7-44d3-9c3c-c77caab7600d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrder('{{SalesOrder}}')",
+                    "to_Item"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5b50a48-214c-4247-a52f-80fb5b96a41a",
+          "name": "Retrieve a single sales order item",
+          "request": {
+            "name": "Retrieve a single sales order item",
+            "description": {
+              "content": "Returns a single sales order item by its composite key (SalesOrder and SalesOrderItem number).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response"
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of navigation properties to expand"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dbb79df6-bdff-490c-b3c6-ea69c51d3ab6",
+              "name": "Successfully retrieved the sales order item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"SalesOrder\": \"string\",\n    \"SalesOrderItem\": \"string\",\n    \"SalesOrderItemCategory\": \"stri\",\n    \"SalesOrderItemText\": \"string\",\n    \"Material\": \"string\",\n    \"MaterialByCustomer\": \"string\",\n    \"PricingDate\": \"1954-02-24\",\n    \"RequestedQuantity\": \"string\",\n    \"RequestedQuantityUnit\": \"str\",\n    \"NetAmount\": \"string\",\n    \"TransactionCurrency\": \"strin\",\n    \"MaterialGroup\": \"string\",\n    \"Batch\": \"string\",\n    \"Plant\": \"stri\",\n    \"StorageLocation\": \"stri\",\n    \"ShippingPoint\": \"stri\",\n    \"DeliveryGroup\": \"str\",\n    \"ItemBillingBlockReason\": \"st\",\n    \"SDProcessStatus\": \"s\",\n    \"DeliveryStatus\": \"s\",\n    \"OrderRelatedBillingStatus\": \"s\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e37947e-2826-4cc0-9b25-302d52185347",
+              "name": "Authentication required or credentials invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d6c2969-720d-4de5-ab55-eea5931f24c2",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9651a6f-bfb5-46ad-b923-1fdb37e8ede9",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6d8a128-1a75-43ab-88f3-3bc1400928ef",
+          "name": "Update a sales order item",
+          "request": {
+            "name": "Update a sales order item",
+            "description": {
+              "content": "Updates an existing sales order item. Only the fields included in the request body are updated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ETag value for optimistic concurrency control",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"RequestedQuantity\": \"<string>\",\n  \"Plant\": \"<string>\",\n  \"StorageLocation\": \"<string>\",\n  \"ItemBillingBlockReason\": \"<string>\",\n  \"SalesOrderItemText\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e37b0cd6-0723-4d88-8a18-55e0f2b03696",
+              "name": "Sales order item successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RequestedQuantity\": \"<string>\",\n  \"Plant\": \"<string>\",\n  \"StorageLocation\": \"<string>\",\n  \"ItemBillingBlockReason\": \"<string>\",\n  \"SalesOrderItemText\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "181387dc-3415-4a3b-8eba-a24bfae3ad88",
+              "name": "Bad request - invalid parameters or payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RequestedQuantity\": \"<string>\",\n  \"Plant\": \"<string>\",\n  \"StorageLocation\": \"<string>\",\n  \"ItemBillingBlockReason\": \"<string>\",\n  \"SalesOrderItemText\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "522e3dc1-e3ee-4cb3-8ca8-5089d3d345da",
+              "name": "Authentication required or credentials invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RequestedQuantity\": \"<string>\",\n  \"Plant\": \"<string>\",\n  \"StorageLocation\": \"<string>\",\n  \"ItemBillingBlockReason\": \"<string>\",\n  \"SalesOrderItemText\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14889c4b-3b9e-425e-b892-fc13bece1db3",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RequestedQuantity\": \"<string>\",\n  \"Plant\": \"<string>\",\n  \"StorageLocation\": \"<string>\",\n  \"ItemBillingBlockReason\": \"<string>\",\n  \"SalesOrderItemText\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6763451-3c57-4f9d-9d92-8af2897e1e8e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"RequestedQuantity\": \"<string>\",\n  \"Plant\": \"<string>\",\n  \"StorageLocation\": \"<string>\",\n  \"ItemBillingBlockReason\": \"<string>\",\n  \"SalesOrderItemText\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04c5ab57-3286-43d1-8454-785740547548",
+          "name": "Delete a sales order item",
+          "request": {
+            "name": "Delete a sales order item",
+            "description": {
+              "content": "Deletes an existing sales order item from the specified sales order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ETag value for optimistic concurrency control",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f7c1e2bb-ed58-435e-83d7-b3411bc294d3",
+              "name": "Sales order item successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a117b378-23c1-42d5-9df9-95d210ec4511",
+              "name": "Authentication required or credentials invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b353d8f3-2303-4bb3-bb72-0e54c1750fcd",
+              "name": "Requested resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ec880da-d733-4580-af0e-806e87832727",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_SalesOrderItem(SalesOrder='{{SalesOrder}}',SalesOrderItem='{{SalesOrderItem}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ETag value for optimistic concurrency control",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Sales order number",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "SalesOrder"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Sales order item number (6 characters)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "SalesOrderItem"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d5ccec5b-5326-4ee5-b033-bf8fb5973ec2",
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Sales Order Item API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1416 @@
+{
+  "item": [
+    {
+      "id": "9ca7f513-9f5a-416d-bb74-dc773ff5af20",
+      "name": "Debit Memo Request",
+      "description": {
+        "content": "Operations on debit memo request header (A_DebitMemoRequest)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "048408ca-fb18-4f32-bb63-37d3addc74fd",
+          "name": "Retrieve a list of debit memo requests",
+          "request": {
+            "name": "Retrieve a list of debit memo requests",
+            "description": {
+              "content": "Returns a collection of debit memo request headers with support for OData query options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_DebitMemoRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$inlinecount",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed0b1463-6026-4475-b250-410479e0927f",
+              "name": "Successfully retrieved debit memo requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"DebitMemoRequest\": \"string\",\n        \"DebitMemoRequestType\": \"stri\",\n        \"SalesOrganization\": \"stri\",\n        \"DistributionChannel\": \"st\",\n        \"OrganizationDivision\": \"st\",\n        \"SoldToParty\": \"string\",\n        \"CreationDate\": \"1996-01-08\",\n        \"DebitMemoRequestDate\": \"2016-01-15\",\n        \"BillingDocumentDate\": \"1973-05-03\",\n        \"TotalNetAmount\": \"string\",\n        \"TransactionCurrency\": \"strin\",\n        \"SDDocumentReason\": \"str\",\n        \"PurchaseOrderByCustomer\": \"string\",\n        \"CustomerPaymentTerms\": \"stri\",\n        \"HeaderBillingBlockReason\": \"st\",\n        \"OverallSDProcessStatus\": \"s\",\n        \"OverallBillingStatus\": \"s\"\n      },\n      {\n        \"DebitMemoRequest\": \"string\",\n        \"DebitMemoRequestType\": \"stri\",\n        \"SalesOrganization\": \"stri\",\n        \"DistributionChannel\": \"st\",\n        \"OrganizationDivision\": \"st\",\n        \"SoldToParty\": \"string\",\n        \"CreationDate\": \"1986-01-26\",\n        \"DebitMemoRequestDate\": \"1983-12-02\",\n        \"BillingDocumentDate\": \"2019-07-02\",\n        \"TotalNetAmount\": \"string\",\n        \"TransactionCurrency\": \"strin\",\n        \"SDDocumentReason\": \"str\",\n        \"PurchaseOrderByCustomer\": \"string\",\n        \"CustomerPaymentTerms\": \"stri\",\n        \"HeaderBillingBlockReason\": \"st\",\n        \"OverallSDProcessStatus\": \"s\",\n        \"OverallBillingStatus\": \"s\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05e5454f-c8d8-4a49-bc2b-3ff098672659",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20508607-9edb-4af2-9257-ca6836b82d98",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$inlinecount",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5ce35f6-2090-4563-ac11-adf8d0366907",
+          "name": "Create a new debit memo request",
+          "request": {
+            "name": "Create a new debit memo request",
+            "description": {
+              "content": "Creates a new debit memo request with deep insert support for items, partners, and pricing elements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_DebitMemoRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"DebitMemoRequestType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"DebitMemoRequestDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\"\n      },\n      {\n        \"Material\": \"<string>\",\n        \"RequestedQuantity\": \"<string>\",\n        \"RequestedQuantityUnit\": \"<string>\",\n        \"SalesDocument\": \"<string>\",\n        \"SalesDocumentItem\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ecd0c27d-c64d-4c05-8fbe-70c4766255cd",
+              "name": "Debit memo request successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DebitMemoRequestType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"DebitMemoRequestDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"SalesDocument\": \"string\",\n        \"SalesDocumentItem\": \"string\"\n      },\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"SalesDocument\": \"string\",\n        \"SalesDocumentItem\": \"string\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"DebitMemoRequest\": \"string\",\n    \"DebitMemoRequestType\": \"stri\",\n    \"SalesOrganization\": \"stri\",\n    \"DistributionChannel\": \"st\",\n    \"OrganizationDivision\": \"st\",\n    \"SoldToParty\": \"string\",\n    \"CreationDate\": \"1958-11-26\",\n    \"DebitMemoRequestDate\": \"2000-11-19\",\n    \"BillingDocumentDate\": \"1960-02-19\",\n    \"TotalNetAmount\": \"string\",\n    \"TransactionCurrency\": \"strin\",\n    \"SDDocumentReason\": \"str\",\n    \"PurchaseOrderByCustomer\": \"string\",\n    \"CustomerPaymentTerms\": \"stri\",\n    \"HeaderBillingBlockReason\": \"st\",\n    \"OverallSDProcessStatus\": \"s\",\n    \"OverallBillingStatus\": \"s\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49a0b10c-05b4-4c62-b7dc-19a0b26fa98e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DebitMemoRequestType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"DebitMemoRequestDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"SalesDocument\": \"string\",\n        \"SalesDocumentItem\": \"string\"\n      },\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"SalesDocument\": \"string\",\n        \"SalesDocumentItem\": \"string\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1ca42b5-08ca-440e-bc13-1ce40e3de1a8",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DebitMemoRequestType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"DebitMemoRequestDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"SalesDocument\": \"string\",\n        \"SalesDocumentItem\": \"string\"\n      },\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"SalesDocument\": \"string\",\n        \"SalesDocumentItem\": \"string\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc44b1fd-c4c0-4ffd-83b1-d6f16c4e8616",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DebitMemoRequestType\": \"<string>\",\n  \"SalesOrganization\": \"<string>\",\n  \"DistributionChannel\": \"<string>\",\n  \"OrganizationDivision\": \"<string>\",\n  \"SoldToParty\": \"<string>\",\n  \"DebitMemoRequestDate\": \"<date>\",\n  \"SDDocumentReason\": \"<string>\",\n  \"to_Item\": {\n    \"results\": [\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"SalesDocument\": \"string\",\n        \"SalesDocumentItem\": \"string\"\n      },\n      {\n        \"Material\": \"string\",\n        \"RequestedQuantity\": \"string\",\n        \"RequestedQuantityUnit\": \"str\",\n        \"SalesDocument\": \"string\",\n        \"SalesDocumentItem\": \"string\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c098f51-22c3-46ee-83d1-b516fc48a2d9",
+          "name": "Retrieve a single debit memo request",
+          "request": {
+            "name": "Retrieve a single debit memo request",
+            "description": {
+              "content": "Returns a single debit memo request by its document number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f260af3b-072f-40ac-a84c-8260e7e4222d",
+              "name": "Successfully retrieved the debit memo request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"DebitMemoRequest\": \"string\",\n    \"DebitMemoRequestType\": \"stri\",\n    \"SalesOrganization\": \"stri\",\n    \"DistributionChannel\": \"st\",\n    \"OrganizationDivision\": \"st\",\n    \"SoldToParty\": \"string\",\n    \"CreationDate\": \"1958-11-26\",\n    \"DebitMemoRequestDate\": \"2000-11-19\",\n    \"BillingDocumentDate\": \"1960-02-19\",\n    \"TotalNetAmount\": \"string\",\n    \"TransactionCurrency\": \"strin\",\n    \"SDDocumentReason\": \"str\",\n    \"PurchaseOrderByCustomer\": \"string\",\n    \"CustomerPaymentTerms\": \"stri\",\n    \"HeaderBillingBlockReason\": \"st\",\n    \"OverallSDProcessStatus\": \"s\",\n    \"OverallBillingStatus\": \"s\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f21235dc-114c-48e1-b0e0-284e9d24188c",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37ed5364-6e14-429e-a4c2-39264860fc53",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d68a096a-4689-414f-a261-864fd08c512d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7f87257-45a2-4f4c-9eeb-b89e88723387",
+          "name": "Update a debit memo request",
+          "request": {
+            "name": "Update a debit memo request",
+            "description": {
+              "content": "Updates an existing debit memo request header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"BillingDocumentDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "16194655-05ca-4cd9-bff0-633462f9a297",
+              "name": "Debit memo request successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"BillingDocumentDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99e376b2-dafa-4251-a7eb-d572c48f7320",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"BillingDocumentDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e22e191-2df4-4c22-a971-2d4f51a422d9",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"BillingDocumentDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea3c5d78-6fac-4b87-a6b2-702007b702b8",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"BillingDocumentDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a9a7c55-2747-44ea-8cf9-8f56e951a639",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PurchaseOrderByCustomer\": \"<string>\",\n  \"HeaderBillingBlockReason\": \"<string>\",\n  \"BillingDocumentDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2307d377-8ba4-465e-b235-f24286440a9d",
+          "name": "Delete a debit memo request",
+          "request": {
+            "name": "Delete a debit memo request",
+            "description": {
+              "content": "Deletes an existing debit memo request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91fd270d-f2fb-4d5c-9387-b752465c7013",
+              "name": "Debit memo request successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fcbbc470-50bd-4bc1-89e5-a54458b7233b",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d60e518-64eb-47ca-ad6a-9677e284e832",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1a507b0-d9f0-4c8a-a656-c779805b1818",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_DebitMemoRequest('{{DebitMemoRequest}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Debit memo request number (10 characters)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "DebitMemoRequest"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9e03e9e2-2d8b-4696-8711-40b0729f34bf",
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Debit Memo Request API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

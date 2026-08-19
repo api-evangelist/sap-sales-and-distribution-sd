@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Business Partner Address API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Business Partner Address",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve addresses for a business partner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_BusinessPartner(':BusinessPartner')/to_BusinessPartnerAddress",
+            "params": [
+              {
+                "name": "BusinessPartner",
+                "value": "",
+                "type": "path",
+                "description": "Business partner number"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include"
+              }
+            ]
+          },
+          "docs": "Returns a collection of address records associated with the specified business partner."
+        },
+        {
+          "info": {
+            "name": "Create an address for a business partner",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_BusinessPartner(':BusinessPartner')/to_BusinessPartnerAddress",
+            "params": [
+              {
+                "name": "BusinessPartner",
+                "value": "",
+                "type": "path",
+                "description": "Business partner number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new address record for the specified business partner."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

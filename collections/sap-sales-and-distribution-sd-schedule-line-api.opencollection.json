@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Schedule Line API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Schedule Line",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve delivery schedule lines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_SchAgrmtScheduleLine",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of delivery schedule lines across scheduling agreements."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

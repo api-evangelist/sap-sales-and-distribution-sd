@@ -1,0 +1,319 @@
+{
+  "item": [
+    {
+      "id": "656ec68e-6a18-429b-9017-cd81a4a1a3ab",
+      "name": "Customer Sales Area",
+      "description": {
+        "content": "Operations on customer sales area data (A_CustomerSalesArea)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0e2f1b25-fd19-47bd-a521-54937734755d",
+          "name": "Retrieve customer sales area data",
+          "request": {
+            "name": "Retrieve customer sales area data",
+            "description": {
+              "content": "Returns sales area-specific data for a customer, including pricing, shipping, and billing information specific to the sales organization, distribution channel, and division.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "786dec33-ceec-444c-954f-424b33177a9c",
+              "name": "Successfully retrieved customer sales area data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"Customer\": \"string\",\n    \"SalesOrganization\": \"stri\",\n    \"DistributionChannel\": \"st\",\n    \"Division\": \"st\",\n    \"CustomerPaymentTerms\": \"stri\",\n    \"DeliveryPriority\": \"st\",\n    \"ShippingCondition\": \"st\",\n    \"IncotermsClassification\": \"str\",\n    \"Currency\": \"strin\",\n    \"CustomerPricingProcedure\": \"s\",\n    \"CustomerAccountAssignmentGroup\": \"st\",\n    \"CompleteDeliveryIsDefined\": false,\n    \"PartialDeliveryIsAllowed\": \"s\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a34c517-7991-4f6a-be94-62f8f40ddab2",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c32b484-c819-4b30-be88-6693390fcf74",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7446f8cc-c6d4-430e-91c9-f83ff88a57ab",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_CustomerSalesArea(Customer='{{Customer}}',SalesOrganization='{{SalesOrganization}}',DistributionChannel='{{DistributionChannel}}',Division='{{Division}}')"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Customer number",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "Customer"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Sales organization",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "SalesOrganization"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Distribution channel",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "DistributionChannel"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Division",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "Division"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7bfe78a6-cb30-498f-845f-7a716474de9b",
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Customer Sales Area API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

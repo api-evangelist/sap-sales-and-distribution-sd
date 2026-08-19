@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Inbound Delivery Item API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inbound Delivery Item",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve items for an inbound delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_InbDeliveryHeader(':DeliveryDocument')/to_DeliveryDocumentItem",
+            "params": [
+              {
+                "name": "DeliveryDocument",
+                "value": "",
+                "type": "path",
+                "description": "Delivery document number"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of items for the specified inbound delivery."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

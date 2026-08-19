@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Sales Order Schedule Line API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sales Order Schedule Line",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a schedule line",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_SalesOrderScheduleLine(SalesOrder=':SalesOrder',SalesOrderItem=':SalesOrderItem',ScheduleLine=':ScheduleLine')",
+            "params": [
+              {
+                "name": "SalesOrder",
+                "value": "",
+                "type": "path",
+                "description": "Sales order number"
+              },
+              {
+                "name": "SalesOrderItem",
+                "value": "",
+                "type": "path",
+                "description": "Sales order item number"
+              },
+              {
+                "name": "ScheduleLine",
+                "value": "",
+                "type": "path",
+                "description": "Schedule line number"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              }
+            ]
+          },
+          "docs": "Returns a single schedule line for a sales order item, identified by its composite key of sales order, item, and schedule line number."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Sales Inquiry Item API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sales Inquiry Item",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve items for a sales inquiry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_SalesInquiry(':SalesInquiry')/to_Item",
+            "params": [
+              {
+                "name": "SalesInquiry",
+                "value": "",
+                "type": "path",
+                "description": "Sales inquiry number"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of line items for the specified sales inquiry."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

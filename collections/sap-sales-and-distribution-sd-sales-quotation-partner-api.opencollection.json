@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Sales Quotation Partner API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sales Quotation Partner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve partners for a sales quotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_SalesQuotation(':SalesQuotation')/to_Partner",
+            "params": [
+              {
+                "name": "SalesQuotation",
+                "value": "",
+                "type": "path",
+                "description": "Sales quotation number"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated properties to include"
+              }
+            ]
+          },
+          "docs": "Returns a collection of business partners associated with the quotation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

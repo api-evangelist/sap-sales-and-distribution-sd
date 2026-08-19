@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Scheduling Agreement Item API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scheduling Agreement Item",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve items for a scheduling agreement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_SchAgrmtHeader(':SchedulingAgreement')/to_Item",
+            "params": [
+              {
+                "name": "SchedulingAgreement",
+                "value": "",
+                "type": "path",
+                "description": "Scheduling agreement number"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of items for the specified scheduling agreement."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

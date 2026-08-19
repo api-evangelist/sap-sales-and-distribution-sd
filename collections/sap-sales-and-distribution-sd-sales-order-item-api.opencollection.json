@@ -1,0 +1,171 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Sales Order Item API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sales Order Item",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve items for a sales order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_SalesOrder(':SalesOrder')/to_Item",
+            "params": [
+              {
+                "name": "SalesOrder",
+                "value": "",
+                "type": "path",
+                "description": "Sales order number"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              }
+            ]
+          },
+          "docs": "Returns a collection of line items for the specified sales order. Supports OData query options for filtering, sorting, and pagination."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single sales order item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_SalesOrderItem(SalesOrder=':SalesOrder',SalesOrderItem=':SalesOrderItem')",
+            "params": [
+              {
+                "name": "SalesOrder",
+                "value": "",
+                "type": "path",
+                "description": "Sales order number"
+              },
+              {
+                "name": "SalesOrderItem",
+                "value": "",
+                "type": "path",
+                "description": "Sales order item number (6 characters)"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of navigation properties to expand"
+              }
+            ]
+          },
+          "docs": "Returns a single sales order item by its composite key (SalesOrder and SalesOrderItem number)."
+        },
+        {
+          "info": {
+            "name": "Update a sales order item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_SalesOrderItem(SalesOrder=':SalesOrder',SalesOrderItem=':SalesOrderItem')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "SalesOrder",
+                "value": "",
+                "type": "path",
+                "description": "Sales order number"
+              },
+              {
+                "name": "SalesOrderItem",
+                "value": "",
+                "type": "path",
+                "description": "Sales order item number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing sales order item. Only the fields included in the request body are updated."
+        },
+        {
+          "info": {
+            "name": "Delete a sales order item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_SalesOrderItem(SalesOrder=':SalesOrder',SalesOrderItem=':SalesOrderItem')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "SalesOrder",
+                "value": "",
+                "type": "path",
+                "description": "Sales order number"
+              },
+              {
+                "name": "SalesOrderItem",
+                "value": "",
+                "type": "path",
+                "description": "Sales order item number"
+              }
+            ]
+          },
+          "docs": "Deletes an existing sales order item from the specified sales order."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

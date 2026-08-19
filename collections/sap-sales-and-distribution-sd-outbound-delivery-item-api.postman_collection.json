@@ -1,0 +1,360 @@
+{
+  "item": [
+    {
+      "id": "7f408cec-1556-443b-81d6-54b4e1b4b21f",
+      "name": "Outbound Delivery Item",
+      "description": {
+        "content": "Operations on outbound delivery items (A_OutbDeliveryItem)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b49eb166-b6a1-4c20-aac4-0e2e708c441d",
+          "name": "Retrieve items for an outbound delivery",
+          "request": {
+            "name": "Retrieve items for an outbound delivery",
+            "description": {
+              "content": "Returns a collection of line items for the specified outbound delivery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                "to_DeliveryDocumentItem"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of records to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated properties to include"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83f8ed02-1f68-4efc-b08a-102eebb00c0f",
+              "name": "Successfully retrieved delivery items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                    "to_DeliveryDocumentItem"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"DeliveryDocument\": \"string\",\n        \"DeliveryDocumentItem\": \"string\",\n        \"Material\": \"string\",\n        \"MaterialGroup\": \"string\",\n        \"Plant\": \"stri\",\n        \"StorageLocation\": \"stri\",\n        \"Batch\": \"string\",\n        \"ActualDeliveryQuantity\": \"string\",\n        \"DeliveryQuantityUnit\": \"str\",\n        \"ItemNetWeight\": \"string\",\n        \"ItemGrossWeight\": \"string\",\n        \"ItemWeightUnit\": \"str\",\n        \"ItemVolume\": \"string\",\n        \"ItemVolumeUnit\": \"str\",\n        \"ReferenceSDDocument\": \"string\",\n        \"ReferenceSDDocumentItem\": \"string\",\n        \"PickedQuantityInSalesUnit\": \"string\",\n        \"PickingConfirmationStatus\": \"s\",\n        \"GoodsMovementStatus\": \"s\"\n      },\n      {\n        \"DeliveryDocument\": \"string\",\n        \"DeliveryDocumentItem\": \"string\",\n        \"Material\": \"string\",\n        \"MaterialGroup\": \"string\",\n        \"Plant\": \"stri\",\n        \"StorageLocation\": \"stri\",\n        \"Batch\": \"string\",\n        \"ActualDeliveryQuantity\": \"string\",\n        \"DeliveryQuantityUnit\": \"str\",\n        \"ItemNetWeight\": \"string\",\n        \"ItemGrossWeight\": \"string\",\n        \"ItemWeightUnit\": \"str\",\n        \"ItemVolume\": \"string\",\n        \"ItemVolumeUnit\": \"str\",\n        \"ReferenceSDDocument\": \"string\",\n        \"ReferenceSDDocumentItem\": \"string\",\n        \"PickedQuantityInSalesUnit\": \"string\",\n        \"PickingConfirmationStatus\": \"s\",\n        \"GoodsMovementStatus\": \"s\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68599985-117c-4320-b8fd-421995742f7e",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                    "to_DeliveryDocumentItem"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12ec3c7d-9beb-4e5e-a4bb-b25428cbefac",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                    "to_DeliveryDocumentItem"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "859507d5-5639-46e4-9887-430744abdb2a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "A_OutbDeliveryHeader('{{DeliveryDocument}}')",
+                    "to_DeliveryDocumentItem"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": {\n      \"lang\": \"string\",\n      \"value\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Delivery document number",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "DeliveryDocument"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "91895fde-e488-4be6-8bc4-bb40e7746a5e",
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Outbound Delivery Item API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

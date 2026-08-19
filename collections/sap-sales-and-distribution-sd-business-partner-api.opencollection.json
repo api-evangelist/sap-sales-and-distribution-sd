@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Business Partner API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Business Partner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of business partners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_BusinessPartner",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for the result set"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of navigation properties to expand"
+              },
+              {
+                "name": "$inlinecount",
+                "value": "",
+                "type": "query",
+                "description": "Include total count of matching resources"
+              }
+            ]
+          },
+          "docs": "Returns a collection of business partner records. Use OData query options to filter by category, name, or other attributes. Supports $expand for including addresses, roles, tax numbers, and bank accounts."
+        },
+        {
+          "info": {
+            "name": "Create a new business partner",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_BusinessPartner",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new business partner record. Supports deep insert with addresses, roles, tax numbers, and bank accounts in a single request."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single business partner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_BusinessPartner(':BusinessPartner')",
+            "params": [
+              {
+                "name": "BusinessPartner",
+                "value": "",
+                "type": "path",
+                "description": "Business partner number (10 characters)"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of navigation properties to expand"
+              }
+            ]
+          },
+          "docs": "Returns a single business partner record by its key. Use $expand to include related addresses, roles, tax numbers, and bank accounts."
+        },
+        {
+          "info": {
+            "name": "Update a business partner",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_BusinessPartner(':BusinessPartner')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "BusinessPartner",
+                "value": "",
+                "type": "path",
+                "description": "Business partner number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing business partner record. Only fields included in the request body are modified."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

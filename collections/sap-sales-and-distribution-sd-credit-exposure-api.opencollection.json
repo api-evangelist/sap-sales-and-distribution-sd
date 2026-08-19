@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Credit Exposure API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Credit Exposure",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve credit exposure for a business partner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_CrdtMgmtCreditExposure(BusinessPartner=':BusinessPartner',CreditSegment=':CreditSegment')",
+            "params": [
+              {
+                "name": "BusinessPartner",
+                "value": "",
+                "type": "path",
+                "description": "Business partner number"
+              },
+              {
+                "name": "CreditSegment",
+                "value": "",
+                "type": "path",
+                "description": "Credit segment"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns credit exposure data showing the current credit utilization for a specific business partner and credit segment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Credit Account API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Credit Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of credit management accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_CrdtMgmtBusinessPartner",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$inlinecount",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of credit management business partner accounts with credit profile information."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single credit management account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_CrdtMgmtBusinessPartner(':BusinessPartner')",
+            "params": [
+              {
+                "name": "BusinessPartner",
+                "value": "",
+                "type": "path",
+                "description": "Business partner number"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns credit management data for a single business partner, including credit rating, risk class, and credit block status."
+        },
+        {
+          "info": {
+            "name": "Update a credit management account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_CrdtMgmtBusinessPartner(':BusinessPartner')",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "BusinessPartner",
+                "value": "",
+                "type": "path",
+                "description": "Business partner number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates credit management data for a business partner."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

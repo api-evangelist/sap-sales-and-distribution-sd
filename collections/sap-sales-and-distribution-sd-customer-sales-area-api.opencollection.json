@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Sales and Distribution (SD) SAP Billing Document Customer Sales Area API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Sales Area",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve customer sales area data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV/A_CustomerSalesArea(Customer=':Customer',SalesOrganization=':SalesOrganization',DistributionChannel=':DistributionChannel',Division=':Division')",
+            "params": [
+              {
+                "name": "Customer",
+                "value": "",
+                "type": "path",
+                "description": "Customer number"
+              },
+              {
+                "name": "SalesOrganization",
+                "value": "",
+                "type": "path",
+                "description": "Sales organization"
+              },
+              {
+                "name": "DistributionChannel",
+                "value": "",
+                "type": "path",
+                "description": "Distribution channel"
+              },
+              {
+                "name": "Division",
+                "value": "",
+                "type": "path",
+                "description": "Division"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include"
+              }
+            ]
+          },
+          "docs": "Returns sales area-specific data for a customer, including pricing, shipping, and billing information specific to the sales organization, distribution channel, and division."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
