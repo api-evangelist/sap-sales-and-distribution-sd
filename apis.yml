@@ -808,6 +808,8 @@ apis:
   humanURL: https://api.sap.com/api/API_SALES_ORDER_SRV/overview
   baseURL: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV
   tags:
+  - Customers
+  tags_raw:
   - Customer
   properties:
   - type: OpenAPI
