@@ -1,9 +1,9 @@
 aid: sap-sales-and-distribution-sd
 name: SAP Sales and Distribution (SD)
-description: >-
-  APIs for SAP Sales and Distribution module covering sales orders, pricing, delivery, billing, and customer management
-  processes within SAP S/4HANA. These OData-based APIs enable integration with external applications for end-to-end
-  order-to-cash operations including sales document management, logistics execution, billing, and credit management.
+description: APIs for SAP Sales and Distribution module covering sales orders, pricing, delivery, billing, and customer
+  management processes within SAP S/4HANA. These OData-based APIs enable integration with external applications
+  for end-to-end order-to-cash operations including sales document management, logistics execution, billing, and
+  credit management.
 type: Index
 accessModel:
   pricing: enterprise
@@ -21,15 +21,15 @@ accessModel:
 image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/sap-sales-and-distribution-sd/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-05-19'
+modified: '2026-08-21'
 specificationVersion: '0.23'
 tags:
-  - Distribution
-  - ERP
-  - OData
-  - S/4HANA
-  - Sales
-  - SAP
+- Distribution
+- ERP
+- OData
+- S/4HANA
+- Sales
+- SAP
 apis:
 - aid: sap-sales-and-distribution-sd:sap-sales-and-distribution-sd-billing-document-api
   name: SAP Sales and Distribution (SD) Billing Document API
@@ -381,8 +381,7 @@ apis:
     url: https://api.sap.com/api/API_CUSTOMER_MATERIAL_SRV/overview
   - type: Documentation
     url: https://api.sap.com/api/API_INBOUND_DELIVERY_SRV_0002/overview
-- aid: >-
-    sap-sales-and-distribution-sd:sap-sales-and-distribution-sd-condition-record-validity-api
+- aid: sap-sales-and-distribution-sd:sap-sales-and-distribution-sd-condition-record-validity-api
   name: SAP Sales and Distribution (SD) Condition Record Validity API
   description: Operations on condition record validity (A_SlsPrcgCndnRecdValidity)
   humanURL: https://api.sap.com/api/API_SALES_ORDER_SRV/overview
@@ -1574,8 +1573,7 @@ apis:
     url: https://api.sap.com/api/API_CUSTOMER_MATERIAL_SRV/overview
   - type: Documentation
     url: https://api.sap.com/api/API_INBOUND_DELIVERY_SRV_0002/overview
-- aid: >-
-    sap-sales-and-distribution-sd:sap-sales-and-distribution-sd-outbound-delivery-partner-api
+- aid: sap-sales-and-distribution-sd:sap-sales-and-distribution-sd-outbound-delivery-partner-api
   name: SAP Sales and Distribution (SD) Outbound Delivery Partner API
   description: Operations on outbound delivery partners (A_OutbDeliveryPartner)
   humanURL: https://api.sap.com/api/API_SALES_ORDER_SRV/overview
@@ -2625,8 +2623,7 @@ apis:
     url: https://api.sap.com/api/API_CUSTOMER_MATERIAL_SRV/overview
   - type: Documentation
     url: https://api.sap.com/api/API_INBOUND_DELIVERY_SRV_0002/overview
-- aid: >-
-    sap-sales-and-distribution-sd:sap-sales-and-distribution-sd-sales-order-pricing-element-api
+- aid: sap-sales-and-distribution-sd:sap-sales-and-distribution-sd-sales-order-pricing-element-api
   name: SAP Sales and Distribution (SD) Sales Order Pricing Element API
   description: Operations on sales order pricing elements (A_SalesOrderHeaderPrElement)
   humanURL: https://api.sap.com/api/API_SALES_ORDER_SRV/overview
@@ -2696,8 +2693,7 @@ apis:
     url: https://api.sap.com/api/API_CUSTOMER_MATERIAL_SRV/overview
   - type: Documentation
     url: https://api.sap.com/api/API_INBOUND_DELIVERY_SRV_0002/overview
-- aid: >-
-    sap-sales-and-distribution-sd:sap-sales-and-distribution-sd-sales-order-schedule-line-api
+- aid: sap-sales-and-distribution-sd:sap-sales-and-distribution-sd-sales-order-schedule-line-api
   name: SAP Sales and Distribution (SD) Sales Order Schedule Line API
   description: Operations on sales order schedule lines (A_SalesOrderScheduleLine)
   humanURL: https://api.sap.com/api/API_SALES_ORDER_SRV/overview
@@ -3187,8 +3183,7 @@ apis:
     url: https://api.sap.com/api/API_CUSTOMER_MATERIAL_SRV/overview
   - type: Documentation
     url: https://api.sap.com/api/API_INBOUND_DELIVERY_SRV_0002/overview
-- aid: >-
-    sap-sales-and-distribution-sd:sap-sales-and-distribution-sd-scheduling-agreement-item-api
+- aid: sap-sales-and-distribution-sd:sap-sales-and-distribution-sd-scheduling-agreement-item-api
   name: SAP Sales and Distribution (SD) Scheduling Agreement Item API
   description: Operations on scheduling agreement items
   humanURL: https://api.sap.com/api/API_SALES_ORDER_SRV/overview
@@ -3259,105 +3254,112 @@ apis:
   - type: Documentation
     url: https://api.sap.com/api/API_INBOUND_DELIVERY_SRV_0002/overview
 common:
-  - type: AgenticAccess
-    url: agentic-access/sap-sales-and-distribution-sd-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/sap-sales-and-distribution-sd-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/sap-sales-and-distribution-sd-domain-security.yml
-  - type: Authentication
-    url: authentication/sap-sales-and-distribution-sd-authentication.yml
-  - type: OAuthScopes
-    url: scopes/sap-sales-and-distribution-sd-scopes.yml
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/sap-sales-and-distribution-sd/overview
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-billing-review-and-cancel-workflow.yml
-    name: SAP SD Billing Review and Cancel
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-contract-release-order-workflow.yml
-    name: SAP SD Contract Release Order
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-credit-check-workflow.yml
-    name: SAP SD Credit Check
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-credit-memo-approval-workflow.yml
-    name: SAP SD Credit Memo Approval
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-customer-lookup-to-order-workflow.yml
-    name: SAP SD Customer Lookup to Order
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-customer-material-setup-workflow.yml
-    name: SAP SD Customer Material Setup
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-customer-onboarding-workflow.yml
-    name: SAP SD Customer Onboarding
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-customer-return-intake-workflow.yml
-    name: SAP SD Customer Return Intake
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-debit-memo-intake-workflow.yml
-    name: SAP SD Debit Memo Intake
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-deliver-and-post-goods-issue-workflow.yml
-    name: SAP SD Deliver and Post Goods Issue
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-inbound-delivery-receipt-workflow.yml
-    name: SAP SD Inbound Delivery Receipt
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-inquiry-to-quotation-workflow.yml
-    name: SAP SD Inquiry to Quotation
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-material-onboarding-workflow.yml
-    name: SAP SD Material Onboarding
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-order-to-delivery-workflow.yml
-    name: SAP SD Order to Delivery
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-pricing-setup-workflow.yml
-    name: SAP SD Pricing Setup
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-quotation-to-order-workflow.yml
-    name: SAP SD Quotation to Order
-  - type: Arazzo
-    url: arazzo/sap-sales-and-distribution-sd-returns-goods-receipt-workflow.yml
-    name: SAP SD Returns Goods Receipt
-  - type: Portal
-    url: https://api.sap.com
-  - type: Documentation
-    url: https://help.sap.com/docs/SAP_S4HANA_CLOUD
-  - type: Website
-    url: https://www.sap.com
-  - type: GettingStarted
-    url: https://developers.sap.com/tutorials.html
-  - type: Authentication
-    url: https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/
-  - type: Blog
-    url: https://community.sap.com/t5/c-khhcw49343/SD+%28Sales+and+Distribution%29/pd-p/209057551571413566377230676804921
-  - type: StatusPage
-    url: https://www.sap.com/about/trust-center/cloud-service-status.html
-  - type: Support
-    url: https://support.sap.com
-  - type: TermsOfService
-    url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
-  - type: PrivacyPolicy
-    url: https://www.sap.com/about/legal/privacy.html
-  - type: GitHubOrganization
-    url: https://github.com/SAP
-  - type: Community
-    url: https://community.sap.com
-  - type: Login
-    url: https://accounts.sap.com
-  - type: Signup
-    url: https://developers.sap.com
-  - type: SDKs
-    url: https://sap.github.io/cloud-sdk/
-  - type: SDKs
-    url: https://github.com/SAP/cloud-sdk-js
-  - type: SpectralRules
-    url: rules/sap-sd-rules.yml
-  - type: Vocabulary
-    url: vocabulary/sap-sd-vocabulary.yml
+- type: ParentCompany
+  url: https://apis.io/providers/sap/
+  name: Sap
+  x-relationship: product
+  x-generated-by: sap-family:2026-08-21
+- type: AgenticAccess
+  url: agentic-access/sap-sales-and-distribution-sd-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/sap-sales-and-distribution-sd-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/sap-sales-and-distribution-sd-domain-security.yml
+- type: Authentication
+  url: authentication/sap-sales-and-distribution-sd-authentication.yml
+- type: OAuthScopes
+  url: scopes/sap-sales-and-distribution-sd-scopes.yml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/sap-sales-and-distribution-sd/overview
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-billing-review-and-cancel-workflow.yml
+  name: SAP SD Billing Review and Cancel
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-contract-release-order-workflow.yml
+  name: SAP SD Contract Release Order
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-credit-check-workflow.yml
+  name: SAP SD Credit Check
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-credit-memo-approval-workflow.yml
+  name: SAP SD Credit Memo Approval
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-customer-lookup-to-order-workflow.yml
+  name: SAP SD Customer Lookup to Order
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-customer-material-setup-workflow.yml
+  name: SAP SD Customer Material Setup
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-customer-onboarding-workflow.yml
+  name: SAP SD Customer Onboarding
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-customer-return-intake-workflow.yml
+  name: SAP SD Customer Return Intake
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-debit-memo-intake-workflow.yml
+  name: SAP SD Debit Memo Intake
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-deliver-and-post-goods-issue-workflow.yml
+  name: SAP SD Deliver and Post Goods Issue
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-inbound-delivery-receipt-workflow.yml
+  name: SAP SD Inbound Delivery Receipt
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-inquiry-to-quotation-workflow.yml
+  name: SAP SD Inquiry to Quotation
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-material-onboarding-workflow.yml
+  name: SAP SD Material Onboarding
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-order-to-delivery-workflow.yml
+  name: SAP SD Order to Delivery
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-pricing-setup-workflow.yml
+  name: SAP SD Pricing Setup
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-quotation-to-order-workflow.yml
+  name: SAP SD Quotation to Order
+- type: Arazzo
+  url: arazzo/sap-sales-and-distribution-sd-returns-goods-receipt-workflow.yml
+  name: SAP SD Returns Goods Receipt
+- type: Portal
+  url: https://api.sap.com
+- type: Documentation
+  url: https://help.sap.com/docs/SAP_S4HANA_CLOUD
+- type: Website
+  url: https://www.sap.com
+- type: GettingStarted
+  url: https://developers.sap.com/tutorials.html
+- type: Authentication
+  url: https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/
+- type: Blog
+  url: https://community.sap.com/t5/c-khhcw49343/SD+%28Sales+and+Distribution%29/pd-p/209057551571413566377230676804921
+- type: StatusPage
+  url: https://www.sap.com/about/trust-center/cloud-service-status.html
+- type: Support
+  url: https://support.sap.com
+- type: TermsOfService
+  url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+- type: PrivacyPolicy
+  url: https://www.sap.com/about/legal/privacy.html
+- type: GitHubOrganization
+  url: https://github.com/SAP
+- type: Community
+  url: https://community.sap.com
+- type: Login
+  url: https://accounts.sap.com
+- type: Signup
+  url: https://developers.sap.com
+- type: SDKs
+  url: https://sap.github.io/cloud-sdk/
+- type: SDKs
+  url: https://github.com/SAP/cloud-sdk-js
+- type: SpectralRules
+  url: rules/sap-sd-rules.yml
+- type: Vocabulary
+  url: vocabulary/sap-sd-vocabulary.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+x-parent: sap
+x-relationship: product
