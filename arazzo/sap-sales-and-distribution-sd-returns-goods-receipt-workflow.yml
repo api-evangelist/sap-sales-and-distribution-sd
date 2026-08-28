@@ -12,8 +12,14 @@ info:
     supplied as a workflow input.
   version: 1.0.0
 sourceDescriptions:
-- name: customerReturnsDeliveryApi
-  url: ../openapi/sap-sd-customer-returns-delivery-openapi.yml
+- name: inboundDeliveryHeaderApi
+  url: ../openapi/sap-sales-and-distribution-sd-inbound-delivery-header-api-openapi.yml
+  type: openapi
+- name: returnsDeliveryHeaderApi
+  url: ../openapi/sap-sales-and-distribution-sd-returns-delivery-header-api-openapi.yml
+  type: openapi
+- name: returnsDeliveryItemApi
+  url: ../openapi/sap-sales-and-distribution-sd-returns-delivery-item-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: returns-goods-receipt

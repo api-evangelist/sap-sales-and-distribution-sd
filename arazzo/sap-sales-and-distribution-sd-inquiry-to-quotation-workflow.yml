@@ -16,10 +16,13 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: salesInquiryApi
-  url: ../openapi/sap-sd-sales-inquiry-openapi.yml
+  url: ../openapi/sap-sales-and-distribution-sd-sales-inquiry-api-openapi.yml
+  type: openapi
+- name: salesInquiryItemApi
+  url: ../openapi/sap-sales-and-distribution-sd-sales-inquiry-item-api-openapi.yml
   type: openapi
 - name: salesQuotationApi
-  url: ../openapi/sap-sd-sales-quotation-openapi.yml
+  url: ../openapi/sap-sales-and-distribution-sd-sales-quotation-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: inquiry-to-quotation

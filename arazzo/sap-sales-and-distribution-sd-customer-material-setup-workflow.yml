@@ -13,7 +13,7 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: customerMaterialApi
-  url: ../openapi/sap-sd-customer-material-openapi.yml
+  url: ../openapi/sap-sales-and-distribution-sd-customer-material-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: customer-material-setup

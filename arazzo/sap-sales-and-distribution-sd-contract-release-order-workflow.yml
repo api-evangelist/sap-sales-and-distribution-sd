@@ -16,10 +16,13 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: salesContractApi
-  url: ../openapi/sap-sd-sales-contract-openapi.yml
+  url: ../openapi/sap-sales-and-distribution-sd-sales-contract-api-openapi.yml
   type: openapi
-- name: salesOrderApi
-  url: ../openapi/sap-sd-sales-order-openapi.yml
+- name: salesContractItemApi
+  url: ../openapi/sap-sales-and-distribution-sd-sales-contract-item-api-openapi.yml
+  type: openapi
+- name: salesOrderHeaderApi
+  url: ../openapi/sap-sales-and-distribution-sd-sales-order-header-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: contract-release-order

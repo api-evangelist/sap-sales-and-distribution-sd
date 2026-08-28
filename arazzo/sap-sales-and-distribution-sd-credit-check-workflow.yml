@@ -12,8 +12,14 @@ info:
     read-only and require no CSRF token.
   version: 1.0.0
 sourceDescriptions:
-- name: creditManagementApi
-  url: ../openapi/sap-sd-credit-management-openapi.yml
+- name: creditAccountApi
+  url: ../openapi/sap-sales-and-distribution-sd-credit-account-api-openapi.yml
+  type: openapi
+- name: creditExposureApi
+  url: ../openapi/sap-sales-and-distribution-sd-credit-exposure-api-openapi.yml
+  type: openapi
+- name: creditLimitApi
+  url: ../openapi/sap-sales-and-distribution-sd-credit-limit-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: credit-check

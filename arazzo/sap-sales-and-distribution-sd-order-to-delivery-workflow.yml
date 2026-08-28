@@ -13,11 +13,11 @@ info:
     workflow input and inlined on each modifying POST.
   version: 1.0.0
 sourceDescriptions:
-- name: salesOrderApi
-  url: ../openapi/sap-sd-sales-order-openapi.yml
+- name: outboundDeliveryHeaderApi
+  url: ../openapi/sap-sales-and-distribution-sd-outbound-delivery-header-api-openapi.yml
   type: openapi
-- name: outboundDeliveryApi
-  url: ../openapi/sap-sd-outbound-delivery-openapi.yml
+- name: salesOrderHeaderApi
+  url: ../openapi/sap-sales-and-distribution-sd-sales-order-header-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: order-to-delivery

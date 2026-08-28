@@ -14,7 +14,7 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: creditMemoRequestApi
-  url: ../openapi/sap-sd-credit-memo-request-openapi.yml
+  url: ../openapi/sap-sales-and-distribution-sd-credit-memo-request-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: credit-memo-approval

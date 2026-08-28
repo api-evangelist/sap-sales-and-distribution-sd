@@ -13,7 +13,10 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: customerReturnApi
-  url: ../openapi/sap-sd-customer-return-openapi.yml
+  url: ../openapi/sap-sales-and-distribution-sd-customer-return-api-openapi.yml
+  type: openapi
+- name: customerReturnItemApi
+  url: ../openapi/sap-sales-and-distribution-sd-customer-return-item-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: customer-return-intake

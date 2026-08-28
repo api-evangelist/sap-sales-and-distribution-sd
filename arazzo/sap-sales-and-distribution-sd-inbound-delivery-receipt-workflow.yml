@@ -12,8 +12,11 @@ info:
     input.
   version: 1.0.0
 sourceDescriptions:
-- name: inboundDeliveryApi
-  url: ../openapi/sap-sd-inbound-delivery-openapi.yml
+- name: inboundDeliveryHeaderApi
+  url: ../openapi/sap-sales-and-distribution-sd-inbound-delivery-header-api-openapi.yml
+  type: openapi
+- name: inboundDeliveryItemApi
+  url: ../openapi/sap-sales-and-distribution-sd-inbound-delivery-item-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: inbound-delivery-receipt

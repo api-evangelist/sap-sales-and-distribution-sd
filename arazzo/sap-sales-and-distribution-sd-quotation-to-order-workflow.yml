@@ -15,11 +15,14 @@ info:
     by an OData document reference.
   version: 1.0.0
 sourceDescriptions:
-- name: salesQuotationApi
-  url: ../openapi/sap-sd-sales-quotation-openapi.yml
+- name: salesOrderHeaderApi
+  url: ../openapi/sap-sales-and-distribution-sd-sales-order-header-api-openapi.yml
   type: openapi
-- name: salesOrderApi
-  url: ../openapi/sap-sd-sales-order-openapi.yml
+- name: salesQuotationApi
+  url: ../openapi/sap-sales-and-distribution-sd-sales-quotation-api-openapi.yml
+  type: openapi
+- name: salesQuotationItemApi
+  url: ../openapi/sap-sales-and-distribution-sd-sales-quotation-item-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: quotation-to-order

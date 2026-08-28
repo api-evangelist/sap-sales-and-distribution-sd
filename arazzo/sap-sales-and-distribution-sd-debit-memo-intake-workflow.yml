@@ -13,7 +13,10 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: debitMemoRequestApi
-  url: ../openapi/sap-sd-debit-memo-request-openapi.yml
+  url: ../openapi/sap-sales-and-distribution-sd-debit-memo-request-api-openapi.yml
+  type: openapi
+- name: debitMemoRequestItemApi
+  url: ../openapi/sap-sales-and-distribution-sd-debit-memo-request-item-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: debit-memo-intake

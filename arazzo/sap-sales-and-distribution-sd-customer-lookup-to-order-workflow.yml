@@ -12,11 +12,14 @@ info:
     supplied as a workflow input.
   version: 1.0.0
 sourceDescriptions:
-- name: customerMasterDataApi
-  url: ../openapi/sap-sd-customer-master-data-openapi.yml
+- name: customerApi
+  url: ../openapi/sap-sales-and-distribution-sd-customer-api-openapi.yml
   type: openapi
-- name: salesOrderApi
-  url: ../openapi/sap-sd-sales-order-openapi.yml
+- name: customerSalesAreaApi
+  url: ../openapi/sap-sales-and-distribution-sd-customer-sales-area-api-openapi.yml
+  type: openapi
+- name: salesOrderHeaderApi
+  url: ../openapi/sap-sales-and-distribution-sd-sales-order-header-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: customer-lookup-to-order

@@ -14,7 +14,13 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: billingDocumentApi
-  url: ../openapi/sap-sd-billing-document-openapi.yml
+  url: ../openapi/sap-sales-and-distribution-sd-billing-document-api-openapi.yml
+  type: openapi
+- name: billingDocumentItemApi
+  url: ../openapi/sap-sales-and-distribution-sd-billing-document-item-api-openapi.yml
+  type: openapi
+- name: billingDocumentPartnerApi
+  url: ../openapi/sap-sales-and-distribution-sd-billing-document-partner-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: billing-review-and-cancel

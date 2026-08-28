@@ -12,8 +12,11 @@ info:
     X-CSRF-Token header supplied as a workflow input.
   version: 1.0.0
 sourceDescriptions:
-- name: pricingApi
-  url: ../openapi/sap-sd-pricing-openapi.yml
+- name: conditionRecordValidityApi
+  url: ../openapi/sap-sales-and-distribution-sd-condition-record-validity-api-openapi.yml
+  type: openapi
+- name: pricingConditionRecordApi
+  url: ../openapi/sap-sales-and-distribution-sd-pricing-condition-record-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: pricing-setup

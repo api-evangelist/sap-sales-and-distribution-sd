@@ -12,8 +12,14 @@ info:
     requires an X-CSRF-Token header supplied as a workflow input.
   version: 1.0.0
 sourceDescriptions:
-- name: materialMasterApi
-  url: ../openapi/sap-sd-material-master-openapi.yml
+- name: productApi
+  url: ../openapi/sap-sales-and-distribution-sd-product-api-openapi.yml
+  type: openapi
+- name: productPlantApi
+  url: ../openapi/sap-sales-and-distribution-sd-product-plant-api-openapi.yml
+  type: openapi
+- name: productSalesDeliveryApi
+  url: ../openapi/sap-sales-and-distribution-sd-product-sales-delivery-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: material-onboarding
