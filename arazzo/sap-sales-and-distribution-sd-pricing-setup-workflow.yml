@@ -11,6 +11,17 @@ info:
     OpenAPI descriptions. The condition record creation POST requires an
     X-CSRF-Token header supplied as a workflow input.
   version: 1.0.0
+  x-realizes-capability-ids:
+  - BC-440.20
+  x-capability-derivation:
+    method: 'deterministic join: sourceDescriptions -> per-tag OpenAPI -> tag/capability edge. No classification at this step.'
+    min_confidence: 0.7
+    sources:
+    - capability_id: BC-440.20
+      capability_name: Price List Management
+      spec: sap-sales-and-distribution-sd-pricing-condition-record-api-openapi.yml
+      confidence: 0.75
+    model: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities, CC BY 4.0
 sourceDescriptions:
 - name: conditionRecordValidityApi
   url: ../openapi/sap-sales-and-distribution-sd-condition-record-validity-api-openapi.yml
