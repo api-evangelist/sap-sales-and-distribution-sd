@@ -15,16 +15,11 @@ info:
     OData document reference.
   version: 1.0.0
   x-realizes-capability-ids:
-  - BC-410.30
   - BC-410.40
   x-capability-derivation:
     method: 'deterministic join: sourceDescriptions -> per-tag OpenAPI -> tag/capability edge. No classification at this step.'
     min_confidence: 0.7
     sources:
-    - capability_id: BC-410.30
-      capability_name: Opportunity & Pipeline Management
-      spec: sap-sales-and-distribution-sd-sales-inquiry-api-openapi.yml
-      confidence: 0.7
     - capability_id: BC-410.40
       capability_name: Quote & Configuration Management
       spec: sap-sales-and-distribution-sd-sales-quotation-api-openapi.yml
