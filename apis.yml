@@ -5,6 +5,18 @@ description: APIs for SAP Sales and Distribution module covering sales orders, p
   for end-to-end order-to-cash operations including sales document management, logistics execution, billing, and
   credit management.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
@@ -3254,6 +3266,9 @@ apis:
   - type: Documentation
     url: https://api.sap.com/api/API_INBOUND_DELIVERY_SRV_0002/overview
 common:
+- type: CapabilityMap
+  url: capabilities/sap-sales-and-distribution-sd-capability-edges.yml
+  name: SAP Sales and Distribution (SD) Business Capability Map
 - type: ParentCompany
   url: https://apis.io/providers/sap/
   name: Sap
