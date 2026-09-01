@@ -30,7 +30,7 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
-image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
+image: ''
 url: https://raw.githubusercontent.com/api-evangelist/sap-sales-and-distribution-sd/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-08-21'
