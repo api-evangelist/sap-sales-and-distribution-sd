@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 6
+edge_count: 14
 edges:
 - tag: Billing Document
   spec_file: sap-sales-and-distribution-sd-billing-document-api-openapi.yml
@@ -33,6 +33,16 @@ edges:
   reason: Full CRUD over sales quotations (create, read, update, delete) is quote management in the lead-to-order
     flow. Title mentions billing documents but the operations are unambiguously quotations, and per rule
     6 the operations win.
+- tag: Credit Memo Request
+  spec_file: sap-sales-and-distribution-sd-credit-memo-request-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.75
+  evidence: POST /A_CreditMemoRequest createCreditMemoRequest; acceptCreditMemoApprovalRequest
+  reason: Credit memo requests adjust customer invoices — customer invoicing/billing adjustment, i.e.
+    accounts receivable management. Approval workflow is part of the same billing document process.
+  recovered_from: sweep-20260829T005356Z-edges.json
 - tag: Pricing Condition Record
   spec_file: sap-sales-and-distribution-sd-pricing-condition-record-api-openapi.yml
   capability_id: BC-440.20
@@ -61,6 +71,57 @@ edges:
     for a billing document
   reason: Line-item detail of customer billing documents; part of the customer invoicing surface, though
     only a single read operation grounds it.
+- tag: Credit Exposure
+  spec_file: sap-sales-and-distribution-sd-credit-exposure-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.7
+  evidence: GET /A_CrdtMgmtCreditExposure(BusinessPartner=...) Retrieve credit exposure for a business
+    partner
+  reason: Customer credit management within order-to-cash; closest fit is Accounts Receivable Management
+    (customer credit exposure/collections risk). Some ambiguity vs. risk management, hence moderate confidence.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: Credit Limit
+  spec_file: sap-sales-and-distribution-sd-credit-limit-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.7
+  evidence: listCreditLimits / updateCreditLimit on A_CrdtMgmtCreditLimit per BusinessPartner and CreditSegment
+  reason: Customer credit limit maintenance is part of receivables/credit management in the order-to-cash
+    cycle.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: Credit Memo Request Item
+  spec_file: sap-sales-and-distribution-sd-credit-memo-request-item-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.7
+  evidence: GET /A_CreditMemoRequest('{CreditMemoRequest}')/to_Item Retrieve items for a credit memo request
+  reason: Line-item detail of a credit memo request; same customer billing-adjustment capability as its
+    header.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: Debit Memo Request
+  spec_file: sap-sales-and-distribution-sd-debit-memo-request-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.7
+  evidence: POST /A_DebitMemoRequest createDebitMemoRequest; listDebitMemoRequests
+  reason: Debit memo requests generate additional customer charges/invoices in the order-to-cash cycle,
+    i.e. accounts receivable/customer invoicing.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: Inbound Delivery Header
+  spec_file: sap-sales-and-distribution-sd-inbound-delivery-header-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.7
+  evidence: createInboundDelivery; POST /PostGoodsReceipt Post goods receipt for an inbound delivery
+  reason: Inbound delivery documents and goods receipt posting are warehouse/logistics execution operations
+    within the supply chain.
+  recovered_from: sweep-20260829T005356Z-edges.json
 - tag: Outbound Delivery Header
   spec_file: sap-sales-and-distribution-sd-outbound-delivery-header-api-openapi.yml
   capability_id: BC-520.50
@@ -71,3 +132,23 @@ edges:
     delivery"; "Reverse goods issue"'
   reason: Outbound delivery document creation and goods issue posting is shipping/logistics execution
     of customer orders, i.e. logistics operations within the supply chain.
+- tag: Sales Inquiry
+  spec_file: sap-sales-and-distribution-sd-sales-inquiry-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.7
+  evidence: POST /A_SalesInquiry  createSalesInquiry  Create a new sales inquiry
+  reason: A sales inquiry in SAP SD is a pre-sales enquiry document capturing customer interest before
+    quotation — lead/opportunity stage of the sales pipeline.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: Sales Order Header
+  spec_file: sap-sales-and-distribution-sd-sales-order-header-api-openapi.yml
+  capability_id: BC-410
+  capability_id_l1: BC-410
+  capability_name: Sales Management
+  confidence: 0.7
+  evidence: POST /A_SalesOrder  createSalesOrder  Create a new sales order
+  reason: Sales order capture and maintenance in the order-to-cash cycle sits in Sales Management (lead-to-order);
+    no single L2 cleanly covers order capture so L1 only.
+  recovered_from: sweep-20260829T005356Z-edges.json
