@@ -1,0 +1,73 @@
+slug: sap-sales-and-distribution-sd
+provider: SAP Sales and Distribution (SD)
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 6
+edges:
+- tag: Billing Document
+  spec_file: sap-sales-and-distribution-sd-billing-document-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.8
+  evidence: '''Supports invoices, credit memos, debit memos, and other billing document types as part
+    of the order-to-cash cycle''; POST /CancelBillingDocument'
+  reason: Customer billing documents (invoices, credit/debit memos) with cancellation and PDF retrieval
+    — customer invoicing within order-to-cash, i.e. Accounts Receivable Management.
+- tag: Sales Quotation
+  spec_file: sap-sales-and-distribution-sd-sales-quotation-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.8
+  evidence: POST /A_SalesQuotation  createSalesQuotation  Create a new sales quotation
+  reason: Full CRUD over sales quotations (create, read, update, delete) is quote management in the lead-to-order
+    flow. Title mentions billing documents but the operations are unambiguously quotations, and per rule
+    6 the operations win.
+- tag: Pricing Condition Record
+  spec_file: sap-sales-and-distribution-sd-pricing-condition-record-api-openapi.yml
+  capability_id: BC-440.20
+  capability_id_l1: BC-440
+  capability_name: Price List Management
+  confidence: 0.75
+  evidence: '"Create a pricing condition record"; schemas SlsPrcgConditionRecord, SlsPrcgCndnRecdValidity'
+  reason: CRUD over sales pricing condition records with validity periods is maintenance of the price/condition
+    master used to price sales documents — price list/price book maintenance under Pricing Management.
+- tag: Sales Quotation Item
+  spec_file: sap-sales-and-distribution-sd-sales-quotation-item-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.75
+  evidence: listSalesQuotationItems  Retrieve items for a sales quotation
+  reason: Reads line items of a sales quotation, i.e. the priced/configured content of a quote, so it
+    supports quote management. Single read operation limits confidence.
+- tag: Billing Document Item
+  spec_file: sap-sales-and-distribution-sd-billing-document-item-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.7
+  evidence: GET /A_BillingDocument('{BillingDocument}')/to_Item  listBillingDocumentItems  Retrieve items
+    for a billing document
+  reason: Line-item detail of customer billing documents; part of the customer invoicing surface, though
+    only a single read operation grounds it.
+- tag: Outbound Delivery Header
+  spec_file: sap-sales-and-distribution-sd-outbound-delivery-header-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.7
+  evidence: '"Create a new outbound delivery"; POST /PostGoodsIssue — "Post goods issue for an outbound
+    delivery"; "Reverse goods issue"'
+  reason: Outbound delivery document creation and goods issue posting is shipping/logistics execution
+    of customer orders, i.e. logistics operations within the supply chain.
