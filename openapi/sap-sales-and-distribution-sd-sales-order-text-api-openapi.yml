@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SAP Sales and Distribution (SD) SAP Billing Document Sales Order Text API
-  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  title: SAP Sales and Distribution (SD) SAP Sales Order Sales Order…
+  description: Create, read, update, and delete sales orders in SAP S/4HANA. This OData service (API_SALES_ORDER_SRV) supports full CRUD operations on sales order headers, items, partners, pricing elements, schedule lines, billing plans, and text elements. Sales orders are created using deep insert requests that include header and related entity data in a single call.
   version: 1.0.0
   contact:
     name: SAP Support
@@ -9,16 +9,20 @@ info:
   license:
     name: SAP Developer License
     url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
+  x-logo:
+    url: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
 servers:
-- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV
   description: SAP S/4HANA Cloud Sandbox
-- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+- url: https://{host}:{port}/sap/opu/odata/sap/API_SALES_ORDER_SRV
   description: SAP S/4HANA On-Premise
   variables:
     host:
       default: localhost
+      description: SAP S/4HANA server hostname
     port:
       default: '443'
+      description: SAP S/4HANA server port
 security:
 - basicAuth: []
 - oauth2: []
@@ -66,36 +70,15 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
-  parameters:
-    skip:
-      name: $skip
-      in: query
-      description: Number of records to skip
-      schema:
-        type: integer
-        minimum: 0
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: Maximum number of records to return
-      schema:
-        type: integer
-        minimum: 0
   responses:
-    InternalServerError:
-      description: Internal server error
+    Unauthorized:
+      description: Authentication required or credentials invalid
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or credentials invalid
+    InternalServerError:
+      description: Internal server error
       content:
         application/json:
           schema:
@@ -106,7 +89,46 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    skip:
+      name: $skip
+      in: query
+      description: Number of records to skip
+      schema:
+        type: integer
+        minimum: 0
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response
+      schema:
+        type: string
   schemas:
+    Error:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+                  description: Error message text
     SalesOrderText:
       type: object
       description: Sales order text entity (A_SalesOrderText)
@@ -126,32 +148,16 @@ components:
         LongText:
           type: string
           description: Long text content
-    Error:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
-                  description: Error message text
   securitySchemes:
     basicAuth:
       type: http
       scheme: basic
+      description: Basic authentication with SAP user credentials
     oauth2:
       type: oauth2
+      description: OAuth 2.0 authentication for SAP S/4HANA Cloud
       flows:
         clientCredentials:
           tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
           scopes:
-            API_BILLING_DOCUMENT_SRV: Access to Billing Document API
+            API_SALES_ORDER_SRV: Access to Sales Order API

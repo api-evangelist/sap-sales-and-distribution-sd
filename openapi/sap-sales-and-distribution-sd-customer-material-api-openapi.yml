@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SAP Sales and Distribution (SD) SAP Billing Document Customer Material API
-  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  title: SAP Sales and Distribution (SD) SAP Customer Material API
+  description: Manage customer-material information records in SAP S/4HANA. This OData service (API_CUSTOMER_MATERIAL_SRV) links customer-specific material numbers and descriptions to internal material numbers. These records support the sales process by mapping customer part numbers to SAP material master records.
   version: 1.0.0
   contact:
     name: SAP Support
@@ -10,9 +10,9 @@ info:
     name: SAP Developer License
     url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
 servers:
-- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CUSTOMER_MATERIAL_SRV
   description: SAP S/4HANA Cloud Sandbox
-- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+- url: https://{host}:{port}/sap/opu/odata/sap/API_CUSTOMER_MATERIAL_SRV
   description: SAP S/4HANA On-Premise
   variables:
     host:
@@ -231,7 +231,118 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
   schemas:
+    CustomerMaterialCreate:
+      type: object
+      required:
+      - SalesOrganization
+      - DistributionChannel
+      - Customer
+      - Material
+      properties:
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        Customer:
+          type: string
+          maxLength: 10
+        Material:
+          type: string
+          maxLength: 40
+        MaterialByCustomer:
+          type: string
+          maxLength: 35
+        MaterialDescriptionByCustomer:
+          type: string
+          maxLength: 40
+        Plant:
+          type: string
+          maxLength: 4
+    CustomerMaterialUpdate:
+      type: object
+      properties:
+        MaterialByCustomer:
+          type: string
+          maxLength: 35
+        MaterialDescriptionByCustomer:
+          type: string
+          maxLength: 40
+        DeliveryPriority:
+          type: string
+          maxLength: 2
+        Plant:
+          type: string
+          maxLength: 4
     CustomerMaterial:
       type: object
       description: Customer material info record entity (A_CustomerMaterial)
@@ -279,50 +390,6 @@ components:
           type: string
           maxLength: 1
           description: Partial delivery allowed flag
-    CustomerMaterialCreate:
-      type: object
-      required:
-      - SalesOrganization
-      - DistributionChannel
-      - Customer
-      - Material
-      properties:
-        SalesOrganization:
-          type: string
-          maxLength: 4
-        DistributionChannel:
-          type: string
-          maxLength: 2
-        Customer:
-          type: string
-          maxLength: 10
-        Material:
-          type: string
-          maxLength: 40
-        MaterialByCustomer:
-          type: string
-          maxLength: 35
-        MaterialDescriptionByCustomer:
-          type: string
-          maxLength: 40
-        Plant:
-          type: string
-          maxLength: 4
-    CustomerMaterialUpdate:
-      type: object
-      properties:
-        MaterialByCustomer:
-          type: string
-          maxLength: 35
-        MaterialDescriptionByCustomer:
-          type: string
-          maxLength: 40
-        DeliveryPriority:
-          type: string
-          maxLength: 2
-        Plant:
-          type: string
-          maxLength: 4
     Error:
       type: object
       properties:
@@ -338,73 +405,6 @@ components:
                   type: string
                 value:
                   type: string
-  parameters:
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
-    orderby:
-      name: $orderby
-      in: query
-      schema:
-        type: string
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    inlinecount:
-      name: $inlinecount
-      in: query
-      schema:
-        type: string
-        enum:
-        - allpages
-        - none
-  responses:
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http
@@ -415,4 +415,4 @@ components:
         clientCredentials:
           tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
           scopes:
-            API_BILLING_DOCUMENT_SRV: Access to Billing Document API
+            API_CUSTOMER_MATERIAL_SRV: Access to Customer Material API

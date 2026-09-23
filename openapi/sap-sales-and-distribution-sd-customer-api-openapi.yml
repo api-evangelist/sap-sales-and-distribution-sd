@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SAP Sales and Distribution (SD) SAP Billing Document Customer API
-  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  title: SAP Sales and Distribution (SD) SAP Master Data (Business…
+  description: Manage customer master data including business partner records, addresses, contact information, bank details, tax numbers, and customer-specific sales area data. This OData service (API_BUSINESS_PARTNER) provides access to business partner records used across SAP S/4HANA modules. Business partners can be of category Person (1), Organization (2), or Group (3).
   version: 1.0.0
   contact:
     name: SAP Support
@@ -10,9 +10,9 @@ info:
     name: SAP Developer License
     url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
 servers:
-- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER
   description: SAP S/4HANA Cloud Sandbox
-- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+- url: https://{host}:{port}/sap/opu/odata/sap/API_BUSINESS_PARTNER
   description: SAP S/4HANA On-Premise
   variables:
     host:
@@ -61,14 +61,14 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   responses:
-    InternalServerError:
-      description: Internal server error
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
+    InternalServerError:
+      description: Internal server error
       content:
         application/json:
           schema:
@@ -161,4 +161,4 @@ components:
         clientCredentials:
           tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
           scopes:
-            API_BILLING_DOCUMENT_SRV: Access to Billing Document API
+            API_BUSINESS_PARTNER: Access to Business Partner API

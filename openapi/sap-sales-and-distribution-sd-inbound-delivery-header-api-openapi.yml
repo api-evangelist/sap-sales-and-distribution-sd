@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SAP Sales and Distribution (SD) SAP Billing Document Inbound Delivery Header API
-  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  title: SAP Sales and Distribution (SD) SAP Inbound Delivery…
+  description: Create and manage inbound deliveries in SAP S/4HANA. This OData service (API_INBOUND_DELIVERY_SRV_0002) supports creation of inbound deliveries with reference to sales documents and manages batch-split items for existing deliveries. Inbound deliveries track the receipt of goods in warehouse operations.
   version: 1.0.0
   contact:
     name: SAP Support
@@ -10,9 +10,9 @@ info:
     name: SAP Developer License
     url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
 servers:
-- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002
   description: SAP S/4HANA Cloud Sandbox
-- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+- url: https://{host}:{port}/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV_0002
   description: SAP S/4HANA On-Premise
   variables:
     host:
@@ -209,29 +209,32 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    InbDeliveryHeaderCreate:
-      type: object
-      properties:
-        DeliveryDocumentType:
-          type: string
-          maxLength: 4
-        ReceivingPlant:
-          type: string
-          maxLength: 4
-        Supplier:
-          type: string
-          maxLength: 10
-        DeliveryDate:
-          type: string
-          format: date
-        to_DeliveryDocumentItem:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/InbDeliveryItemCreate'
     InbDeliveryItemCreate:
       type: object
       properties:
@@ -261,21 +264,28 @@ components:
         BillOfLading:
           type: string
           maxLength: 35
-    Error:
+    InbDeliveryHeaderCreate:
       type: object
       properties:
-        error:
+        DeliveryDocumentType:
+          type: string
+          maxLength: 4
+        ReceivingPlant:
+          type: string
+          maxLength: 4
+        Supplier:
+          type: string
+          maxLength: 10
+        DeliveryDate:
+          type: string
+          format: date
+        to_DeliveryDocumentItem:
           type: object
           properties:
-            code:
-              type: string
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/InbDeliveryItemCreate'
     InbDeliveryHeader:
       type: object
       description: Inbound delivery header entity (A_InbDeliveryHeader)
@@ -320,28 +330,22 @@ components:
           type: string
           maxLength: 1
           description: Goods receipt status
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
   parameters:
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
-    orderby:
-      name: $orderby
-      in: query
-      schema:
-        type: string
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
     ifMatch:
       name: If-Match
       in: header
@@ -353,12 +357,33 @@ components:
       in: query
       schema:
         type: string
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
     top:
       name: $top
       in: query
       schema:
         type: integer
         minimum: 0
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
     inlinecount:
       name: $inlinecount
       in: query
@@ -367,31 +392,6 @@ components:
         enum:
         - allpages
         - none
-  responses:
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http
@@ -402,4 +402,4 @@ components:
         clientCredentials:
           tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
           scopes:
-            API_BILLING_DOCUMENT_SRV: Access to Billing Document API
+            API_INBOUND_DELIVERY_SRV: Access to Inbound Delivery API

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SAP Sales and Distribution (SD) SAP Billing Document Scheduling Agreement API
-  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  title: SAP Sales and Distribution (SD) SAP Sales Scheduling…
+  description: Manage sales scheduling agreements in SAP S/4HANA. This OData service (API_SALES_SCHEDULING_AGREEMENT) supports scheduling agreements that define delivery schedules for recurring deliveries of materials to customers over a specified period. Includes header, item, and schedule line entities.
   version: 1.0.0
   contact:
     name: SAP Support
@@ -10,9 +10,9 @@ info:
     name: SAP Developer License
     url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
 servers:
-- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_SCHEDULING_AGREEMENT
   description: SAP S/4HANA Cloud Sandbox
-- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+- url: https://{host}:{port}/sap/opu/odata/sap/API_SALES_SCHEDULING_AGREEMENT
   description: SAP S/4HANA On-Premise
   variables:
     host:
@@ -154,6 +154,31 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     SchAgrmtHeaderCreate:
       type: object
@@ -271,27 +296,6 @@ components:
                 value:
                   type: string
   parameters:
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
-    orderby:
-      name: $orderby
-      in: query
-      schema:
-        type: string
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
     ifMatch:
       name: If-Match
       in: header
@@ -303,12 +307,33 @@ components:
       in: query
       schema:
         type: string
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
     top:
       name: $top
       in: query
       schema:
         type: integer
         minimum: 0
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
     inlinecount:
       name: $inlinecount
       in: query
@@ -317,31 +342,6 @@ components:
         enum:
         - allpages
         - none
-  responses:
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http
@@ -352,4 +352,4 @@ components:
         clientCredentials:
           tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
           scopes:
-            API_BILLING_DOCUMENT_SRV: Access to Billing Document API
+            API_SALES_SCHEDULING_AGREEMENT: Access to Scheduling Agreement API

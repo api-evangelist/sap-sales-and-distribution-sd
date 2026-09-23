@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SAP Sales and Distribution (SD) SAP Billing Document Schedule Line API
-  description: Read, cancel, and retrieve billing documents in PDF format from SAP S/4HANA. This OData service (API_BILLING_DOCUMENT_SRV) provides access to billing document headers, items, partners, and pricing elements. Supports invoices, credit memos, debit memos, and other billing document types as part of the order-to-cash cycle.
+  title: SAP Sales and Distribution (SD) SAP Sales Scheduling…
+  description: Manage sales scheduling agreements in SAP S/4HANA. This OData service (API_SALES_SCHEDULING_AGREEMENT) supports scheduling agreements that define delivery schedules for recurring deliveries of materials to customers over a specified period. Includes header, item, and schedule line entities.
   version: 1.0.0
   contact:
     name: SAP Support
@@ -10,9 +10,9 @@ info:
     name: SAP Developer License
     url: https://www.sap.com/about/agreements/product-use-and-support-terms.html
 servers:
-- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+- url: https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_SCHEDULING_AGREEMENT
   description: SAP S/4HANA Cloud Sandbox
-- url: https://{host}:{port}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV
+- url: https://{host}:{port}/sap/opu/odata/sap/API_SALES_SCHEDULING_AGREEMENT
   description: SAP S/4HANA On-Premise
   variables:
     host:
@@ -58,9 +58,33 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
     skip:
       name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    top:
+      name: $top
       in: query
       schema:
         type: integer
@@ -70,30 +94,6 @@ components:
       in: query
       schema:
         type: string
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-  responses:
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     SchAgrmtScheduleLine:
       type: object
@@ -150,4 +150,4 @@ components:
         clientCredentials:
           tokenUrl: https://{tenant}.authentication.{landscape}.hana.ondemand.com/oauth/token
           scopes:
-            API_BILLING_DOCUMENT_SRV: Access to Billing Document API
+            API_SALES_SCHEDULING_AGREEMENT: Access to Scheduling Agreement API
