@@ -157,9 +157,56 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
   responses:
-    Unauthorized:
-      description: Authentication required
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -176,13 +223,28 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
     ReturnsDeliveryHeaderUpdate:
       type: object
       properties:
@@ -236,68 +298,6 @@ components:
           type: string
           maxLength: 1
           description: Putaway status
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
-  parameters:
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    orderby:
-      name: $orderby
-      in: query
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
-    inlinecount:
-      name: $inlinecount
-      in: query
-      schema:
-        type: string
-        enum:
-        - allpages
-        - none
   securitySchemes:
     basicAuth:
       type: http

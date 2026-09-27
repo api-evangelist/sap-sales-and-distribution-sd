@@ -231,73 +231,6 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    orderby:
-      name: $orderby
-      in: query
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
-    inlinecount:
-      name: $inlinecount
-      in: query
-      schema:
-        type: string
-        enum:
-        - allpages
-        - none
   schemas:
     CustomerMaterialCreate:
       type: object
@@ -325,21 +258,6 @@ components:
         MaterialDescriptionByCustomer:
           type: string
           maxLength: 40
-        Plant:
-          type: string
-          maxLength: 4
-    CustomerMaterialUpdate:
-      type: object
-      properties:
-        MaterialByCustomer:
-          type: string
-          maxLength: 35
-        MaterialDescriptionByCustomer:
-          type: string
-          maxLength: 40
-        DeliveryPriority:
-          type: string
-          maxLength: 2
         Plant:
           type: string
           maxLength: 4
@@ -390,6 +308,21 @@ components:
           type: string
           maxLength: 1
           description: Partial delivery allowed flag
+    CustomerMaterialUpdate:
+      type: object
+      properties:
+        MaterialByCustomer:
+          type: string
+          maxLength: 35
+        MaterialDescriptionByCustomer:
+          type: string
+          maxLength: 40
+        DeliveryPriority:
+          type: string
+          maxLength: 2
+        Plant:
+          type: string
+          maxLength: 4
     Error:
       type: object
       properties:
@@ -405,6 +338,73 @@ components:
                   type: string
                 value:
                   type: string
+  parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

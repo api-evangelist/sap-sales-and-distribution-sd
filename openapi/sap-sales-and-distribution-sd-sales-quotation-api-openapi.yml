@@ -180,86 +180,6 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    ifMatch:
-      name: If-Match
-      in: header
-      description: ETag value for concurrency control
-      required: true
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      description: Number of records to skip
-      schema:
-        type: integer
-        minimum: 0
-    top:
-      name: $top
-      in: query
-      description: Maximum number of records to return
-      schema:
-        type: integer
-        minimum: 0
-    orderby:
-      name: $orderby
-      in: query
-      description: Sort order
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated properties to include
-      schema:
-        type: string
-    expand:
-      name: $expand
-      in: query
-      description: Navigation properties to expand
-      schema:
-        type: string
-    inlinecount:
-      name: $inlinecount
-      in: query
-      description: Include total count
-      schema:
-        type: string
-        enum:
-        - allpages
-        - none
   schemas:
     SalesQuotationItemCreate:
       type: object
@@ -276,6 +196,40 @@ components:
         Plant:
           type: string
           maxLength: 4
+    SalesQuotationUpdate:
+      type: object
+      description: Sales quotation update payload
+      properties:
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+        RequestedDeliveryDate:
+          type: string
+          format: date
+        BindingPeriodValidityEndDate:
+          type: string
+          format: date
+        HeaderBillingBlockReason:
+          type: string
+          maxLength: 2
+        DeliveryBlockReason:
+          type: string
+          maxLength: 2
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
     SalesQuotation:
       type: object
       description: Sales quotation header entity (A_SalesQuotation)
@@ -387,25 +341,6 @@ components:
           type: string
           maxLength: 4
           description: Approval request reason
-    SalesQuotationUpdate:
-      type: object
-      description: Sales quotation update payload
-      properties:
-        PurchaseOrderByCustomer:
-          type: string
-          maxLength: 35
-        RequestedDeliveryDate:
-          type: string
-          format: date
-        BindingPeriodValidityEndDate:
-          type: string
-          format: date
-        HeaderBillingBlockReason:
-          type: string
-          maxLength: 2
-        DeliveryBlockReason:
-          type: string
-          maxLength: 2
     SalesQuotationCreate:
       type: object
       description: Sales quotation creation payload
@@ -452,21 +387,86 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/SalesQuotationItemCreate'
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
+    expand:
+      name: $expand
+      in: query
+      description: Navigation properties to expand
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of records to skip
+      schema:
+        type: integer
+        minimum: 0
+    ifMatch:
+      name: If-Match
+      in: header
+      description: ETag value for concurrency control
+      required: true
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Sort order
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      description: Include total count
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+    select:
+      name: $select
+      in: query
+      description: Comma-separated properties to include
+      schema:
+        type: string
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

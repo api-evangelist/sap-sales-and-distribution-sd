@@ -178,19 +178,54 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
   responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     NotFound:
       description: Resource not found
       content:
@@ -203,63 +238,39 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    orderby:
-      name: $orderby
-      in: query
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
-    inlinecount:
-      name: $inlinecount
-      in: query
-      schema:
-        type: string
-        enum:
-        - allpages
-        - none
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    CustomerReturnUpdate:
+    CustomerReturnItemCreate:
       type: object
       properties:
-        PurchaseOrderByCustomer:
+        Material:
           type: string
-          maxLength: 35
-        SDDocumentReason:
+          maxLength: 40
+        RequestedQuantity:
+          type: string
+        RequestedQuantityUnit:
           type: string
           maxLength: 3
+        Plant:
+          type: string
+          maxLength: 4
+        ReferenceSDDocument:
+          type: string
+          maxLength: 10
+        ReferenceSDDocumentItem:
+          type: string
+          maxLength: 6
     CustomerReturnCreate:
       type: object
       required:
@@ -296,26 +307,30 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/CustomerReturnItemCreate'
-    CustomerReturnItemCreate:
+    Error:
       type: object
       properties:
-        Material:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+    CustomerReturnUpdate:
+      type: object
+      properties:
+        PurchaseOrderByCustomer:
           type: string
-          maxLength: 40
-        RequestedQuantity:
-          type: string
-        RequestedQuantityUnit:
+          maxLength: 35
+        SDDocumentReason:
           type: string
           maxLength: 3
-        Plant:
-          type: string
-          maxLength: 4
-        ReferenceSDDocument:
-          type: string
-          maxLength: 10
-        ReferenceSDDocumentItem:
-          type: string
-          maxLength: 6
     CustomerReturn:
       type: object
       description: Customer return header entity (A_CustomerReturn)
@@ -379,21 +394,6 @@ components:
           type: string
           maxLength: 1
           description: Billing status
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
   securitySchemes:
     basicAuth:
       type: http

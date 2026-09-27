@@ -209,83 +209,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    InbDeliveryItemCreate:
-      type: object
-      properties:
-        Material:
-          type: string
-          maxLength: 40
-        Plant:
-          type: string
-          maxLength: 4
-        ActualDeliveryQuantity:
-          type: string
-        DeliveryQuantityUnit:
-          type: string
-          maxLength: 3
-        ReferenceSDDocument:
-          type: string
-          maxLength: 10
-        ReferenceSDDocumentItem:
-          type: string
-          maxLength: 6
-    InbDeliveryHeaderUpdate:
-      type: object
-      properties:
-        DeliveryDate:
-          type: string
-          format: date
-        BillOfLading:
-          type: string
-          maxLength: 35
-    InbDeliveryHeaderCreate:
-      type: object
-      properties:
-        DeliveryDocumentType:
-          type: string
-          maxLength: 4
-        ReceivingPlant:
-          type: string
-          maxLength: 4
-        Supplier:
-          type: string
-          maxLength: 10
-        DeliveryDate:
-          type: string
-          format: date
-        to_DeliveryDocumentItem:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/InbDeliveryItemCreate'
     InbDeliveryHeader:
       type: object
       description: Inbound delivery header entity (A_InbDeliveryHeader)
@@ -330,6 +254,15 @@ components:
           type: string
           maxLength: 1
           description: Goods receipt status
+    InbDeliveryHeaderUpdate:
+      type: object
+      properties:
+        DeliveryDate:
+          type: string
+          format: date
+        BillOfLading:
+          type: string
+          maxLength: 35
     Error:
       type: object
       properties:
@@ -345,7 +278,66 @@ components:
                   type: string
                 value:
                   type: string
+    InbDeliveryHeaderCreate:
+      type: object
+      properties:
+        DeliveryDocumentType:
+          type: string
+          maxLength: 4
+        ReceivingPlant:
+          type: string
+          maxLength: 4
+        Supplier:
+          type: string
+          maxLength: 10
+        DeliveryDate:
+          type: string
+          format: date
+        to_DeliveryDocumentItem:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/InbDeliveryItemCreate'
+    InbDeliveryItemCreate:
+      type: object
+      properties:
+        Material:
+          type: string
+          maxLength: 40
+        Plant:
+          type: string
+          maxLength: 4
+        ActualDeliveryQuantity:
+          type: string
+        DeliveryQuantityUnit:
+          type: string
+          maxLength: 3
+        ReferenceSDDocument:
+          type: string
+          maxLength: 10
+        ReferenceSDDocumentItem:
+          type: string
+          maxLength: 6
   parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
     ifMatch:
       name: If-Match
       in: header
@@ -357,30 +349,8 @@ components:
       in: query
       schema:
         type: string
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
     orderby:
       name: $orderby
-      in: query
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
-    expand:
-      name: $expand
       in: query
       schema:
         type: string
@@ -392,6 +362,36 @@ components:
         enum:
         - allpages
         - none
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http
