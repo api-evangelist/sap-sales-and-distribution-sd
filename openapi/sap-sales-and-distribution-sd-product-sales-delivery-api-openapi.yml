@@ -74,6 +74,21 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
     ProductSalesDelivery:
       type: object
       description: Product sales and delivery entity
@@ -116,21 +131,6 @@ components:
           type: string
           maxLength: 2
           description: Distribution-chain-specific status
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
   responses:
     NotFound:
       description: Resource not found

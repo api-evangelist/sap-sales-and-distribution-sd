@@ -179,36 +179,25 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   parameters:
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
     skip:
       name: $skip
       in: query
       schema:
         type: integer
         minimum: 0
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
     ifMatch:
       name: If-Match
       in: header
       required: true
       schema:
         type: string
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    orderby:
-      name: $orderby
+    expand:
+      name: $expand
       in: query
       schema:
         type: string
@@ -220,93 +209,23 @@ components:
         enum:
         - allpages
         - none
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
     select:
       name: $select
       in: query
       schema:
         type: string
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
   schemas:
-    CustomerReturnItemCreate:
-      type: object
-      properties:
-        Material:
-          type: string
-          maxLength: 40
-        RequestedQuantity:
-          type: string
-        RequestedQuantityUnit:
-          type: string
-          maxLength: 3
-        Plant:
-          type: string
-          maxLength: 4
-        ReferenceSDDocument:
-          type: string
-          maxLength: 10
-        ReferenceSDDocumentItem:
-          type: string
-          maxLength: 6
-    CustomerReturnCreate:
-      type: object
-      required:
-      - CustomerReturnType
-      - SalesOrganization
-      - DistributionChannel
-      - OrganizationDivision
-      properties:
-        CustomerReturnType:
-          type: string
-          maxLength: 4
-        SalesOrganization:
-          type: string
-          maxLength: 4
-        DistributionChannel:
-          type: string
-          maxLength: 2
-        OrganizationDivision:
-          type: string
-          maxLength: 2
-        SoldToParty:
-          type: string
-          maxLength: 10
-        CustomerReturnDate:
-          type: string
-          format: date
-        SDDocumentReason:
-          type: string
-          maxLength: 3
-        to_Item:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/CustomerReturnItemCreate'
     Error:
       type: object
       properties:
@@ -331,6 +250,26 @@ components:
         SDDocumentReason:
           type: string
           maxLength: 3
+    CustomerReturnItemCreate:
+      type: object
+      properties:
+        Material:
+          type: string
+          maxLength: 40
+        RequestedQuantity:
+          type: string
+        RequestedQuantityUnit:
+          type: string
+          maxLength: 3
+        Plant:
+          type: string
+          maxLength: 4
+        ReferenceSDDocument:
+          type: string
+          maxLength: 10
+        ReferenceSDDocumentItem:
+          type: string
+          maxLength: 6
     CustomerReturn:
       type: object
       description: Customer return header entity (A_CustomerReturn)
@@ -394,6 +333,67 @@ components:
           type: string
           maxLength: 1
           description: Billing status
+    CustomerReturnCreate:
+      type: object
+      required:
+      - CustomerReturnType
+      - SalesOrganization
+      - DistributionChannel
+      - OrganizationDivision
+      properties:
+        CustomerReturnType:
+          type: string
+          maxLength: 4
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+        SoldToParty:
+          type: string
+          maxLength: 10
+        CustomerReturnDate:
+          type: string
+          format: date
+        SDDocumentReason:
+          type: string
+          maxLength: 3
+        to_Item:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerReturnItemCreate'
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

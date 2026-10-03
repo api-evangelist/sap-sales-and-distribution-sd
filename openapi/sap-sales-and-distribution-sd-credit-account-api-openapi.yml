@@ -125,18 +125,49 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  parameters:
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
   schemas:
-    CrdtMgmtBusinessPartnerUpdate:
-      type: object
-      properties:
-        CreditRiskClass:
-          type: string
-          maxLength: 3
-        CreditRating:
-          type: string
-          maxLength: 3
-        CreditIsBlockedForBP:
-          type: boolean
     Error:
       type: object
       properties:
@@ -179,48 +210,17 @@ components:
           type: string
           format: date
           description: Date of next internal review
-  parameters:
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    inlinecount:
-      name: $inlinecount
-      in: query
-      schema:
-        type: string
-        enum:
-        - allpages
-        - none
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
+    CrdtMgmtBusinessPartnerUpdate:
+      type: object
+      properties:
+        CreditRiskClass:
+          type: string
+          maxLength: 3
+        CreditRating:
+          type: string
+          maxLength: 3
+        CreditIsBlockedForBP:
+          type: boolean
   responses:
     NotFound:
       description: Resource not found
@@ -234,14 +234,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:

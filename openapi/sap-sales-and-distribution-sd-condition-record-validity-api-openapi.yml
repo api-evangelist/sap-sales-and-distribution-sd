@@ -59,13 +59,6 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   parameters:
-    top:
-      name: $top
-      in: query
-      description: Maximum number of records to return
-      schema:
-        type: integer
-        minimum: 0
     skip:
       name: $skip
       in: query
@@ -73,16 +66,23 @@ components:
       schema:
         type: integer
         minimum: 0
-    filter:
-      name: $filter
+    top:
+      name: $top
       in: query
-      description: OData filter expression
+      description: Maximum number of records to return
       schema:
-        type: string
+        type: integer
+        minimum: 0
     select:
       name: $select
       in: query
       description: Comma-separated properties to include
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
       schema:
         type: string
   schemas:

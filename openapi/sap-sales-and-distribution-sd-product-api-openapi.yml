@@ -156,7 +156,105 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  parameters:
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+    ProductCreate:
+      type: object
+      description: Product creation payload
+      required:
+      - Product
+      - ProductType
+      properties:
+        Product:
+          type: string
+          maxLength: 40
+        ProductType:
+          type: string
+          maxLength: 4
+        ProductGroup:
+          type: string
+          maxLength: 9
+        BaseUnit:
+          type: string
+          maxLength: 3
+        GrossWeight:
+          type: string
+        NetWeight:
+          type: string
+        WeightUnit:
+          type: string
+          maxLength: 3
+        Division:
+          type: string
+          maxLength: 2
+        to_Description:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/ProductDescriptionCreate'
     Product:
       type: object
       description: Product/material master header entity (A_Product)
@@ -233,6 +331,15 @@ components:
           type: string
           maxLength: 32
           description: Size/dimensions text
+    ProductDescriptionCreate:
+      type: object
+      properties:
+        Language:
+          type: string
+          maxLength: 2
+        ProductDescription:
+          type: string
+          maxLength: 40
     ProductUpdate:
       type: object
       description: Product update payload
@@ -249,113 +356,6 @@ components:
           maxLength: 3
         IsMarkedForDeletion:
           type: boolean
-    ProductDescriptionCreate:
-      type: object
-      properties:
-        Language:
-          type: string
-          maxLength: 2
-        ProductDescription:
-          type: string
-          maxLength: 40
-    ProductCreate:
-      type: object
-      description: Product creation payload
-      required:
-      - Product
-      - ProductType
-      properties:
-        Product:
-          type: string
-          maxLength: 40
-        ProductType:
-          type: string
-          maxLength: 4
-        ProductGroup:
-          type: string
-          maxLength: 9
-        BaseUnit:
-          type: string
-          maxLength: 3
-        GrossWeight:
-          type: string
-        NetWeight:
-          type: string
-        WeightUnit:
-          type: string
-          maxLength: 3
-        Division:
-          type: string
-          maxLength: 2
-        to_Description:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/ProductDescriptionCreate'
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
-  parameters:
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    orderby:
-      name: $orderby
-      in: query
-      schema:
-        type: string
-    inlinecount:
-      name: $inlinecount
-      in: query
-      schema:
-        type: string
-        enum:
-        - allpages
-        - none
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
   responses:
     NotFound:
       description: Resource not found
@@ -369,14 +369,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:

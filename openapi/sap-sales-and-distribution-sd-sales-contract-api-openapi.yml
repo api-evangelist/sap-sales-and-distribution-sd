@@ -179,45 +179,6 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    SalesContractCreate:
-      type: object
-      required:
-      - SalesContractType
-      - SalesOrganization
-      - DistributionChannel
-      - OrganizationDivision
-      properties:
-        SalesContractType:
-          type: string
-          maxLength: 4
-        SalesOrganization:
-          type: string
-          maxLength: 4
-        DistributionChannel:
-          type: string
-          maxLength: 2
-        OrganizationDivision:
-          type: string
-          maxLength: 2
-        SoldToParty:
-          type: string
-          maxLength: 10
-        SalesContractDate:
-          type: string
-          format: date
-        SalesContractValidityStartDate:
-          type: string
-          format: date
-        SalesContractValidityEndDate:
-          type: string
-          format: date
-        to_Item:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/SalesContractItemCreate'
     SalesContractUpdate:
       type: object
       properties:
@@ -245,20 +206,6 @@ components:
                   type: string
                 value:
                   type: string
-    SalesContractItemCreate:
-      type: object
-      properties:
-        Material:
-          type: string
-          maxLength: 40
-        TargetQuantity:
-          type: string
-        TargetQuantityUnit:
-          type: string
-          maxLength: 3
-        Plant:
-          type: string
-          maxLength: 4
     SalesContract:
       type: object
       description: Sales contract header entity (A_SalesContract)
@@ -322,15 +269,93 @@ components:
           type: string
           maxLength: 1
           description: Overall processing status
+    SalesContractItemCreate:
+      type: object
+      properties:
+        Material:
+          type: string
+          maxLength: 40
+        TargetQuantity:
+          type: string
+        TargetQuantityUnit:
+          type: string
+          maxLength: 3
+        Plant:
+          type: string
+          maxLength: 4
+    SalesContractCreate:
+      type: object
+      required:
+      - SalesContractType
+      - SalesOrganization
+      - DistributionChannel
+      - OrganizationDivision
+      properties:
+        SalesContractType:
+          type: string
+          maxLength: 4
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+        SoldToParty:
+          type: string
+          maxLength: 10
+        SalesContractDate:
+          type: string
+          format: date
+        SalesContractValidityStartDate:
+          type: string
+          format: date
+        SalesContractValidityEndDate:
+          type: string
+          format: date
+        to_Item:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/SalesContractItemCreate'
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
-    top:
-      name: $top
+    skip:
+      name: $skip
       in: query
       schema:
         type: integer
         minimum: 0
-    expand:
-      name: $expand
+    filter:
+      name: $filter
       in: query
       schema:
         type: string
@@ -340,19 +365,8 @@ components:
       required: true
       schema:
         type: string
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    orderby:
-      name: $orderby
+    expand:
+      name: $expand
       in: query
       schema:
         type: string
@@ -364,36 +378,22 @@ components:
         enum:
         - allpages
         - none
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
     select:
       name: $select
       in: query
       schema:
         type: string
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

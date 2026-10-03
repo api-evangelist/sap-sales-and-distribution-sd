@@ -243,17 +243,17 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   parameters:
-    top:
-      name: $top
+    skip:
+      name: $skip
       in: query
-      description: Maximum number of records to return
+      description: Number of records to skip
       schema:
         type: integer
         minimum: 0
-    expand:
-      name: $expand
+    filter:
+      name: $filter
       in: query
-      description: Navigation properties to expand
+      description: OData filter expression
       schema:
         type: string
     ifMatch:
@@ -263,23 +263,10 @@ components:
       required: true
       schema:
         type: string
-    filter:
-      name: $filter
+    expand:
+      name: $expand
       in: query
-      description: OData filter expression
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      description: Number of records to skip
-      schema:
-        type: integer
-        minimum: 0
-    orderby:
-      name: $orderby
-      in: query
-      description: Sort order
+      description: Navigation properties to expand
       schema:
         type: string
     inlinecount:
@@ -291,57 +278,57 @@ components:
         enum:
         - allpages
         - none
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
     select:
       name: $select
       in: query
       description: Comma-separated properties to include
       schema:
         type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Sort order
+      schema:
+        type: string
   schemas:
-    OutbDeliveryItemCreate:
+    Error:
       type: object
-      description: Outbound delivery item creation payload
       properties:
-        Material:
-          type: string
-          maxLength: 40
-        Plant:
-          type: string
-          maxLength: 4
-        ActualDeliveryQuantity:
-          type: string
-        DeliveryQuantityUnit:
-          type: string
-          maxLength: 3
-        ReferenceSDDocument:
-          type: string
-          maxLength: 10
-        ReferenceSDDocumentItem:
-          type: string
-          maxLength: 6
-    OutbDeliveryHeaderCreate:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+    OutbDeliveryHeaderUpdate:
       type: object
-      description: Outbound delivery creation payload
+      description: Outbound delivery header update payload
       properties:
-        DeliveryDocumentType:
-          type: string
-          maxLength: 4
-        ShippingPoint:
-          type: string
-          maxLength: 4
-        SoldToParty:
-          type: string
-          maxLength: 10
         DeliveryDate:
           type: string
           format: date
-        to_DeliveryDocumentItem:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/OutbDeliveryItemCreate'
+        DeliveryBlockReason:
+          type: string
+          maxLength: 2
+        ActualDeliveryRoute:
+          type: string
+          maxLength: 6
+        DeliveryPriority:
+          type: string
+          maxLength: 2
     OutbDeliveryHeader:
       type: object
       description: Outbound delivery header entity (A_OutbDeliveryHeader)
@@ -442,37 +429,50 @@ components:
           type: string
           format: date
           description: Transportation planning date
-    Error:
+    OutbDeliveryItemCreate:
       type: object
+      description: Outbound delivery item creation payload
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
-    OutbDeliveryHeaderUpdate:
+        Material:
+          type: string
+          maxLength: 40
+        Plant:
+          type: string
+          maxLength: 4
+        ActualDeliveryQuantity:
+          type: string
+        DeliveryQuantityUnit:
+          type: string
+          maxLength: 3
+        ReferenceSDDocument:
+          type: string
+          maxLength: 10
+        ReferenceSDDocumentItem:
+          type: string
+          maxLength: 6
+    OutbDeliveryHeaderCreate:
       type: object
-      description: Outbound delivery header update payload
+      description: Outbound delivery creation payload
       properties:
+        DeliveryDocumentType:
+          type: string
+          maxLength: 4
+        ShippingPoint:
+          type: string
+          maxLength: 4
+        SoldToParty:
+          type: string
+          maxLength: 10
         DeliveryDate:
           type: string
           format: date
-        DeliveryBlockReason:
-          type: string
-          maxLength: 2
-        ActualDeliveryRoute:
-          type: string
-          maxLength: 6
-        DeliveryPriority:
-          type: string
-          maxLength: 2
+        to_DeliveryDocumentItem:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/OutbDeliveryItemCreate'
   responses:
     NotFound:
       description: Resource not found
@@ -486,14 +486,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:

@@ -182,19 +182,6 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   parameters:
-    top:
-      name: $top
-      in: query
-      description: Maximum number of records to return
-      schema:
-        type: integer
-        minimum: 0
-    expand:
-      name: $expand
-      in: query
-      description: Comma-separated list of navigation properties to expand
-      schema:
-        type: string
     skip:
       name: $skip
       in: query
@@ -202,6 +189,12 @@ components:
       schema:
         type: integer
         minimum: 0
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
     ifMatch:
       name: If-Match
       in: header
@@ -209,44 +202,63 @@ components:
       required: true
       schema:
         type: string
-    filter:
-      name: $filter
+    expand:
+      name: $expand
       in: query
-      description: OData filter expression
+      description: Comma-separated list of navigation properties to expand
       schema:
         type: string
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
     select:
       name: $select
       in: query
       description: Comma-separated list of properties to include in the response
       schema:
         type: string
-  responses:
-    NotFound:
-      description: Requested resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request - invalid parameters or payload
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or credentials invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+                  description: Error message text
+    SalesOrderItemUpdate:
+      type: object
+      description: Sales order item update payload
+      properties:
+        RequestedQuantity:
+          type: string
+          description: Order quantity
+        Plant:
+          type: string
+          maxLength: 4
+        StorageLocation:
+          type: string
+          maxLength: 4
+        ItemBillingBlockReason:
+          type: string
+          maxLength: 2
+        SalesOrderItemText:
+          type: string
+          maxLength: 40
     SalesOrderItem:
       type: object
       description: Sales order item entity (A_SalesOrderItem)
@@ -333,43 +345,31 @@ components:
           type: string
           maxLength: 1
           description: Billing status
-    Error:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
-                  description: Error message text
-    SalesOrderItemUpdate:
-      type: object
-      description: Sales order item update payload
-      properties:
-        RequestedQuantity:
-          type: string
-          description: Order quantity
-        Plant:
-          type: string
-          maxLength: 4
-        StorageLocation:
-          type: string
-          maxLength: 4
-        ItemBillingBlockReason:
-          type: string
-          maxLength: 2
-        SalesOrderItemText:
-          type: string
-          maxLength: 40
+  responses:
+    NotFound:
+      description: Requested resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or credentials invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters or payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

@@ -137,18 +137,44 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  parameters:
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
   schemas:
-    CrdtMgmtCreditLimitUpdate:
-      type: object
-      properties:
-        CreditLimitAmount:
-          type: string
-        CreditLimitAmountCurrency:
-          type: string
-          maxLength: 5
-        CreditLimitValidityEndDate:
-          type: string
-          format: date
     Error:
       type: object
       properties:
@@ -164,6 +190,17 @@ components:
                   type: string
                 value:
                   type: string
+    CrdtMgmtCreditLimitUpdate:
+      type: object
+      properties:
+        CreditLimitAmount:
+          type: string
+        CreditLimitAmountCurrency:
+          type: string
+          maxLength: 5
+        CreditLimitValidityEndDate:
+          type: string
+          format: date
     CrdtMgmtCreditLimit:
       type: object
       description: Credit limit entity
@@ -190,43 +227,6 @@ components:
         CreditLimitIsExceeded:
           type: boolean
           description: Indicates if credit limit is exceeded
-  parameters:
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    inlinecount:
-      name: $inlinecount
-      in: query
-      schema:
-        type: string
-        enum:
-        - allpages
-        - none
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
   responses:
     NotFound:
       description: Resource not found
@@ -240,14 +240,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:

@@ -59,25 +59,25 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   parameters:
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
     skip:
       name: $skip
       in: query
       schema:
         type: integer
         minimum: 0
-    filter:
-      name: $filter
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
       in: query
       schema:
         type: string
-    select:
-      name: $select
+    filter:
+      name: $filter
       in: query
       schema:
         type: string

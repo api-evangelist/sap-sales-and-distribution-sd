@@ -209,60 +209,54 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  parameters:
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
   schemas:
-    InbDeliveryHeader:
-      type: object
-      description: Inbound delivery header entity (A_InbDeliveryHeader)
-      properties:
-        DeliveryDocument:
-          type: string
-          maxLength: 10
-          description: Delivery document number
-        DeliveryDocumentType:
-          type: string
-          maxLength: 4
-          description: Delivery type
-        ReceivingPlant:
-          type: string
-          maxLength: 4
-          description: Receiving plant
-        ShippingPoint:
-          type: string
-          maxLength: 4
-          description: Shipping/receiving point
-        Supplier:
-          type: string
-          maxLength: 10
-          description: Vendor number
-        DeliveryDate:
-          type: string
-          format: date
-          description: Delivery date
-        CreationDate:
-          type: string
-          format: date
-          description: Creation date
-        ActualGoodsMovementDate:
-          type: string
-          format: date
-          description: Actual goods receipt date
-        BillOfLading:
-          type: string
-          maxLength: 35
-          description: Bill of lading
-        OverallGoodsMovementStatus:
-          type: string
-          maxLength: 1
-          description: Goods receipt status
-    InbDeliveryHeaderUpdate:
-      type: object
-      properties:
-        DeliveryDate:
-          type: string
-          format: date
-        BillOfLading:
-          type: string
-          maxLength: 35
     Error:
       type: object
       properties:
@@ -320,53 +314,59 @@ components:
         ReferenceSDDocumentItem:
           type: string
           maxLength: 6
-  parameters:
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    orderby:
-      name: $orderby
-      in: query
-      schema:
-        type: string
-    inlinecount:
-      name: $inlinecount
-      in: query
-      schema:
-        type: string
-        enum:
-        - allpages
-        - none
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
+    InbDeliveryHeaderUpdate:
+      type: object
+      properties:
+        DeliveryDate:
+          type: string
+          format: date
+        BillOfLading:
+          type: string
+          maxLength: 35
+    InbDeliveryHeader:
+      type: object
+      description: Inbound delivery header entity (A_InbDeliveryHeader)
+      properties:
+        DeliveryDocument:
+          type: string
+          maxLength: 10
+          description: Delivery document number
+        DeliveryDocumentType:
+          type: string
+          maxLength: 4
+          description: Delivery type
+        ReceivingPlant:
+          type: string
+          maxLength: 4
+          description: Receiving plant
+        ShippingPoint:
+          type: string
+          maxLength: 4
+          description: Shipping/receiving point
+        Supplier:
+          type: string
+          maxLength: 10
+          description: Vendor number
+        DeliveryDate:
+          type: string
+          format: date
+          description: Delivery date
+        CreationDate:
+          type: string
+          format: date
+          description: Creation date
+        ActualGoodsMovementDate:
+          type: string
+          format: date
+          description: Actual goods receipt date
+        BillOfLading:
+          type: string
+          maxLength: 35
+          description: Bill of lading
+        OverallGoodsMovementStatus:
+          type: string
+          maxLength: 1
+          description: Goods receipt status
   responses:
     NotFound:
       description: Resource not found
@@ -380,14 +380,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:
