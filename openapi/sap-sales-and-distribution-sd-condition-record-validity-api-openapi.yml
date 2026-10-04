@@ -59,13 +59,12 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   parameters:
-    skip:
-      name: $skip
+    select:
+      name: $select
       in: query
-      description: Number of records to skip
+      description: Comma-separated properties to include
       schema:
-        type: integer
-        minimum: 0
+        type: string
     top:
       name: $top
       in: query
@@ -73,12 +72,13 @@ components:
       schema:
         type: integer
         minimum: 0
-    select:
-      name: $select
+    skip:
+      name: $skip
       in: query
-      description: Comma-separated properties to include
+      description: Number of records to skip
       schema:
-        type: string
+        type: integer
+        minimum: 0
     filter:
       name: $filter
       in: query
@@ -138,14 +138,14 @@ components:
           maxLength: 40
           description: Material number
   responses:
-    InternalServerError:
-      description: Internal server error
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
+    InternalServerError:
+      description: Internal server error
       content:
         application/json:
           schema:

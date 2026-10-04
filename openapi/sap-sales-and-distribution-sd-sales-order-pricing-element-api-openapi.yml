@@ -71,13 +71,12 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   parameters:
-    skip:
-      name: $skip
+    select:
+      name: $select
       in: query
-      description: Number of records to skip
+      description: Comma-separated list of properties to include in the response
       schema:
-        type: integer
-        minimum: 0
+        type: string
     top:
       name: $top
       in: query
@@ -85,31 +84,33 @@ components:
       schema:
         type: integer
         minimum: 0
-    select:
-      name: $select
+    skip:
+      name: $skip
       in: query
-      description: Comma-separated list of properties to include in the response
+      description: Number of records to skip
       schema:
-        type: string
+        type: integer
+        minimum: 0
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or credentials invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Requested resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
-                  description: Error message text
     SalesOrderPricingElement:
       type: object
       description: Sales order header pricing element (A_SalesOrderHeaderPrElement)
@@ -147,25 +148,24 @@ components:
         ConditionValue:
           type: string
           description: Condition value
-  responses:
-    NotFound:
-      description: Requested resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or credentials invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+                  description: Error message text
   securitySchemes:
     basicAuth:
       type: http

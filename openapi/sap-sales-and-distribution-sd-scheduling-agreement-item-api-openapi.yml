@@ -67,39 +67,43 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   parameters:
-    skip:
-      name: $skip
+    select:
+      name: $select
       in: query
       schema:
-        type: integer
-        minimum: 0
+        type: string
     top:
       name: $top
       in: query
       schema:
         type: integer
         minimum: 0
-    select:
-      name: $select
+    skip:
+      name: $skip
       in: query
       schema:
-        type: string
+        type: integer
+        minimum: 0
+  responses:
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
     SchAgrmtItem:
       type: object
       description: Scheduling agreement item entity
@@ -130,25 +134,21 @@ components:
           type: string
           maxLength: 4
           description: Plant
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
   securitySchemes:
     basicAuth:
       type: http

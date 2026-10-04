@@ -232,21 +232,9 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   parameters:
-    skip:
-      name: $skip
+    select:
+      name: $select
       in: query
-      schema:
-        type: integer
-        minimum: 0
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
       schema:
         type: string
     inlinecount:
@@ -257,38 +245,89 @@ components:
         enum:
         - allpages
         - none
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
     top:
       name: $top
       in: query
       schema:
         type: integer
         minimum: 0
-    select:
-      name: $select
+    skip:
+      name: $skip
       in: query
       schema:
-        type: string
+        type: integer
+        minimum: 0
     orderby:
       name: $orderby
       in: query
       schema:
         type: string
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
+    CustomerMaterialCreate:
       type: object
+      required:
+      - SalesOrganization
+      - DistributionChannel
+      - Customer
+      - Material
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        Customer:
+          type: string
+          maxLength: 10
+        Material:
+          type: string
+          maxLength: 40
+        MaterialByCustomer:
+          type: string
+          maxLength: 35
+        MaterialDescriptionByCustomer:
+          type: string
+          maxLength: 40
+        Plant:
+          type: string
+          maxLength: 4
     CustomerMaterial:
       type: object
       description: Customer material info record entity (A_CustomerMaterial)
@@ -336,6 +375,21 @@ components:
           type: string
           maxLength: 1
           description: Partial delivery allowed flag
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
     CustomerMaterialUpdate:
       type: object
       properties:
@@ -351,60 +405,6 @@ components:
         Plant:
           type: string
           maxLength: 4
-    CustomerMaterialCreate:
-      type: object
-      required:
-      - SalesOrganization
-      - DistributionChannel
-      - Customer
-      - Material
-      properties:
-        SalesOrganization:
-          type: string
-          maxLength: 4
-        DistributionChannel:
-          type: string
-          maxLength: 2
-        Customer:
-          type: string
-          maxLength: 10
-        Material:
-          type: string
-          maxLength: 40
-        MaterialByCustomer:
-          type: string
-          maxLength: 35
-        MaterialDescriptionByCustomer:
-          type: string
-          maxLength: 40
-        Plant:
-          type: string
-          maxLength: 4
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

@@ -179,25 +179,8 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   parameters:
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    expand:
-      name: $expand
+    select:
+      name: $select
       in: query
       schema:
         type: string
@@ -209,38 +192,65 @@ components:
         enum:
         - allpages
         - none
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
     top:
       name: $top
       in: query
       schema:
         type: integer
         minimum: 0
-    select:
-      name: $select
+    skip:
+      name: $skip
       in: query
       schema:
-        type: string
+        type: integer
+        minimum: 0
     orderby:
       name: $orderby
       in: query
       schema:
         type: string
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
     SalesInquiryItemCreate:
       type: object
       properties:
@@ -252,48 +262,6 @@ components:
         RequestedQuantityUnit:
           type: string
           maxLength: 3
-    SalesInquiryUpdate:
-      type: object
-      properties:
-        PurchaseOrderByCustomer:
-          type: string
-          maxLength: 35
-        BindingPeriodValidityEndDate:
-          type: string
-          format: date
-    SalesInquiryCreate:
-      type: object
-      required:
-      - SalesInquiryType
-      - SalesOrganization
-      - DistributionChannel
-      - OrganizationDivision
-      properties:
-        SalesInquiryType:
-          type: string
-          maxLength: 4
-        SalesOrganization:
-          type: string
-          maxLength: 4
-        DistributionChannel:
-          type: string
-          maxLength: 2
-        OrganizationDivision:
-          type: string
-          maxLength: 2
-        SoldToParty:
-          type: string
-          maxLength: 10
-        SalesInquiryDate:
-          type: string
-          format: date
-        to_Item:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/SalesInquiryItemCreate'
     SalesInquiry:
       type: object
       description: Sales inquiry header entity (A_SalesInquiry)
@@ -357,31 +325,63 @@ components:
           type: string
           maxLength: 1
           description: Overall processing status
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+    SalesInquiryUpdate:
+      type: object
+      properties:
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+        BindingPeriodValidityEndDate:
+          type: string
+          format: date
+    SalesInquiryCreate:
+      type: object
+      required:
+      - SalesInquiryType
+      - SalesOrganization
+      - DistributionChannel
+      - OrganizationDivision
+      properties:
+        SalesInquiryType:
+          type: string
+          maxLength: 4
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+        SoldToParty:
+          type: string
+          maxLength: 10
+        SalesInquiryDate:
+          type: string
+          format: date
+        to_Item:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/SalesInquiryItemCreate'
   securitySchemes:
     basicAuth:
       type: http

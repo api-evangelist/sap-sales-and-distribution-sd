@@ -178,17 +178,130 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  parameters:
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    SalesContractUpdate:
+    SalesContractCreate:
       type: object
+      required:
+      - SalesContractType
+      - SalesOrganization
+      - DistributionChannel
+      - OrganizationDivision
       properties:
-        PurchaseOrderByCustomer:
+        SalesContractType:
           type: string
-          maxLength: 35
+          maxLength: 4
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+        SoldToParty:
+          type: string
+          maxLength: 10
+        SalesContractDate:
+          type: string
+          format: date
+        SalesContractValidityStartDate:
+          type: string
+          format: date
         SalesContractValidityEndDate:
           type: string
           format: date
-        CustomerPaymentTerms:
+        to_Item:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/SalesContractItemCreate'
+    SalesContractItemCreate:
+      type: object
+      properties:
+        Material:
+          type: string
+          maxLength: 40
+        TargetQuantity:
+          type: string
+        TargetQuantityUnit:
+          type: string
+          maxLength: 3
+        Plant:
           type: string
           maxLength: 4
     Error:
@@ -269,131 +382,18 @@ components:
           type: string
           maxLength: 1
           description: Overall processing status
-    SalesContractItemCreate:
+    SalesContractUpdate:
       type: object
       properties:
-        Material:
+        PurchaseOrderByCustomer:
           type: string
-          maxLength: 40
-        TargetQuantity:
-          type: string
-        TargetQuantityUnit:
-          type: string
-          maxLength: 3
-        Plant:
-          type: string
-          maxLength: 4
-    SalesContractCreate:
-      type: object
-      required:
-      - SalesContractType
-      - SalesOrganization
-      - DistributionChannel
-      - OrganizationDivision
-      properties:
-        SalesContractType:
-          type: string
-          maxLength: 4
-        SalesOrganization:
-          type: string
-          maxLength: 4
-        DistributionChannel:
-          type: string
-          maxLength: 2
-        OrganizationDivision:
-          type: string
-          maxLength: 2
-        SoldToParty:
-          type: string
-          maxLength: 10
-        SalesContractDate:
-          type: string
-          format: date
-        SalesContractValidityStartDate:
-          type: string
-          format: date
+          maxLength: 35
         SalesContractValidityEndDate:
           type: string
           format: date
-        to_Item:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/SalesContractItemCreate'
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
-    inlinecount:
-      name: $inlinecount
-      in: query
-      schema:
-        type: string
-        enum:
-        - allpages
-        - none
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
-    orderby:
-      name: $orderby
-      in: query
-      schema:
-        type: string
+        CustomerPaymentTerms:
+          type: string
+          maxLength: 4
   securitySchemes:
     basicAuth:
       type: http

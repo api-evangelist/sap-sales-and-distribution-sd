@@ -243,30 +243,10 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   parameters:
-    skip:
-      name: $skip
+    select:
+      name: $select
       in: query
-      description: Number of records to skip
-      schema:
-        type: integer
-        minimum: 0
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
-    ifMatch:
-      name: If-Match
-      in: header
-      description: ETag value for concurrency control
-      required: true
-      schema:
-        type: string
-    expand:
-      name: $expand
-      in: query
-      description: Navigation properties to expand
+      description: Comma-separated properties to include
       schema:
         type: string
     inlinecount:
@@ -278,6 +258,19 @@ components:
         enum:
         - allpages
         - none
+    expand:
+      name: $expand
+      in: query
+      description: Navigation properties to expand
+      schema:
+        type: string
+    ifMatch:
+      name: If-Match
+      in: header
+      description: ETag value for concurrency control
+      required: true
+      schema:
+        type: string
     top:
       name: $top
       in: query
@@ -285,50 +278,49 @@ components:
       schema:
         type: integer
         minimum: 0
-    select:
-      name: $select
+    skip:
+      name: $skip
       in: query
-      description: Comma-separated properties to include
+      description: Number of records to skip
       schema:
-        type: string
+        type: integer
+        minimum: 0
     orderby:
       name: $orderby
       in: query
       description: Sort order
       schema:
         type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
   schemas:
-    Error:
+    OutbDeliveryHeaderCreate:
       type: object
+      description: Outbound delivery creation payload
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
-    OutbDeliveryHeaderUpdate:
-      type: object
-      description: Outbound delivery header update payload
-      properties:
+        DeliveryDocumentType:
+          type: string
+          maxLength: 4
+        ShippingPoint:
+          type: string
+          maxLength: 4
+        SoldToParty:
+          type: string
+          maxLength: 10
         DeliveryDate:
           type: string
           format: date
-        DeliveryBlockReason:
-          type: string
-          maxLength: 2
-        ActualDeliveryRoute:
-          type: string
-          maxLength: 6
-        DeliveryPriority:
-          type: string
-          maxLength: 2
+        to_DeliveryDocumentItem:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/OutbDeliveryItemCreate'
     OutbDeliveryHeader:
       type: object
       description: Outbound delivery header entity (A_OutbDeliveryHeader)
@@ -429,6 +421,37 @@ components:
           type: string
           format: date
           description: Transportation planning date
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+    OutbDeliveryHeaderUpdate:
+      type: object
+      description: Outbound delivery header update payload
+      properties:
+        DeliveryDate:
+          type: string
+          format: date
+        DeliveryBlockReason:
+          type: string
+          maxLength: 2
+        ActualDeliveryRoute:
+          type: string
+          maxLength: 6
+        DeliveryPriority:
+          type: string
+          maxLength: 2
     OutbDeliveryItemCreate:
       type: object
       description: Outbound delivery item creation payload
@@ -450,38 +473,15 @@ components:
         ReferenceSDDocumentItem:
           type: string
           maxLength: 6
-    OutbDeliveryHeaderCreate:
-      type: object
-      description: Outbound delivery creation payload
-      properties:
-        DeliveryDocumentType:
-          type: string
-          maxLength: 4
-        ShippingPoint:
-          type: string
-          maxLength: 4
-        SoldToParty:
-          type: string
-          maxLength: 10
-        DeliveryDate:
-          type: string
-          format: date
-        to_DeliveryDocumentItem:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/OutbDeliveryItemCreate'
   responses:
-    NotFound:
-      description: Resource not found
+    InternalServerError:
+      description: Internal server error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:
@@ -492,8 +492,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:

@@ -158,6 +158,15 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
+    ReturnsDeliveryHeaderUpdate:
+      type: object
+      properties:
+        DeliveryDate:
+          type: string
+          format: date
+        DeliveryBlockReason:
+          type: string
+          maxLength: 2
     ReturnsDeliveryHeader:
       type: object
       description: Customer returns delivery header entity
@@ -217,18 +226,56 @@ components:
                   type: string
                 value:
                   type: string
-    ReturnsDeliveryHeaderUpdate:
-      type: object
-      properties:
-        DeliveryDate:
-          type: string
-          format: date
-        DeliveryBlockReason:
-          type: string
-          maxLength: 2
+  parameters:
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
   responses:
-    NotFound:
-      description: Resource not found
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:
@@ -245,59 +292,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
-    inlinecount:
-      name: $inlinecount
-      in: query
-      schema:
-        type: string
-        enum:
-        - allpages
-        - none
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
-    orderby:
-      name: $orderby
-      in: query
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http
