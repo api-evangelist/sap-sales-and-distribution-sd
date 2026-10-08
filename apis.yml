@@ -3266,6 +3266,12 @@ apis:
   - type: Documentation
     url: https://api.sap.com/api/API_INBOUND_DELIVERY_SRV_0002/overview
 common:
+- type: Plans
+  url: plans/sap-sales-and-distribution-sd-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/sap-sales-and-distribution-sd-rate-limits.yml
+- type: FinOps
+  url: finops/sap-sales-and-distribution-sd-finops.yml
 - type: CapabilityMap
   url: capabilities/sap-sales-and-distribution-sd-capability-edges.yml
   name: SAP Sales and Distribution (SD) Business Capability Map
