@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/sap-sales-and-distribution-sd/integrations
+- https://n8n.io/integrations/sap-sales-and-distribution-sd/
+- https://composio.dev/toolkits/sap-sales-and-distribution-sd
+- https://monid.ai/tools/sap-sales-and-distribution-sd
+checked:
+- https://composio.dev/toolkits/sap-sales-and-distribution-sd
+- https://monid.ai/tools/sap-sales-and-distribution-sd
+- https://n8n.io/integrations/sap-sales-and-distribution-sd/
+- https://zapier.com/apps/sap-sales-and-distribution-sd/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
