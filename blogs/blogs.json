@@ -2,6 +2,10 @@
   "repo": "sap-sales-and-distribution-sd",
   "feeds": [
     {
+      "source": "https://community.sap.com/t5/c-khhcw49343/SD+%28Sales+and+Distribution%29/pd-p/209057551571413566377230676804921",
+      "error": "HTTPError"
+    },
+    {
       "source": "https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/",
       "feed_url": "https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/",
       "title": "",
@@ -16,8 +20,8 @@
       "method": "feed"
     }
   ],
-  "post_count": 330,
-  "fetched": "2026-10-03T12:30:02Z",
+  "post_count": 348,
+  "fetched": "2026-10-10T13:15:00Z",
   "feed_nature": "support-community",
   "feed_nature_basis": "khoros_thread",
   "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined.",
