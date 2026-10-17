@@ -240,127 +240,24 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
-  parameters:
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
-    inlinecount:
-      name: $inlinecount
-      in: query
-      schema:
-        type: string
-        enum:
-        - allpages
-        - none
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    orderby:
-      name: $orderby
-      in: query
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      schema:
-        type: string
-  responses:
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    CreditMemoRequestCreate:
+    CreditMemoRequestItemCreate:
       type: object
-      required:
-      - CreditMemoRequestType
-      - SalesOrganization
-      - DistributionChannel
-      - OrganizationDivision
       properties:
-        CreditMemoRequestType:
+        Material:
           type: string
-          maxLength: 4
-        SalesOrganization:
+          maxLength: 40
+        RequestedQuantity:
           type: string
-          maxLength: 4
-        DistributionChannel:
-          type: string
-          maxLength: 2
-        OrganizationDivision:
-          type: string
-          maxLength: 2
-        SoldToParty:
-          type: string
-          maxLength: 10
-        CreditMemoRequestDate:
-          type: string
-          format: date
-        SDDocumentReason:
+        RequestedQuantityUnit:
           type: string
           maxLength: 3
-        to_Item:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/CreditMemoRequestItemCreate'
-    CreditMemoRequestUpdate:
-      type: object
-      properties:
-        PurchaseOrderByCustomer:
+        SalesDocument:
           type: string
-          maxLength: 35
-        HeaderBillingBlockReason:
+          maxLength: 10
+        SalesDocumentItem:
           type: string
-          maxLength: 2
-        BillingDocumentDate:
-          type: string
-          format: date
+          maxLength: 6
     CreditMemoRequest:
       type: object
       description: Credit memo request header entity (A_CreditMemoRequest)
@@ -436,6 +333,54 @@ components:
           type: string
           maxLength: 1
           description: Billing status
+    CreditMemoRequestCreate:
+      type: object
+      required:
+      - CreditMemoRequestType
+      - SalesOrganization
+      - DistributionChannel
+      - OrganizationDivision
+      properties:
+        CreditMemoRequestType:
+          type: string
+          maxLength: 4
+        SalesOrganization:
+          type: string
+          maxLength: 4
+        DistributionChannel:
+          type: string
+          maxLength: 2
+        OrganizationDivision:
+          type: string
+          maxLength: 2
+        SoldToParty:
+          type: string
+          maxLength: 10
+        CreditMemoRequestDate:
+          type: string
+          format: date
+        SDDocumentReason:
+          type: string
+          maxLength: 3
+        to_Item:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreditMemoRequestItemCreate'
+    CreditMemoRequestUpdate:
+      type: object
+      properties:
+        PurchaseOrderByCustomer:
+          type: string
+          maxLength: 35
+        HeaderBillingBlockReason:
+          type: string
+          maxLength: 2
+        BillingDocumentDate:
+          type: string
+          format: date
     Error:
       type: object
       properties:
@@ -451,23 +396,78 @@ components:
                   type: string
                 value:
                   type: string
-    CreditMemoRequestItemCreate:
-      type: object
-      properties:
-        Material:
-          type: string
-          maxLength: 40
-        RequestedQuantity:
-          type: string
-        RequestedQuantityUnit:
-          type: string
-          maxLength: 3
-        SalesDocument:
-          type: string
-          maxLength: 10
-        SalesDocumentItem:
-          type: string
-          maxLength: 6
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+    orderby:
+      name: $orderby
+      in: query
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

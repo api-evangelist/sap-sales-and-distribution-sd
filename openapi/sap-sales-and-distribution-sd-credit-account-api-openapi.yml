@@ -125,7 +125,55 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
     select:
       name: $select
       in: query
@@ -139,60 +187,23 @@ components:
         enum:
         - allpages
         - none
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
     filter:
       name: $filter
       in: query
       schema:
         type: string
-  responses:
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    CrdtMgmtBusinessPartnerUpdate:
+      type: object
+      properties:
+        CreditRiskClass:
+          type: string
+          maxLength: 3
+        CreditRating:
+          type: string
+          maxLength: 3
+        CreditIsBlockedForBP:
+          type: boolean
     CrdtMgmtBusinessPartner:
       type: object
       description: Credit management business partner entity
@@ -235,17 +246,6 @@ components:
                   type: string
                 value:
                   type: string
-    CrdtMgmtBusinessPartnerUpdate:
-      type: object
-      properties:
-        CreditRiskClass:
-          type: string
-          maxLength: 3
-        CreditRating:
-          type: string
-          maxLength: 3
-        CreditIsBlockedForBP:
-          type: boolean
   securitySchemes:
     basicAuth:
       type: http

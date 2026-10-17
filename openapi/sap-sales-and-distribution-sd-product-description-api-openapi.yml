@@ -66,33 +66,15 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
-  parameters:
-    select:
-      name: $select
-      in: query
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
   responses:
-    InternalServerError:
-      description: Internal server error
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
+    InternalServerError:
+      description: Internal server error
       content:
         application/json:
           schema:
@@ -135,6 +117,24 @@ components:
                   type: string
                 value:
                   type: string
+  parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

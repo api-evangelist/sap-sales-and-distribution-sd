@@ -77,22 +77,15 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
-  parameters:
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response
-      schema:
-        type: string
   responses:
-    InternalServerError:
-      description: Internal server error
+    Unauthorized:
+      description: Authentication required or credentials invalid
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or credentials invalid
+    InternalServerError:
+      description: Internal server error
       content:
         application/json:
           schema:
@@ -104,24 +97,6 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
-                  description: Error message text
     SalesOrderScheduleLine:
       type: object
       description: Sales order schedule line entity (A_SalesOrderScheduleLine)
@@ -158,6 +133,31 @@ components:
         DeliveredQuantityInOrderQtyUnit:
           type: string
           description: Quantity already delivered
+    Error:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+                  description: Error message text
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

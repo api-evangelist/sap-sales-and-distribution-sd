@@ -156,100 +156,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
-  parameters:
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include
-      schema:
-        type: string
-    inlinecount:
-      name: $inlinecount
-      in: query
-      description: Include total count of matching resources
-      schema:
-        type: string
-        enum:
-        - allpages
-        - none
-    expand:
-      name: $expand
-      in: query
-      description: Comma-separated list of navigation properties to expand
-      schema:
-        type: string
-    ifMatch:
-      name: If-Match
-      in: header
-      description: ETag value for optimistic concurrency control
-      required: true
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: Maximum number of records to return
-      schema:
-        type: integer
-        minimum: 0
-    skip:
-      name: $skip
-      in: query
-      description: Number of records to skip
-      schema:
-        type: integer
-        minimum: 0
-    orderby:
-      name: $orderby
-      in: query
-      description: Sort order for the result set
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
   schemas:
-    BusinessPartnerCreate:
-      type: object
-      description: Business partner creation payload
-      required:
-      - BusinessPartnerCategory
-      properties:
-        BusinessPartnerCategory:
-          type: string
-          maxLength: 1
-          description: Business partner category (1=Person, 2=Organization, 3=Group)
-        BusinessPartnerGrouping:
-          type: string
-          maxLength: 4
-        FirstName:
-          type: string
-          maxLength: 40
-        LastName:
-          type: string
-          maxLength: 40
-        OrganizationBPName1:
-          type: string
-          maxLength: 40
-        OrganizationBPName2:
-          type: string
-          maxLength: 40
-        Language:
-          type: string
-          maxLength: 2
-        SearchTerm1:
-          type: string
-          maxLength: 20
-        to_BusinessPartnerAddress:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/BusinessPartnerAddressCreate'
     BusinessPartnerUpdate:
       type: object
       description: Business partner update payload
@@ -274,31 +181,6 @@ components:
           maxLength: 2
         BusinessPartnerIsBlocked:
           type: boolean
-    BusinessPartnerAddressCreate:
-      type: object
-      description: Business partner address creation payload
-      properties:
-        StreetName:
-          type: string
-          maxLength: 60
-        HouseNumber:
-          type: string
-          maxLength: 10
-        PostalCode:
-          type: string
-          maxLength: 10
-        CityName:
-          type: string
-          maxLength: 40
-        Region:
-          type: string
-          maxLength: 3
-        Country:
-          type: string
-          maxLength: 3
-        Language:
-          type: string
-          maxLength: 2
     BusinessPartner:
       type: object
       description: Business partner header entity (A_BusinessPartner)
@@ -395,9 +277,72 @@ components:
                   type: string
                 value:
                   type: string
+    BusinessPartnerCreate:
+      type: object
+      description: Business partner creation payload
+      required:
+      - BusinessPartnerCategory
+      properties:
+        BusinessPartnerCategory:
+          type: string
+          maxLength: 1
+          description: Business partner category (1=Person, 2=Organization, 3=Group)
+        BusinessPartnerGrouping:
+          type: string
+          maxLength: 4
+        FirstName:
+          type: string
+          maxLength: 40
+        LastName:
+          type: string
+          maxLength: 40
+        OrganizationBPName1:
+          type: string
+          maxLength: 40
+        OrganizationBPName2:
+          type: string
+          maxLength: 40
+        Language:
+          type: string
+          maxLength: 2
+        SearchTerm1:
+          type: string
+          maxLength: 20
+        to_BusinessPartnerAddress:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/BusinessPartnerAddressCreate'
+    BusinessPartnerAddressCreate:
+      type: object
+      description: Business partner address creation payload
+      properties:
+        StreetName:
+          type: string
+          maxLength: 60
+        HouseNumber:
+          type: string
+          maxLength: 10
+        PostalCode:
+          type: string
+          maxLength: 10
+        CityName:
+          type: string
+          maxLength: 40
+        Region:
+          type: string
+          maxLength: 3
+        Country:
+          type: string
+          maxLength: 3
+        Language:
+          type: string
+          maxLength: 2
   responses:
-    BadRequest:
-      description: Bad request
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:
@@ -408,18 +353,73 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     NotFound:
       description: Resource not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
+    ifMatch:
+      name: If-Match
+      in: header
+      description: ETag value for optimistic concurrency control
+      required: true
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of records to skip
+      schema:
+        type: integer
+        minimum: 0
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of navigation properties to expand
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
+    inlinecount:
+      name: $inlinecount
+      in: query
+      description: Include total count of matching resources
+      schema:
+        type: string
+        enum:
+        - allpages
+        - none
+    orderby:
+      name: $orderby
+      in: query
+      description: Sort order for the result set
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

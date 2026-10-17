@@ -70,13 +70,26 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required or credentials invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Requested resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response
-      schema:
-        type: string
     top:
       name: $top
       in: query
@@ -91,7 +104,31 @@ components:
       schema:
         type: integer
         minimum: 0
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response
+      schema:
+        type: string
   schemas:
+    Error:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code
+            message:
+              type: object
+              properties:
+                lang:
+                  type: string
+                value:
+                  type: string
+                  description: Error message text
     SalesOrderHeaderPartner:
       type: object
       description: Sales order header partner entity (A_SalesOrderHeaderPartner)
@@ -120,43 +157,6 @@ components:
           type: string
           maxLength: 10
           description: Contact person number
-    Error:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code
-            message:
-              type: object
-              properties:
-                lang:
-                  type: string
-                value:
-                  type: string
-                  description: Error message text
-  responses:
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or credentials invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Requested resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

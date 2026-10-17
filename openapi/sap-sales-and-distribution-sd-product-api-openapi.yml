@@ -156,7 +156,55 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
+    top:
+      name: $top
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    ifMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    expand:
+      name: $expand
+      in: query
+      schema:
+        type: string
     select:
       name: $select
       in: query
@@ -170,29 +218,6 @@ components:
         enum:
         - allpages
         - none
-    ifMatch:
-      name: If-Match
-      in: header
-      required: true
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      schema:
-        type: integer
-        minimum: 0
-    expand:
-      name: $expand
-      in: query
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      schema:
-        type: integer
-        minimum: 0
     orderby:
       name: $orderby
       in: query
@@ -203,51 +228,14 @@ components:
       in: query
       schema:
         type: string
-  responses:
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    ProductCreate:
+    ProductUpdate:
       type: object
-      description: Product creation payload
-      required:
-      - Product
-      - ProductType
+      description: Product update payload
       properties:
-        Product:
-          type: string
-          maxLength: 40
-        ProductType:
-          type: string
-          maxLength: 4
         ProductGroup:
           type: string
           maxLength: 9
-        BaseUnit:
-          type: string
-          maxLength: 3
         GrossWeight:
           type: string
         NetWeight:
@@ -255,25 +243,8 @@ components:
         WeightUnit:
           type: string
           maxLength: 3
-        Division:
-          type: string
-          maxLength: 2
-        to_Description:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/ProductDescriptionCreate'
-    ProductDescriptionCreate:
-      type: object
-      properties:
-        Language:
-          type: string
-          maxLength: 2
-        ProductDescription:
-          type: string
-          maxLength: 40
+        IsMarkedForDeletion:
+          type: boolean
     Product:
       type: object
       description: Product/material master header entity (A_Product)
@@ -350,13 +321,25 @@ components:
           type: string
           maxLength: 32
           description: Size/dimensions text
-    ProductUpdate:
+    ProductCreate:
       type: object
-      description: Product update payload
+      description: Product creation payload
+      required:
+      - Product
+      - ProductType
       properties:
+        Product:
+          type: string
+          maxLength: 40
+        ProductType:
+          type: string
+          maxLength: 4
         ProductGroup:
           type: string
           maxLength: 9
+        BaseUnit:
+          type: string
+          maxLength: 3
         GrossWeight:
           type: string
         NetWeight:
@@ -364,8 +347,25 @@ components:
         WeightUnit:
           type: string
           maxLength: 3
-        IsMarkedForDeletion:
-          type: boolean
+        Division:
+          type: string
+          maxLength: 2
+        to_Description:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/ProductDescriptionCreate'
+    ProductDescriptionCreate:
+      type: object
+      properties:
+        Language:
+          type: string
+          maxLength: 2
+        ProductDescription:
+          type: string
+          maxLength: 40
     Error:
       type: object
       properties:

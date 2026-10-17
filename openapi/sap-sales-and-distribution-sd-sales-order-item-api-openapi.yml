@@ -181,72 +181,26 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
-  parameters:
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response
-      schema:
-        type: string
-    expand:
-      name: $expand
-      in: query
-      description: Comma-separated list of navigation properties to expand
-      schema:
-        type: string
-    ifMatch:
-      name: If-Match
-      in: header
-      description: ETag value for optimistic concurrency control
-      required: true
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: Maximum number of records to return
-      schema:
-        type: integer
-        minimum: 0
-    skip:
-      name: $skip
-      in: query
-      description: Number of records to skip
-      schema:
-        type: integer
-        minimum: 0
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
-  responses:
-    BadRequest:
-      description: Bad request - invalid parameters or payload
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or credentials invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Requested resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    SalesOrderItemUpdate:
+      type: object
+      description: Sales order item update payload
+      properties:
+        RequestedQuantity:
+          type: string
+          description: Order quantity
+        Plant:
+          type: string
+          maxLength: 4
+        StorageLocation:
+          type: string
+          maxLength: 4
+        ItemBillingBlockReason:
+          type: string
+          maxLength: 2
+        SalesOrderItemText:
+          type: string
+          maxLength: 40
     SalesOrderItem:
       type: object
       description: Sales order item entity (A_SalesOrderItem)
@@ -333,25 +287,6 @@ components:
           type: string
           maxLength: 1
           description: Billing status
-    SalesOrderItemUpdate:
-      type: object
-      description: Sales order item update payload
-      properties:
-        RequestedQuantity:
-          type: string
-          description: Order quantity
-        Plant:
-          type: string
-          maxLength: 4
-        StorageLocation:
-          type: string
-          maxLength: 4
-        ItemBillingBlockReason:
-          type: string
-          maxLength: 2
-        SalesOrderItemText:
-          type: string
-          maxLength: 40
     Error:
       type: object
       description: OData error response
@@ -370,6 +305,71 @@ components:
                 value:
                   type: string
                   description: Error message text
+  responses:
+    Unauthorized:
+      description: Authentication required or credentials invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Requested resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters or payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Maximum number of records to return
+      schema:
+        type: integer
+        minimum: 0
+    ifMatch:
+      name: If-Match
+      in: header
+      description: ETag value for optimistic concurrency control
+      required: true
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of navigation properties to expand
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: Number of records to skip
+      schema:
+        type: integer
+        minimum: 0
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http
